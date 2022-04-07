@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".JoinCreate">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="계정 생성하기"
+            android:layout_marginTop="150dp"
+            android:layout_marginBottom="60dp"
+            android:textSize="24dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="15dp"
+            android:padding="16dp"
+            android:background="@drawable/rectangle_base"
+            android:hint="닉네임"
+            android:textSize="20dp"
+            android:elevation="4dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="15dp"
+            android:padding="16dp"
+            android:background="@drawable/rectangle_base"
+            android:hint="새 아이디"
+            android:textSize="20dp"
+            android:elevation="4dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="15dp"
+            android:padding="16dp"
+            android:background="@drawable/rectangle_base"
+            android:hint="새 비밀번호"
+            android:textSize="20dp"
+            android:elevation="4dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="15dp"
+            android:padding="16dp"
+            android:background="@drawable/rectangle_base"
+            android:hint="비밀번호 확인"
+            android:textSize="20dp"
+            android:elevation="4dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/next_create"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="70dp"
+            android:paddingVertical="10dp"
+            android:layout_marginBottom="50dp"
+            android:text="다음으로"
+            android:textSize="24dp"
+            android:backgroundTint="#FF9966"/> <!--밑에 고정하는 방법이 있던거 같은데-->
+    </LinearLayout>
+
+</FrameLayout>

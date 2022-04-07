@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".JoinShare">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="반려견을 공유할 유저가 있나요?"
+        android:layout_marginTop="150dp"
+        android:textSize="24dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="반려견을 함께 공유할 유저를 선택하시면 애완견 한 마리를 여러 명의 유저가 함께 키우는 경험을 체험하실 수 있습니다."
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="100dp"
+        android:layout_marginHorizontal="16dp"
+        android:textSize="18dp"
+        android:textAlignment="center"/>
+    <!--글자 단어로 줄바꿈 하는 코드?-->
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="15dp"
+        android:padding="15dp"
+        android:background="@drawable/rectangle_base"
+        android:hint="사용자에게 받은 공유 코드를 입력하세요."
+        android:textSize="18dp"
+        android:inputType="text"
+        android:elevation="4dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="공유할 유저가 없으면 입력하지 않으셔도 됩니다."
+        android:gravity="center" />
+
+        <!--View에서 weight=1을 적용하여 빈 공간 차지-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/next_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:paddingHorizontal="70dp"
+        android:paddingVertical="10dp"
+        android:text="다음으로"
+        android:textSize="24dp"
+        android:backgroundTint="#FF9966"/> <!--밑에 고정하는 방법이 있던거 같은데-->
+    <!--버튼 자체를 리소스로 만들기-->
+    </LinearLayout>
+
+</FrameLayout>
