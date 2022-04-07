@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="category">
+        <item>사료</item>
+        <item>간식</item>
+        <item>생필품</item>
+        <item>의료비</item>
+    </string-array>
+
+    <string-array name="term">
+        <item>일</item>
+        <item>주</item>
+        <item>개월</item>
+        <item>년</item>
+    </string-array>
+
+    <string-array name="period">
+        <item>모든 기간</item>
+        <item>1개월</item>
+        <item>3개월</item>
+        <item>6개월</item>
+        <item>1년</item>
+    </string-array>
+
+    <string-array name="category_total">
+        <item>모든 항목</item>
+        <item>사료</item>
+        <item>간식</item>
+        <item>생필품</item>
+        <item>의료비</item>
+    </string-array>
+
+</resources>
