@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="category">
+        <item>미분류</item>
         <item>사료</item>
         <item>간식</item>
         <item>생필품</item>

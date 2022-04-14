@@ -3,14 +3,15 @@ package com.example.shape_up_2022
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.petcarestarter1.databinding.BudgetItemBinding
+import com.example.shape_up_2022.databinding.BudgetItemBinding
 
 class MyViewHolder(val binding: BudgetItemBinding): RecyclerView.ViewHolder(binding.root)
 
-class BudgetAdapter(val datas_itemname: MutableList<String>?): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class BudgetAdapter(val datas: MutableList<BudgetItem>?): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
 
     override fun getItemCount(): Int {
-        return datas_itemname?.size ?: 0
+        return datas?.size ?: 0
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -19,6 +20,9 @@ class BudgetAdapter(val datas_itemname: MutableList<String>?): RecyclerView.Adap
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val binding=(holder as MyViewHolder).binding
-        binding.itemname.text= datas_itemname!![position]
+        binding.itemname.text= datas!![position].itemname
+        binding.price.text = datas!![position].price.toString()
+        binding.category.text = datas!![position].category
+        binding.term.text= datas!![position].term.toString()
     }
 }

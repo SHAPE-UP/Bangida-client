@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <LinearLayout
@@ -15,10 +15,11 @@
             android:layout_height="wrap_content"
             android:text="분류" />
         <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:entries="@array/category"
-        />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/category"
+            android:id="@+id/category"
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -57,7 +58,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="999,999"
+                android:text="99999"
                 android:id="@+id/price"
                 android:inputType="numberDecimal"
                 />
