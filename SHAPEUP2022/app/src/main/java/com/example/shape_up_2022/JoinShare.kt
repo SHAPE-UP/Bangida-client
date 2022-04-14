@@ -26,11 +26,8 @@ class JoinShare : Fragment(), View.OnClickListener {
     private var param1: String? = null
     private var param2: String? = null
 
-    private lateinit var binding: FragmentJoinShareBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("app_test", "share_onCreate")
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -41,11 +38,9 @@ class JoinShare : Fragment(), View.OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.d("app_test", "share_onCreateView")
-        val view: View = inflater.inflate(R.layout.fragment_join_share, null) // Fragment로 불러올 xml파일을 view로 가져옵니다.
-        val button1 = view.findViewById<View>(R.id.next_share) as Button // click시 Fragment를 전환할 event를 발생시킬 버튼을 정의합니다.
+        val view: View = inflater.inflate(R.layout.fragment_join_share, null)
+        val button1 = view.findViewById<View>(R.id.next_share) as Button
         button1.setOnClickListener(this)
-        Log.d("app_test", "share_onClickListener _aaps")
 
         return view
     }
@@ -71,9 +66,7 @@ class JoinShare : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(p0: View?) {
-        Log.d("app_test", "share_onClick")
-        //TODO("Not yet implemented")
-        (activity as JoinActivity).fragment()
+        (activity as JoinActivity).gotoMainActivity()
     }
 
 

@@ -18,7 +18,6 @@ class StartActivity : AppCompatActivity() {
         //버튼 이벤트에 따른 인텐트 연결
         // 1. 로그인
         binding.btnLogin.setOnClickListener {
-            Log.d("app_test", "LoginActivity")
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             this.finish()

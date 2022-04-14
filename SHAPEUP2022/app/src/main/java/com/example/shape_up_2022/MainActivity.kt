@@ -1,34 +1,12 @@
-package com.example.shape_up_2022
+package com.example.shape_upapptest
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.shape_up_2022.databinding.ActivityMainBinding
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-
-        // 혜수
-
-
-
-        // 수연
-
-
-
-        // 영주
-
-
-
-        // 성민
-
-        
-
+        setContentView(R.layout.main_page)
     }
-
-
 }
