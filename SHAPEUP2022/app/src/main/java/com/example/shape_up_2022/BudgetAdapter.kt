@@ -66,7 +66,6 @@ class BudgetAdapter(val datas: MutableList<BudgetItem>?): RecyclerView.Adapter<R
                 }
             })
         }
-
     }
 
 }
