@@ -5,16 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.shape_up_2022.databinding.StartAppBinding
-import com.example.shape_upapptest.JoinActivity
-import com.example.shape_upapptest.LoginActivity
+
 
 class StartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.start_app)
 
-        val binding = StartAppBinding.inflate(layoutInflater) // 바인딩
-        setContentView(binding.root) // 액티비티 화면 출력
+        val binding = StartAppBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         
         //버튼 이벤트에 따른 인텐트 연결

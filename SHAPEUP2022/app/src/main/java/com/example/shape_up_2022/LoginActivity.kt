@@ -5,16 +5,15 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.shape_up_2022.MainActivity
 import com.example.shape_up_2022.databinding.SignInBinding
-import com.example.shape_upapptest.JoinActivity
+
 
 class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding = SignInBinding.inflate(layoutInflater) // 바인딩
+        val binding = SignInBinding.inflate(layoutInflater)
         setContentView(binding.root) // 액티비티 화면 출력: 로그인
 
         // 회원가입 페이지 이동
