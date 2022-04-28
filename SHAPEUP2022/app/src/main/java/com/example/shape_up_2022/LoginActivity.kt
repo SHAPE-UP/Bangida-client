@@ -1,11 +1,12 @@
-package com.example.shape_upapptest
+package com.example.shape_up_2022
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.shape_upapptest.databinding.SignInBinding
+import com.example.shape_up_2022.MainActivity
+import com.example.shape_up_2022.databinding.SignInBinding
 
 class LoginActivity : AppCompatActivity() {
 

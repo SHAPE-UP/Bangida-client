@@ -1,14 +1,25 @@
 package com.example.shape_up_2022
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shape_up_2022.databinding.BudgetItemBinding
 
-class MyViewHolder(val binding: BudgetItemBinding): RecyclerView.ViewHolder(binding.root)
-
 class BudgetAdapter(val datas: MutableList<BudgetItem>?): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    interface OnItemClickListener {
+        fun onItemClick(v: View?, position: Int)  // 뷰와 포지션값
+        fun onEditClick(v: View?, position: Int)  // 수정
+        fun onDeleteClick(v: View?, positon: Int)  // 삭제
+    }
+
+    lateinit var mListener: OnItemClickListener
+
+    // 메인에서 사용할 메소드
+    public fun setOnItemClickListener(listener:OnItemClickListener) {
+        this.mListener = listener
+    }
 
     override fun getItemCount(): Int {
         return datas?.size ?: 0
@@ -22,7 +33,40 @@ class BudgetAdapter(val datas: MutableList<BudgetItem>?): RecyclerView.Adapter<R
         val binding=(holder as MyViewHolder).binding
         binding.itemname.text= datas!![position].itemname
         binding.price.text = datas!![position].price.toString()
-        binding.category.text = datas!![position].category
+        binding.category.text = datas!![position].category.toString()
         binding.term.text= datas!![position].term.toString()
     }
+
+    // 뷰 홀더를 갖고 있는 형태
+    inner class MyViewHolder(val binding: BudgetItemBinding): RecyclerView.ViewHolder(binding.root) {
+        init {
+            itemView.setOnClickListener { view ->
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    if (mListener != null) {
+                        mListener.onItemClick(view, position)
+                    }
+                }
+            }
+            binding.btnEdit.setOnClickListener(View.OnClickListener { view ->
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    if (mListener != null) {
+                        mListener.onEditClick(view, position)
+                    }
+                }
+            })
+
+            binding.btnDelete.setOnClickListener(View.OnClickListener { view ->
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    if (mListener != null) {
+                        mListener.onDeleteClick(view, position)
+                    }
+                }
+            })
+        }
+
+    }
+
 }

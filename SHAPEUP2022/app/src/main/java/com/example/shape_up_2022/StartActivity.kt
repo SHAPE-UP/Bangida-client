@@ -1,10 +1,10 @@
-package com.example.shape_upapptest
+package com.example.shape_up_2022
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.shape_upapptest.databinding.StartAppBinding
+import com.example.shape_up_2022.databinding.StartAppBinding
 
 class StartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
