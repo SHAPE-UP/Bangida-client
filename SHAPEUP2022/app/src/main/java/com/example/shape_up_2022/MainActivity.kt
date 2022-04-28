@@ -1,4 +1,4 @@
-package com.example.shape_up_2022
+package com.example.shape_upapptest
 
 import android.content.Intent
 import android.os.Bundle

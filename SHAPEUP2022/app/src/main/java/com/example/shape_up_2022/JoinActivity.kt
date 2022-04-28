@@ -1,17 +1,29 @@
+<<<<<<< HEAD
 package com.example.shape_up_2022
+=======
+package com.example.shape_upapptest
+>>>>>>> e162eb89f48732050dca3ebbd7b84501d5ec16c4
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
+<<<<<<< HEAD
 import com.example.shape_up_2022.databinding.AccountJoinBinding
 
 class JoinActivity : AppCompatActivity() {
     // 바인딩 변수 선언
     private val binding by lazy { AccountJoinBinding.inflate(layoutInflater)}
+=======
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import com.example.shape_upapptest.databinding.AccountJoinBinding
+
+class JoinActivity : AppCompatActivity() {
+    // 바인딩 변수 선언
+    private val binding by lazy {AccountJoinBinding.inflate(layoutInflater)}
+>>>>>>> e162eb89f48732050dca3ebbd7b84501d5ec16c4
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
