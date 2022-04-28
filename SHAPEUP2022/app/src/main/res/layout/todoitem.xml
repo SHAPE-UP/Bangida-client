@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:id="@+id/item_todo_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="할일"
+        android:id="@+id/todowork"
+        android:paddingHorizontal="10dp"
+        android:layout_weight="3"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="역할 설정"
+        android:id="@+id/todorole"
+        android:gravity="right"
+        android:paddingHorizontal="10dp"
+        android:layout_weight="1"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/todosetting"
+        android:text="시간 설정" />
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/purple_500"
+        android:text="관련 활동"
+        android:id="@+id/todoref"
+        android:gravity="center"
+        android:layout_marginHorizontal="10dp"
+        />
+
+</LinearLayout>
