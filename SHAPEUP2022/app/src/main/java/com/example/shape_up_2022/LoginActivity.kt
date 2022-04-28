@@ -1,19 +1,31 @@
+<<<<<<< HEAD
 package com.example.shape_up_2022
+=======
+package com.example.shape_upapptest
+>>>>>>> e162eb89f48732050dca3ebbd7b84501d5ec16c4
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+<<<<<<< HEAD
 import com.example.shape_up_2022.databinding.SignInBinding
 
+=======
+import com.example.shape_upapptest.databinding.SignInBinding
+>>>>>>> e162eb89f48732050dca3ebbd7b84501d5ec16c4
 
 class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+<<<<<<< HEAD
         val binding = SignInBinding.inflate(layoutInflater)
+=======
+        val binding = SignInBinding.inflate(layoutInflater) // 바인딩
+>>>>>>> e162eb89f48732050dca3ebbd7b84501d5ec16c4
         setContentView(binding.root) // 액티비티 화면 출력: 로그인
 
         // 회원가입 페이지 이동
