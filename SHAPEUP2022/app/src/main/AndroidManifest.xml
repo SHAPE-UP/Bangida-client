@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SHAPEUP2022">
-        <!--시작 및 회원가입/로그인-->
+
+        <!-- 시작 및 회원가입/로그인 -->
         <activity
             android:name=".StartActivity"
             android:exported="true" />
@@ -18,24 +19,23 @@
             android:exported="true" />
         <activity
             android:name=".JoinActivity"
-            android:exported="true" />
-
-        <!--메인-->
+            android:exported="true" /> <!-- 메인 -->
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ToDoActivity"
+            android:exported="false" />
 
-        <!--정보-->
+        <!-- 정보 -->
         <activity android:name=".AlarmActivity" />
-
         <activity android:name=".BudgetActivity" />
-
     </application>
 
 </manifest>

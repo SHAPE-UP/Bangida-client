@@ -17,12 +17,12 @@ class MainActivity : AppCompatActivity() {
             intent1 = Intent(this, BudgetActivity::class.java)
             startActivity(intent1)
         }
-        /*
+
         binding.btnCalenderTodolist.setOnClickListener {
             intent1 = Intent(this, ToDoActivity::class.java)
             startActivity(intent1)
         }
-         */
+
         binding.btnDogAlarm.setOnClickListener {
             intent1 = Intent(this, AlarmActivity::class.java)
             startActivity(intent1)
