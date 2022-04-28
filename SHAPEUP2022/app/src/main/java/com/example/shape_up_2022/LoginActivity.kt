@@ -7,7 +7,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.shape_up_2022.MainActivity
 import com.example.shape_up_2022.databinding.SignInBinding
-import com.example.shape_upapptest.JoinActivity
 
 class LoginActivity : AppCompatActivity() {
 

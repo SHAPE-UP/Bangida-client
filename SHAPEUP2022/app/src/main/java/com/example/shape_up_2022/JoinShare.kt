@@ -11,7 +11,6 @@ import android.widget.Button
 import com.example.shape_up_2022.R
 import com.example.shape_up_2022.databinding.FragmentJoinCreateBinding
 import com.example.shape_up_2022.databinding.FragmentJoinShareBinding
-import com.example.shape_upapptest.JoinActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
