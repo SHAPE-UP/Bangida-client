@@ -1,4 +1,4 @@
-package com.example.shape_upapptest
+package com.example.shape_up_2022
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,11 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import com.example.shape_upapptest.databinding.AccountJoinBinding
+import com.example.shape_up_2022.databinding.AccountJoinBinding
 
 class JoinActivity : AppCompatActivity() {
     // 바인딩 변수 선언
-    private val binding by lazy {AccountJoinBinding.inflate(layoutInflater)}
+    private val binding by lazy { AccountJoinBinding.inflate(layoutInflater)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
 

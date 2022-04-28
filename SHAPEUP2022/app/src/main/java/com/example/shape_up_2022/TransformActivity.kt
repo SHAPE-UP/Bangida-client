@@ -1,4 +1,4 @@
-package lilcode.aop.p3.c03.alarm
+package com.example.shape_up_2022
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

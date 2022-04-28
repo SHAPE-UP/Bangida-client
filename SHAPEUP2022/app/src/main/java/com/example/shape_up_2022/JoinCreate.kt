@@ -1,4 +1,4 @@
-package com.example.shape_upapptest
+package com.example.shape_up_2022
 
 import android.graphics.Color
 import android.os.Bundle
@@ -14,7 +14,6 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doOnTextChanged
-import com.example.shape_upapptest.databinding.FragmentJoinCreateBinding
 import org.w3c.dom.Text
 
 // TODO: Rename parameter arguments, choose names that match
