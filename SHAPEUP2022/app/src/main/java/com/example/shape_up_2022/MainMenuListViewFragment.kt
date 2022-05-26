@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.shape_upapptest.databinding.FragmentMainMenuListViewBinding
-import com.example.shape_upapptest.databinding.ItemMainMenuListBinding
+import com.example.shape_up_2022.databinding.FragmentMainMenuListViewBinding
+import com.example.shape_up_2022.databinding.ItemMainMenuListBinding
 
 
 // TODO: Rename parameter arguments, choose names that match

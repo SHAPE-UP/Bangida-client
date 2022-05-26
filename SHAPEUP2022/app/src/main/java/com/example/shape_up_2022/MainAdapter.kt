@@ -3,10 +3,10 @@ package com.example.shape_up_2022
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shape_upapptest.databinding.ItemMainMenuListBinding
-import com.example.shape_upapptest.databinding.ItemTodoBinding
+import com.example.shape_up_2022.databinding.ItemMainMenuListBinding
+import com.example.shape_up_2022.databinding.ItemTodoBinding
 
-class ListViewHolder(val recycleBinding:ItemMainMenuListBinding) : RecyclerView.ViewHolder(recycleBinding.root) {}// recycler에 대한 목록
+class ListViewHolder(val recycleBinding: ItemMainMenuListBinding) : RecyclerView.ViewHolder(recycleBinding.root) {}// recycler에 대한 목록
 class TodoViewHolder(val todoBinding: ItemTodoBinding) : RecyclerView.ViewHolder(todoBinding.root){} // todo에 대한 목록
 
 class MainListAdapter(val datas: MutableList<MainListViewData>?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

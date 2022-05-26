@@ -4,7 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.shape_upapptest.databinding.AccountJoinBinding
+import com.example.shape_up_2022.databinding.AccountJoinBinding
+
 
 class JoinActivity : AppCompatActivity() {
     private val binding by lazy { AccountJoinBinding.inflate(layoutInflater)}

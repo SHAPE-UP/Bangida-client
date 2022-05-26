@@ -1,4 +1,4 @@
-package com.example.shape_upapptest
+package com.example.shape_up_2022
 
 import android.os.Bundle
 import android.util.Log
@@ -6,10 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import com.example.shape_upapptest.databinding.MainPageBinding
+import com.example.shape_up_2022.databinding.MainPageBinding
 
 class MainActivity : AppCompatActivity() {
-    private val binding by lazy {MainPageBinding.inflate(layoutInflater)}
+    private val binding by lazy { MainPageBinding.inflate(layoutInflater)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

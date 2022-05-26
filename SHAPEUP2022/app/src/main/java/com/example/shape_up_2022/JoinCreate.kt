@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.shape_upapptest.databinding.FragmentJoinCreateBinding
+import com.example.shape_up_2022.databinding.FragmentJoinCreateBinding
 
 
 // TODO: Rename parameter arguments, choose names that match

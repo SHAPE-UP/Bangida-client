@@ -5,7 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shape_upapptest.databinding.ItemCalendarListBinding
+import com.example.shape_up_2022.databinding.ItemCalendarListBinding
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -35,7 +35,7 @@ class CalendarAdapter(val datas: List<CalendarValue>) :
         }
         // 오늘 날짜와 캘린더의 오늘 날짜가 같을 경우 background_blue 적용하기
         if (today == now) {
-            binding.weekCardview.setBackgroundResource(R.drawable.background_calendar)
+            //binding.weekCardview.setBackgroundResource(R.drawable.background_calendar)
         }
     }
 

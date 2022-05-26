@@ -34,7 +34,7 @@ class BudgetAdapter(val datas: MutableList<BudgetItem>?): RecyclerView.Adapter<R
         binding.itemname.text= datas!![position].itemname
         binding.price.text = datas!![position].price.toString()
         binding.category.text = datas!![position].category.toString()
-        binding.term.text= datas!![position].term.toString()
+        binding.term.text= datas!![position].term.toString() ?: ""
     }
 
     // 뷰 홀더를 갖고 있는 형태

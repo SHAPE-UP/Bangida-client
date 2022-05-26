@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.shape_upapptest.databinding.FragmentMainCalenderWeekBinding
+import com.example.shape_up_2022.databinding.FragmentMainCalenderWeekBinding
 import java.time.DayOfWeek
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
