@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--시뮬레이션 시작-->
+        <LinearLayout
+            android:id="@+id/sim_not_started"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@color/white"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="성향 점검 테스트"
+                android:textSize="30dp"
+                android:gravity="center"
+                />
+            <Button
+                android:id="@+id/test_start_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="시작하기"
+                android:textSize="30dp"
+                />
+            <View style="@style/Divider"
+                android:layout_marginVertical="50dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="시뮬레이션"
+                android:textSize="30dp"
+                android:gravity="center"
+                />
+            <Button
+                android:id="@+id/sim_start_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="시작하기"
+                android:textSize="30dp"
+                />
+        </LinearLayout>
+
+        <!--시뮬레이션-->
+        <LinearLayout
+            android:id="@+id/sim_started"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="#ffeecc">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_margin="20dp"
+                    android:text="코코"
+                    />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_margin="20dp">
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnin"
+                        android:text="실내로" />
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnout"
+                        android:text="밖으로" />
+                </FrameLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_margin="20dp"
+                    android:text="반려견 상태"
+                    />
+                <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:icon="@android:drawable/ic_btn_speak_now"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="시뮬레이션 홈" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                >
+
+                <ScrollView
+                    android:id="@+id/outdoor"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ccddff">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:textSize="20dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="10dp"
+                            android:text="산책 다녀오기"/>
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:textSize="20dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="10dp"
+                            android:text="병원"/>
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:textSize="20dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="10dp"
+                            android:text="미용"/>
+
+                    </LinearLayout>
+                </ScrollView>
+
+                <ScrollView
+                    android:id="@+id/indoor"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffddcc">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:textSize="20dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="10dp"
+                            android:text="강아지 관리"/>
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:textSize="20dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="10dp"
+                            android:text="먹이 챙겨주기"/>
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:textSize="20dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="10dp"
+                            android:text="위생 관리/목욕" />
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:textSize="20dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="10dp"
+                            android:text="배변 관리" />
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:textSize="20dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="10dp"
+                            android:text="건강 관리" />
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:textSize="20dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="10dp"
+                            android:text="훈련하기" />
+
+                    </LinearLayout>
+                </ScrollView>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+</LinearLayout>
