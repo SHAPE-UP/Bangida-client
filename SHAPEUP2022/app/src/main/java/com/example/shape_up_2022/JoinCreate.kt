@@ -4,13 +4,12 @@ import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.shape_up_2022.databinding.FragmentJoinCreateBinding
+import androidx.fragment.app.Fragment
+import com.example.shape_upapptest.databinding.FragmentJoinCreateBinding
 
-import android.widget.Button
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,7 +21,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [JoinCreate.newInstance] factory method to
  * create an instance of this fragment.
  */
-class JoinCreate : Fragment() { // OnClickListener 상속
+class JoinCreate : Fragment(){
 
     private var param1: String? = null
     private var param2: String? = null
@@ -84,7 +83,6 @@ class JoinCreate : Fragment() { // OnClickListener 상속
         check_password.addTextChangedListener(textWatcher)
 
         return binding.root
-
     }
 
     companion object {

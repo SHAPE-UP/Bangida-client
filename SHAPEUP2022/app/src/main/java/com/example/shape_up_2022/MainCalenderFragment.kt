@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.shape_upapptest.databinding.FragmentJoinShareBinding
+import com.example.shape_upapptest.databinding.FragmentMainCalenderBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -14,13 +14,14 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [JoinShare.newInstance] factory method to
+ * Use the [MainCalenderFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class JoinShare : Fragment() {
+class MainCalenderFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,13 +35,18 @@ class JoinShare : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentJoinShareBinding.inflate(inflater, container, false)
-        binding.nextShare.setOnClickListener {
-            (activity as JoinActivity).gotoMainActivity()
-        }
+        val binding = FragmentMainCalenderBinding.inflate(inflater, container, false)
+
+        // 프래그먼트 적용하기
+        val transaction = fragmentManager?.beginTransaction()
+        transaction!!.add(R.id.fragmentView_calender_week, MainCalenderWeekFragment())
+        transaction!!.add(R.id.fragmentView_calender_todo, MainCalenderTodoFragment())
+        transaction?.commit()
 
         return binding.root
     }
+
+
 
     companion object {
         /**
@@ -49,18 +55,16 @@ class JoinShare : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment JoinShare.
+         * @return A new instance of fragment MainCalenderFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            JoinShare().apply {
+            MainCalenderFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
                 }
             }
     }
-
-
 }

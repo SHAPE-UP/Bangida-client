@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="20dp"
+    android:id="@+id/item_recyclerview_layout">
+
+    <TextView
+        android:id="@+id/mainItemList_todo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textStyle="bold"/>
+
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="25dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp">
+        <ImageView
+            android:id="@+id/todo_profile_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/user_basic" />
+    </androidx.cardview.widget.CardView>
+
+
+    <!--    캘린더 todo랑 같이 사용하는 리스트-->
+    <!--    캘린더에서 사용하는거면 사용자 프로필 보이게 visibility 설정하기-->
+    <!--    todo와 메뉴 리스트 같이 사용하는 선택을 한 이유: 어댑터 클래스 만들려면 파일 하나 더 생성해야 하기 때문..☆-->
+</LinearLayout>

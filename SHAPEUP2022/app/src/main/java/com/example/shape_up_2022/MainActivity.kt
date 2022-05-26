@@ -1,46 +1,37 @@
-package com.example.shape_up_2022
+package com.example.shape_upapptest
 
-import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.shape_up_2022.databinding.ActivityMainBinding
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import com.example.shape_upapptest.databinding.MainPageBinding
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var intent1 : Intent
+    private val binding by lazy {MainPageBinding.inflate(layoutInflater)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.budgetMain.setOnClickListener {
-            intent1 = Intent(this, BudgetActivity::class.java)
-            startActivity(intent1)
-        }
+        // 강아지 현재 상태, 정보
 
-        binding.btnCalenderTodolist.setOnClickListener {
-            intent1 = Intent(this, ToDoActivity::class.java)
-            startActivity(intent1)
-        }
 
-        binding.btnDogAlarm.setOnClickListener {
-            intent1 = Intent(this, AlarmActivity::class.java)
-            startActivity(intent1)
-        }
+        // 프래그먼트 연결 - 캘린더 프래그먼트
+        viewFragment(MainCalenderFragment() , R.id.fragment_calender)
 
-        binding.btnStart.setOnClickListener {
-            intent1 = Intent(this, StartActivity::class.java)
-            startActivity(intent1)
-        }
+        // 프래그먼트 연결 - 여러가지 메뉴
+        viewFragment(MainRecyclerViewFragment(), R.id.fragmentView_recycler)
+    }
 
-        binding.mypage.setOnClickListener{
-            intent1 = Intent(this, MyPageActivity::class.java)
-            startActivity(intent1)
-        }
+    // 프래그먼트 연결
+    private fun viewFragment(fragment : Fragment, location:Int){
+        Log.d("app_test", "viewFragment start")
+        val fragmentManager : FragmentManager = supportFragmentManager
+        val transaction : FragmentTransaction = fragmentManager.beginTransaction()
 
-        binding.achieveMain.setOnClickListener {
-            intent1 = Intent(this, AchieveActivity::class.java)
-            startActivity(intent1)
-        }
+        transaction.add(location, fragment)
+        transaction.commit()
     }
 }

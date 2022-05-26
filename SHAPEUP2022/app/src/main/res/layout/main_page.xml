@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp">
+
+        <!--툴바 설정-->
+
+        <!--강아지 기본 정보 및 상태-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#aabbff"
+            android:orientation="horizontal">
+
+            <!--강아지 사진-->
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="30dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="10dp">
+                <ImageView
+                    android:id="@+id/puppy_profile_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:src="@drawable/ic_icon_dog_orange"
+                    android:scaleType="centerCrop"/>
+                <!--    android:scaleType="centerCrop" : 가로/세로 길이 중 짧은 쪽을 맞춰줌-->
+            </androidx.cardview.widget.CardView>
+
+            <!--이름, 상태-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="10dp">
+                <TextView
+                    android:id="@+id/puppy_profile_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="코코"
+                    android:textStyle="bold"
+                    android:textSize="24dp"
+                    android:layout_marginTop="10dp"/>
+                <TextView
+                    android:id="@+id/puppy_profile_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="현재 상태: 기쁨"
+                    android:textSize="16dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--캘린더 프래그먼트-->
+        <LinearLayout
+            android:id="@+id/fragment_calender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:background="#ff1188"/>
+
+        <!--리사이클러 뷰 프래그먼트-->
+        <LinearLayout
+            android:id="@+id/fragmentView_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:background="#22ee34"/>
+    </LinearLayout>
+</ScrollView>
