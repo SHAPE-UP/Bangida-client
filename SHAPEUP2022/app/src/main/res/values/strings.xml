@@ -8,4 +8,7 @@
     <string name="q2">반려견과 함께하고 싶은 마음이 어느정도인가요?(1~100까지의 수치가 있다고 가정합니다)</string>
     <string name="q3">어플을 사용하며 반려견을 위한 당신의 마음이 커지고 있나요?(1~100까지의 수치가 있다고 가정합니다)</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
