@@ -1,4 +1,4 @@
-package com.example.shape_upapptest
+package com.example.shape_up_2022
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.shape_up_2022.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    lateinit var intent1 : Intent
+    private lateinit var intent1 : Intent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,5 +32,11 @@ class MainActivity : AppCompatActivity() {
             intent1 = Intent(this, StartActivity::class.java)
             startActivity(intent1)
         }
+
+        binding.achieveMain.setOnClickListener {
+            intent1 = Intent(this, AchieveActivity::class.java)
+            startActivity(intent1)
+        }
+
     }
 }
