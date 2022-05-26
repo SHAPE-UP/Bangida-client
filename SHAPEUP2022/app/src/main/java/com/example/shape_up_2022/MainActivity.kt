@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.shape_up_2022.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    lateinit var intent1 : Intent
+    private lateinit var intent1 : Intent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +35,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.mypage.setOnClickListener{
             intent1 = Intent(this, MyPageActivity::class.java)
+            startActivity(intent1)
+        }
+
+        binding.achieveMain.setOnClickListener {
+            intent1 = Intent(this, AchieveActivity::class.java)
             startActivity(intent1)
         }
     }

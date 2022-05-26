@@ -16,6 +16,9 @@
             android:name=".MyPageActivity"
             android:exported="false" />
         <activity
+            android:name=".AchieveActivity"
+            android:exported="false" />
+        <activity
             android:name=".preferenceActivity"
             android:exported="false" /> <!-- 시작 및 회원가입/로그인 -->
         <activity
