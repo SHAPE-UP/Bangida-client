@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">SHAPE-UP-2022</string>
+    <string name="change_time">시간 재설정</string>
+    <string name="on_alarm">알람 켜기</string>
+
+    <string name="preference">당신의 선호도가 궁금합니다</string>
+    <string name="q1">당신은 반려견과 함께할 준비가 얼마나 되어있나요?</string>
+    <string name="q2">반려견과 함께하고 싶은 마음이 어느정도인가요?(1~100까지의 수치가 있다고 가정합니다)</string>
+    <string name="q3">어플을 사용하며 반려견을 위한 당신의 마음이 커지고 있나요?(1~100까지의 수치가 있다고 가정합니다)</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

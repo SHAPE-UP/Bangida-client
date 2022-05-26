@@ -18,7 +18,7 @@ import java.util.*
 class AlarmActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.alarm_main)
 
         // 뷰를 초기화 해주기
         initOnOffButton()
@@ -57,7 +57,7 @@ class AlarmActivity : AppCompatActivity() {
             this,
             M_ALARM_REQUEST_CODE,
             Intent(this, AlarmReceiver::class.java),
-            PendingIntent.FLAG_NO_CREATE
+            PendingIntent.FLAG_IMMUTABLE  // 원래 코드: FLAG_NO_CREATE
         ) // 있으면 가져오고 없으면 안만든다. (null)
 
         if ((pendingIntent == null) and alarmModel.onOff) {

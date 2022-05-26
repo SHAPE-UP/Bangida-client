@@ -1,26 +1,11 @@
-<<<<<<< HEAD
 package com.example.shape_up_2022
 
 import android.os.Bundle
-=======
-package com.example.shape_upapptest
-
-import android.content.Intent
-import android.os.Bundle
-import android.util.Log
->>>>>>> e162eb89f48732050dca3ebbd7b84501d5ec16c4
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-<<<<<<< HEAD
-import com.example.shape_up_2022.databinding.FragmentJoinShareBinding
-
-=======
-import android.widget.Button
-import com.example.shape_upapptest.databinding.FragmentJoinCreateBinding
+import androidx.fragment.app.Fragment
 import com.example.shape_upapptest.databinding.FragmentJoinShareBinding
->>>>>>> e162eb89f48732050dca3ebbd7b84501d5ec16c4
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,11 +17,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [JoinShare.newInstance] factory method to
  * create an instance of this fragment.
  */
-<<<<<<< HEAD
 class JoinShare : Fragment() {
-=======
-class JoinShare : Fragment(), View.OnClickListener {
->>>>>>> e162eb89f48732050dca3ebbd7b84501d5ec16c4
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -53,20 +34,12 @@ class JoinShare : Fragment(), View.OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-<<<<<<< HEAD
         val binding = FragmentJoinShareBinding.inflate(inflater, container, false)
         binding.nextShare.setOnClickListener {
             (activity as JoinActivity).gotoMainActivity()
         }
 
         return binding.root
-=======
-        val view: View = inflater.inflate(R.layout.fragment_join_share, null)
-        val button1 = view.findViewById<View>(R.id.next_share) as Button
-        button1.setOnClickListener(this)
-
-        return view
->>>>>>> e162eb89f48732050dca3ebbd7b84501d5ec16c4
     }
 
     companion object {
@@ -89,12 +62,5 @@ class JoinShare : Fragment(), View.OnClickListener {
             }
     }
 
-<<<<<<< HEAD
-=======
-    override fun onClick(p0: View?) {
-        (activity as JoinActivity).gotoMainActivity()
-    }
-
->>>>>>> e162eb89f48732050dca3ebbd7b84501d5ec16c4
 
 }

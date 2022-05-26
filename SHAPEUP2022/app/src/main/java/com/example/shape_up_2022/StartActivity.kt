@@ -10,10 +10,13 @@ import android.os.Bundle
 import android.util.Log
 <<<<<<< HEAD
 import com.example.shape_up_2022.databinding.StartAppBinding
+<<<<<<< HEAD
 
 =======
 import com.example.shape_upapptest.databinding.StartAppBinding
 >>>>>>> e162eb89f48732050dca3ebbd7b84501d5ec16c4
+=======
+>>>>>>> 98f9f940ef4c3d1bee21b9a6218ad4e1892ed0ee
 
 class StartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
