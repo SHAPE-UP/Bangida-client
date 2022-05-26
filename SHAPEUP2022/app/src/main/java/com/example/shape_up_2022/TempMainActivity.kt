@@ -13,6 +13,11 @@ class TempMainActivity : AppCompatActivity() {
         val binding = ActivityTempMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btnSimulationMain.setOnClickListener {
+            intent1 = Intent(this, SimulationActivity::class.java)
+            startActivity(intent1)
+        }
+
         binding.budgetMain.setOnClickListener {
             intent1 = Intent(this, BudgetActivity::class.java)
             startActivity(intent1)
