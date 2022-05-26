@@ -10,9 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SHAPEUP2022">
         <activity
-            android:name=".preferenceActivity"
+            android:name=".AchieveActivity"
             android:exported="false" />
-        <!-- 시작 및 회원가입/로그인 -->
+        <activity
+            android:name=".preferenceActivity"
+            android:exported="false" /> <!-- 시작 및 회원가입/로그인 -->
         <activity
             android:name=".StartActivity"
             android:exported="true" />
@@ -33,9 +35,7 @@
         </activity>
         <activity
             android:name=".ToDoActivity"
-            android:exported="false" />
-
-        <!-- 정보 -->
+            android:exported="false" /> <!-- 정보 -->
         <activity android:name=".AlarmActivity" />
         <activity android:name=".BudgetActivity" />
     </application>

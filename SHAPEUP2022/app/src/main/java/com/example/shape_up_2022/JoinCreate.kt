@@ -1,34 +1,16 @@
-<<<<<<< HEAD
 package com.example.shape_up_2022
-=======
-package com.example.shape_upapptest
->>>>>>> e162eb89f48732050dca3ebbd7b84501d5ec16c4
 
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-<<<<<<< HEAD
-=======
-import android.util.Log
->>>>>>> e162eb89f48732050dca3ebbd7b84501d5ec16c4
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-<<<<<<< HEAD
 import com.example.shape_up_2022.databinding.FragmentJoinCreateBinding
 
-
-=======
 import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import androidx.core.widget.doAfterTextChanged
-import androidx.core.widget.doOnTextChanged
-import com.example.shape_upapptest.databinding.FragmentJoinCreateBinding
-import org.w3c.dom.Text
->>>>>>> e162eb89f48732050dca3ebbd7b84501d5ec16c4
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -40,11 +22,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [JoinCreate.newInstance] factory method to
  * create an instance of this fragment.
  */
-<<<<<<< HEAD
-class JoinCreate : Fragment(){
-=======
 class JoinCreate : Fragment() { // OnClickListener 상속
->>>>>>> e162eb89f48732050dca3ebbd7b84501d5ec16c4
 
     private var param1: String? = null
     private var param2: String? = null
@@ -62,7 +40,6 @@ class JoinCreate : Fragment() { // OnClickListener 상속
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-<<<<<<< HEAD
 
         // 버튼 view 바인딩
         val binding = FragmentJoinCreateBinding.inflate(inflater,  container, false)
@@ -107,20 +84,7 @@ class JoinCreate : Fragment() { // OnClickListener 상속
         check_password.addTextChangedListener(textWatcher)
 
         return binding.root
-=======
-        val view: View = inflater.inflate(R.layout.fragment_join_create, null)
 
-        // 버튼 view 바인딩
-        val button1 = view.findViewById<View>(R.id.next_create) as Button
-        button1.setOnClickListener(object: View.OnClickListener{
-            override fun onClick(p0: View?) {
-                (activity as JoinActivity).replaceFragment(JoinShare())
-            }
-
-        } )
-
-        return view
->>>>>>> e162eb89f48732050dca3ebbd7b84501d5ec16c4
     }
 
     companion object {
