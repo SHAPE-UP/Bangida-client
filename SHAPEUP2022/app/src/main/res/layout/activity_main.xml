@@ -51,6 +51,13 @@
             android:layout_gravity="center"
             android:text="예산서" />
 
+        <Button
+            android:id="@+id/mypage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="마이페이지" />
+
 
     </LinearLayout>
 

@@ -32,5 +32,10 @@ class MainActivity : AppCompatActivity() {
             intent1 = Intent(this, StartActivity::class.java)
             startActivity(intent1)
         }
+
+        binding.mypage.setOnClickListener{
+            intent1 = Intent(this, MyPageActivity::class.java)
+            startActivity(intent1)
+        }
     }
 }
