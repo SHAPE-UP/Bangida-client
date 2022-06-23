@@ -47,5 +47,10 @@ class TempMainActivity : AppCompatActivity() {
             intent1 = Intent(this, AchieveActivity::class.java)
             startActivity(intent1)
         }
+
+        binding.youtubebtn.setOnClickListener {
+            intent1 = Intent(this, YoutubeActivity::class.java)
+            startActivity(intent1)
+        }
     }
 }
