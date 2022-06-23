@@ -98,4 +98,50 @@
         android:gravity="center"
         android:text="여백..."
         android:layout_weight="1" />
+    <!--Tab bar-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/nav_home"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:backgroundTint="#ffffff"
+            android:src="@drawable/ic_icon_home"/>
+
+        <ImageButton
+            android:id="@+id/nav_todo"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:backgroundTint="#00001111"
+            android:src="@drawable/ic_icon_todo"/>
+
+        <ImageButton
+            android:id="@+id/nav_simulation"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:backgroundTint="#00001111"
+            android:src="@drawable/ic_icon_simulation"/>
+
+        <ImageButton
+            android:id="@+id/nav_map"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:backgroundTint="#00001111"
+            android:src="@drawable/ic_icon_map"/>
+
+        <ImageButton
+            android:id="@+id/nav_mypage"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:backgroundTint="#00001111"
+            android:src="@drawable/ic_icon_mypage"/>
+    </LinearLayout>
 </LinearLayout>
