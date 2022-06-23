@@ -56,7 +56,12 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-
+        //
+        binding.menuBtn4.setOnClickListener {
+            val intent_budget = Intent(this, BudgetActivity::class.java)
+            startActivity(intent_budget)
+            overridePendingTransition(0, 0)
+        }
     }
 
     // 프래그먼트 연결

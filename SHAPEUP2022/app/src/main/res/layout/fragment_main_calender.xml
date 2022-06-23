@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:orientation="vertical"
-        android:background="#ff00dd"/>
+        android:background="@color/main_color"/>
 
     <!--리사이클러 뷰 프래그먼트-->
     <LinearLayout
@@ -23,6 +23,6 @@
         android:layout_marginTop="20dp"
         android:orientation="vertical"
         android:padding="10dp"
-        android:background="#1144aa"/>
+        android:background="#ffffff"/>
 
 </LinearLayout>

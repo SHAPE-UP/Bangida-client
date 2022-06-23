@@ -75,7 +75,7 @@ class MyPageActivity : AppCompatActivity() {
             overridePendingTransition(0, 0);
         }
 
-        binding.navMap.setOnClickListener {
+        binding.navMap.setOnClickListener { // 지도
 
         }
 

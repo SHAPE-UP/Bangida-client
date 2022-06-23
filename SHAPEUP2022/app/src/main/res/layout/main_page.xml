@@ -22,7 +22,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="#aabbff"
+                android:background="#ffffff"
                 android:orientation="horizontal">
 
                 <!--강아지 사진-->
@@ -72,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="#ff1188"
+                android:background="@color/main_color"
                 android:orientation="vertical" />
 
             <!--이미지 버튼-->
@@ -92,7 +92,7 @@
                         android:textSize="20dp"
                         android:layout_width="150dp"
                         android:layout_height="200dp"
-                        android:backgroundTint="#FF9966"
+                        android:backgroundTint="@color/main_color"
                         android:layout_marginRight="10dp"/>
                     <Button
                         android:id="@+id/menu_btn_2"
@@ -100,7 +100,7 @@
                         android:text="훈련 영상 모아보기"
                         android:layout_width="150dp"
                         android:layout_height="match_parent"
-                        android:backgroundTint="#FF9966"
+                        android:backgroundTint="@color/main_color"
                         android:layout_marginRight="10dp"/>
                     <Button
                         android:id="@+id/menu_btn_3"
@@ -108,7 +108,7 @@
                         android:text="반려견 케어성향 점검"
                         android:layout_width="150dp"
                         android:layout_height="match_parent"
-                        android:backgroundTint="#FF9966"
+                        android:backgroundTint="@color/main_color"
                         android:layout_marginRight="10dp"/>
                     <Button
                         android:id="@+id/menu_btn_4"
@@ -116,7 +116,7 @@
                         android:text="강아지 지갑"
                         android:layout_width="150dp"
                         android:layout_height="match_parent"
-                        android:backgroundTint="#FF9966"
+                        android:backgroundTint="@color/main_color"
                         android:layout_marginRight="10dp"/>
                 </LinearLayout>
 

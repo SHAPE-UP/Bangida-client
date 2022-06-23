@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="16dp"
         android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
@@ -84,6 +85,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/todo_recyclerView"
         android:layout_width="match_parent"
+        android:layout_marginHorizontal="16dp"
         android:layout_height="wrap_content" />
 
     <Button
@@ -91,13 +93,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="+ ToDoList 추가"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="16dp"
         />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="여백..."
-        android:layout_weight="1" />
+        android:layout_marginVertical="10dp"
+        android:layout_weight="1"/>
     <!--Tab bar-->
     <LinearLayout
         android:layout_width="match_parent"
