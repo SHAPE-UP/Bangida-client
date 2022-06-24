@@ -159,7 +159,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="60dp"
-            android:backgroundTint="#00001111"
+            android:backgroundTint="#ffffffff"
             android:src="@drawable/ic_icon_todo"/>
 
         <ImageButton
@@ -167,7 +167,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="60dp"
-            android:backgroundTint="#00001111"
+            android:backgroundTint="#ffffffff"
             android:src="@drawable/ic_icon_simulation"/>
 
         <ImageButton
@@ -175,7 +175,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="60dp"
-            android:backgroundTint="#00001111"
+            android:backgroundTint="#ffffffff"
             android:src="@drawable/ic_icon_map"/>
 
         <ImageButton
@@ -183,8 +183,8 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="60dp"
-            android:backgroundTint="#00001111"
-            android:src="@drawable/ic_icon_mypage"/>
+            android:backgroundTint="#ffffffff"
+            android:src="@drawable/ic_icon_mypage_sel"/>
     </LinearLayout>
 
 

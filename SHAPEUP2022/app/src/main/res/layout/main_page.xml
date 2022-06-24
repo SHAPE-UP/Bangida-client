@@ -22,7 +22,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="#ffffff"
                 android:orientation="horizontal">
 
                 <!--강아지 사진-->
@@ -72,7 +71,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@color/main_color"
+                android:background="@drawable/corner_radius_all"
+                android:backgroundTint="@color/base_color1"
                 android:orientation="vertical" />
 
             <!--이미지 버튼-->
@@ -131,6 +131,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#ffffff"
         android:orientation="horizontal">
 
         <ImageButton
@@ -138,15 +139,15 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="60dp"
-            android:backgroundTint="#ffffff"
-            android:src="@drawable/ic_icon_home"/>
+            android:backgroundTint="#ffffffff"
+            android:src="@drawable/ic_icon_home_sel"/>
 
         <ImageButton
             android:id="@+id/nav_todo"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="60dp"
-            android:backgroundTint="#00001111"
+            android:backgroundTint="#ffffffff"
             android:src="@drawable/ic_icon_todo"/>
 
         <ImageButton
@@ -154,7 +155,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="60dp"
-            android:backgroundTint="#00001111"
+            android:backgroundTint="#ffffffff"
             android:src="@drawable/ic_icon_simulation"/>
 
         <ImageButton
@@ -162,7 +163,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="60dp"
-            android:backgroundTint="#00001111"
+            android:backgroundTint="#ffffffff"
             android:src="@drawable/ic_icon_map"/>
 
         <ImageButton
@@ -170,7 +171,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="60dp"
-            android:backgroundTint="#00001111"
+            android:backgroundTint="#ffffffff"
             android:src="@drawable/ic_icon_mypage"/>
     </LinearLayout>
 </LinearLayout>

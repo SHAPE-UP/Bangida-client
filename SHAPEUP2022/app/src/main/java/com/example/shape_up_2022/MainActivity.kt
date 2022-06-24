@@ -73,4 +73,8 @@ class MainActivity : AppCompatActivity() {
         transaction.add(location, fragment)
         transaction.commit()
     }
+
+    fun happtyuf(){
+
+    }
 }

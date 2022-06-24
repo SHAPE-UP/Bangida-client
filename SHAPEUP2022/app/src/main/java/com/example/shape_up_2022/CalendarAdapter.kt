@@ -1,5 +1,6 @@
 package com.example.shape_up_2022
 
+import android.graphics.Color
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
@@ -33,9 +34,11 @@ class CalendarAdapter(val datas: List<CalendarValue>) :
         } else {
             Log.d("appTest","달력 구현이 되지 않습니다.")
         }
-        // 오늘 날짜와 캘린더의 오늘 날짜가 같을 경우 background_blue 적용하기
+        // 오늘 날짜와 캘린더의 오늘 날짜가 같을 경우 background 색 적용하기
         if (today == now) {
-            //binding.weekCardview.setBackgroundResource(R.drawable.background_calendar)
+            binding.weekCardview.setBackgroundResource(R.drawable.background_calendar)
+            binding.calDay.setTextColor(Color.WHITE)
+            binding.calDate.setTextColor(Color.WHITE)
         }
     }
 

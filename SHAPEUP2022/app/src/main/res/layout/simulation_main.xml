@@ -219,7 +219,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="60dp"
-                    android:backgroundTint="#ffffff"
+                    android:backgroundTint="#ffffffff"
                     android:src="@drawable/ic_icon_home"/>
 
                 <ImageButton
@@ -227,7 +227,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="60dp"
-                    android:backgroundTint="#00001111"
+                    android:backgroundTint="#ffffffff"
                     android:src="@drawable/ic_icon_todo"/>
 
                 <ImageButton
@@ -235,15 +235,15 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="60dp"
-                    android:backgroundTint="#00001111"
-                    android:src="@drawable/ic_icon_simulation"/>
+                    android:backgroundTint="#ffffffff"
+                    android:src="@drawable/ic_icon_simulation_sel"/>
 
                 <ImageButton
                     android:id="@+id/nav_map"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="60dp"
-                    android:backgroundTint="#00001111"
+                    android:backgroundTint="#ffffffff"
                     android:src="@drawable/ic_icon_map"/>
 
                 <ImageButton
@@ -251,7 +251,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="60dp"
-                    android:backgroundTint="#00001111"
+                    android:backgroundTint="#ffffffff"
                     android:src="@drawable/ic_icon_mypage"/>
             </LinearLayout>
         </LinearLayout>
