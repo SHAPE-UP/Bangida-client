@@ -28,7 +28,7 @@
     <TextView
         android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/purple_500"
+        android:textColor="@color/main_color"
         android:text="관련 활동"
         android:id="@+id/todoref"
         android:gravity="center"

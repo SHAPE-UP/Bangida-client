@@ -34,7 +34,7 @@
     <TextView
         android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/purple_500"
+        android:textColor="@color/main_color"
         android:text="간격"
         android:id="@+id/term"
         android:gravity="center"

@@ -12,8 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_margin="10dp"
         android:orientation="vertical"
-        android:background="#ff00dd"/>
+        android:background="@drawable/corner_radius_all"
+        android:backgroundTint="@color/sub_color1"/>
 
     <!--리사이클러 뷰 프래그먼트-->
     <LinearLayout
@@ -22,7 +24,9 @@
         android:layout_height="200dp"
         android:layout_marginTop="20dp"
         android:orientation="vertical"
+        android:layout_margin="10dp"
         android:padding="10dp"
-        android:background="#1144aa"/>
+        android:background="@drawable/corner_radius_all"
+        android:backgroundTint="#ffffff"/>
 
 </LinearLayout>

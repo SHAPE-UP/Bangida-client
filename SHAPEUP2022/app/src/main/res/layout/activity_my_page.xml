@@ -20,6 +20,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="50dp"
+                android:layout_marginHorizontal="16dp"
                 app:cardCornerRadius="75dp">
                 <ImageView
                     android:layout_width="match_parent"
@@ -60,7 +61,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/changeprofile"
-                    android:text="프로필사진바꿔"/>
+                    android:layout_marginHorizontal="16dp"
+                    android:text="프로필 사진 변경"/>
 
             </LinearLayout>
 
@@ -123,7 +125,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="설정"
-                    android:id="@+id/gotosetting"/>
+                    android:id="@+id/gotosetting"
+                    android:layout_marginHorizontal="16dp"/>
             </LinearLayout>
 
 
@@ -133,5 +136,56 @@
 
 
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+    <!--Tab bar-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/nav_home"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:backgroundTint="#ffffff"
+            android:src="@drawable/ic_icon_home"/>
+
+        <ImageButton
+            android:id="@+id/nav_todo"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:backgroundTint="#ffffffff"
+            android:src="@drawable/ic_icon_todo"/>
+
+        <ImageButton
+            android:id="@+id/nav_simulation"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:backgroundTint="#ffffffff"
+            android:src="@drawable/ic_icon_simulation"/>
+
+        <ImageButton
+            android:id="@+id/nav_map"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:backgroundTint="#ffffffff"
+            android:src="@drawable/ic_icon_map"/>
+
+        <ImageButton
+            android:id="@+id/nav_mypage"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:backgroundTint="#ffffffff"
+            android:src="@drawable/ic_icon_mypage_sel"/>
+    </LinearLayout>
+
 
 </LinearLayout>

@@ -9,8 +9,9 @@
         android:layout_height="40dp"
         android:layout_margin="10dp"
         android:layout_gravity=""
-        android:textColor="@color/purple_500"
+        android:textColor="#000000"
         android:text="예산서"
+        android:layout_marginHorizontal="16dp"
         android:textSize="30dp"
         />
 
@@ -18,7 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@color/purple_200">
+        android:layout_marginHorizontal="16dp"
+        android:background="@color/main_color">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,12 +56,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/budget_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"/>
 
     <Button
         android:id="@+id/budget_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
         android:text="+ 새 항목 추가"
         />
     <TextView
@@ -115,7 +119,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            android:textColor="@color/purple_500"
+            android:textColor="@color/main_color"
             android:layout_weight="1"
             android:gravity="right"
             android:text="1234" />
