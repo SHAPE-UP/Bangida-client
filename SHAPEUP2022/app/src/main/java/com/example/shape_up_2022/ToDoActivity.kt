@@ -84,18 +84,21 @@ class ToDoActivity : AppCompatActivity() {
             val intent_home = Intent(this, MainActivity::class.java)
             startActivity(intent_home)
             overridePendingTransition(0, 0);
+            finish()
         }
 
         binding.navTodo.setOnClickListener {
             val intent_todo = Intent(this, ToDoActivity::class.java)
             startActivity(intent_todo)
             overridePendingTransition(0, 0);
+            finish()
         }
 
         binding.navSimulation.setOnClickListener {
             val intent_simul = Intent(this, SimulationActivity::class.java)
             startActivity(intent_simul)
             overridePendingTransition(0, 0);
+            finish()
         }
 
         binding.navMap.setOnClickListener {
@@ -106,6 +109,7 @@ class ToDoActivity : AppCompatActivity() {
             val intent_mypage = Intent(this, MyPageActivity::class.java)
             startActivity(intent_mypage)
             overridePendingTransition(0, 0);
+            finish()
         }
     }
 }

@@ -61,6 +61,7 @@ class MainActivity : AppCompatActivity() {
             val intent_budget = Intent(this, BudgetActivity::class.java)
             startActivity(intent_budget)
             overridePendingTransition(0, 0)
+            finish()
         }
     }
 
