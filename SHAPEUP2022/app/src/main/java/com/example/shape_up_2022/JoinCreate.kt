@@ -9,6 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.shape_up_2022.databinding.FragmentJoinCreateBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import android.util.Log
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -55,7 +59,6 @@ class JoinCreate : Fragment(){
         val new_password = binding.inputNewpassword
         val check_password = binding.checkPassword
 
-
         // 핸들러 적용
         var textWatcher = object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -65,7 +68,7 @@ class JoinCreate : Fragment(){
                 if (input_name.length() > 0 && input_id.length() > 0 && new_password.length() > 0 && check_password.length() > 0){
                     binding.nextCreate.isEnabled = true
                     binding.nextCreate.setBackgroundColor(Color.parseColor("#FF9966"));
-                } else{
+                } else {
                     binding.nextCreate.isEnabled = false
                     binding.nextCreate.setBackgroundColor(Color.parseColor("#d3d3d3"));
                 }
@@ -81,6 +84,31 @@ class JoinCreate : Fragment(){
         input_id.addTextChangedListener(textWatcher)
         new_password.addTextChangedListener(textWatcher)
         check_password.addTextChangedListener(textWatcher)
+
+
+
+        /* 회원가입 */
+        Log.d("mobileApp", "회원가입 버튼을 누름")
+
+        val call: Call<RegisterRes> = MyApplication.networkServiceAuth.register(
+            RegisterReq("test5","test5@gmail.com", "55555555")
+        )
+
+        call?.enqueue(object : Callback<RegisterRes>{
+            override fun onResponse(call: Call<RegisterRes>, response: Response<RegisterRes>) {
+                if(response.isSuccessful){
+                    Log.d("mobileApp", "$response")
+                }
+            }
+
+            override fun onFailure(call: Call<RegisterRes>, t: Throwable) {
+                Log.d("mobileApp", "onFailure $t")
+            }
+        })
+
+
+
+
 
         return binding.root
     }

@@ -34,6 +34,8 @@ class JoinShare : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        // 반려견 공유 코드를 입력하면 다음으로
         val binding = FragmentJoinShareBinding.inflate(inflater, container, false)
         binding.nextShare.setOnClickListener {
             (activity as JoinActivity).gotoMainActivity()
