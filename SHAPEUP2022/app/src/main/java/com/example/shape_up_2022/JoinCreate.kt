@@ -43,21 +43,27 @@ class JoinCreate : Fragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        // 버튼 view 바인딩
         val binding = FragmentJoinCreateBinding.inflate(inflater,  container, false)
-        binding.nextCreate.setOnClickListener{
-            (activity as JoinActivity).replaceFragment(JoinShare())
-        }
-
-        binding.nextCreate.isEnabled = false
-        binding.nextCreate.setBackgroundColor(Color.parseColor("#d3d3d3"));
 
         // EditText binding
         val input_name = binding.inputName
         val input_id = binding.newId
         val new_password = binding.inputNewpassword
         val check_password = binding.checkPassword
+
+        // 버튼 view 바인딩
+        binding.nextCreate.setOnClickListener{
+            //회원 등록
+            registerUser(input_name.text.toString(), input_id.text.toString(), new_password.text.toString())
+
+            // 화면 이동
+            (activity as JoinActivity).replaceFragment(JoinShare())
+        }
+
+        binding.nextCreate.isEnabled = false
+        binding.nextCreate.setBackgroundColor(Color.parseColor("#d3d3d3"));
+
+
 
         // 핸들러 적용
         var textWatcher = object : TextWatcher {
@@ -87,17 +93,20 @@ class JoinCreate : Fragment(){
 
 
 
-        /* 회원가입 */
-        Log.d("mobileApp", "회원가입 버튼을 누름")
 
+
+        return binding.root
+    }
+
+    private fun registerUser(userName: String, email: String, password: String){
         val call: Call<RegisterRes> = MyApplication.networkServiceAuth.register(
-            RegisterReq("test5","test5@gmail.com", "55555555")
+            RegisterReq(userName,email, password)
         )
 
         call?.enqueue(object : Callback<RegisterRes>{
             override fun onResponse(call: Call<RegisterRes>, response: Response<RegisterRes>) {
                 if(response.isSuccessful){
-                    Log.d("mobileApp", "$response")
+                    Log.d("mobileApp", "$response ${response.body()}")
                 }
             }
 
@@ -105,12 +114,6 @@ class JoinCreate : Fragment(){
                 Log.d("mobileApp", "onFailure $t")
             }
         })
-
-
-
-
-
-        return binding.root
     }
 
     companion object {

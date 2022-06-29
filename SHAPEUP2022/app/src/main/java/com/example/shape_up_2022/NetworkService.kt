@@ -4,19 +4,19 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface NetworkService {
-    @POST("api/user/register")
+    @POST("api/users/register")
     fun register(
         @Body user: RegisterReq,
     ): Call<RegisterRes>
 
-    @POST("api/user/login")
+    @POST("api/users/login")
     fun login(
         @Body user: LoginReq,
     ): Call<LoginRes>
 
-    @GET("api/user/logout")
+    @GET("api/users/logout")
     fun logout(
-        @Body user: LogoutReq
+
     ): Call<LogoutRes>
 
 }
@@ -29,6 +29,6 @@ data class LoginReq(val email: String, val password: String)
 
 data class LoginRes(val loginSuccess: String, val message: String)
 
-data class LogoutReq(val _id: String, val email: String, val password: String)
+data class LogoutReq(val email: String)
 
-data class LogoutRes(val success: String)
+data class LogoutRes(val success: String, val err: String)

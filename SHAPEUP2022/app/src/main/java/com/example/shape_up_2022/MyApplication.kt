@@ -18,10 +18,10 @@ class MyApplication: Application() {
         var networkServiceAuth: NetworkService
         val retrofitAuth: Retrofit
             get() = Retrofit.Builder()
-                .baseUrl("http://ec2-13-124-250-65.ap-northeast-2.compute.amazonaws.com:5000/")
+                .baseUrl("http://192.168.219.105:5000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-
+        // "http://ec2-13-124-250-65.ap-northeast-2.compute.amazonaws.com:5000/"
         init{
             networkService2 = retrofit2.create(NetworkService2::class.java)
             networkServiceAuth = retrofitAuth.create(NetworkService::class.java)
