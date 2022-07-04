@@ -44,6 +44,30 @@
         <activity android:name=".StartActivity" android:exported="false" />
         <activity android:name=".ToDoActivity" android:exported="false" />
         <activity android:name=".YoutubeActivity" android:exported="false" />
+        <activity
+            android:name=".SimBallActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimTugSimActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimToyPuppyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimWashingToyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimCleaningbedActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SimManagePuppyActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
     </application>
 

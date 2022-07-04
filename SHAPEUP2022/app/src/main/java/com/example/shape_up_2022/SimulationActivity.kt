@@ -41,6 +41,12 @@ class SimulationActivity : AppCompatActivity() {
             binding.indoor.visibility = View.VISIBLE
         }
 
+        // 시뮬레이션 연결
+        binding.management.setOnClickListener {
+            val intent = Intent(this, SimManagePuppyActivity::class.java)
+            startActivity(intent)
+        }
+
 
         // 탭바 연결
         binding.navHome.setOnClickListener {
