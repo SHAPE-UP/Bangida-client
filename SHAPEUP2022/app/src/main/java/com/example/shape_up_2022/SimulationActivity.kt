@@ -41,9 +41,15 @@ class SimulationActivity : AppCompatActivity() {
             binding.indoor.visibility = View.VISIBLE
         }
 
-        // 시뮬레이션 연결
+        // 시뮬레이션: 강아지 관리
         binding.management.setOnClickListener {
             val intent = Intent(this, SimManagePuppyActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 시뮬레이션: 산책
+        binding.takeawalk.setOnClickListener {
+            val intent = Intent(this, SimTakeAWalkActivity::class.java)
             startActivity(intent)
         }
 
