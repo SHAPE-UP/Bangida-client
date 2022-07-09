@@ -60,9 +60,6 @@
             android:name=".preferenceActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingActivity"
-            android:exported="false" />
-        <activity
             android:name=".SimulationActivity"
             android:exported="false" />
         <activity

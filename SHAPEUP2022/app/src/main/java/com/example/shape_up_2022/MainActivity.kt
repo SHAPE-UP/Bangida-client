@@ -9,8 +9,9 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.shape_up_2022.databinding.MainPageBinding
 
+
 class MainActivity : AppCompatActivity() {
-    private val binding by lazy {MainPageBinding.inflate(layoutInflater)}
+    private val binding by lazy { MainPageBinding.inflate(layoutInflater)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,7 +62,7 @@ class MainActivity : AppCompatActivity() {
             val intent_budget = Intent(this, BudgetActivity::class.java)
             startActivity(intent_budget)
             overridePendingTransition(0, 0)
-            finish()
+            //finish()
         }
     }
 

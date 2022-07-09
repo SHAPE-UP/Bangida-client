@@ -85,7 +85,7 @@
             android:layout_marginBottom="50dp"
             android:text="다음으로"
             android:textSize="24dp"
-            android:backgroundTint="#ff9966"/> <!--밑에 고정하는 방법이 있던거 같은데-->
+            android:backgroundTint="@color/main_color"/> <!--밑에 고정하는 방법이 있던거 같은데-->
     </LinearLayout>
 
 </FrameLayout>

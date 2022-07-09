@@ -5,11 +5,11 @@
 
     <PreferenceCategory
         app:key="notification"
-        app:title="앱 설정">
+        app:title="알림 설정">
+
         <SwitchPreference
             app:key="note_message"
             app:title="메시지 알림" />
-
 
         <SwitchPreferenceCompat
             app:key="noti_sound"
@@ -22,7 +22,6 @@
         <EditTextPreference
             app:key="id"
             app:title="ID 설정" />
-
 
     </PreferenceCategory>
 
