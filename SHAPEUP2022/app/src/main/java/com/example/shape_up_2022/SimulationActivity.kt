@@ -53,6 +53,11 @@ class SimulationActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // 시뮬레이션: 배변 관리
+        binding.management.setOnClickListener {
+            val intent = Intent(this, SimDefecationCharacteristicsActivity::class.java)
+            startActivity(intent)
+        }
 
         // 탭바 연결
         binding.navHome.setOnClickListener {

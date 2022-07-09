@@ -74,6 +74,12 @@
         <activity
             android:name=".YoutubeActivity"
             android:exported="false" />
+        <activity
+            android:name=".SimDefecationCharacteristicsActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".SimInducingBowelMovementsActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
