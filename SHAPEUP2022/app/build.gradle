@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -52,7 +53,18 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.12.0'
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
     implementation 'com.google.android.gms:play-services-maps:18.0.2'    // 지도
-    implementation 'com.google.android.gms:play-services-location:19.0.1'    // 지도
+    implementation 'com.google.android.gms:play-services-location:20.0.0'    // 지도
+
+    // tikxml
+    implementation 'com.tickaroo.tikxml:annotation:0.8.13'
+    implementation 'com.tickaroo.tikxml:core:0.8.13'
+    implementation 'com.tickaroo.tikxml:retrofit-converter:0.8.13'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    kapt 'com.tickaroo.tikxml:processor:0.8.13'
+
+    // OkHttp
+    implementation 'com.squareup.okhttp3:okhttp:3.13.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.2'
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

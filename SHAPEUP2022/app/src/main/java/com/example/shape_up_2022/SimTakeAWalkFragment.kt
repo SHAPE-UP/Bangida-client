@@ -5,24 +5,33 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.example.shape_up_2022.databinding.FragmentSimTakeAWalkBinding
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.*
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.tasks.OnSuccessListener
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -111,6 +120,9 @@ GoogleApiClient.OnConnectionFailedListener {
             apiClient.connect() // 정보 가져옴
         }
 
+        // data 불러오기
+        callData()
+
         return rootView
     }
 
@@ -136,7 +148,7 @@ GoogleApiClient.OnConnectionFailedListener {
 
     override fun onMapReady(p0: GoogleMap) {
         googleMap = p0
-        moveMap(37.568256, 126.897240)
+        //moveMap(37.568256, 126.897240)
     }
 
     override fun onConnected(p0: Bundle?) {
@@ -158,6 +170,31 @@ GoogleApiClient.OnConnectionFailedListener {
             )
             apiClient.disconnect()
         }
+    }
+
+    // request data
+    private fun callData(){
+        val call: Call<responseInfo> = MyApplication.networkServicePlaceData.getList(
+            "1",
+            "1",
+            "동물",
+            "",
+            "264157a5-947e-4f12-8c21-c499089c507a"
+        )
+        Log.d("mobileApp", "call")
+        call?.enqueue(object: Callback<responseInfo> {
+            override fun onResponse(call: Call<responseInfo>, response: Response<responseInfo>) {
+                Log.d("mobileApp", "hello!")
+                if(response.isSuccessful){
+                    Log.d("mobileApp", "데이터 연결 성공!")
+                }
+            }
+
+            override fun onFailure(call: Call<responseInfo>, t: Throwable) {
+                Toast.makeText(context,"데이터 연결 실패",  Toast.LENGTH_SHORT).show()
+                Log.d("mobileApp", "onFailure $t")
+            }
+        })
     }
 
     // 카메라를 이동시키는 함수
