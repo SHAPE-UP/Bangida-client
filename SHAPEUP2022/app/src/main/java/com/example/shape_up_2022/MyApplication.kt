@@ -3,6 +3,8 @@ package com.example.shape_up_2022
 import android.app.Application
 import android.util.Log
 import com.google.gson.GsonBuilder
+import com.tickaroo.tikxml.TikXml
+import com.tickaroo.tikxml.retrofit.TikXmlConverterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -28,13 +30,14 @@ class MyApplication: Application() {
         // "http://ec2-13-124-250-65.ap-northeast-2.compute.amazonaws.com:5000/"
         var client = OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor()).build()
         // data
-        var gson = GsonBuilder().setLenient().create()
+
+        val parser = TikXml.Builder().exceptionOnUnreadXml(false).build()
         var networkServicePlaceData: NetworkService3
         val retrofitPlaceData: Retrofit
             get() = Retrofit.Builder()
                 .baseUrl("http://api.kcisa.kr/openapi/service/rest/")
                 .client(client)
-                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addConverterFactory(TikXmlConverterFactory.create(parser))
                 .build()
 
         init{

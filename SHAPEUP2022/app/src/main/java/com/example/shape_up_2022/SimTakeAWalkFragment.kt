@@ -176,7 +176,7 @@ GoogleApiClient.OnConnectionFailedListener {
     private fun callData(){
         val call: Call<responseInfo> = MyApplication.networkServicePlaceData.getList(
             "1",
-            "1",
+            "10",
             "동물",
             "",
             "264157a5-947e-4f12-8c21-c499089c507a"
@@ -184,7 +184,7 @@ GoogleApiClient.OnConnectionFailedListener {
         Log.d("mobileApp", "call")
         call?.enqueue(object: Callback<responseInfo> {
             override fun onResponse(call: Call<responseInfo>, response: Response<responseInfo>) {
-                Log.d("mobileApp", "hello!")
+                Log.d("mobileApp", "hello! ${response.body()}")
                 if(response.isSuccessful){
                     Log.d("mobileApp", "데이터 연결 성공!")
                 }
