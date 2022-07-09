@@ -1,5 +1,6 @@
 package com.example.shape_up_2022
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -38,6 +39,52 @@ class SimulationActivity : AppCompatActivity() {
             binding.outdoor.visibility = View.INVISIBLE
             binding.btnout.visibility = View.VISIBLE
             binding.indoor.visibility = View.VISIBLE
+        }
+
+        // 시뮬레이션: 강아지 관리
+        binding.management.setOnClickListener {
+            val intent = Intent(this, SimManagePuppyActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 시뮬레이션: 산책
+        binding.takeawalk.setOnClickListener {
+            val intent = Intent(this, SimTakeAWalkActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        // 탭바 연결
+        binding.navHome.setOnClickListener {
+            val intent_home = Intent(this, MainActivity::class.java)
+            startActivity(intent_home)
+            overridePendingTransition(0, 0);
+            finish()
+        }
+
+        binding.navTodo.setOnClickListener {
+            val intent_todo = Intent(this, ToDoActivity::class.java)
+            startActivity(intent_todo)
+            overridePendingTransition(0, 0);
+            finish()
+        }
+
+        binding.navSimulation.setOnClickListener {
+            val intent_simul = Intent(this, SimulationActivity::class.java)
+            startActivity(intent_simul)
+            overridePendingTransition(0, 0);
+            finish()
+        }
+
+        binding.navMap.setOnClickListener {
+
+        }
+
+        binding.navMypage.setOnClickListener {
+            val intent_mypage = Intent(this, MyPageActivity::class.java)
+            startActivity(intent_mypage)
+            overridePendingTransition(0, 0);
+            finish()
         }
 
     }

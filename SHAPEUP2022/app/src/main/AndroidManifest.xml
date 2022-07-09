@@ -3,6 +3,10 @@
     package="com.example.shape_up_2022">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name=".MyApplication"
@@ -11,7 +15,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SHAPEUP2022">
+        android:theme="@style/Theme.SHAPEUP2022"
+        android:usesCleartextTraffic="true">
+        <uses-library android:name="org.apache.http.legacy"
+            android:required="false" />
+        <meta-data android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyBWaM8ldwnckbWzM5rOGNisvmvTCjR8dQM" />
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        
         <activity
             android:name=".DogFeedsimulationActivity"
             android:exported="false" />
@@ -31,6 +43,18 @@
             android:name=".SimulationActivity"
             android:exported="false" />
         <activity
+            android:name=".SimTakeAWalkActivity"
+            android:exported="false" />
+        <activity
+            android:name=".preferenceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StartActivity"
+            android:exported="false" />
+        <activity
             android:name=".TempMainActivity"
             android:exported="true">
             <intent-filter>
@@ -40,34 +64,32 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SettingActivity"
+            android:name=".MainActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".AchieveActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AlarmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BudgetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".JoinActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".MyPageActivity"
             android:exported="false" />
         <activity
-            android:name=".AchieveActivity"
+            android:name=".ToDoActivity"
             android:exported="false" />
         <activity
-            android:name=".preferenceActivity"
-            android:exported="false" /> <!-- 시작 및 회원가입/로그인 -->
-        <activity
-            android:name=".StartActivity"
-            android:exported="true" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="true" />
-        <activity
-            android:name=".JoinActivity"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ToDoActivity"
-            android:exported="false" /> <!-- 정보 -->
-        <activity android:name=".AlarmActivity" />
-        <activity android:name=".BudgetActivity" />
+            android:name=".YoutubeActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

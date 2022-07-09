@@ -52,10 +52,11 @@ class TempMainActivity : AppCompatActivity() {
             intent1 = Intent(this, YoutubeActivity::class.java)
             startActivity(intent1)
         }
-
+        
         binding.feedsim.setOnClickListener{
             intent1 = Intent(this, DogFeedsimulationActivity::class.java)
             startActivity(intent1)
         }
+        
     }
 }

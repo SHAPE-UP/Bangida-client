@@ -17,10 +17,17 @@ class YoutubeActivity : AppCompatActivity() {
         binding = ActivityYoutubeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val keyword = intent.getStringExtra("search")
+        Log.d("mobileApp", "appText: ${keyword}")
+        // intent에서 가져온 값이 null인지 확인
+        if (keyword != null){
+            binding.searchYoutube.setText(keyword)
+        }
+
         binding.schbtn.setOnClickListener{
             var call: Call<SearchListResponse> = MyApplication.networkService2.getList(
                 "AIzaSyDDN21CCWYkdZBa9D4quDG7-0wAu_AIaFc",
-                binding.input1.text.toString(),
+                binding.searchYoutube.text.toString(),
                 "video",
                 "snippet"
             )

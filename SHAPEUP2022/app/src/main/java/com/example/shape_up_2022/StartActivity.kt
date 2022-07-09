@@ -15,20 +15,25 @@ class StartActivity : AppCompatActivity() {
         setContentView(binding.root) // 액티비티 화면 출력
         
         //버튼 이벤트에 따른 인텐트 연결
-        // 1. 로그인
-        binding.btnLogin.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
+        if(SaveSharedPreference.getUserEmail(this)?.length != 0){
+            val intent = Intent(baseContext, MainActivity::class.java)
             startActivity(intent)
-            this.finish()
-        }
+            finish()
+        } else{
+            // 1. 로그인
+            binding.btnLogin.setOnClickListener {
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                this.finish()
+            }
 
-        // 2. 회원가입
-        binding.btnJoin.setOnClickListener {
-            Log.d("app_test", "JoinActivity")
-            val intent = Intent(this, JoinActivity::class.java)
-            startActivity(intent)
-            this.finish()
+            // 2. 회원가입
+            binding.btnJoin.setOnClickListener {
+                Log.d("app_test", "JoinActivity")
+                val intent = Intent(this, JoinActivity::class.java)
+                startActivity(intent)
+                this.finish()
+            }
         }
-        
     }
 }

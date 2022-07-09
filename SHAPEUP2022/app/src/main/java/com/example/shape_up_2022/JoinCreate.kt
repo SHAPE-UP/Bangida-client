@@ -9,6 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.shape_up_2022.databinding.FragmentJoinCreateBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import android.util.Log
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -39,21 +43,26 @@ class JoinCreate : Fragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        // 버튼 view 바인딩
         val binding = FragmentJoinCreateBinding.inflate(inflater,  container, false)
-        binding.nextCreate.setOnClickListener{
-            (activity as JoinActivity).replaceFragment(JoinShare())
-        }
-
-        binding.nextCreate.isEnabled = false
-        binding.nextCreate.setBackgroundColor(Color.parseColor("#d3d3d3"));
 
         // EditText binding
         val input_name = binding.inputName
         val input_id = binding.newId
         val new_password = binding.inputNewpassword
         val check_password = binding.checkPassword
+
+        // 버튼 view 바인딩
+        binding.nextCreate.setOnClickListener{
+            //회원 등록
+            registerUser(input_name.text.toString(), input_id.text.toString(), new_password.text.toString())
+
+            // 화면 이동
+            (activity as JoinActivity).replaceFragment(JoinShare())
+        }
+
+        binding.nextCreate.isEnabled = false
+        binding.nextCreate.setBackgroundColor(Color.parseColor("#d3d3d3"));
+
 
 
         // 핸들러 적용
@@ -65,7 +74,7 @@ class JoinCreate : Fragment(){
                 if (input_name.length() > 0 && input_id.length() > 0 && new_password.length() > 0 && check_password.length() > 0){
                     binding.nextCreate.isEnabled = true
                     binding.nextCreate.setBackgroundColor(Color.parseColor("#FF9966"));
-                } else{
+                } else {
                     binding.nextCreate.isEnabled = false
                     binding.nextCreate.setBackgroundColor(Color.parseColor("#d3d3d3"));
                 }
@@ -82,7 +91,29 @@ class JoinCreate : Fragment(){
         new_password.addTextChangedListener(textWatcher)
         check_password.addTextChangedListener(textWatcher)
 
+
+
+
+
         return binding.root
+    }
+
+    private fun registerUser(userName: String, email: String, password: String){
+        val call: Call<RegisterRes> = MyApplication.networkServiceAuth.register(
+            RegisterReq(userName,email, password)
+        )
+
+        call?.enqueue(object : Callback<RegisterRes>{
+            override fun onResponse(call: Call<RegisterRes>, response: Response<RegisterRes>) {
+                if(response.isSuccessful){
+                    Log.d("mobileApp", "$response ${response.body()}")
+                }
+            }
+
+            override fun onFailure(call: Call<RegisterRes>, t: Throwable) {
+                Log.d("mobileApp", "onFailure $t")
+            }
+        })
     }
 
     companion object {

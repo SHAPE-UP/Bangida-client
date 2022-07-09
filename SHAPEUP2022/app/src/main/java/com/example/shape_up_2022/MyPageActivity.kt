@@ -7,8 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.shape_up_2022.databinding.ActivityMyPageBinding
+import com.google.android.youtube.player.internal.t
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.lang.Exception
 
 class MyPageActivity : AppCompatActivity() {
@@ -43,6 +48,36 @@ class MyPageActivity : AppCompatActivity() {
             }
         }
 
+        // 로그아웃
+        val email = SaveSharedPreference.getUserEmail(this)!!.toString()
+        Log.d("mobileApp", "${email}")
+        binding.logoutBtn.setOnClickListener {
+            val call: Call<LogoutRes> = MyApplication.networkServiceAuth.logout(
+            )
+
+            call?.enqueue(object : Callback<LogoutRes> {
+                override fun onResponse(call: Call<LogoutRes>, response: Response<LogoutRes>) {
+                    if(response.isSuccessful){
+                        Log.d("mobileApp", "$response ${response.body()}")
+
+                        // 저장했던 preference clear
+                        SaveSharedPreference.clearUserEmail(baseContext)
+
+                        // StartActivity로 이동
+                        val intent = Intent(baseContext, TempMainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                }
+
+                override fun onFailure(call: Call<LogoutRes>, t: Throwable) {
+                    Log.d("mobileApp", "onFailure $t")
+                    Toast.makeText(baseContext, "토스트 메세지 띄우기 입니다.", Toast.LENGTH_SHORT).show()
+                }
+            })
+        }
+
+        // 프로필 사진 변경
         binding.changeprofile.setOnClickListener{
             val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             intent.type="image/*"
@@ -52,9 +87,41 @@ class MyPageActivity : AppCompatActivity() {
 
         binding.gotosetting.setOnClickListener{
 
-
             val intent = Intent(this, SettingActivity::class.java)
             startActivity(intent)
+        }
+
+        // 탭바 연결
+        binding.navHome.setOnClickListener {
+            val intent_home = Intent(this, MainActivity::class.java)
+            startActivity(intent_home)
+            overridePendingTransition(0, 0);
+            finish()
+        }
+
+        binding.navTodo.setOnClickListener {
+            val intent_todo = Intent(this, ToDoActivity::class.java)
+            startActivity(intent_todo)
+            overridePendingTransition(0, 0);
+            finish()
+        }
+
+        binding.navSimulation.setOnClickListener {
+            val intent_simul = Intent(this, SimulationActivity::class.java)
+            startActivity(intent_simul)
+            overridePendingTransition(0, 0);
+            finish()
+        }
+
+        binding.navMap.setOnClickListener { // 지도
+
+        }
+
+        binding.navMypage.setOnClickListener {
+            val intent_mypage = Intent(this, MyPageActivity::class.java)
+            startActivity(intent_mypage)
+            overridePendingTransition(0, 0);
+            finish()
         }
     }
 
