@@ -74,6 +74,24 @@
         <activity
             android:name=".YoutubeActivity"
             android:exported="false" />
+        <activity
+            android:name=".SimManagePuppyActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".SimBallActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".SimCleaningbedActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".SimToyPuppyActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".SimTugSimActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".SimWashingToyActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>
