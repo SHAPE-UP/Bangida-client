@@ -89,7 +89,7 @@ class SimWashingFragment1 : Fragment() {
                         AlertDialog.Builder(requireContext()).run {
                             Log.d("mobileApp", "창창!")
                             setTitle("따뜻한 물에 담그기 완료!")
-                            setIcon(R.drawable.puppy)
+                            setIcon(R.drawable.maltese)
                             setMessage("물에 20-30분간 담가둔 뒤, 물을 새로 받아서 베이킹 소다 적당량을 넣고 주물주물합니다.")
                             setPositiveButton("다음으로", activiy)
                             show()

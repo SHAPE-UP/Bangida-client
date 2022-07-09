@@ -36,7 +36,7 @@
         android:id="@+id/ball_bog"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/puppy" />
+        android:src="@drawable/maltese" />
 
     <ImageView
         android:id="@+id/ball"

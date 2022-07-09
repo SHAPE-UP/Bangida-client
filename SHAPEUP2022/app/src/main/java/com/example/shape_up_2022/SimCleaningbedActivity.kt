@@ -59,7 +59,7 @@ class SimCleaningbedActivity : AppCompatActivity() {
     private fun alertDialog(){
         AlertDialog.Builder(this).run {
             setTitle("반려견 관리 TIP")
-            setIcon(R.drawable.puppy)
+            setIcon(R.drawable.maltese)
             setMessage("반려견의 침대를 자주 관리하는 것은 중요합니다.")
             setPositiveButton("확인", null)
             setCancelable(false)

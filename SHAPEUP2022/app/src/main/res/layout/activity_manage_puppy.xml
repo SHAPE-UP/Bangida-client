@@ -32,7 +32,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginBottom="-19dp"
-        android:src="@drawable/puppy" />
+        android:src="@drawable/maltese" />
 
     <Button
         android:id="@+id/clean_bed_btn"
