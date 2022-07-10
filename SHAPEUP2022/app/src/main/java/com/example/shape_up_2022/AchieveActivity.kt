@@ -41,16 +41,16 @@ class AchieveActivity : AppCompatActivity() {
             }
 
         })
-        binding.pager.adapter = ViewPagerAdapter(this)
+        binding.achievePager.adapter = ViewPagerAdapter(this)
 
 
-        TabLayoutMediator(binding.tabs, binding.pager) {
+        TabLayoutMediator(binding.tabs, binding.achievePager) {
                 tab,position->
             when(position){
-                0->tab.text = "탭1"
-                1->tab.text = "탭2"
-                2->tab.text = "탭3"
-                3->tab.text = "탭4"
+                0->tab.text = R.string.achieve_tab1.toString()
+                1->tab.text = R.string.achieve_tab2.toString()
+                2->tab.text = R.string.achieve_tab3.toString()
+                3->tab.text = R.string.achieve_tab4.toString()
             }
         }.attach()
     }

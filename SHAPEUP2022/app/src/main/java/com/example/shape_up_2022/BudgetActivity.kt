@@ -14,7 +14,7 @@ import com.example.shape_up_2022.databinding.BudgetMainBinding
 
 class BudgetActivity : AppCompatActivity() {
     lateinit var binding: BudgetMainBinding
-    var datas: MutableList<BudgetItem>? = mutableListOf<BudgetItem>(
+    var datas: MutableList<BudgetItem>? = mutableListOf<BudgetItem>(  // 예산서의 각 항목 데이터를 담은 배열
         BudgetItem("지출내역", 1234, 2, 8),
         BudgetItem("샘플 목록")
     )
@@ -152,7 +152,7 @@ class BudgetActivity : AppCompatActivity() {
     }
 
     private fun editItem(budgetitem:BudgetItem, position:Int) {
-        var budgetEdit = BudgetEditBinding.inflate(layoutInflater, null, false) // 중요ㄴㅇ
+        var budgetEdit = BudgetEditBinding.inflate(layoutInflater, null, false) // 중요: 커스텀 다이얼로그 뷰 재사용 시 필요
         budgetEdit.itemname.setText(budgetitem.itemname)
         budgetEdit.price.setText(budgetitem.price.toString())
         budgetEdit.category.setSelection(budgetitem.category)

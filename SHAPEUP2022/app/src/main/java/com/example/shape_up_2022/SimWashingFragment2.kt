@@ -56,7 +56,7 @@ class SimWashingFragment2 : Fragment() {
             if (status == 10) {
                 AlertDialog.Builder(requireContext()).run {
                     setTitle("장난감 세척 완료!")
-                    setIcon(R.drawable.puppy)
+                    setIcon(R.drawable.maltese)
                     setMessage("이제 곰팡이, 세균이 생기지 않도록 햇볕에 말리거나 건조기로 건조하면 끝~!")
                     setPositiveButton("완료!", activiy)
                     show()
