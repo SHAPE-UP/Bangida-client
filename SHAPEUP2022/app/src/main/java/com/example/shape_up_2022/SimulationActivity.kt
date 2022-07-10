@@ -58,7 +58,8 @@ class SimulationActivity : AppCompatActivity() {
         binding.navHome.setOnClickListener {
             val intent_home = Intent(this, MainActivity::class.java)
             startActivity(intent_home)
-            overridePendingTransition(0, 0);
+            overridePendingTransition(0, 0)
+            overridePendingTransition(0, 0)
             finish()
         }
 

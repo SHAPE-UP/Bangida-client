@@ -23,7 +23,6 @@
             android:value="AIzaSyBWaM8ldwnckbWzM5rOGNisvmvTCjR8dQM" />
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        
         <activity
             android:name=".DogFeedsimulationActivity"
             android:exported="false" />
@@ -85,11 +84,35 @@
             android:name=".MyPageActivity"
             android:exported="false" />
         <activity
+            android:name=".preferenceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingActivity"
+            android:exported="false" />
+        <activity
             android:name=".ToDoActivity"
             android:exported="false" />
         <activity
             android:name=".YoutubeActivity"
             android:exported="false" />
+        <activity
+            android:name=".SimManagePuppyActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".SimBallActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".SimCleaningbedActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".SimToyPuppyActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".SimTugSimActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".SimWashingToyActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>
