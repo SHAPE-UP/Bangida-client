@@ -25,6 +25,5 @@ class MyApplication: Application() {
         init{
             networkService2 = retrofit2.create(NetworkService2::class.java)
             networkServiceAuth = retrofitAuth.create(NetworkService::class.java)
-        }
     }
 }

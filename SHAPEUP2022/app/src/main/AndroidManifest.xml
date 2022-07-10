@@ -23,8 +23,36 @@
             android:value="AIzaSyBWaM8ldwnckbWzM5rOGNisvmvTCjR8dQM" />
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+        
+        <activity
+            android:name=".DogFeedsimulationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FeedsimulationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SnacksimulationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WatersimulationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".YoutubeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimulationActivity"
+            android:exported="false" />
         <activity
             android:name=".SimTakeAWalkActivity"
+            android:exported="false" />
+        <activity
+            android:name=".preferenceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StartActivity"
             android:exported="false" />
         <activity
             android:name=".TempMainActivity"
@@ -55,18 +83,6 @@
             android:exported="false" />
         <activity
             android:name=".MyPageActivity"
-            android:exported="false" />
-        <activity
-            android:name=".preferenceActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SettingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SimulationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".StartActivity"
             android:exported="false" />
         <activity
             android:name=".ToDoActivity"
