@@ -57,20 +57,32 @@ class FeedsimulationActivity : AppCompatActivity() {
 }
 
 private class GameView(context: Context): View(context){
+    var width: Float = 0F
+    var height: Float = 0F
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
-        val paint=BitmapFactory.decodeResource(resources, R.drawable.foodinsim)
+        val options = BitmapFactory.Options()
+        options.inSampleSize = 2
+
+        val paint=BitmapFactory.decodeResource(resources, R.drawable.foodinsim, options)
         val paint2= Paint()
         canvas?.drawBitmap(paint, cx.toFloat(), cy.toFloat(), null)
         paint2.setTextSize(100f);
         canvas?.drawText("횟수 $score", 0f, 100f, paint2)
         paint.recycle()
 
+        // width, height 값 받기
+        width = paint.width.toFloat()
+        height = paint.height.toFloat()
 
         if(score>4){
             Toast.makeText(context, "밥주기가 완료되었습니다.", Toast.LENGTH_SHORT).show()
-            //onBackPressed();
+            this.visibility = View.GONE
+
+            val intent = Intent(context, DogFeedsimulationActivity::class.java)
+            (context as FeedsimulationActivity).startActivity(intent)
+            score = 0
 
         }
 
@@ -85,8 +97,8 @@ private class GameView(context: Context): View(context){
         var cxt=cy-ra
         var cxb=cy+ ra
 
-        tcx=eventx!!.x
-        tcy=eventx!!.y
+        tcx=eventx!!.x - width/2
+        tcy=eventx!!.y- height/2
 
         when(eventx.actionMasked){
             MotionEvent.ACTION_DOWN->{

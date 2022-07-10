@@ -1,6 +1,7 @@
 package com.example.shape_up_2022
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Paint
@@ -41,20 +42,34 @@ class SnacksimulationActivity : AppCompatActivity() {
 }
 
 private class GameView3(context: Context): View(context){
+    var width: Float = 0F
+    var height: Float = 0F
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
-        val paint= BitmapFactory.decodeResource(resources, R.drawable.snackinsim)
+        // option 설정
+        val options = BitmapFactory.Options()
+        options.inSampleSize = 2
+
+        // draw
+        val paint= BitmapFactory.decodeResource(resources, R.drawable.snackinsim, options)
         val paint2= Paint()
         canvas?.drawBitmap(paint, cx3.toFloat(), cy3.toFloat(), null)
         paint2.setTextSize(100f);
         canvas?.drawText("횟수 $score3", 0f, 100f, paint2)
         paint.recycle()
 
+        // width, height 값 받기
+        width = paint.width.toFloat()
+        height = paint.height.toFloat()
 
         if(score3>4){
             Toast.makeText(context, "간식주기가 완료되었습니다.", Toast.LENGTH_SHORT).show()
-            //onBackPressed();
+            this.visibility = View.GONE
+
+            val intent = Intent(context, DogFeedsimulationActivity::class.java)
+            (context as SnacksimulationActivity).startActivity(intent)
+            score3 = 0
         }
 
         invalidate()
@@ -68,8 +83,8 @@ private class GameView3(context: Context): View(context){
         var cxt=cy3-ra3
         var cxb=cy3+ ra3
 
-        tcx=eventx!!.x
-        tcy=eventx!!.y
+        tcx=eventx!!.x - width/2
+        tcy=eventx!!.y- height/2
 
         when(eventx.actionMasked){
             MotionEvent.ACTION_DOWN->{

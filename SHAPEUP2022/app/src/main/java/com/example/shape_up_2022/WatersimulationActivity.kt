@@ -1,14 +1,15 @@
 package com.example.shape_up_2022
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Paint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 import kotlin.concurrent.timer
 
@@ -47,23 +48,32 @@ class WatersimulationActivity : AppCompatActivity() {
 }
 
  class GameView2(context: Context): View(context){
+     var width: Float = 0F
+     var height: Float = 0F
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
-        val paint=BitmapFactory.decodeResource(resources, R.drawable.waterinsim)
+        val options = BitmapFactory.Options()
+        options.inSampleSize = 2
+
+        val paint=BitmapFactory.decodeResource(resources, R.drawable.waterinsim, options)
         val paint2= Paint()
         canvas?.drawBitmap(paint, cx2.toFloat(), cy2.toFloat(), null)
         paint2.setTextSize(100f);
         canvas?.drawText("횟수 $score2", 0f, 100f, paint2)
         paint.recycle()
 
+        // width, height 값 받기
+        width = paint.width.toFloat()
+        height = paint.height.toFloat()
 
         if(score2>4){
             Toast.makeText(context, "물주기가 완료되었습니다.", Toast.LENGTH_SHORT).show()
-            //onBackPressed();
-            //context.finish()
-            //finish()
-            return
+            this.visibility = View.GONE
+
+            val intent = Intent(context, DogFeedsimulationActivity::class.java)
+            (context as WatersimulationActivity).startActivity(intent)
+            score2 = 0
 
         }
 
@@ -78,8 +88,8 @@ class WatersimulationActivity : AppCompatActivity() {
         var cxt=cy2-ra2
         var cxb=cy2+ ra2
 
-        tcx=eventx!!.x
-        tcy=eventx!!.y
+        tcx=eventx!!.x - width/2
+        tcy=eventx!!.y- height/2
 
         when(eventx.actionMasked){
             MotionEvent.ACTION_DOWN->{
