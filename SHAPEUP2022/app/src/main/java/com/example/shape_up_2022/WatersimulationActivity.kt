@@ -1,6 +1,7 @@
 package com.example.shape_up_2022
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Paint
@@ -35,9 +36,6 @@ class WatersimulationActivity : AppCompatActivity() {
         Gv2=GameView2(this)
         setContentView(Gv2)
 
-        if(score2>4){
-            finish()
-        }
     }
 
     override fun onDestroy() {
@@ -61,9 +59,11 @@ class WatersimulationActivity : AppCompatActivity() {
         if(score2>4){
             Toast.makeText(context, "물주기가 완료되었습니다.", Toast.LENGTH_SHORT).show()
             //onBackPressed();
-            //context.finish()
-            //finish()
-            return
+            this.visibility = View.GONE
+
+            val intent = Intent(context, DogFeedsimulationActivity::class.java)
+            (context as FeedsimulationActivity).startActivity(intent)
+            score = 0
 
         }
 

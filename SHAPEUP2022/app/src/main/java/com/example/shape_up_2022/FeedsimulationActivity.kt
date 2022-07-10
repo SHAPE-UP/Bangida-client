@@ -41,12 +41,6 @@ class FeedsimulationActivity : AppCompatActivity() {
 
         Gv=GameView(this)
         setContentView(Gv)
-        if(score>4){
-            //intent9 = Intent(this, DogFeedsimulationActivity::class.java)
-            //startActivity(intent9) Log.d("mobilaApp", "fhkdfjghsk")
-            //Log.d("mobileApp", "fhkdfjghsk")
-            //score=0
-        }
 
     }
 
@@ -71,6 +65,11 @@ private class GameView(context: Context): View(context){
         if(score>4){
             Toast.makeText(context, "밥주기가 완료되었습니다.", Toast.LENGTH_SHORT).show()
             //onBackPressed();
+            this.visibility = View.GONE
+
+            val intent = Intent(context, DogFeedsimulationActivity::class.java)
+            (context as FeedsimulationActivity).startActivity(intent)
+            score = 0
 
         }
 

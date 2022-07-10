@@ -1,6 +1,7 @@
 package com.example.shape_up_2022
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Paint
@@ -55,6 +56,11 @@ private class GameView3(context: Context): View(context){
         if(score3>4){
             Toast.makeText(context, "간식주기가 완료되었습니다.", Toast.LENGTH_SHORT).show()
             //onBackPressed();
+            this.visibility = View.GONE
+
+            val intent = Intent(context, DogFeedsimulationActivity::class.java)
+            (context as FeedsimulationActivity).startActivity(intent)
+            score = 0
         }
 
         invalidate()
