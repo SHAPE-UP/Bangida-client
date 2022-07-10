@@ -18,10 +18,20 @@ import androidx.fragment.app.Fragment
 import com.example.shape_up_2022.databinding.FragmentSimTakeAWalkBinding
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
-import com.google.android.gms.location.*
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.*
 import com.google.android.gms.tasks.OnSuccessListener
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -122,6 +132,9 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
             .withMarkerIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
             .build()*/
 
+        // data 불러오기
+        callData()
+
         return rootView
     }
 
@@ -147,7 +160,7 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
 
     override fun onMapReady(p0: GoogleMap) {
         googleMap = p0
-        moveMap(37.568256, 126.897240)
+        //moveMap(37.568256, 126.897240)
     }
 
     override fun onConnected(p0: Bundle?) {
@@ -169,6 +182,31 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
             )
             apiClient.disconnect()
         }
+    }
+
+    // request data
+    private fun callData(){
+        val call: Call<responseInfo> = MyApplication.networkServicePlaceData.getList(
+            "1",
+            "10",
+            "동물",
+            "",
+            "264157a5-947e-4f12-8c21-c499089c507a"
+        )
+        Log.d("mobileApp", "call")
+        call?.enqueue(object: Callback<responseInfo> {
+            override fun onResponse(call: Call<responseInfo>, response: Response<responseInfo>) {
+                Log.d("mobileApp", "hello! ${response.body()}")
+                if(response.isSuccessful){
+                    Log.d("mobileApp", "데이터 연결 성공!")
+                }
+            }
+
+            override fun onFailure(call: Call<responseInfo>, t: Throwable) {
+                Toast.makeText(context,"데이터 연결 실패",  Toast.LENGTH_SHORT).show()
+                Log.d("mobileApp", "onFailure $t")
+            }
+        })
     }
 
     // 카메라를 이동시키는 함수
