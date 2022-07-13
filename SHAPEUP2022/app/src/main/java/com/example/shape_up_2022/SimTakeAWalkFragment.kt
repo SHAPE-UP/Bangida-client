@@ -132,7 +132,11 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
             .build()*/
 
         // data 불러오기
-        callData()
+        val address = callData()
+        Log.d("mobileApp", "${address}")
+        val location = callLocationData(address)
+        
+        // 마커 만들기
 
         return rootView
     }
@@ -182,9 +186,41 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
             apiClient.disconnect()
         }
     }
+    // request location data
+    private fun callLocationData(address: String): ArrayList<Double>{
+        val locationList = arrayListOf<Double>()
+        val call: Call<LocationPageModel> = MyApplication.networkServiceKakao.getLocation(
+            "KakaoAK 5bb29ef01ac31bd67a3370489b740f6d",
+            "동작구 매봉로 2길 9",
+            "similar",
+            1,
+            10,
+        )
+        Log.d("mobileApp", "call - locationList")
+        call?.enqueue(object: Callback<LocationPageModel> {
+            override fun onResponse(call: Call<LocationPageModel>, response: Response<LocationPageModel>) {
+                if(response.isSuccessful){
+                    Log.d("mobileApp", "위치 데이터 연결 성공!")
+                    Log.d("Test", "Raw: ${response.raw()}")
+                    Log.d("mobileApp", "hello! - locationList : ${response.body()}")
+                    var locationItem = response.body()?.item?.documents
+                    locationList[0] = locationItem!![0].x.toDouble()
+                    locationList[1] = locationItem!![0].y.toDouble()
+                }
+            }
+
+            override fun onFailure(call: Call<LocationPageModel>, t: Throwable) {
+                Toast.makeText(context,"데이터 연결 실패",  Toast.LENGTH_SHORT).show()
+                Log.d("mobileApp", "onFailure $t")
+            }
+        })
+
+        return locationList
+    }
 
     // request data
-    private fun callData(){
+    private fun callData(): String {
+        var address : String = ""
         val call: Call<responseInfo> = MyApplication.networkServicePlaceData.getList(
             "1",
             "10",
@@ -192,20 +228,24 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
             "",
             "264157a5-947e-4f12-8c21-c499089c507a"
         )
-        Log.d("mobileApp", "call")
+        Log.d("mobileApp", "call - address")
         call?.enqueue(object: Callback<responseInfo> {
             override fun onResponse(call: Call<responseInfo>, response: Response<responseInfo>) {
-                Log.d("mobileApp", "hello! ${response.body()}")
+                Log.d("mobileApp", "hello! - address : ${response.body()}")
                 if(response.isSuccessful){
                     Log.d("mobileApp", "데이터 연결 성공!")
+                    var locationItem = response!!.body()!!.body!!.items!!.item
+                    address = locationItem[0].venue.toString()
                 }
             }
 
             override fun onFailure(call: Call<responseInfo>, t: Throwable) {
-                Toast.makeText(context,"데이터 연결 실패",  Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "데이터 연결 실패", Toast.LENGTH_SHORT).show()
                 Log.d("mobileApp", "onFailure $t")
             }
         })
+        Log.d("mobileApp", "address: ${address}" )
+        return address
     }
 
     // 카메라를 이동시키는 함수

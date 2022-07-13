@@ -3,7 +3,7 @@ package com.example.shape_up_2022
 import retrofit2.Call
 import retrofit2.http.*
 
-interface NetworkService {
+interface NetworkServiceAuth {
     @POST("api/users/register")
     fun register(
         @Body user: RegisterReq,
@@ -28,7 +28,5 @@ data class RegisterRes(val success: String)
 data class LoginReq(val email: String, val password: String)
 
 data class LoginRes(val loginSuccess: String, val message: String)
-
-data class LogoutReq(val email: String)
 
 data class LogoutRes(val success: String, val err: String)

@@ -12,16 +12,25 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MyApplication: Application() {
     companion object {
-        //유튜브
-        var networkService2: NetworkService2
-        val retrofit2: Retrofit
+        // kakao api
+        var networkServiceKakao : NetworkServiceKakao
+        val retrofitKakao: Retrofit
+            get() = Retrofit.Builder()
+                .baseUrl("https://dapi.kakao.com/")
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
+        // 유튜브
+        var networkServiceYoutube: NetworkServiceYoutube
+        val retrofitYoutube: Retrofit
             get() = Retrofit.Builder()
                 .baseUrl("https://www.googleapis.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
         // 로그인
-        var networkServiceAuth: NetworkService
+        var networkServiceAuth: NetworkServiceAuth
         val retrofitAuth: Retrofit
             get() = Retrofit.Builder()
                 .baseUrl("http://192.168.219.105:5000")
@@ -41,9 +50,10 @@ class MyApplication: Application() {
                 .build()
 
         init{
-            networkService2 = retrofit2.create(NetworkService2::class.java)
-            networkServiceAuth = retrofitAuth.create(NetworkService::class.java)
+            networkServiceYoutube = retrofitYoutube.create(NetworkServiceYoutube::class.java)
+            networkServiceAuth = retrofitAuth.create(NetworkServiceAuth::class.java)
             networkServicePlaceData = retrofitPlaceData.create(NetworkService3::class.java)
+            networkServiceKakao = retrofitKakao.create(NetworkServiceKakao::class.java)
         }
 
 

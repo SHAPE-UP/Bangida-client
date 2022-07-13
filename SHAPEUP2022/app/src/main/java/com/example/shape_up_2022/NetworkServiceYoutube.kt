@@ -4,7 +4,7 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface NetworkService2 {
+interface NetworkServiceYoutube {
     @GET("youtube/v3/search")
     fun getList(
         @Query("key") key:String,
