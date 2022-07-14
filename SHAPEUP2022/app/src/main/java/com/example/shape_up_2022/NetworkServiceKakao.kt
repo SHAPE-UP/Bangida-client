@@ -7,12 +7,9 @@ import retrofit2.http.Headers
 import retrofit2.http.Query
 
 interface NetworkServiceKakao {
-    @GET("v2/local/search/address.json")
+    @GET("/v2/local/search/address.json")
     fun getLocation(
         @Header("Authorization") key: String,
         @Query("query") keyword: String,
-        @Query("analyze_type") analyze_type: String,
-        @Query("page") page: Int,
-        @Query("size") size: Int,
     ): Call<LocationPageModel>
 }

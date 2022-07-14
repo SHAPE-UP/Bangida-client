@@ -26,11 +26,15 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.*
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.android.youtube.player.internal.l
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.nio.charset.Charset
+import java.nio.charset.StandardCharsets.UTF_8
+import kotlin.text.Charsets.UTF_8
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -132,11 +136,10 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
             .build()*/
 
         // data 불러오기
-        val address = callData()
-        Log.d("mobileApp", "${address}")
-        val location = callLocationData(address)
-        
+        var address = callData()
+        var location = callLocationData(address)
         // 마커 만들기
+
 
         return rootView
     }
@@ -167,7 +170,7 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
     }
 
     override fun onConnected(p0: Bundle?) {
-        Log.d("mobileApp", "onConnected")
+       // Log.d("mobileApp", "onConnected")
         if(ContextCompat.checkSelfPermission(activity as SimTakeAWalkActivity, Manifest.permission.ACCESS_FINE_LOCATION) === PackageManager.PERMISSION_GRANTED){
             providerClient.lastLocation.addOnSuccessListener(
                 activity as SimTakeAWalkActivity,
@@ -176,9 +179,9 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
                         p0?.let{
                             latitude = p0.latitude
                             longitude = p0.longitude
-                            Log.d("mobileApp", "lat: $latitude, lng: $longitude")
+                            //Log.d("mobileApp", "lat: $latitude, lng: $longitude")
                             moveMap(latitude, longitude)
-                            Log.d("mobileApp", "moveMap")
+                            //Log.d("mobileApp", "moveMap")
                         }
                     }
                 }
@@ -188,24 +191,23 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
     }
     // request location data
     private fun callLocationData(address: String): ArrayList<Double>{
-        val locationList = arrayListOf<Double>()
+        val locationList = arrayListOf(0.0, 0.0)
         val call: Call<LocationPageModel> = MyApplication.networkServiceKakao.getLocation(
             "KakaoAK 5bb29ef01ac31bd67a3370489b740f6d",
-            "동작구 매봉로 2길 9",
-            "similar",
-            1,
-            10,
+            address,
         )
         Log.d("mobileApp", "call - locationList")
         call?.enqueue(object: Callback<LocationPageModel> {
             override fun onResponse(call: Call<LocationPageModel>, response: Response<LocationPageModel>) {
                 if(response.isSuccessful){
                     Log.d("mobileApp", "위치 데이터 연결 성공!")
-                    Log.d("Test", "Raw: ${response.raw()}")
-                    Log.d("mobileApp", "hello! - locationList : ${response.body()}")
-                    var locationItem = response.body()?.item?.documents
-                    locationList[0] = locationItem!![0].x.toDouble()
-                    locationList[1] = locationItem!![0].y.toDouble()
+                    Log.d("mobileApp", "Raw: ${response.raw()}")
+                    Log.d("mobileApp", "hello! - locationList : ${response.body()?.documents}")
+                    var locationItem = response.body()?.documents
+                    locationList[0] = locationItem?.get(0)!!.x.toDouble()
+                    locationList[1] = locationItem?.get(0)!!.y.toDouble()
+                    Log.d("mobileApp", "hello! - locationList : ${locationList[0]}")
+
                 }
             }
 
@@ -219,8 +221,8 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
     }
 
     // request data
-    private fun callData(): String {
-        var address : String = ""
+    private fun callData() : String {
+        var address = ""
         val call: Call<responseInfo> = MyApplication.networkServicePlaceData.getList(
             "1",
             "10",
@@ -242,9 +244,11 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
             override fun onFailure(call: Call<responseInfo>, t: Throwable) {
                 Toast.makeText(context, "데이터 연결 실패", Toast.LENGTH_SHORT).show()
                 Log.d("mobileApp", "onFailure $t")
+
             }
         })
         Log.d("mobileApp", "address: ${address}" )
+
         return address
     }
 
