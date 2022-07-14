@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SimDefecationCharacteristicsActivity">
+
+    <ImageView
+        android:id="@+id/ballView1"
+        android:layout_width="400dp"
+        android:layout_height="277dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="-8dp"
+        android:layout_marginTop="30px"
+        android:layout_marginEnd="30px"
+        android:layout_marginBottom="30px"
+        android:gravity="center"
+        android:src="@drawable/poop2"/>
+
+    <TableLayout
+        android:layout_marginTop="350dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TableRow android:layout_marginTop="5dp">
+
+            <CheckBox
+                android:id="@+id/rad1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="세균성 감염" />
+
+            <CheckBox
+                android:id="@+id/rad2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="황달" />
+
+            <CheckBox
+                android:id="@+id/rad9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="적혈구 파괴" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="5dp">
+
+            <CheckBox
+                android:id="@+id/rad3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="보충제,야채 섭취" />
+
+            <CheckBox
+                android:id="@+id/rad4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="담낭 결석" />
+            <CheckBox
+                android:id="@+id/rad10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="쓸개 손상" />
+
+        </TableRow>
+
+        <TableRow android:layout_marginTop="5dp">
+
+            <CheckBox
+                android:id="@+id/rad5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="항문 근처 내장기관 출혈" />
+
+            <CheckBox
+                android:id="@+id/rad6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="상부 소화기 출혈" />
+
+            <CheckBox
+                android:id="@+id/rad11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="방광염" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="5dp">
+
+            <CheckBox
+                android:id="@+id/rad7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="수분 부족" />
+
+            <CheckBox
+                android:id="@+id/rad8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="기생충 감염" />
+
+            <CheckBox
+                android:id="@+id/rad12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="정상" />
+        </TableRow>
+    </TableLayout>
+    <Button
+        android:id="@+id/btA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="167dp"
+        android:layout_marginBottom="12dp"
+        android:text="정답 확인"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="37dp" />
+
+
+</RelativeLayout>

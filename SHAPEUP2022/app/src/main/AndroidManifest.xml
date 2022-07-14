@@ -90,6 +90,16 @@
             android:name=".SimBallActivity"
             android:exported="false"/>
         <activity
+  
+            android:name=".YoutubeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimDefecationCharacteristicsActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".SimInducingBowelMovementsActivity"
+            android:exported="false" />
+
             android:name=".SimCleaningbedActivity"
             android:exported="false"/>
         <activity
@@ -101,6 +111,7 @@
         <activity
             android:name=".SimWashingToyActivity"
             android:exported="false"/>
+
     </application>
 
 </manifest>
