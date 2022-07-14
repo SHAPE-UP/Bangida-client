@@ -63,6 +63,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:background="#ffeecc">
+
+                <ImageView
+                    android:layout_width="240dp"
+                    android:layout_height="240dp"
+                    android:src="@drawable/maltese"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -110,7 +120,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="시뮬레이션 홈" />
+                android:text="" />
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -163,7 +173,7 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
                         <Button
-                            android:id="@+id/management"
+                            android:id="@+id/btn_management"
                             android:layout_width="match_parent"
                             android:layout_height="70dp"
                             android:textSize="20dp"
@@ -171,6 +181,7 @@
                             android:layout_marginTop="10dp"
                             android:text="강아지 관리"/>
                         <Button
+                            android:id="@+id/btn_feed"
                             android:layout_width="match_parent"
                             android:layout_height="70dp"
                             android:textSize="20dp"

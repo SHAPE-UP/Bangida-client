@@ -10,7 +10,6 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.shape_up_2022.databinding.ActivityMyPageBinding
-import com.google.android.youtube.player.internal.t
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,7 +22,6 @@ class MyPageActivity : AppCompatActivity() {
 
         val binding = ActivityMyPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         val requestGalleryLauncher=registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()){
             try{
@@ -82,13 +80,6 @@ class MyPageActivity : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             intent.type="image/*"
             requestGalleryLauncher.launch(intent)
-        }
-
-
-        binding.gotosetting.setOnClickListener{
-
-            val intent = Intent(this, SettingActivity::class.java)
-            startActivity(intent)
         }
 
         // 탭바 연결

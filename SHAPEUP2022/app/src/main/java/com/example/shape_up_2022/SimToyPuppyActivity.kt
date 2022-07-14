@@ -1,11 +1,8 @@
 package com.example.shape_up_2022
 
-import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.shape_up_2022.databinding.ActivityToyPuppyBinding
@@ -28,7 +25,7 @@ class SimToyPuppyActivity : AppCompatActivity() {
         binding.toyInfo.setOnClickListener {
             AlertDialog.Builder(this).run {
                 setTitle("아직 강아지 장난감을 잘 모르신다면")
-                setIcon(R.drawable.puppy)
+                setIcon(R.drawable.maltese)
                 setMessage("강아지의 장난감 종류는 크게 공, 노즈워크, 인형, 터그가 있습니다. 장난감들을 눌러서 확인해보세요!")
                 setPositiveButton("확인", null)
                 setCancelable(false)
@@ -99,7 +96,7 @@ class SimToyPuppyActivity : AppCompatActivity() {
         binding.toyBall.setOnClickListener{
             AlertDialog.Builder(this).run {
                 setTitle("공")
-                setIcon(R.drawable.puppy)
+                setIcon(R.drawable.maltese)
                 setMessage("공은 강아지가 정말 좋아하는 장난감 중 하나입니다...")
                 setPositiveButton("확인", null)
                 setNeutralButton("강아지 놀아주기", activityBallSim)
@@ -113,7 +110,7 @@ class SimToyPuppyActivity : AppCompatActivity() {
         binding.toyNosewalk.setOnClickListener {
             AlertDialog.Builder(this).run {
                 setTitle("노즈워크")
-                setIcon(R.drawable.puppy)
+                setIcon(R.drawable.maltese)
                 setMessage("노즈워크는 강아지가 좋아하는 장난감 중 하나입니다...")
                 setPositiveButton("확인", null)
                 setNegativeButton("영상 시청하기", vedioNoseWork)
@@ -126,7 +123,7 @@ class SimToyPuppyActivity : AppCompatActivity() {
         binding.toyDoll.setOnClickListener {
             AlertDialog.Builder(this).run {
                 setTitle("인형")
-                setIcon(R.drawable.puppy)
+                setIcon(R.drawable.maltese)
                 setMessage("인형은 강아지가 좋아하는 장난감 중 하나입니다...")
                 setPositiveButton("확인", null)
                 setNegativeButton("영상 시청하기", vedioDoll)
@@ -139,7 +136,7 @@ class SimToyPuppyActivity : AppCompatActivity() {
         binding.toyTug.setOnClickListener {
             AlertDialog.Builder(this).run {
                 setTitle("터그")
-                setIcon(R.drawable.puppy)
+                setIcon(R.drawable.maltese)
                 setMessage("터그는 강아지가 좋아하는 장난감 중 하나입니다...")
                 setPositiveButton("확인", null)
                 setNeutralButton("강아지 놀아주기", activityTugSim)

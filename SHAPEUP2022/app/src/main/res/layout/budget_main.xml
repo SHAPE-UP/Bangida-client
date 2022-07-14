@@ -2,24 +2,47 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_margin="10dp"
-        android:layout_gravity=""
-        android:textColor="#000000"
-        android:text="예산서"
-        android:layout_marginHorizontal="16dp"
-        android:textSize="30dp"
-        />
+    android:orientation="vertical"
+    android:padding="16dp" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="10dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginBottom="6dp"
+            android:src="@drawable/ic_icon_dog_orange"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textColor="#000000"
+                android:text="강아지 지갑"
+                android:textSize="30dp"
+                />
+            <TextView
+                android:layout_marginTop="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="반려견 관련 지출 항목을 점검해보세요." />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:background="@color/main_color">
         <TextView
             android:layout_width="wrap_content"
@@ -57,77 +80,88 @@
         android:id="@+id/budget_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"/>
+        />
 
     <Button
         android:id="@+id/budget_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
+
         android:text="+ 새 항목 추가"
         />
-    <TextView
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:gravity="center"
-        android:text="여백..."
         android:layout_weight="1" />
 
-    <!--라디오버튼 or chip으로 사고비용 포함-->
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/sum_mode"
-        android:gravity="center">
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/sum_essential"
-            android:text="필수비용만" />
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:id="@+id/sum_extra"
-            android:text="예상치못한 지출 포함" />
-
-    </RadioGroup>
-    <!--통계-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
+        <!--카테고리별, 기간별 필터링-->
         <Spinner
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
             android:id="@+id/category_total"
             android:entries="@array/category_total" />
         <Spinner
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
             android:id="@+id/period"
             android:entries="@array/period"/>
+
+        <!--필수/여유 비용 필터링-->
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/sum_mode">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sum_essential"
+                android:text="필수" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/sum_extra"
+                android:checked="true"
+                android:text="여유" />
+        </RadioGroup>
+    </LinearLayout>
+
+
+    <!--합계-->
+    <LinearLayout
+        android:background="@color/base_color1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
-            android:textSize="20dp"
+            android:textSize="24dp"
+            android:background="@color/main_color"
             android:text="합계" />
         <TextView
             android:id="@+id/sum_result"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="24dp"
             android:textColor="@color/main_color"
             android:layout_weight="1"
             android:gravity="right"
+            android:paddingHorizontal="10dp"
             android:text="1234" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:textSize="20dp"
+            android:textSize="24dp"
+            android:layout_marginRight="10dp"
             android:text="원" />
     </LinearLayout>
 

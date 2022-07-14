@@ -49,7 +49,7 @@ class SimManagePuppyActivity : AppCompatActivity() {
     private fun alertDialog(){
         AlertDialog.Builder(this).run {
             setTitle("반려견 애정 주기 TIP")
-            setIcon(R.drawable.puppy)
+            setIcon(R.drawable.maltese)
             setMessage("반려견은 애정을 자주 주어야 합니다.")
             setPositiveButton("확인", null)
             setCancelable(false)

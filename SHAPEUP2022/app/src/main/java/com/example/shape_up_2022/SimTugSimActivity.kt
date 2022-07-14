@@ -48,7 +48,7 @@ class SimTugSimActivity : AppCompatActivity() {
                     if(status == 500){
                         AlertDialog.Builder(this).run {
                             setTitle("반려견과 토그 가지고 놀기 완료!")
-                            setIcon(R.drawable.puppy)
+                            setIcon(R.drawable.maltese)
                             setMessage("반려견은 본능적으로 입에 물고 장난감을 가지고 노는 것을 좋아합니다!")
                             setPositiveButton("확인", activiy)
                             show()

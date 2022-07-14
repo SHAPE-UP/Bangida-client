@@ -44,10 +44,12 @@ class BudgetAdapter(val datas: MutableList<BudgetItem>?): RecyclerView.Adapter<R
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     if (mListener != null) {
-                        mListener.onItemClick(view, position)
+                        mListener.onEditClick(view, position)
                     }
                 }
             }
+
+            /* 수정 버튼을 없애고 항목을 클릭하면 수정되도록 함
             binding.btnEdit.setOnClickListener(View.OnClickListener { view ->
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
@@ -57,6 +59,9 @@ class BudgetAdapter(val datas: MutableList<BudgetItem>?): RecyclerView.Adapter<R
                 }
             })
 
+             */
+
+            /* 삭제 버튼 삭제
             binding.btnDelete.setOnClickListener(View.OnClickListener { view ->
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
@@ -65,6 +70,8 @@ class BudgetAdapter(val datas: MutableList<BudgetItem>?): RecyclerView.Adapter<R
                     }
                 }
             })
+
+             */
         }
     }
 

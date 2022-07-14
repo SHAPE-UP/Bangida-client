@@ -42,8 +42,14 @@ class SimulationActivity : AppCompatActivity() {
         }
 
         // 시뮬레이션: 강아지 관리
-        binding.management.setOnClickListener {
+        binding.btnManagement.setOnClickListener {
             val intent = Intent(this, SimManagePuppyActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 시뮬레이션: 먹이 주기
+        binding.btnFeed.setOnClickListener {
+            val intent = Intent(this, DogFeedsimulationActivity::class.java)
             startActivity(intent)
         }
 
@@ -63,7 +69,8 @@ class SimulationActivity : AppCompatActivity() {
         binding.navHome.setOnClickListener {
             val intent_home = Intent(this, MainActivity::class.java)
             startActivity(intent_home)
-            overridePendingTransition(0, 0);
+            overridePendingTransition(0, 0)
+            overridePendingTransition(0, 0)
             finish()
         }
 

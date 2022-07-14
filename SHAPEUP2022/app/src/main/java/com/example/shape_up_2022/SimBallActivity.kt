@@ -10,7 +10,6 @@ import android.util.Log
 import android.view.MotionEvent
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
-import com.example.shape_up_2022.R
 import com.example.shape_up_2022.databinding.ActivityBallSimBinding
 
 class SimBallActivity : AppCompatActivity() {
@@ -52,7 +51,7 @@ class SimBallActivity : AppCompatActivity() {
                         if (score == 10) {
                             AlertDialog.Builder(this).run {
                                 setTitle("반려견과 공 가지고 놀기 완료!")
-                                setIcon(R.drawable.puppy)
+                                setIcon(R.drawable.maltese)
                                 setMessage("강아지는 통통 튀어다니는 공을 정말 좋아합니다!")
                                 setPositiveButton("확인", activiy)
                                 show()
