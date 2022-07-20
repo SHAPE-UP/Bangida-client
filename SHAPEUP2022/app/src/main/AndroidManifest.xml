@@ -45,12 +45,6 @@
             android:name=".SimTakeAWalkActivity"
             android:exported="false" />
         <activity
-            android:name=".preferenceActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SettingActivity"
-            android:exported="false" />
-        <activity
             android:name=".StartActivity"
             android:exported="false" />
         <activity
@@ -88,9 +82,6 @@
             android:exported="false" />
         <activity
             android:name=".ToDoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".YoutubeActivity"
             android:exported="false" />
         <activity
             android:name=".SimManagePuppyActivity"

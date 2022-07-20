@@ -25,7 +25,7 @@ class YoutubeActivity : AppCompatActivity() {
         }
 
         binding.schbtn.setOnClickListener{
-            var call: Call<SearchListResponse> = MyApplication.networkService2.getList(
+            var call: Call<SearchListResponse> = MyApplication.networkServiceYoutube.getList(
                 "AIzaSyDDN21CCWYkdZBa9D4quDG7-0wAu_AIaFc",
                 binding.searchYoutube.text.toString(),
                 "video",
