@@ -40,10 +40,10 @@
 
     <ImageView
         android:id="@+id/ball"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
-        android:src="@android:drawable/ic_input_add" />
+        android:src="@drawable/toy_ball" />
 
 
     <TextView
@@ -51,8 +51,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginBottom="20dp"
-        android:text="공을 던지려면 던질 위치를 클릭해주세요."
+        android:layout_marginVertical="20dp"
+        android:text="공을 던질 위치를 클릭해주세요."
         android:textSize="16dp" />
 
 

@@ -175,12 +175,12 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
             providerClient.lastLocation.addOnSuccessListener(
                 activity as SimTakeAWalkActivity,
                 object: OnSuccessListener<Location> {
-                    override fun onSuccess(p0: Location?) {
+                    override fun onSuccess(p0: Location?) {  // 사용자의 현재 위치를 얻음
                         p0?.let{
                             latitude = p0.latitude
                             longitude = p0.longitude
                             //Log.d("mobileApp", "lat: $latitude, lng: $longitude")
-                            moveMap(latitude, longitude)
+                            moveMap(latitude, longitude)  // 카메라 초기화
                             //Log.d("mobileApp", "moveMap")
                         }
                     }
@@ -252,7 +252,7 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
         return address
     }
 
-    // 카메라를 이동시키는 함수
+    // 카메라를 이동시키는 메소드
     private fun moveMap(latitude: Double, longitude: Double){
         val latLng = LatLng(latitude, longitude)
         val position: CameraPosition = CameraPosition.Builder()
@@ -282,7 +282,7 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
         locationRequest.fastestInterval = 5000  // 이보다 더 빈번히 업데이트 하지 않음 (고정된 최소 인터벌)
     }
     private fun addLocationListener() {
-        if (ActivityCompat.checkSelfPermission(
+        if (ActivityCompat.checkSelfPermission(  // 위치 권한 허용 체크
                 activity as Activity,
                 Manifest.permission.ACCESS_FINE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
