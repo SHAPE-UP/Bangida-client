@@ -1,1 +1,3 @@
-# Pet-Startup-App
+# Pet-Starter-App
+
+### Team. SHAPE-UP
