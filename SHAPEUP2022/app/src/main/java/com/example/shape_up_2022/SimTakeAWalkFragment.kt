@@ -26,7 +26,6 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.*
 import com.google.android.gms.tasks.OnSuccessListener
-import com.google.android.youtube.player.internal.l
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
@@ -56,8 +55,13 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
     lateinit var apiClient: GoogleApiClient
     lateinit var providerClient: FusedLocationProviderClient
 
+    private var startLatLng: LatLng=LatLng(0.0, 0.0)
+    private var endLatLng: LatLng=LatLng(0.0, 0.0)
+
     private var latitude: Double = 0.0
     private var longitude: Double = 0.0
+
+
 
     private lateinit var mView: MapView
     var googleMap: GoogleMap? = null
@@ -181,7 +185,8 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
                             longitude = p0.longitude
                             //Log.d("mobileApp", "lat: $latitude, lng: $longitude")
                             moveMap(latitude, longitude)
-                            //Log.d("mobileApp", "moveMap")
+                            //Log.d
+                            startLatLng = LatLng(latitude, longitude)
                         }
                     }
                 }
@@ -281,6 +286,7 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
         // 자동으로 더 짧아질 수도 있음
         locationRequest.fastestInterval = 5000  // 이보다 더 빈번히 업데이트 하지 않음 (고정된 최소 인터벌)
     }
+
     private fun addLocationListener() {
         if (ActivityCompat.checkSelfPermission(
                 activity as Activity,
@@ -347,20 +353,21 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
         super.onDestroy()
     }
 
-
     inner class MyLocationCallBack: LocationCallback() {
         override fun onLocationResult(locationResult: LocationResult) {
             super.onLocationResult(locationResult)
 
             val location = locationResult?.lastLocation   // GPS가 꺼져 있을 경우 Location 객체가
             // null이 될 수도 있음
+            //startLatLng = LatLng(latitude, longitude) //보류 순서 확인 필요
 
             location?.run {
                 val latLng = LatLng(latitude, longitude)   // 위도, 경도
                 googleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17f))  // 카메라 이동
 
-                Log.d("MapsActivity", "위도: $latitude, 경도: $longitude")     // 로그 확인 용
 
+                Log.d("MapsActivity", "위도: $latitude, 경도: $longitude")     // 로그 확인 용
+                Log.d("mobileApp", "나오나요?")
 
 
                 /*
@@ -369,9 +376,12 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
                 *                     편리한 메서드를 이용)
 
                 */
+                endLatLng = latLng
+                val polylineOptions = PolylineOptions().add(startLatLng).add(endLatLng).width(5f).color(Color.RED)
                 googleMap?.addPolyline(polylineOptions)         // 선 그리기 (위치 정보가 갱신되면
                 // polyLineOptions 객체에 추가되고
                 // 지도에 polylineOptions 객체를 추가 함
+                startLatLng=endLatLng
             }
         }
     }
@@ -425,5 +435,5 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
         providerClient.removeLocationUpdates(locationCallback)
     }
 
-    private val polylineOptions = PolylineOptions().width(5f).color(Color.RED)
+
 }
