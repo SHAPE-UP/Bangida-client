@@ -50,6 +50,9 @@ data class myItem(
     val affiliation: String?,
     @PropertyElement
     val state: String?,
+    @PropertyElement
+    val reference: String?,
+
 ){
-    constructor() : this( null,null, null, null, null)
+    constructor() : this( null,null, null, null, null, null)
 }

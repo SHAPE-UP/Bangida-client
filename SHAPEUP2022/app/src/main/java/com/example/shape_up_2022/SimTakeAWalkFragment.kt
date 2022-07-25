@@ -24,18 +24,17 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.*
 import com.google.android.gms.tasks.OnSuccessListener
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
+import com.google.android.youtube.player.internal.t
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import retrofit2.awaitResponse
 import java.io.IOException
-import java.nio.charset.Charset
-import java.nio.charset.StandardCharsets.UTF_8
-import kotlin.text.Charsets.UTF_8
+import java.net.SocketTimeoutException
+
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
@@ -54,7 +53,6 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
     lateinit var apiClient: GoogleApiClient
     lateinit var providerClient: FusedLocationProviderClient
 
-    //lateinit var startLatLng:LatLng
     private var startLatLng: LatLng=LatLng(0.0, 0.0)
     private var endLatLng: LatLng=LatLng(0.0, 0.0)
 
@@ -62,6 +60,7 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
     private var longitude: Double = 0.0
 
     private lateinit var geocoder: Geocoder
+    var userAddress = ""
 
     private lateinit var mView: MapView
     var googleMap: GoogleMap? = null
@@ -126,8 +125,11 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
             apiClient.connect() // 정보 가져옴
         }
 
-        // data 불러오기
-        var address = callData()
+        // example
+        //val data = "서울 동작구 대방동"
+        //val res = strSlice(data)
+
+
 
         return rootView
     }
@@ -168,8 +170,8 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
                             moveMap(latitude, longitude)
 
                             // 사용자 위치 주소로 변환하기
-                            val address = addressToLocate(latitude, longitude)
-                            locateToAddress(address)
+                            userAddress = addressToLocate(latitude, longitude)
+                            crtProcess(userAddress)
 
                             startLatLng = LatLng(latitude, longitude)
                         }
@@ -180,66 +182,113 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
         }
     }
 
-    // request data
-    private fun callData() : String {
-        val call: Call<responseInfo> = MyApplication.networkServicePlaceData.getList(
-            "1",
-            "10",
-            "",
-            "",
-            "264157a5-947e-4f12-8c21-c499089c507a"
-        )
-        Log.d("mobileApp", "call - address")
-        var address = ""
-        call?.enqueue(object: Callback<responseInfo> {
-            override fun onResponse(call: Call<responseInfo>, response: Response<responseInfo>) {
-                Log.d("mobileApp", "hello! - address : ${response.body()}")
-                if(response.isSuccessful){
-                    Log.d("mobileApp", "데이터 연결 성공!")
-                    var locationItem = response!!.body()!!.body!!.items!!.item
-                    address = locationItem[0].venue.toString()
-                    Log.d("mobileApp", "데이터 연결 성공! ${address}")
-                }
-            }
-            override fun onFailure(call: Call<responseInfo>, t: Throwable) {
-                Toast.makeText(context, "데이터 연결 실패", Toast.LENGTH_SHORT).show()
-                Log.d("mobileApp", "onFailure $t")
-            }
-        })
-        Log.d("mobileApp", "address: ${address}" )
-        return address
+    private fun crtProcess(userAddress: String){
+        CoroutineScope(Dispatchers.Main).launch {
+            Log.d("mobileApp", "코루틴 실행! userAddress: ${userAddress}")
+            var address = callDataCrt("당산2동") //** 임시 수정
+            //Log.d("mobileApp", "address: ${address}")
+            //val locationList = locateToAddress(address)
+
+        }
     }
 
-    private fun locateToAddress(address: String): ArrayList<Double>{
-        var locationList = arrayListOf<Double>()
-        var list: List<Address>? = null;
-        var str = address
-        try {
-            list = geocoder.getFromLocationName(
-                str, // 지역 이름
-                10
-            ) // 읽을 개수
-        } catch (e: IOException) {
-            e.printStackTrace()
-            Log.e("mobileApp", "입출력 오류 - 서버에서 주소변환시 에러발생")
+    // string slice
+    private fun strSlice(addr: String): String {
+        val temp = addr.split(" ")
+        Log.d("mobileApp", "${temp[2]}")
+        return temp[2]
+    }
+
+    // 지역 마커 찍기
+    private fun addMarker(res: MutableList<myItem>, loc: Array<DoubleArray>){
+        var color = 0.0F
+        for(i in 0..loc.size - 1){
+            val latLng = LatLng(loc[i][0], loc[i][1])
+
+            // 카테고리 분류
+            val category = res[i].subjectCategory
+            if(category == "동물병원"){
+                color = BitmapDescriptorFactory.HUE_ORANGE
+            }else if(category == "동물약국"){
+                color = BitmapDescriptorFactory.HUE_ROSE
+            } else if(category == "축구장" || category == "야구장"){
+                color = BitmapDescriptorFactory.HUE_YELLOW
+            } else{
+                color = BitmapDescriptorFactory.HUE_VIOLET
+            }
+
+            // 마커 추가하기
+            val markerOp = MarkerOptions()
+            markerOp.icon(BitmapDescriptorFactory.defaultMarker(color))
+            markerOp.position(latLng)
+            markerOp.title(res[i].title.toString())
+            googleMap?.addMarker(markerOp)
+            Log.d("mobileApp", "markerOp")
         }
-        if (list != null) {
-            if (
-                list!!.size == 0) {
-                //tv.setText("해당되는 주소 정보는 없습니다")
-                Log.d("mobileApp", "해당되는 주소 정보는 없습니다.")
-            } else {
-                //tv.setText(list!!.get(0).toString())
-                Log.d("mobileApp", "locate list: ${list.get(0)}")
-                locationList.add(list.get(0).latitude)
-                locationList.add(list.get(0).longitude)
+    }
+
+    private suspend fun callDataCrt(addr: String): ArrayList<String>{
+        var addressList = arrayListOf<String>()
+        val call: Call<responseInfo> = MyApplication.networkServicePlaceData.getList(
+            "1",
+            "20",
+            "",
+            addr,
+            "264157a5-947e-4f12-8c21-c499089c507a"
+        )
+        try{
+            val response = call.awaitResponse()
+            if(!response.isSuccessful){
+                Log.d("mobileApp", "데이터 연결 실패!")
+            }
+            Log.d("mobileApp", "데이터 연결 성공!")
+            val locationItem = response!!.body()!!.body!!.items!!.item
+            Log.d("mobileApp", "${locationItem}")
+
+            for(i in 0 until locationItem.size - 1){
+                addressList.add(locationItem[i].venue.toString())
+            }
+
+            val locationList = locateToAddress(addressList)
+            // 마커 표시
+            addMarker(locationItem, locationList)
+
+        }catch (e: SocketTimeoutException){
+            Log.d("mobileApp", "Exception: ${e.toString()}")
+            addressList = callDataCrt(addr)
+        }
+        return addressList
+    }
+
+    // 주소 -> 위도/경도
+    private fun locateToAddress(address: ArrayList<String>): Array<DoubleArray>{
+        var locationList =  Array(address.size) { DoubleArray(2) { 0.0 } }
+        var list: List<Address>? = null
+        var str = address
+        for(i in 0 until str.size - 1) {
+            try {
+                list = geocoder.getFromLocationName(
+                    str[i], // 지역 이름
+                    str.size
+                ) // 읽을 개수
+            } catch (e: IOException) {
+                e.printStackTrace()
+                Log.e("mobileApp", "입출력 오류 - 서버에서 주소변환시 에러발생")
+            }
+            if (list != null) {
+                if (list!!.size == 0) {
+                    Log.d("mobileApp", "해당되는 주소 정보는 없습니다.")
+                } else {
+                    locationList[i][0] = list[0].latitude
+                    locationList[i][1] = list[0].longitude
+                    //Log.d("mobileApp", "locationList**: ${locationList[i][0]}")
+                }
             }
         }
-
-        Log.d("mobileApp", "locate list: $locationList")
         return locationList
     }
 
+    // 위도/경도 -> 주소
     private fun addressToLocate(latitude: Double, longitude: Double): String{
         var myLocation = ""
         geocoder = Geocoder(activity as SimTakeAWalkActivity)
@@ -260,11 +309,10 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
 
         if (list != null) {
             if (list.size == 0) {
-                //tv.setText("해당되는 주소 정보는 없습니다")
                 Log.d("mobileApp", "해당되는 주소 정보는 없습니다.")
             } else {
-                //tv.setText(list.get(0).toString())
                 Log.d("mobileApp", "address list: ${list.get(0)}")
+                // 이게 null인 경우가 있음
                 Log.d("mobileApp", "address list: ${list.get(0).thoroughfare}")
                 myLocation = list.get(0).thoroughfare.toString()
 
@@ -379,12 +427,6 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
                 //Log.d("MapsActivity", "위도: $latitude, 경도: $longitude")     // 로그 확인 용
                 //Log.d("mobileApp", "나오나요?")
 
-
-                /*
-                *
-                *   이동 경로 그리기 (여기에서는 구글맵에서 이동 자취 그리기용으로 지원해주는
-                *                     편리한 메서드를 이용)
-                */
                 endLatLng = latLng
                 val polylineOptions = PolylineOptions().add(startLatLng).add(endLatLng).width(5f).color(Color.RED)
                 googleMap?.addPolyline(polylineOptions)         // 선 그리기 (위치 정보가 갱신되면
