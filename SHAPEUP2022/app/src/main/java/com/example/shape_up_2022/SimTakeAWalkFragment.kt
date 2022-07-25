@@ -420,10 +420,6 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
                 val latLng = LatLng(latitude, longitude)   // 위도, 경도
                 googleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17f))  // 카메라 이동
 
-
-                //Log.d("MapsActivity", "위도: $latitude, 경도: $longitude")     // 로그 확인 용
-                //Log.d("mobileApp", "나오나요?")
-
                 endLatLng = latLng
                 val polylineOptions = PolylineOptions().add(startLatLng).add(endLatLng).width(5f).color(Color.RED)
                 googleMap?.addPolyline(polylineOptions)         // 선 그리기 (위치 정보가 갱신되면
@@ -446,7 +442,7 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
                     arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                     REQUEST_ACCESS_FINE_LOCATION)
             }
-        } else {                                                    // 권한이 있는 경우
+        } else {
             ok()
         }
     }
