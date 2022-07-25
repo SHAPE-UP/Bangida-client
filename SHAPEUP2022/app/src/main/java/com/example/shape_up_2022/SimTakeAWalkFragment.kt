@@ -129,8 +129,6 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
         //val data = "서울 동작구 대방동"
         //val res = strSlice(data)
 
-
-
         return rootView
     }
     companion object {
@@ -188,7 +186,6 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
             var address = callDataCrt("당산2동") //** 임시 수정
             //Log.d("mobileApp", "address: ${address}")
             //val locationList = locateToAddress(address)
-
         }
     }
 

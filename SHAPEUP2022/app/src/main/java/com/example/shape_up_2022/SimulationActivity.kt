@@ -65,6 +65,12 @@ class SimulationActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // 시뮬레이션: 위생 관리/목욕
+        binding.simHygiene.setOnClickListener {
+            val intent = Intent(this, SimHygieneActivity::class.java)
+            startActivity(intent)
+        }
+
         // 탭바 연결
         binding.navHome.setOnClickListener {
             val intent_home = Intent(this, MainActivity::class.java)
