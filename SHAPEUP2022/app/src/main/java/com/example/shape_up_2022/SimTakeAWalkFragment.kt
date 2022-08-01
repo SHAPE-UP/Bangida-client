@@ -50,30 +50,31 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
     private var param1: String? = null
     private var param2: String? = null
     lateinit var binding: FragmentSimTakeAWalkBinding
-    lateinit var apiClient: GoogleApiClient
-    lateinit var providerClient: FusedLocationProviderClient
+    lateinit var apiClient: GoogleApiClient  // 사용자 현위치정보 얻기 위한 퍼미션 획득용
+    lateinit var providerClient: FusedLocationProviderClient  // 구글맵 사용 시 기본적으로 필요
 
-    private var startLatLng: LatLng=LatLng(0.0, 0.0)
-    private var endLatLng: LatLng=LatLng(0.0, 0.0)
+    private var startLatLng: LatLng=LatLng(0.0, 0.0)  // polyline 시작점
+    private var endLatLng: LatLng=LatLng(0.0, 0.0)  // polyline 끝점
 
-    private var latitude: Double = 0.0
-    private var longitude: Double = 0.0
+    private var latitude: Double = 0.0  // 사용자 현위치 갱신용
+    private var longitude: Double = 0.0  // 사용자 현위치 갱신용
 
-    private lateinit var geocoder: Geocoder
-    var userAddress = ""
+    private lateinit var geocoder: Geocoder  // 주소 <-> 좌표 변환용
+    var userAddress = ""  // 사용자 위치정보 -> 주소 변환 (공공데이터 주변시설 요청 키워드 추출용)
 
     private lateinit var mView: MapView
     var googleMap: GoogleMap? = null
-    private lateinit var locationRequest: LocationRequest
-    private lateinit var locationCallback: LocationCallback
+    private lateinit var locationRequest: LocationRequest  // polyline
+    private lateinit var locationCallback: LocationCallback  // polyline
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
-            locationInit()
+            //locationInit()  // 성민추가
         }
-        locationInit()
+        locationInit()  // 성민추가
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -347,6 +348,7 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
         locationRequest.fastestInterval = 5000  // 이보다 더 빈번히 업데이트 하지 않음 (고정된 최소 인터벌)
     }
 
+    //성민추가
     private fun addLocationListener() {
         if (ActivityCompat.checkSelfPermission(
                 activity as Activity,
@@ -414,7 +416,6 @@ class SimTakeAWalkFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Con
 
             val location = locationResult?.lastLocation   // GPS가 꺼져 있을 경우 Location 객체가
             // null이 될 수도 있음
-            //startLatLng = LatLng(latitude, longitude) //보류 순서 확인 필요
 
             location?.run {
                 val latLng = LatLng(latitude, longitude)   // 위도, 경도

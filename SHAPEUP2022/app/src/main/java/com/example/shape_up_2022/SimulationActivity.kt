@@ -55,7 +55,7 @@ class SimulationActivity : AppCompatActivity() {
 
         // 시뮬레이션: 산책
         binding.takeawalk.setOnClickListener {
-            val intent = Intent(this, SimTakeAWalkActivity::class.java)
+            val intent = Intent(this, SimWalkMainActivity::class.java)
             startActivity(intent)
         }
 

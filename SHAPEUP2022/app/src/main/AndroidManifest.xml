@@ -18,6 +18,24 @@
         android:theme="@style/Theme.SHAPEUP2022"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".SimWalkReviewAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimWalkReviewMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimWalkPlaceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimWalkSearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimWalkingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimWalkMainActivity"
+            android:exported="false" />
+        <activity
             android:name=".SimBrushToothActivity"
             android:exported="false" />
         <activity
@@ -109,7 +127,7 @@
             android:exported="false" />
         <activity
             android:name=".SimDefecationCharacteristicsActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".SimInducingBowelMovementsActivity"
             android:exported="false" />
