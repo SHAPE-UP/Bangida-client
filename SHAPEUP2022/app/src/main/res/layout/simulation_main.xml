@@ -205,6 +205,7 @@
                             android:layout_marginTop="10dp"
                             android:text="배변 관리" />
                         <Button
+                            android:id="@+id/sim_health"
                             android:layout_width="match_parent"
                             android:layout_height="70dp"
                             android:textSize="20dp"
