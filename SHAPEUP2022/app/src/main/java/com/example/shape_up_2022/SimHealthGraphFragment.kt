@@ -39,8 +39,8 @@ class SimHealthGraphFragment : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
     }
-
-    data class ChartData(var lableData: String, var lineData: Double)
+    // 예시 데이터 클래스
+    data class ChartData(var labelData: String, var lineData: Double)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,7 +66,7 @@ class SimHealthGraphFragment : Fragment() {
 
     private fun addChartItem(label: String, data: Double){
         item = ChartData("",0.0)
-        item.lableData = label
+        item.labelData = label
         item.lineData = data
         chartData.add(item)
     }
@@ -76,7 +76,7 @@ class SimHealthGraphFragment : Fragment() {
 
         val entries=mutableListOf<Entry>()
         for(item in chartData){
-            entries.add(Entry(item.lableData.replace(("[^\\d.]").toRegex(),"").toFloat(),item.lineData.toFloat()))
+            entries.add(Entry(item.labelData.replace(("[^\\d.]").toRegex(),"").toFloat(),item.lineData.toFloat()))
         }
 
         val linedataSet = LineDataSet(entries, "라인차트 예시")
