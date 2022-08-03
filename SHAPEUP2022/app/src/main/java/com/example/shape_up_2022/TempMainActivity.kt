@@ -68,6 +68,10 @@ class TempMainActivity : AppCompatActivity() {
             startActivity(intent1)
         }
 
+        binding.calendar.setOnClickListener{
+            intent1 = Intent(this, TodoCalendarActivity::class.java)
+            startActivity(intent1)
+        }
 
         
     }

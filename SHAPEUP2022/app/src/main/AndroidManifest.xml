@@ -18,6 +18,9 @@
         android:theme="@style/Theme.SHAPEUP2022"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".TodoCalendarActivity"
+            android:exported="false" />
+        <activity
             android:name=".SimHealthActivity"
             android:exported="false" />
         <activity

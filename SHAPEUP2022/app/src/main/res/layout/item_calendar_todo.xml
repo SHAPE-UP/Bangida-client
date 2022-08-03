@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_icon_dog_orange"/>
+        <TextView
+            android:id="@+id/todo_cal_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="time" />
+        <TextView
+            android:id="@+id/todo_cal_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:textSize="16dp"
+            android:layout_weight="1"
+            android:text="할일 1234" />
+        <!--추후에 image로 수정-->
+        <TextView
+            android:id="@+id/todo_cal_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="user" />
+    </LinearLayout>
+
+</LinearLayout>
