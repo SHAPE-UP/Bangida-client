@@ -1,9 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".SimWalkSearchActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!--검색 창-->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/walk_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--chip layout-->
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/walk_chipgroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/place_hospital"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="동물병원"
+            app:chipBackgroundColor="@color/base_color1" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/place_pharmacy"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="동물약국"
+            app:chipBackgroundColor="@color/sub_color1" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/place_park"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="공원"
+            app:chipBackgroundColor="@color/base_color1" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/place_cafe"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="카페"
+            app:chipBackgroundColor="@color/base_color1" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <!--리사이클러 뷰-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/walk_search_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/petplace_info"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:behavior_hideable="false"
+        android:orientation="horizontal"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:background="@drawable/corner_radius_all"
+        android:backgroundTint="@color/base_color1">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/corner_radius_all"
+            android:src="@drawable/user_basic" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/place_bottom_sheet_place"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:textFontWeight="600"
+                android:layout_marginBottom="10dp"
+                android:text="장소" />
+
+
+            <TextView
+                android:id="@+id/place_bottom_sheet_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:paddingBottom="3dp"
+                android:text="분류" />
+
+            <TextView
+                android:id="@+id/place_bottom_sheet_addr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:paddingBottom="3dp"
+                android:text="주소" />
+
+            <TextView
+                android:id="@+id/place_bottom_sheet_tel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:paddingBottom="3dp"
+                android:text="전화번호" />
+        </LinearLayout>
+        </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

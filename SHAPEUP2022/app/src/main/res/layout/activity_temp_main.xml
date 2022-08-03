@@ -86,6 +86,12 @@
             android:layout_gravity="center"
             android:id="@+id/calendar" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="장소 검색"
+            android:layout_gravity="center"
+            android:id="@+id/petplace_search" />
     </LinearLayout>
 
 </LinearLayout>

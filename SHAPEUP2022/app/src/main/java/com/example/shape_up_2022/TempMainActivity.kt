@@ -73,6 +73,11 @@ class TempMainActivity : AppCompatActivity() {
             startActivity(intent1)
         }
 
+        binding.petplaceSearch.setOnClickListener{
+            intent1 = Intent(this, SimWalkSearchActivity::class.java)
+            startActivity(intent1)
+        }
+
         
     }
 

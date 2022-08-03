@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginBottom="10dp"
+    android:layout_width="match_parent"
+    android:background="@drawable/corner_radius_all_subcolor2"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <!--이미지-->
+        <ImageView
+            android:id="@+id/petplace_image"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:backgroundTint="@color/base_color1"
+            android:background="@drawable/corner_radius_all"
+            android:src="@drawable/user_basic" />
+
+        <!--내용-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/petplace_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/main_color"
+                android:textSize="18dp"
+                android:text="장소"/>
+            <TextView
+                android:id="@+id/petplace_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/sub_color1"
+                android:text="분류"/>
+            <TextView
+                android:id="@+id/petplace_addr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주소"/>
+            <TextView
+                android:id="@+id/petplace_tel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="전화번호"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
