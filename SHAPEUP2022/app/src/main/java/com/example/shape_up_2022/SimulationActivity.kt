@@ -71,6 +71,11 @@ class SimulationActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.simHealth.setOnClickListener {
+            val intent = Intent(this, SimHealthActivity::class.java)
+            startActivity(intent)
+        }
+
         // 탭바 연결
         binding.navHome.setOnClickListener {
             val intent_home = Intent(this, MainActivity::class.java)

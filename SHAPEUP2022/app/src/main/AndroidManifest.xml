@@ -8,6 +8,12 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+    <queries>
+        <intent>
+            <action android:name="com.google.android.youtube.api.service.START" />
+        </intent>
+    </queries>
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -28,6 +34,15 @@
             android:exported="false" />
         <activity
             android:name=".SimStartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimBeutyShopActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimBeutySelfActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimHealthActivity"
             android:exported="false" />
         <activity
             android:name=".SimWalkReviewAddActivity"
