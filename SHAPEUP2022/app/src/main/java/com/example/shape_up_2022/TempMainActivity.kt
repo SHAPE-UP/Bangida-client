@@ -78,6 +78,11 @@ class TempMainActivity : AppCompatActivity() {
             startActivity(intent1)
         }
 
+        binding.petplaceTraining.setOnClickListener {
+            intent1 = Intent(this, SimTrainingActivity::class.java)
+            startActivity(intent1)
+        }
+
         
     }
 
