@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Hospitalquiz2Activity">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        android:src="@drawable/puppy"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="요로결석의 전조증상이 아닌 것은 무엇일까요?" />
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_base2"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/q2_1"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:layout_height="wrap_content"
+            android:text="1. 혈뇨와 같이 요도에서 피가 나오는 증상이 나타난다."/>
+        <TextView
+            android:id="@+id/q2_2_w"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:layout_height="wrap_content"
+            android:text="2. 다리를 절며 마비증상을 보인다."/>
+        <TextView
+            android:id="@+id/q2_3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:layout_height="wrap_content"
+            android:text="3. 소변을 보지 않으며, 배가 부풀어 오른다."/>
+        <TextView
+            android:id="@+id/q2_4"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:textSize="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_height="wrap_content"
+            android:text="4. 식사량과 음수량의 급격한 저하"/>
+        <TextView
+            android:id="@+id/q2_5"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:layout_height="wrap_content"
+            android:text="5. 복부통증으로 인해 움츠려있음"/>
+    </LinearLayout>
+
+</LinearLayout>

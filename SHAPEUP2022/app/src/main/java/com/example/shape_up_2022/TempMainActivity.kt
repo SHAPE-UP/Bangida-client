@@ -68,6 +68,11 @@ class TempMainActivity : AppCompatActivity() {
             startActivity(intent1)
         }
 
+        binding.hospitalbtn.setOnClickListener{
+            intent1 = Intent(this, HospitalinfoActivity::class.java)
+            startActivity(intent1)
+        }
+
 
         
     }

@@ -17,12 +17,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SHAPEUP2022"
         android:usesCleartextTraffic="true">
-        <uses-library android:name="org.apache.http.legacy"
+        <activity
+            android:name=".Hospitalquiz3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Hospitalquiz2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".HospitalquizActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HospitalinfoActivity"
+            android:exported="false" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
             android:required="false" />
-        <meta-data android:name="com.google.android.maps.v2.API_KEY"
+
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyBWaM8ldwnckbWzM5rOGNisvmvTCjR8dQM" />
-        <meta-data android:name="com.google.android.gms.version"
+        <meta-data
+            android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
         <activity
             android:name=".DogFeedsimulationActivity"
             android:exported="false" />
@@ -58,7 +76,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".AchieveActivity"
             android:exported="false" />
@@ -85,33 +103,28 @@
             android:exported="false" />
         <activity
             android:name=".SimManagePuppyActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".SimBallActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
-  
             android:name=".YoutubeActivity"
             android:exported="false" />
         <activity
             android:name=".SimDefecationCharacteristicsActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".SimInducingBowelMovementsActivity"
             android:exported="false" />
-
-            android:name=".SimCleaningbedActivity"
-            android:exported="false"/>
         <activity
             android:name=".SimToyPuppyActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".SimTugSimActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".SimWashingToyActivity"
-            android:exported="false"/>
-
+            android:exported="false" />
     </application>
 
 </manifest>
