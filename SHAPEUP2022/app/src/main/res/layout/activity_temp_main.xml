@@ -73,11 +73,11 @@
             android:text="유튜브" />
 
         <Button
+            android:id="@+id/btn_simulation_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="먹이주기"
-            android:layout_gravity="center"
-            android:id="@+id/feedsim" />
+            android:text="시뮬레이션 시작"
+            />
 
     </LinearLayout>
 
