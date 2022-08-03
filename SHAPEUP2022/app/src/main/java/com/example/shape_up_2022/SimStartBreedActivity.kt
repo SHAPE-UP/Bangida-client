@@ -1,6 +1,7 @@
 package com.example.shape_up_2022
 
 import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +18,13 @@ class SimStartBreedActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySimStartBreedBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.breedSkip.setOnClickListener {
+            val intent = Intent(this, SimStartNamingActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+
         fragment1 = BreedFragment1()
         fragment2 = BreedFragment2()
 
