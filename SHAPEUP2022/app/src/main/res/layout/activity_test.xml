@@ -319,6 +319,13 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/main_color"
                 android:text="가장 중요한 것은 동물을 진심으로 사랑하는 마음입니다." />
+
+
+            <Button
+                android:id="@+id/btn_test_skip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="넘어가기" />
         </LinearLayout>
     </ScrollView>
 

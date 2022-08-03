@@ -21,12 +21,17 @@ class SimStartActivity : AppCompatActivity() {
         val eventhandler = object : DialogInterface.OnClickListener {
             override fun onClick(p0: DialogInterface?, p1: Int) {
                 if(p1==DialogInterface.BUTTON_POSITIVE) {
-                    Log.d("mobileApp", "positive button")
+                    val intent = Intent(this@SimStartActivity, TestActivity::class.java)
+                    startActivity(intent)
+                    finish()
                 }
                 else if (p1==DialogInterface.BUTTON_NEGATIVE) {
                     val intent = Intent(this@SimStartActivity, MainActivity::class.java)
                     startActivity(intent)
                     finish()
+                }
+                else if (p1==DialogInterface.BUTTON_NEUTRAL) {
+
                 }
             }
         }
@@ -35,6 +40,7 @@ class SimStartActivity : AppCompatActivity() {
             .setMessage("반려견 케어 성향 점검을 먼저 진행하세요.")
             .setPositiveButton("테스트", eventhandler)
             .setNegativeButton("취소", eventhandler)
+            .setNeutralButton("넘어가기", eventhandler)
             .setCancelable(false)
         // if 성향점검테스트를 하지 않은 유저라면 모달창 표시
         if (true) {
