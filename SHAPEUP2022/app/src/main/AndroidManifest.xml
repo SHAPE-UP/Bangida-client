@@ -24,6 +24,18 @@
         android:theme="@style/Theme.SHAPEUP2022"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".SimStartNamingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimStartBreedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimStartActivity"
+            android:exported="false" />
+        <activity
             android:name=".SimBeutyShopActivity"
             android:exported="false" />
         <activity
