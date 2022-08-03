@@ -31,6 +31,11 @@ class SimWalkingActivity : AppCompatActivity() {
             val intent = Intent(this@SimWalkingActivity, SimWalkReviewAddActivity::class.java)
             startActivity(intent)
         }
+
+        binding.btnWalkingFinish.setOnClickListener {
+            val intent = Intent(this, SimWalkReviewAddActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun replaceFragment(fragment: Fragment) {
@@ -53,4 +58,6 @@ class SimWalkingActivity : AppCompatActivity() {
         Toast.makeText(this, "산책을 취소하려면 한 번 더 누르세요", Toast.LENGTH_SHORT).show()
         backPressedTime = System.currentTimeMillis()
     }
+
+
 }
