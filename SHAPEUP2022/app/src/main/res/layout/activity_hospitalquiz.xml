@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".HospitalquizActivity">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        android:src="@drawable/puppy"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="허리디스크의 전조증상이 아닌 것은 무엇일까요?" />
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_base2"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/q1_1"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:layout_height="wrap_content"
+            android:text="1. 지속적으로 고개를 숙이고 움직인다."/>
+        <TextView
+            android:id="@+id/q1_2"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:layout_height="wrap_content"
+            android:text="2. 움직임이 줄어들고 등이 굽어있다."/>
+        <TextView
+            android:id="@+id/q1_3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:layout_height="wrap_content"
+            android:text="3. 다리를 절며 마비증상을 보인다."/>
+        <TextView
+            android:id="@+id/q1_4_w"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:textSize="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_height="wrap_content"
+            android:text="4. 복부통증으로 인해 움츠려있음"/>
+        <TextView
+            android:id="@+id/q1_5"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:layout_height="wrap_content"
+            android:text="5. 안아주거나 만지는 등 터치에 있어 극도로 싫어한다."/>
+    </LinearLayout>
+
+</LinearLayout>

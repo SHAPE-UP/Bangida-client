@@ -68,6 +68,10 @@ class TempMainActivity : AppCompatActivity() {
             startActivity(intent1)
         }
 
+        binding.hospitalbtn.setOnClickListener{
+            intent1 = Intent(this, HospitalinfoActivity::class.java)
+            startActivity(intent1)
+        }
         binding.calendar.setOnClickListener{
             intent1 = Intent(this, TodoCalendarActivity::class.java)
             startActivity(intent1)
@@ -83,7 +87,6 @@ class TempMainActivity : AppCompatActivity() {
             startActivity(intent1)
         }
 
-        
     }
 
     private fun getHashKey() {

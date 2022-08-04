@@ -3,7 +3,6 @@ package com.example.shape_up_2022
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.shape_up_2022.databinding.ActivityMainBinding
 import com.example.shape_up_2022.databinding.ActivitySimBeautyBinding
 
 class SimBeautyActivity : AppCompatActivity() {

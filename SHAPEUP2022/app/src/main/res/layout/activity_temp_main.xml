@@ -82,6 +82,13 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="병원"
+            android:layout_gravity="center"
+            android:id="@+id/hospitalbtn" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="캘린더"
             android:layout_gravity="center"
             android:id="@+id/calendar" />

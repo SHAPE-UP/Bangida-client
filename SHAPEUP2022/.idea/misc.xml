@@ -141,6 +141,7 @@
         <entry key="..\:/2022/SHAPE-UP/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/simulation_main.xml" value="0.1875" />
         <entry key="..\:/2022/SHAPE-UP/RYJ/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/fragment_join_create.xml" value="0.22735507246376813" />
         <entry key="..\:/2022/SHAPE-UP/RYJ/Pet-Starter-App/SHAPEUP2022/app/src/main/res/xml/network_security_config.xml" value="0.1" />
+        <entry key="..\:/2022/SHAPE-UP/fix/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_temp_main.xml" value="0.184375" />
         <entry key="..\:/2022_workspace/RYJ_Local/Pet-Startup-App/SHAPEUP2022/app/src/main/res/layout/activity_main.xml" value="0.1712962962962963" />
         <entry key="..\:/2022_workspace/RYJ_Local/Pet-Startup-App/SHAPEUP2022/app/src/main/res/layout/budget_add.xml" value="0.3614583333333333" />
         <entry key="..\:/2022_workspace/RYJ_Local/Pet-Startup-App/SHAPEUP2022/app/src/main/res/layout/budget_item.xml" value="0.3614583333333333" />
@@ -154,6 +155,26 @@
         <entry key="..\:/cmder/Pet-Startup-App/SHAPEUP2022/app/src/main/res/layout/todo_add.xml" value="0.17299898682877407" />
         <entry key="..\:/cmder/Pet-Startup-App/SHAPEUP2022/app/src/main/res/layout/todoitem.xml" value="0.17299898682877407" />
         <entry key="..\:/cmder/Pet-Startup-App/SHAPEUP2022/app/src/main/res/xml/settings.xml" value="0.14629629629629629" />
+        <entry key="..\:/sungmin_new/Pet-Starter-App/SHAPEUP2022/app/src/main/res/drawable/ic_icon_dog_orange.xml" value="0.1865" />
+        <entry key="..\:/sungmin_new/Pet-Starter-App/SHAPEUP2022/app/src/main/res/drawable/rectangle_base.xml" value="0.184" />
+        <entry key="..\:/sungmin_new/Pet-Starter-App/SHAPEUP2022/app/src/main/res/drawable/rectangle_base2.xml" value="0.184" />
+        <entry key="..\:/sungmin_new/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_dog_feedsimulation.xml" value="0.359375" />
+        <entry key="..\:/sungmin_new/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_feedsimulation.xml" value="0.359375" />
+        <entry key="..\:/sungmin_new/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_hospitalinfo.xml" value="0.22" />
+        <entry key="..\:/sungmin_new/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_hospitalquiz.xml" value="0.22" />
+        <entry key="..\:/sungmin_new/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_hospitalquiz2.xml" value="0.1" />
+        <entry key="..\:/sungmin_new/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_hospitalquiz3.xml" value="0.359375" />
+        <entry key="..\:/sungmin_new/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_inducingbowel.xml" value="0.340625" />
+        <entry key="..\:/sungmin_new/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_main.xml" value="0.340625" />
+        <entry key="..\:/sungmin_new/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_manage_puppy.xml" value="0.340625" />
+        <entry key="..\:/sungmin_new/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_my_page.xml" value="0.340625" />
+        <entry key="..\:/sungmin_new/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_preference.xml" value="0.340625" />
+        <entry key="..\:/sungmin_new/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_snacksimulation.xml" value="0.340625" />
+        <entry key="..\:/sungmin_new/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_temp_main.xml" value="0.359375" />
+        <entry key="..\:/sungmin_new/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/fragment_sim_take_a_walk.xml" value="0.340625" />
+        <entry key="..\:/sungmin_new/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/fragment_washing1.xml" value="0.340625" />
+        <entry key="..\:/sungmin_new/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/main_page.xml" value="0.340625" />
+        <entry key="..\:/sungmin_new/Pet-Starter-App/SHAPEUP2022/app/src/main/res/menu/achieve_tab.xml" value="0.340625" />
         <entry key="..\:/sungmin_shapeup/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/sungmin_shapeup/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_temp_main.xml" value="0.359375" />
         <entry key="..\:/sungmin_shapeup/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_youtube.xml" value="0.17299898682877407" />

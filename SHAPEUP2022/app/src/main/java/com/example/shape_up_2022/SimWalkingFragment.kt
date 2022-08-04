@@ -329,5 +329,4 @@ class SimWalkingFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Conne
     }
 
 
-
 }
