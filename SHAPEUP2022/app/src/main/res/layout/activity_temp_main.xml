@@ -79,6 +79,26 @@
             android:text="시뮬레이션 시작"
             />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="캘린더"
+            android:layout_gravity="center"
+            android:id="@+id/calendar" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="장소 검색"
+            android:layout_gravity="center"
+            android:id="@+id/petplace_search" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="음성 훈련"
+            android:layout_gravity="center"
+            android:id="@+id/petplace_training" />
     </LinearLayout>
 
 </LinearLayout>

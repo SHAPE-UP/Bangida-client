@@ -68,6 +68,21 @@ class TempMainActivity : AppCompatActivity() {
             startActivity(intent1)
         }
 
+        binding.calendar.setOnClickListener{
+            intent1 = Intent(this, TodoCalendarActivity::class.java)
+            startActivity(intent1)
+        }
+
+        binding.petplaceSearch.setOnClickListener{
+            intent1 = Intent(this, SimWalkSearchActivity::class.java)
+            startActivity(intent1)
+        }
+
+        binding.petplaceTraining.setOnClickListener {
+            intent1 = Intent(this, SimTrainingActivity::class.java)
+            startActivity(intent1)
+        }
+
         
     }
 

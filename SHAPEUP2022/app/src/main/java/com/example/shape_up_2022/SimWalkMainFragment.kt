@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
@@ -23,10 +24,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.CameraPosition
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.google.android.gms.tasks.OnSuccessListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -63,6 +61,8 @@ class SimWalkMainFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Conn
 
     private lateinit var mView: MapView
     var googleMap: GoogleMap? = null
+
+    var tempmarkerOptions: Marker? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -152,6 +152,68 @@ class SimWalkMainFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Conn
 
     override fun onMapReady(p0: GoogleMap) {
         googleMap = p0
+
+        /* 마커 클릭 이벤트 */
+        var index: Int = 0
+        googleMap!!.setOnMarkerClickListener(object :GoogleMap.OnMarkerClickListener{
+            override fun onMarkerClick(p0: Marker): Boolean {
+
+                if (p0.title=="내 위치") {
+                    Log.d("mobileApp", "현위치마커클릭")
+                    tempmarkerOptions?.remove()
+                    binding.fabAdd.visibility = View.VISIBLE
+                    binding.mainPetplaceInfo.visibility = View.GONE
+                    //binding.fabStar.visibility = View.GONE
+                    return false
+                }
+
+                if (p0==tempmarkerOptions) {
+                    Log.d("mobileApp", "temp마커클릭")
+                    binding.fabAdd.visibility = View.VISIBLE
+                    binding.mainPetplaceInfo.visibility = View.GONE
+                    //binding.fabStar.visibility = View.GONE
+                    return false
+                }
+
+                Log.d("mobileApp", "일반마커클릭")
+                // 마커가 클릭되면 하단의 스크롤뷰에 상세정보를 띄운다
+                binding.fabAdd.visibility = View.GONE
+                binding.mainPetplaceInfo.visibility = View.VISIBLE
+                //binding.fabStar.visibility = View.VISIBLE
+/*                findViewById<TextView>(R.id.info_placename).setText(p0.title)  // 마커의 타이틀과 같은 장소명을 가진 데이터를 찾아온다
+                for (i in 0 until datas.size) {
+                    if (datas[i].placename==p0.title){
+                        index = i
+                        break
+                    }
+                }*/
+//                findViewById<TextView>(R.id.info_placetype).setText(datas[index].placetype)
+//                findViewById<TextView>(R.id.info_addr).setText(datas[index].addr ?: datas[index].road_addr)
+//                findViewById<TextView>(R.id.info_content).setText("")
+
+                return false
+            }
+        })
+
+        var markerOptions : MarkerOptions
+        /* 맵 클릭 이벤트 */
+        googleMap!!.setOnMapClickListener(object: GoogleMap.OnMapClickListener{
+            override fun onMapClick(latLng: LatLng) {
+                Log.d("mobileApp", "클릭!")
+                binding.fabAdd.visibility = View.VISIBLE
+                binding.mainPetplaceInfo.visibility = View.GONE
+                //binding.fabStar.visibility = View.GONE
+
+                // 클릭한 위치를 마커로 표시
+                tempmarkerOptions?.remove()  // 직전에 생성된 마커를 지움
+                markerOptions = MarkerOptions()
+                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+                markerOptions.position(latLng!!)
+
+                tempmarkerOptions = googleMap?.addMarker(markerOptions)  // 일시적으로 생성된 마커를 tempmarterOptions에 보관
+                Log.d("mobileApp", "$latLng")
+            }
+        })
     }
 
     override fun onConnected(p0: Bundle?) {

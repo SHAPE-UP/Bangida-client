@@ -24,6 +24,10 @@
         android:theme="@style/Theme.SHAPEUP2022"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".SimTrainingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TodoCalendarActivity"
             android:name=".SimStartNamingActivity"
             android:exported="false" />
         <activity
@@ -40,6 +44,7 @@
             android:exported="false" />
         <activity
             android:name=".SimBeutySelfActivity"
+
             android:exported="false" />
         <activity
             android:name=".SimHealthActivity"
