@@ -58,10 +58,10 @@
 
     <ImageView
         android:id="@+id/wash_toy_4"
-        android:layout_width="70dp"
-        android:layout_height="100dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="16dp"
-        android:src="@drawable/maltese"
+        android:src="@drawable/toy_ball"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.765"
@@ -70,9 +70,10 @@
     <ImageView
         android:id="@+id/wash_toy_3"
         android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_marginBottom="16dp"
-        android:src="@drawable/maltese"
+        android:scaleType="centerCrop"
+        android:src="@drawable/toy_bone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.266"
@@ -80,13 +81,13 @@
 
     <ImageView
         android:id="@+id/wash_toy_2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="76dp"
-        android:src="@drawable/maltese"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="104dp"
+        android:src="@drawable/toy_octopus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -94,7 +95,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginBottom="100dp"
-        android:src="@drawable/maltese"
+        android:src="@drawable/toy_banana"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.051"

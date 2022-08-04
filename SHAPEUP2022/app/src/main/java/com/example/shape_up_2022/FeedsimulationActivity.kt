@@ -1,15 +1,12 @@
 package com.example.shape_up_2022
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
@@ -65,7 +62,7 @@ private class GameView(context: Context): View(context){
         val options = BitmapFactory.Options()
         options.inSampleSize = 2
 
-        val paint=BitmapFactory.decodeResource(resources, R.drawable.foodinsim, options)
+        val paint=BitmapFactory.decodeResource(resources, R.drawable.dogfood, options)
         val paint2= Paint()
         canvas?.drawBitmap(paint, cx.toFloat(), cy.toFloat(), null)
         paint2.setTextSize(100f);

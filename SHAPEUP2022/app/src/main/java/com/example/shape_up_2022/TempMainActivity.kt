@@ -63,8 +63,8 @@ class TempMainActivity : AppCompatActivity() {
             startActivity(intent1)
         }
         
-        binding.feedsim.setOnClickListener{
-            intent1 = Intent(this, DogFeedsimulationActivity::class.java)
+        binding.btnSimulationStart.setOnClickListener {
+            intent1 = Intent(this, SimStartActivity::class.java)
             startActivity(intent1)
         }
 
@@ -72,9 +72,21 @@ class TempMainActivity : AppCompatActivity() {
             intent1 = Intent(this, HospitalinfoActivity::class.java)
             startActivity(intent1)
         }
+        binding.calendar.setOnClickListener{
+            intent1 = Intent(this, TodoCalendarActivity::class.java)
+            startActivity(intent1)
+        }
 
+        binding.petplaceSearch.setOnClickListener{
+            intent1 = Intent(this, SimWalkSearchActivity::class.java)
+            startActivity(intent1)
+        }
 
-        
+        binding.petplaceTraining.setOnClickListener {
+            intent1 = Intent(this, SimTrainingActivity::class.java)
+            startActivity(intent1)
+        }
+
     }
 
     private fun getHashKey() {

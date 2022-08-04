@@ -8,6 +8,12 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+    <queries>
+        <intent>
+            <action android:name="com.google.android.youtube.api.service.START" />
+        </intent>
+    </queries>
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -28,6 +34,64 @@
             android:exported="false" />
         <activity
             android:name=".HospitalinfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimTrainingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TodoCalendarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimStartNamingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimStartBreedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimStartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimBeutyShopActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimBeutySelfActivity"
+
+            android:exported="false" />
+        <activity
+            android:name=".SimHealthActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimWalkReviewAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimWalkReviewMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimWalkPlaceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimWalkSearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimWalkingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimWalkMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimBrushToothActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimBrushActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimBathActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimHygieneActivity"
             android:exported="false" />
 
         <uses-library
@@ -108,13 +172,13 @@
             android:name=".SimBallActivity"
             android:exported="false" />
         <activity
-            android:name=".YoutubeActivity"
-            android:exported="false" />
-        <activity
             android:name=".SimDefecationCharacteristicsActivity"
             android:exported="false" />
         <activity
             android:name=".SimInducingBowelMovementsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimCleaningbedActivity"
             android:exported="false" />
         <activity
             android:name=".SimToyPuppyActivity"

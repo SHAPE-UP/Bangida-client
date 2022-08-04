@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SimStartActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="40dp"
+        android:textSize="40sp"
+        android:text="준비가\n되었나요?" />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="  반려견 입양 직전, 필요한 요소들을 충분히 마련했는지 점검해봅시다." />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/base_color1"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="반려견 생필품 구비" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="  반려견의 잠자리, 배변패드 또는 배변 판, 치약, 빗, 발톱깎기를 포함한 생필품을 준비해두어야 합니다. 어린 강아지의 경우 ..... 등이 추가로 필요합니다." />
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="반려견 입양 절차 이해" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="  1. 상담  \n  2. 보호소 등에서 강아지 데려오기\n  3. (입양 후 30일 이내에) 반려동물 등록\n  4. 입양 첫날 집중해서 보살펴야 하는 부분 숙지" />
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="반려견은 가족 모두에게 받아들여져야 할 새 식구" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="  반려견을 함께 돌볼 가족들과 충분한 상의를 거친 후 결정합시다." />
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="반려견의 평생 동반자가 된다는 마음가짐" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="  생명을 소중히, 반려견의 일생을 책임질 각오로 임해야 합니다." />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_simulation_start_start"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="반려견 입양하기" />
+</LinearLayout>

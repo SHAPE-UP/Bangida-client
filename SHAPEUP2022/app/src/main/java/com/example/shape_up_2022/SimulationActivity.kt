@@ -55,13 +55,24 @@ class SimulationActivity : AppCompatActivity() {
 
         // 시뮬레이션: 산책
         binding.takeawalk.setOnClickListener {
-            val intent = Intent(this, SimTakeAWalkActivity::class.java)
+            val intent = Intent(this, SimWalkMainActivity::class.java)
             startActivity(intent)
         }
 
         // 시뮬레이션: 배변 관리
         binding.management.setOnClickListener {
             val intent = Intent(this, SimDefecationCharacteristicsActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 시뮬레이션: 위생 관리/목욕
+        binding.simHygiene.setOnClickListener {
+            val intent = Intent(this, SimHygieneActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.simHealth.setOnClickListener {
+            val intent = Intent(this, SimHealthActivity::class.java)
             startActivity(intent)
         }
 

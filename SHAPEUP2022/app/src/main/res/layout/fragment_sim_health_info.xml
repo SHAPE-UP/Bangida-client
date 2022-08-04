@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SimHealthInfoFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+        <!--Date-->
+        <LinearLayout
+            android:id="@+id/health_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_baseline_keyboard_arrow_left_24"
+                app:tint="@color/sub_color1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:textColor="@color/sub_color2"
+                android:textSize="35dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+                app:tint="@color/sub_color1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/health_info_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <!--산책 횟수/ 총 거리-->
+            <LinearLayout
+                android:id="@+id/walk_content_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="산책 횟수 / 총 거리:"
+                    android:textFontWeight="600"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/walk_content_1_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:text="0회" />
+            </LinearLayout>
+
+            <!--배변 횟수-->
+            <LinearLayout
+                android:id="@+id/walk_content_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:textSize="20dp"
+                    android:textFontWeight="600"
+                    android:text="배변 횟수:" />
+                <TextView
+                    android:id="@+id/walk_content_2_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:text="0회" />
+            </LinearLayout>
+
+            <!--놀이 횟수-->
+            <LinearLayout
+                android:id="@+id/walk_content_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:textSize="20dp"
+                    android:textFontWeight="600"
+                    android:text="놀이 횟수:" />
+                <TextView
+                    android:id="@+id/walk_content_3_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:text="0회" />
+            </LinearLayout>
+
+            <!--잇몸 상태-->
+            <LinearLayout
+                android:id="@+id/walk_content_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:text="잇몸 상태:"
+                    android:textFontWeight="600"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/walk_content_4_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:text="좋음" />
+            </LinearLayout>
+
+            <!--최근 배변 상태-->
+            <LinearLayout
+                android:id="@+id/walk_content_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:textSize="20dp"
+                    android:textFontWeight="600"
+                    android:text="최근 배변 상태:" />
+                <TextView
+                    android:id="@+id/walk_content_5_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:text="2" />
+            </LinearLayout>
+
+            <!--물 섭취 횟수-->
+            <LinearLayout
+                android:id="@+id/walk_content_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:textSize="20dp"
+                    android:textFontWeight="600"
+                    android:text="물 섭취 횟수:" />
+                <TextView
+                    android:id="@+id/walk_content_6_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:text="2" />
+            </LinearLayout>
+
+            <!--사료 섭취 횟수-->
+            <LinearLayout
+                android:id="@+id/walk_content_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:textSize="20dp"
+                    android:textFontWeight="600"
+                    android:text="사료 섭취 횟수:" />
+                <TextView
+                    android:id="@+id/walk_content_7_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:text="2" />
+            </LinearLayout>
+
+            <!--털 상태-->
+            <LinearLayout
+                android:id="@+id/walk_content_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:text="털 상태:"
+                    android:textFontWeight="600"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/walk_content_8_8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:text="좋음" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

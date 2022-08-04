@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SimWalkMainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="임시 툴바" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <!--지도-->
+        <FrameLayout
+            android:id="@+id/walk_main_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="9" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/map_chipgroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintLeft_toLeftOf="@id/walk_main_fragment"
+            app:layout_constraintTop_toTopOf="@id/walk_main_fragment">
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="동물병원"
+                app:chipBackgroundColor="@color/base_color1" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="동물약국"
+                app:chipBackgroundColor="@color/sub_color1" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="공원"
+                app:chipBackgroundColor="@color/base_color1" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="카페"
+                app:chipBackgroundColor="@color/base_color1" />
+        </com.google.android.material.chip.ChipGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="40dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_review_main"
+                android:layout_width="160dp"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/base_color1"
+                android:fontFamily="@font/custom_font_family"
+                android:text="산책일기 목록"
+                android:textColor="@color/point_color"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_start_walking"
+                android:layout_width="160dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="20dp"
+                android:backgroundTint="@color/point_color"
+                android:fontFamily="@font/custom_font_family"
+                android:text="산책하기"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
