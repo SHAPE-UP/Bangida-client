@@ -63,8 +63,8 @@ class TempMainActivity : AppCompatActivity() {
             startActivity(intent1)
         }
         
-        binding.feedsim.setOnClickListener{
-            intent1 = Intent(this, DogFeedsimulationActivity::class.java)
+        binding.btnSimulationStart.setOnClickListener {
+            intent1 = Intent(this, SimStartActivity::class.java)
             startActivity(intent1)
         }
 

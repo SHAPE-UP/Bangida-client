@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SimBeutyShopActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="9dp"
+        android:text="애견 스타일" />
+
+    <ImageView
+        android:layout_width="112dp"
+        android:layout_height="237dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/full" />
+
+    <ImageView
+        android:layout_width="122dp"
+        android:layout_height="183dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="142dp"
+        android:src="@drawable/fullcote" />
+
+    <ImageView
+        android:layout_width="102dp"
+        android:layout_height="142dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="306dp"
+        android:layout_marginTop="592dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="-3dp"
+        android:src="@drawable/sumer" />
+
+    <ImageView
+        android:layout_width="127dp"
+        android:layout_height="139dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="253dp"
+        android:layout_marginEnd="-1dp"
+        android:src="@drawable/bear" />
+
+</RelativeLayout>
+
