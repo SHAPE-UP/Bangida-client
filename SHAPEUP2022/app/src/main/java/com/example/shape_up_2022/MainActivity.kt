@@ -31,25 +31,21 @@ class MainActivity : AppCompatActivity() {
             overridePendingTransition(0, 0)
             finish()
         }
-
         binding.navTodo.setOnClickListener {
             val intent_todo = Intent(this, ToDoActivity::class.java)
             startActivity(intent_todo)
             overridePendingTransition(0, 0)
             finish()
         }
-
         binding.navSimulation.setOnClickListener {
             val intent_simul = Intent(this, SimulationActivity::class.java)
             startActivity(intent_simul)
             overridePendingTransition(0, 0)
             finish()
         }
-
         binding.navMap.setOnClickListener {
 
         }
-
         binding.navMypage.setOnClickListener {
             val intent_mypage = Intent(this, MyPageActivity::class.java)
             startActivity(intent_mypage)
@@ -57,7 +53,12 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-        //
+        // 하단 메뉴
+        binding.menuBtn3.setOnClickListener {
+            val intent = Intent(this, TestActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
         binding.menuBtn4.setOnClickListener {
             val intent_budget = Intent(this, BudgetActivity::class.java)
             startActivity(intent_budget)

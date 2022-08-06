@@ -2,11 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.shape_up_2022">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <queries>
+        <intent>
+            <action android:name="com.google.android.youtube.api.service.START" />
+        </intent>
+    </queries>
 
     <application
         android:name=".MyApplication"
@@ -18,10 +25,41 @@
         android:theme="@style/Theme.SHAPEUP2022"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Hospitalquiz3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Hospitalquiz2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".HospitalquizActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HospitalinfoActivity"
+            android:exported="false" />
+        <activity
             android:name=".SimTrainingActivity"
             android:exported="false" />
         <activity
             android:name=".TodoCalendarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimStartNamingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimStartBreedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimStartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimBeutyShopActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SimBeutySelfActivity"
+
             android:exported="false" />
         <activity
             android:name=".SimHealthActivity"
@@ -85,9 +123,6 @@
             android:exported="false" />
         <activity
             android:name=".SimulationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SimTakeAWalkActivity"
             android:exported="false" />
         <activity
             android:name=".StartActivity"
