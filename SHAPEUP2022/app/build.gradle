@@ -67,6 +67,8 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.13.1'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.4.2'
 
+    // 깃허브 chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
     // 깃허브 chart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'

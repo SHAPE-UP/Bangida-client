@@ -72,6 +72,7 @@ class TempMainActivity : AppCompatActivity() {
             intent1 = Intent(this, HospitalinfoActivity::class.java)
             startActivity(intent1)
         }
+
         binding.calendar.setOnClickListener{
             intent1 = Intent(this, TodoCalendarActivity::class.java)
             startActivity(intent1)
