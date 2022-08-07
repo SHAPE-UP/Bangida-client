@@ -318,7 +318,11 @@ class SimWalkMainFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Conn
 
             // 마커 그리기 (초기 세팅, 전체 장소 마커를 그림)
             Log.d("mobileApp", "코루틴 실행! addMarker")
-            addMarker(datas, 30.toFloat()) // 수정 필요(처음부터 카테고리에 따른 필터링 필요)
+            // 마커 추가: 코드 간결화 필요
+            addMarker(hospitalDatas, 50.toFloat())
+            addMarker(pharmacyDatas, 80.toFloat())
+            addMarker(parkDatas, 30.toFloat())
+
         }
     }
 
