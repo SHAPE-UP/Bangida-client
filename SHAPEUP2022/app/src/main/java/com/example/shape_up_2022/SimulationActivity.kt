@@ -60,7 +60,7 @@ class SimulationActivity : AppCompatActivity() {
         }
 
         // 시뮬레이션: 배변 관리
-        binding.management.setOnClickListener {
+        binding.simPoop.setOnClickListener {
             val intent = Intent(this, SimDefecationCharacteristicsActivity::class.java)
             startActivity(intent)
         }
@@ -71,8 +71,27 @@ class SimulationActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // 시뮬레이션: 건강 관리
         binding.simHealth.setOnClickListener {
             val intent = Intent(this, SimHealthActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 시뮬레이션: 음성 훈련
+        binding.simTraining.setOnClickListener {
+            val intent = Intent(this, SimTrainingActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 시뮬레이션: 병원
+        binding.simHospital.setOnClickListener {
+            val intent = Intent(this, HospitalinfoActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 시뮬레이션: 미용
+        binding.simBeauty.setOnClickListener {
+            val intent = Intent(this, SimBeautyActivity::class.java)
             startActivity(intent)
         }
 

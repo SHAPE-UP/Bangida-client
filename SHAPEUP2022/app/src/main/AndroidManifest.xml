@@ -187,6 +187,9 @@
         <activity
             android:name=".SimWashingToyActivity"
             android:exported="false" />
+        <activity
+            android:name=".SimBeautyActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
