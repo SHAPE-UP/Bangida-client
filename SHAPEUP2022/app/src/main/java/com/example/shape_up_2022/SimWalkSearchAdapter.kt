@@ -9,7 +9,7 @@ import com.example.shape_up_2022.databinding.ItemSearchWalkplaceBinding
 
 
 class ViewHolderSearch(val binding: ItemSearchWalkplaceBinding): RecyclerView.ViewHolder(binding.root)
-class SimWalkSearchAdapter(val context: Context, val datas:MutableList<SimWalkSearchActivity.petPlace>?):
+class SimWalkSearchAdapter(val context: Context, val datas:MutableList<myItem>?):
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolderSearch(ItemSearchWalkplaceBinding.inflate(LayoutInflater.from(parent.context), parent,false ))
@@ -20,9 +20,9 @@ class SimWalkSearchAdapter(val context: Context, val datas:MutableList<SimWalkSe
         val model = datas!![position]
 
         binding.petplaceTitle.text = model.title
-        binding.petplaceType.text = model.type
-        binding.petplaceAddr.text = model.addr
-        if(model.tel !== null) binding.petplaceTel.text = model.tel
+        binding.petplaceType.text = model.subjectCategory
+        binding.petplaceAddr.text = model.venue
+        if(model.reference !== null) binding.petplaceTel.text = model.reference
         // 이미지도 넣어줘야함
 
         // (1) 리스트 내 항목 클릭 시 onClick() 호출

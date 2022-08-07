@@ -68,6 +68,15 @@
             app:chipBackgroundColor="@color/base_color1" />
     </com.google.android.material.chip.ChipGroup>
 
+    <TextView
+        android:id="@+id/no_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        android:text="검색한 결과가 없습니다." />
+
     <!--리사이클러 뷰-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/walk_search_recyclerView"
