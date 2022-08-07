@@ -104,8 +104,11 @@ class MyPageActivity : AppCompatActivity() {
             finish()
         }
 
-        binding.navMap.setOnClickListener { // 지도
-
+        binding.navAchievement.setOnClickListener {
+            val intent_achieve = Intent(this, AchieveActivity::class.java)
+            startActivity(intent_achieve)
+            overridePendingTransition(0, 0)
+            finish()
         }
 
         binding.navMypage.setOnClickListener {

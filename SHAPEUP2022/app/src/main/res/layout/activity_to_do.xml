@@ -140,12 +140,12 @@
             android:src="@drawable/ic_icon_simulation"/>
 
         <ImageButton
-            android:id="@+id/nav_map"
+            android:id="@+id/nav_achievement"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="60dp"
             android:backgroundTint="#ffffffff"
-            android:src="@drawable/ic_icon_map"/>
+            android:src="@drawable/ic_icon_flags"/>
 
         <ImageButton
             android:id="@+id/nav_mypage"
