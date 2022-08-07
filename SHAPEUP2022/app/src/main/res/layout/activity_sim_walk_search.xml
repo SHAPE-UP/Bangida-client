@@ -6,17 +6,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".SimWalkSearchActivity">
 
-    <!--검색 창-->
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/walk_search"
+    <!--툴바 + 검색 창-->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary" >
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/walk_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </androidx.appcompat.widget.Toolbar>
 
     <!--chip layout-->
     <com.google.android.material.chip.ChipGroup

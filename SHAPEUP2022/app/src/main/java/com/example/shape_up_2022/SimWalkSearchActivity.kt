@@ -6,6 +6,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
@@ -26,9 +28,11 @@ class SimWalkSearchActivity : AppCompatActivity() {
         //검색 메뉴에 대한 코드
         var searchViewTextListener: SearchView.OnQueryTextListener =
             object : SearchView.OnQueryTextListener {
-                //검색버튼 입력시 호출
+                // 검색버튼 입력시 호출
                 override fun onQueryTextSubmit(s: String): Boolean {
-                    // 해당하는 데이터 호출
+                    // 검색어에 해당하는 데이터 호출
+                    Log.d("mobileApp", "검색검색~!")
+
                     return false
                 }
 
@@ -48,7 +52,7 @@ class SimWalkSearchActivity : AppCompatActivity() {
         binding.walkSearchRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.walkSearchRecyclerView.adapter = searchAdapter // data array
 
-        // 칩 이벤트 처리
+        // 칩 이벤트 처리(추후 코드 수정)
         binding.walkChipgroup.setOnCheckedStateChangeListener { group, checkedIds ->
             var flag = true
             //var resarr = arrayListOf<myRow>()
@@ -107,5 +111,19 @@ class SimWalkSearchActivity : AppCompatActivity() {
         data.add(petPlace("장소2", "동물약국", "주소11", "이미지11", "전화번호11"))
 
         return data
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.walk_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item?.itemId){
+            R.id.action_search -> {
+                return super.onOptionsItemSelected(item)
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
     }
 }
