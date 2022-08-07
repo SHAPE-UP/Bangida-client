@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,121 +7,214 @@
     android:orientation="vertical"
     tools:context=".SimWalkReviewAddActivity">
 
-
-    <Button
-        android:id="@+id/walkreviewsave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/main_color"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="10dp"
-        android:text="저장"
-        android:textSize="24dp" />
-
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:layout_marginTop="10dp"
-        android:textSize="40dp"
-        android:text="산책 REVIEW 등록하기"/>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/base_color1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:layout_marginBottom="30dp">
+            <ImageView
+                android:layout_width="34dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_icon_dog_orange"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:layout_marginLeft="10dp"
+                android:text="산책 리뷰 등록하기"
+                android:textColor="@color/main_color"
+                android:textSize="25dp" />
         </LinearLayout>
 
-    </ScrollView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="▶산책 제목"
+            android:layout_marginHorizontal="16dp"
+            android:textFontWeight="700"
+            android:layout_marginBottom="10dp"
+            android:textSize="20dp" />
+        <EditText
+            android:id="@+id/addreview_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:padding="15dp"
+            android:hint="산책 제목을 입력하세요."
+            android:elevation="4dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rectangle_base" />
 
-    <EditText
-        android:layout_marginTop="10dp"
-        android:id="@+id/walkreview_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="15dp"
-        android:padding="16dp"
-        android:background="@drawable/rectangle_base"
-        android:hint="산책이름"
-        android:inputType="text"
-        android:textSize="20dp"
-        android:elevation="4dp" />
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/walkreview_distance"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="15dp"
-        android:padding="10dp"
-        android:background="@drawable/rectangle_base"
-        android:inputType="text"
-        android:hint="거리"
-        android:textSize="15dp"
-        android:elevation="4dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="▶산책 날짜"
+                android:textFontWeight="700"
+                android:textSize="20dp" />
 
-    <EditText
-        android:id="@+id/walkreview_fast"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="15dp"
-        android:padding="10dp"
-        android:background="@drawable/rectangle_base"
-        android:inputType="text"
-        android:hint="속력"
-        android:textSize="15dp"
-        android:elevation="4dp" />
-    <EditText
-        android:id="@+id/walkreview_time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="15dp"
-        android:padding="10dp"
-        android:inputType="text"
-        android:background="@drawable/rectangle_base"
-        android:hint="시간"
-        android:textSize="15dp"
-        android:elevation="4dp" />
-    <EditText
-        android:id="@+id/walkreview_timestamp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="15dp"
-        android:padding="10dp"
-        android:inputType="text"
-        android:background="@drawable/rectangle_base"
-        android:hint="타임스탬프"
-        android:textSize="15dp"
-        android:elevation="4dp" />
+            <TextView
+                android:id="@+id/addreview_timestamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2020-08-07 22:04"
+                android:textAlignment="textStart"
+                android:textSize="20dp" />
+        </LinearLayout>
 
-    <ImageView
-        android:id="@+id/walkreview_roadimage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginLeft="130dp"
-        android:src="@drawable/user_basic"/>
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="20dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="▶기록"
+                android:textFontWeight="700"
+                android:textSize="20dp" />
 
-    <MultiAutoCompleteTextView
-        android:id="@+id/walkreview_memo"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/rectangle_base"
-        android:hint="메모를 작성하세요"
-        android:textSize="20dp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-</LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="거리:"
+                        android:layout_marginRight="10dp"
+                        android:textSize="20dp" />
+                    <TextView
+                        android:id="@+id/addreview_distance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="200m"
+                        android:textSize="20dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="속력:"
+                        android:layout_marginRight="10dp"
+                        android:textSize="20dp" />
+                    <TextView
+                        android:id="@+id/addreview_speed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="200m"
+                        android:textSize="20dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:text="시간:"
+                        android:textSize="20dp" />
+                    <TextView
+                        android:id="@+id/addreview_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="200m"
+                        android:textSize="20dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="▶이미지"
+            android:textFontWeight="700"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/addreview_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginHorizontal="16dp"
+            android:src="@drawable/rectangle_base" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:text="▶산책 메모"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="10dp"
+            android:textFontWeight="700"
+            android:textSize="20dp" />
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/addreview_memo"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="16dp"
+            android:background="@drawable/rectangle_base"
+            android:elevation="3dp"
+            android:hint="산책 메모를 작성하세요."
+            android:padding="10dp"
+            android:layout_marginBottom="30dp"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/addreview_save"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="80dp"
+            android:textSize="20dp"
+            android:padding="10dp"
+            android:text="산책리뷰 저장" />
+
+    </LinearLayout>
+</ScrollView>
