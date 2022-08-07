@@ -43,8 +43,11 @@ class MainActivity : AppCompatActivity() {
             overridePendingTransition(0, 0)
             finish()
         }
-        binding.navMap.setOnClickListener {
-
+        binding.navAchievement.setOnClickListener {
+            val intent_achieve = Intent(this, AchieveActivity::class.java)
+            startActivity(intent_achieve)
+            overridePendingTransition(0, 0)
+            finish()
         }
         binding.navMypage.setOnClickListener {
             val intent_mypage = Intent(this, MyPageActivity::class.java)
@@ -75,9 +78,5 @@ class MainActivity : AppCompatActivity() {
 
         transaction.add(location, fragment)
         transaction.commit()
-    }
-
-    fun happtyuf(){
-
     }
 }
