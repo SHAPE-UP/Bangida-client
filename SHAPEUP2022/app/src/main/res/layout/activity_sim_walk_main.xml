@@ -41,6 +41,7 @@
             app:layout_constraintTop_toTopOf="@id/walk_main_fragment">
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_hospital"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -48,6 +49,7 @@
                 app:chipBackgroundColor="@color/base_color1" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_pharmacy"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -55,6 +57,7 @@
                 app:chipBackgroundColor="@color/sub_color1" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_park"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -62,6 +65,7 @@
                 app:chipBackgroundColor="@color/base_color1" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_cafe"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
