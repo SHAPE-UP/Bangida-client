@@ -147,6 +147,7 @@
                             android:layout_marginTop="10dp"
                             android:text="산책 다녀오기"/>
                         <Button
+                            android:id="@+id/sim_hospital"
                             android:layout_width="match_parent"
                             android:layout_height="70dp"
                             android:textSize="20dp"
@@ -154,6 +155,7 @@
                             android:layout_marginTop="10dp"
                             android:text="병원"/>
                         <Button
+                            android:id="@+id/sim_beauty"
                             android:layout_width="match_parent"
                             android:layout_height="70dp"
                             android:textSize="20dp"
@@ -198,7 +200,7 @@
                             android:layout_marginTop="10dp"
                             android:text="위생 관리/목욕" />
                         <Button
-                            android:id="@+id/management"
+                            android:id="@+id/sim_poop"
                             android:layout_width="match_parent"
                             android:layout_height="70dp"
                             android:textSize="20dp"
@@ -214,6 +216,7 @@
                             android:layout_marginTop="10dp"
                             android:text="건강 관리" />
                         <Button
+                            android:id="@+id/sim_training"
                             android:layout_width="match_parent"
                             android:layout_height="70dp"
                             android:textSize="20dp"
