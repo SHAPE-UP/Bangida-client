@@ -16,6 +16,7 @@ import com.example.shape_up_2022.databinding.ActivitySimWalkSearchBinding
 import com.example.shape_up_2022.databinding.ItemSearchWalkplaceBinding
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.chip.ChipGroup.OnCheckedStateChangeListener
+import com.google.android.youtube.player.internal.i
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -67,21 +68,36 @@ class SimWalkSearchActivity : AppCompatActivity() {
 
         // 칩 이벤트 처리(추후 코드 수정)
         binding.walkChipgroup.setOnCheckedStateChangeListener { group, checkedIds ->
+            datas.clear()
+            binding.noSearch.visibility = View.GONE
+
             if (binding.placeHospital.isChecked) {
                 Log.d("mobileApp", "병원 선택")
+                if(hospitalDatas.size != 0 )
+                    for(i in 0 until hospitalDatas.size) datas.add(hospitalDatas[i])
+                else binding.noSearch.visibility = View.VISIBLE
             }
             if (binding.placePharmacy.isChecked) {
                 Log.d("mobileApp", "약국 선택")
+                if(pharmacyDatas.size != 0 )
+                    for(i in 0..pharmacyDatas.size - 1) datas.add(pharmacyDatas[i])
+                else binding.noSearch.visibility = View.VISIBLE
             }
             if (binding.placePark.isChecked) {
                 Log.d("mobileApp", "공원 선택")
+                if(parkDatas.size != 0 )
+                    for(i in 0..parkDatas.size - 1) datas.add(parkDatas[i])
+                else binding.noSearch.visibility = View.VISIBLE
             }
             if (binding.placeCafe.isChecked) {
                 Log.d("mobileApp", "카페 선택")
+                // 데이터 없음
+                //for(i in 0..hospitalDatas.size - 1) datas.add(cafeDatas[i])
             }
+
+            // 리사이클러뷰 갱신
+            displayRecyclerView(datas)
         }
-
-
     }
     // 리사이클러 뷰
     private fun displayRecyclerView(data: MutableList<myItem>){
@@ -104,12 +120,12 @@ class SimWalkSearchActivity : AppCompatActivity() {
     }
 
     // 공공데이터 요청1: 지역별 검색 기능 지원
-    private suspend fun callDataCrt(keyword: String){
+    private suspend fun callDataCrt(addr: String){
         val call: Call<responseInfo> = MyApplication.networkServicePlaceData.getList(
             "1",
             "20",
-            keyword,
             "",
+            addr,
             "264157a5-947e-4f12-8c21-c499089c507a"
         )
         try{
@@ -118,6 +134,7 @@ class SimWalkSearchActivity : AppCompatActivity() {
                 Log.d("mobileApp", "데이터 연결 실패!")
             }
             Log.d("mobileApp", "데이터 연결 성공!")
+            Log.d("mobileApp", "response: $response")
             val locationItem = response!!.body()!!.body?.items?.item
             Log.d("mobileApp", "${locationItem}")
 
@@ -139,7 +156,7 @@ class SimWalkSearchActivity : AppCompatActivity() {
             }
 
         }catch (e: SocketTimeoutException){
-            callDataCrt(keyword)
+            callDataCrt(addr)
             Log.d("mobileApp", "Exception: ${e.toString()}")
         }
 

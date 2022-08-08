@@ -21,6 +21,7 @@
         style="@style/Widget.MaterialComponents.Toolbar.Primary" >
         <androidx.appcompat.widget.SearchView
             android:id="@+id/walk_search"
+            app:queryHint="위치를 입력하세요."
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </androidx.appcompat.widget.Toolbar>
