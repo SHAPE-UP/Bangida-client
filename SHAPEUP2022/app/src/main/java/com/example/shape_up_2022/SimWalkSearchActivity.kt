@@ -16,6 +16,7 @@ import com.example.shape_up_2022.databinding.ActivitySimWalkSearchBinding
 import com.example.shape_up_2022.databinding.ItemSearchWalkplaceBinding
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.chip.ChipGroup.OnCheckedStateChangeListener
+import com.google.android.youtube.player.internal.e
 import com.google.android.youtube.player.internal.i
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -133,14 +134,12 @@ class SimWalkSearchActivity : AppCompatActivity() {
             if(!response.isSuccessful){
                 Log.d("mobileApp", "데이터 연결 실패!")
             }
-            Log.d("mobileApp", "데이터 연결 성공!")
             Log.d("mobileApp", "response: $response")
-            val locationItem = response!!.body()!!.body?.items?.item
-            Log.d("mobileApp", "${locationItem}")
+            if(response.body() == null){
+                binding.noSearch.visibility = View.VISIBLE
+            } else{
+                val locationItem = response?.body()!!.body?.items?.item // 유효하지 않은 위치, 에러 발생
 
-            // 리사이클러 뷰
-            if(locationItem.size == 0) binding.noSearch.visibility = View.VISIBLE
-            else {
                 // type에 따라서 각각 다른 데이터를 배열에 푸시
                 for (i in 0..locationItem.size -1) {
                     datas.add(locationItem[i])
@@ -154,6 +153,8 @@ class SimWalkSearchActivity : AppCompatActivity() {
                 binding.noSearch.visibility = View.GONE
                 displayRecyclerView(datas)
             }
+
+
 
         }catch (e: SocketTimeoutException){
             callDataCrt(addr)
