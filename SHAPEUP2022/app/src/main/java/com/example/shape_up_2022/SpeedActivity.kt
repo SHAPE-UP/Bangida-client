@@ -1,73 +1,41 @@
 package com.example.shape_up_2022
-
-
 import android.Manifest
-
-import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
-import android.hardware.Sensor
-import android.hardware.SensorEvent
-import android.hardware.SensorManager
-
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.os.SystemClock
-import android.util.Log
 import android.view.View
-import android.widget.FrameLayout
 import android.widget.TextView
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.fragment.app.Fragment
-import com.example.shape_up_2022.databinding.ActivitySimWalkMainBinding
-import com.example.shape_up_2022.databinding.ActivitySimWalkingBinding
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationRequest
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.MapFragment
-import com.google.android.gms.maps.model.LatLngBounds
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
-class SimWalkingActivity : AppCompatActivity() , LocationListener {
-    var pauseTime = 0L
+class SpeedActivity : AppCompatActivity(), LocationListener {
 
     private var locationManager: LocationManager? = null
     private var mLastlocation: Location? = null
-    private var walking_speed: TextView? = null
+    private var tvGetSpeed: TextView? = null
     private var tvCalSpeed: TextView? = null
     private var tvTime: TextView? = null
     private var tvLastTime: TextView? = null
     private var tvGpsEnable: TextView? = null
     private var tvTimeDif: TextView? = null
-    private var walking_distance: TextView? = null
+    private var tvDistDif: TextView? = null
     private var speed = 0.0
-
-    lateinit var binding: ActivitySimWalkingBinding
-    private var mapfragment = SimWalkingFragment()  // 지도 프래그먼트를 갖고 있음
-    var googleMap: GoogleMap? = mapfragment.googleMap  // 프래그먼트의 구글맵
-
-    private var REQUEST_ACCESS_FINE_LOCATION = 1000
-
-
-
-    private val fl: FrameLayout by lazy {
-        findViewById(R.id.walking_fragment)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_speed)
 
-        binding = ActivitySimWalkingBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        replaceFragment(mapfragment)  // 지도 프래그먼트 부착
-
+        tvGetSpeed = findViewById<View>(R.id.tvGetSpeed) as TextView
+        tvCalSpeed = findViewById<View>(R.id.tvCalSpeed) as TextView
+        tvTime = findViewById<View>(R.id.tvTime) as TextView
+        tvLastTime = findViewById<View>(R.id.tvLastTime) as TextView
+        tvGpsEnable = findViewById<View>(R.id.tvGpsEnable) as TextView
+        tvTimeDif = findViewById<View>(R.id.tvTimeDif) as TextView
+        tvDistDif = findViewById<View>(R.id.tvDistDif) as TextView
 
         //권한 체크
         if (ActivityCompat.checkSelfPermission(
@@ -82,48 +50,21 @@ class SimWalkingActivity : AppCompatActivity() , LocationListener {
         if (lastKnownLocation != null) {
             val sdf = SimpleDateFormat("HH:mm:ss")
             val formatDate = sdf.format(Date(lastKnownLocation.time))
-            tvTime?.text = ": $formatDate" //Time
+            tvTime!!.text = ": $formatDate" //Time
         }
         // GPS 사용 가능 여부 확인
         val isEnable = locationManager!!.isProviderEnabled(LocationManager.GPS_PROVIDER)
         tvGpsEnable!!.text = ": $isEnable" //GPS Enable
         locationManager!!.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0f, this)
-
-
-
-        //1번 눌렀을 때 or apply
-        binding.btnWalkingStart.setOnClickListener {
-            binding.walkingTime
-            binding.walkingTime.base=SystemClock.elapsedRealtime()
-            binding.walkingTime.start()
-            //binding.btnWalkingStart.isEnabled=false
-            //binding.btnWalkingFinish.isEnabled=true
-            binding.btnWalkingStart.setEnabled(false)
-            binding.btnWalkingStart.setVisibility(View.GONE)
-            binding.btnWalkingFinish.setEnabled(true)
-            binding.btnWalkingFinish.setVisibility(View.VISIBLE)
-
-        }
-
-        binding.btnWalkingFinish.setOnClickListener {
-            val intent = Intent(this@SimWalkingActivity, SimWalkReviewAddActivity::class.java)
-            startActivity(intent)
-
-        }
-
-        binding.btnWalkingFinish.setOnClickListener {
-            val intent = Intent(this, SimWalkReviewAddActivity::class.java)
-            startActivity(intent)
-            binding.walkingTime.stop()
-        }
     }
+
     override fun onLocationChanged(location: Location) {
         val sdf = SimpleDateFormat("HH:mm:ss")
         var deltaTime = 0.0
 
         //  getSpeed() 함수를 이용하여 속도를 계산
         val getSpeed = String.format("%.3f", location.speed).toDouble()
-        walking_speed!!.text = ": $getSpeed" //Get Speed
+        tvGetSpeed!!.text = ": $getSpeed" //Get Speed
         val formatDate = sdf.format(Date(location.time))
         tvTime!!.text = ": $formatDate" //Time
 
@@ -132,7 +73,7 @@ class SimWalkingActivity : AppCompatActivity() , LocationListener {
             //시간 간격
             deltaTime = (location.time - mLastlocation!!.time) / 1000.0
             tvTimeDif!!.text = ": $deltaTime sec" // Time Difference
-            walking_distance!!.text = ": " + mLastlocation!!.distanceTo(location) + " m" // Time Difference
+            tvDistDif!!.text = ": " + mLastlocation!!.distanceTo(location) + " m" // Time Difference
             // 속도 계산
             speed = mLastlocation!!.distanceTo(location) / deltaTime
             val formatLastDate = sdf.format(Date(mLastlocation!!.time))
@@ -158,14 +99,26 @@ class SimWalkingActivity : AppCompatActivity() , LocationListener {
         // 위치정보 업데이트
         locationManager!!.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0f, this)
     }
+
+    override fun onProviderDisabled(provider: String) {}
+    override fun onResume() {
+        super.onResume()
+        //권한 체크
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }
+        // 위치정보 업데이트
+        locationManager!!.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0f, this)
+    }
+
     override fun onPause() {
         super.onPause()
         // 위치정보 가져오기 제거
         locationManager!!.removeUpdates(this)
-    }
-
-    private fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().replace(fl.id, fragment).commit()
     }
 
     override fun onStart() {
@@ -212,23 +165,7 @@ class SimWalkingActivity : AppCompatActivity() , LocationListener {
             }
         }
     }
-
-    // 뒤로가기 버튼을 누르면 토스트
-    private var backPressedTime : Long = 0
-    override fun onBackPressed() {
-        Log.d("mobileApp", "뒤로가기")
-
-        // 2초내 다시 클릭하면 액티비티 종료
-        if (System.currentTimeMillis() - backPressedTime < 2000) {
-            finish()
-            overridePendingTransition(0, 0);  // 액티비티 화면 전환 애니메이션 제거
-            return
-        }
-
-        // 처음 클릭 메시지
-        Toast.makeText(this, "산책을 취소하려면 한 번 더 누르세요", Toast.LENGTH_SHORT).show()
-        backPressedTime = System.currentTimeMillis()
-    }
-
-
 }
+
+
+

@@ -37,6 +37,7 @@ class SimWalkMainActivity : AppCompatActivity() {
             //Log.d("mobileApp", "user 좌표 ${mapfragment.latitude}, ${mapfragment.longitude}")
             intent.putExtra("userlat", mapfragment.latitude)
             intent.putExtra("userlng", mapfragment.longitude)
+
             startActivity(intent)
             overridePendingTransition(0, 0);  // 액티비티 화면 전환 애니메이션 제거
         }
