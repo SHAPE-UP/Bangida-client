@@ -26,6 +26,7 @@ import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.*
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.android.material.chip.ChipGroup
 import com.google.android.youtube.player.internal.i
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -62,6 +63,7 @@ class SimWalkMainFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Conn
 
     private lateinit var mView: MapView
     var googleMap: GoogleMap? = null
+    val markerOp = MarkerOptions()
 
     var tempmarkerOptions: Marker? = null
 
@@ -92,7 +94,34 @@ class SimWalkMainFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Conn
         getPermissionLocation() // 사용자 퍼미션 얻기
 
         // 칩 레이아웃 클릭 이벤트
-        
+        (activity as SimWalkMainActivity).binding.mapChipgroup.setOnCheckedStateChangeListener(
+            object: ChipGroup.OnCheckedStateChangeListener{
+                override fun onCheckedChanged(group: ChipGroup, checkedIds: MutableList<Int>) {
+                    googleMap!!.clear()
+                    googleMap?.addMarker(markerOp)
+                    // 필터링
+                    if ((activity as SimWalkMainActivity).binding.chipHospital.isChecked) {
+                        Log.d("mobileApp", "동물병원 선택")
+                        addMarker(hospitalDatas, 50.toFloat())
+                    }
+                    if ((activity as SimWalkMainActivity).binding.chipPharmacy.isChecked) {
+                        Log.d("mobileApp", "동물약국 선택")
+                        addMarker(pharmacyDatas, 80.toFloat())
+                    }
+                    if ((activity as SimWalkMainActivity).binding.chipPark.isChecked) {
+                        Log.d("mobileApp", "공원 선택")
+                        addMarker(parkDatas, 30.toFloat())
+                    }
+                    if ((activity as SimWalkMainActivity).binding.chipCafe.isChecked) {
+                        Log.d("mobileApp", "카페 선택")
+                        // 카페 data가 없어요
+                    }
+
+                }
+
+            }
+        )
+
 
         return rootView
     }
@@ -289,11 +318,15 @@ class SimWalkMainFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Conn
 
             // 마커 그리기 (초기 세팅, 전체 장소 마커를 그림)
             Log.d("mobileApp", "코루틴 실행! addMarker")
-            addMarker(datas)
+            // 마커 추가: 코드 간결화 필요
+            addMarker(hospitalDatas, 50.toFloat())
+            addMarker(pharmacyDatas, 80.toFloat())
+            addMarker(parkDatas, 30.toFloat())
+
         }
     }
 
-    private fun addMarker(datas: MutableList<myItem>){
+    private fun addMarker(datas: MutableList<myItem>, hue: Float){
         // 주소 -> 위도 경도
         var locationList = locateToAddress(datas)
 
@@ -302,7 +335,7 @@ class SimWalkMainFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Conn
         for(i in 0 until datas.size){
             val latLng = LatLng(locationList[i][0], locationList[i][1])
             Log.d("mobileApp", "${locationList[i][0]} ${locationList[i][1]}")
-            markerOp.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+            markerOp.icon(BitmapDescriptorFactory.defaultMarker(hue))
             markerOp.position(latLng)
             markerOp.title(datas[i].title)
             Log.d("mobileApp", "markerOp!")
@@ -429,7 +462,7 @@ class SimWalkMainFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Conn
         googleMap!!.moveCamera(CameraUpdateFactory.newCameraPosition(position))
 
         // 마커 추가하기: 내 위치
-        val markerOp = MarkerOptions()
+
         markerOp.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
         markerOp.position(latLng)
         markerOp.title("내 위치")
