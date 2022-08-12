@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SimWashingToyActivity">
+    tools:context=".simulation.SimWashingToyActivity">
 
     <!--fragment의 자리 마련-->
     <LinearLayout

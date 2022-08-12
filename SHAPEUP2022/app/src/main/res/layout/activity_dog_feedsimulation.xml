@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FAECC5"
-    tools:context=".DogFeedsimulationActivity">
+    tools:context=".simulation.DogFeedsimulationActivity">
 
     <TextView
         android:layout_width="match_parent"

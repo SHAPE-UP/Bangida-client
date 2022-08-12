@@ -16,7 +16,7 @@
     </queries>
 
     <application
-        android:name=".MyApplication"
+        android:name=".retrofit.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -25,74 +25,74 @@
         android:theme="@style/Theme.SHAPEUP2022"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Hospitalquiz3Activity"
+            android:name=".simulation.Hospitalquiz3Activity"
             android:exported="false" />
         <activity
-            android:name=".Hospitalquiz2Activity"
+            android:name=".simulation.Hospitalquiz2Activity"
             android:exported="false" />
         <activity
-            android:name=".HospitalquizActivity"
+            android:name=".simulation.HospitalquizActivity"
             android:exported="false" />
         <activity
-            android:name=".HospitalinfoActivity"
+            android:name=".simulation.HospitalinfoActivity"
             android:exported="false" />
         <activity
-            android:name=".SimTrainingActivity"
+            android:name=".simulation.SimTrainingActivity"
             android:exported="false" />
         <activity
-            android:name=".TodoCalendarActivity"
+            android:name=".todo.TodoCalendarActivity"
             android:exported="false" />
         <activity
-            android:name=".SimStartNamingActivity"
+            android:name=".simulation.SimStartNamingActivity"
             android:exported="false" />
         <activity
-            android:name=".SimStartBreedActivity"
+            android:name=".simulation.SimStartBreedActivity"
             android:exported="false" />
         <activity
-            android:name=".TestActivity"
+            android:name=".simulation.TestActivity"
             android:exported="false" />
         <activity
-            android:name=".SimStartActivity"
+            android:name=".simulation.SimStartActivity"
             android:exported="false" />
         <activity
-            android:name=".SimBeutyShopActivity"
+            android:name=".simulation.SimBeutyShopActivity"
             android:exported="false" />
         <activity
-            android:name=".SimBeutySelfActivity"
+            android:name=".simulation.SimBeutySelfActivity"
 
             android:exported="false" />
         <activity
-            android:name=".SimHealthActivity"
+            android:name=".simulation.SimHealthActivity"
             android:exported="false" />
         <activity
-            android:name=".SimWalkReviewAddActivity"
+            android:name=".simulation.SimWalkReviewAddActivity"
             android:exported="false" />
         <activity
-            android:name=".SimWalkReviewMainActivity"
+            android:name=".simulation.SimWalkReviewMainActivity"
             android:exported="false" />
         <activity
-            android:name=".SimWalkPlaceActivity"
+            android:name=".simulation.SimWalkPlaceActivity"
             android:exported="false" />
         <activity
-            android:name=".SimWalkSearchActivity"
+            android:name=".simulation.SimWalkSearchActivity"
             android:exported="false" />
         <activity
-            android:name=".SimWalkingActivity"
+            android:name=".simulation.SimWalkingActivity"
             android:exported="false" />
         <activity
-            android:name=".SimWalkMainActivity"
+            android:name=".simulation.SimWalkMainActivity"
             android:exported="false" />
         <activity
-            android:name=".SimBrushToothActivity"
+            android:name=".simulation.SimBrushToothActivity"
             android:exported="false" />
         <activity
-            android:name=".SimBrushActivity"
+            android:name=".simulation.SimBrushActivity"
             android:exported="false" />
         <activity
-            android:name=".SimBathActivity"
+            android:name=".simulation.SimBathActivity"
             android:exported="false" />
         <activity
-            android:name=".SimHygieneActivity"
+            android:name=".simulation.SimHygieneActivity"
             android:exported="false" />
 
         <uses-library
@@ -107,28 +107,28 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".DogFeedsimulationActivity"
+            android:name=".simulation.DogFeedsimulationActivity"
             android:exported="false" />
         <activity
-            android:name=".FeedsimulationActivity"
+            android:name=".simulation.FeedsimulationActivity"
             android:exported="false" />
         <activity
-            android:name=".SnacksimulationActivity"
+            android:name=".simulation.SnacksimulationActivity"
             android:exported="false" />
         <activity
             android:name=".WatersimulationActivity"
             android:exported="false" />
         <activity
-            android:name=".YoutubeActivity"
+            android:name=".common.YoutubeActivity"
             android:exported="false" />
         <activity
-            android:name=".SimulationActivity"
+            android:name=".simulation.SimulationActivity"
             android:exported="false" />
         <activity
-            android:name=".StartActivity"
+            android:name=".common.StartActivity"
             android:exported="false" />
         <activity
-            android:name=".TempMainActivity"
+            android:name=".common.TempMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -137,58 +137,58 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".common.MainActivity"
             android:exported="true" />
         <activity
-            android:name=".AchieveActivity"
+            android:name=".achieve.AchieveActivity"
             android:exported="false" />
         <activity
-            android:name=".AlarmActivity"
+            android:name=".common.AlarmActivity"
             android:exported="false" />
         <activity
-            android:name=".BudgetActivity"
+            android:name=".common.BudgetActivity"
             android:exported="false" />
         <activity
-            android:name=".JoinActivity"
+            android:name=".auth.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".auth.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MyPageActivity"
+            android:name=".common.MyPageActivity"
             android:exported="false" />
         <activity
-            android:name=".preferenceActivity"
+            android:name=".common.PreferenceActivity"
             android:exported="false" />
         <activity
-            android:name=".ToDoActivity"
+            android:name=".todo.TodoActivity"
             android:exported="false" />
         <activity
-            android:name=".SimManagePuppyActivity"
+            android:name=".simulation.SimManagePuppyActivity"
             android:exported="false" />
         <activity
-            android:name=".SimBallActivity"
+            android:name=".simulation.SimBallActivity"
             android:exported="false" />
         <activity
-            android:name=".SimDefecationCharacteristicsActivity"
+            android:name=".simulation.SimDefecationCharacteristicsActivity"
             android:exported="false" />
         <activity
-            android:name=".SimInducingBowelMovementsActivity"
+            android:name=".simulation.SimInducingBowelMovementsActivity"
             android:exported="false" />
         <activity
-            android:name=".SimCleaningbedActivity"
+            android:name=".simulation.SimCleaningbedActivity"
             android:exported="false" />
         <activity
-            android:name=".SimToyPuppyActivity"
+            android:name=".simulation.SimToyPuppyActivity"
             android:exported="false" />
         <activity
-            android:name=".SimTugSimActivity"
+            android:name=".simulation.SimTugSimActivity"
             android:exported="false" />
         <activity
-            android:name=".SimWashingToyActivity"
+            android:name=".simulation.SimWashingToyActivity"
             android:exported="false" />
         <activity
-            android:name=".SimBeautyActivity"
+            android:name=".simulation.SimBeautyActivity"
             android:exported="false" />
     </application>
 

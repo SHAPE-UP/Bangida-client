@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MyPageActivity">
+    tools:context=".common.MyPageActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -182,7 +182,7 @@
                 android:id="@+id/fragment_setting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                class="com.example.shape_up_2022.MySettingFragment"
+                class="com.example.shape_up_2022.common.MySettingFragment"
                 android:layout_gravity="bottom"/>
 
 

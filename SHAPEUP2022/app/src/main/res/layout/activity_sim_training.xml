@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_marginHorizontal="16dp"
-    tools:context=".SimTrainingActivity">
+    tools:context=".simulation.SimTrainingActivity">
 
     <ImageView
         android:layout_marginTop="20dp"

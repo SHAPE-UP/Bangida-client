@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".SimTugSimActivity">
+    tools:context=".simulation.SimTugSimActivity">
 
     <ProgressBar
         android:id="@+id/tug_progressBar"
