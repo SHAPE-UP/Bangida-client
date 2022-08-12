@@ -145,6 +145,10 @@ class SimWalkingFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Conne
             ) !== PackageManager.PERMISSION_GRANTED ||
             ContextCompat.checkSelfPermission(
                 activity as SimWalkingActivity,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) !== PackageManager.PERMISSION_GRANTED ||
+            ContextCompat.checkSelfPermission(
+                activity as SimWalkingActivity,
                 Manifest.permission.ACCESS_NETWORK_STATE
             ) !== PackageManager.PERMISSION_GRANTED
         ) {
@@ -153,6 +157,7 @@ class SimWalkingFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Conne
                 arrayOf(
                     Manifest.permission.ACCESS_FINE_LOCATION,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
                     Manifest.permission.ACCESS_NETWORK_STATE
                 )
             )

@@ -92,7 +92,6 @@
             android:text="산책 종료"
             android:visibility="gone"
             android:textSize="20sp" />
-
     </RelativeLayout>
 
 

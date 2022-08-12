@@ -2,10 +2,16 @@ package com.example.shape_up_2022.simulation
 
 import android.Manifest
 import android.content.Intent
+
+import android.graphics.Bitmap
+import android.graphics.Matrix
+import android.net.Uri
+
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
@@ -19,6 +25,15 @@ import androidx.fragment.app.Fragment
 import com.example.shape_up_2022.R
 import com.example.shape_up_2022.databinding.ActivitySimWalkingBinding
 import com.google.android.gms.maps.GoogleMap
+
+
+import com.google.android.youtube.player.internal.e
+import com.google.android.youtube.player.internal.m
+import java.io.*
+import java.lang.Exception
+
+import com.google.android.gms.maps.MapFragment
+import com.google.android.gms.maps.model.LatLngBounds
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -36,9 +51,10 @@ class SimWalkingActivity : AppCompatActivity() , LocationListener {
     private var walking_distance: TextView? = null
     private var speed = 0.0
 
+
     lateinit var binding: ActivitySimWalkingBinding
     private var mapfragment = SimWalkingFragment()  // 지도 프래그먼트를 갖고 있음
-    var googleMap: GoogleMap? = mapfragment.googleMap  // 프래그먼트의 구글맵
+    lateinit var googleMap: GoogleMap  // 프래그먼트의 구글맵 (액티비티 실행 시 바로 초기화되지 않음. 주의!)
 
     private var REQUEST_ACCESS_FINE_LOCATION = 1000
 
@@ -92,10 +108,38 @@ class SimWalkingActivity : AppCompatActivity() , LocationListener {
         }
 
         binding.btnWalkingFinish.setOnClickListener {
-            val intent = Intent(this@SimWalkingActivity, SimWalkReviewAddActivity::class.java)
-            startActivity(intent)
+
+            googleMap = mapfragment.googleMap!! // 캡쳐할 지도 프래그먼트 가져오기
+            CaptureMapScreen()  // 캡쳐 및 이동 (!!!!!인텐트 생성과정을 포함하고 있음!!!!! 수정 필요)
+
+            //val intent = Intent(this@SimWalkingActivity, SimWalkReviewAddActivity::class.java)
+            //startActivity(intent)
 
         }
+    }
+
+
+    private fun CaptureMapScreen() {
+        Log.d("mobileApp", "캡쳐버튼 누름")
+        val callback = GoogleMap.SnapshotReadyCallback() { snapshot ->
+            var bitmap = Bitmap.createBitmap(snapshot!!, 0, 0, snapshot.width, snapshot.height - 400, Matrix() ,false)
+
+            try {
+                var bytes = ByteArrayOutputStream()
+                bitmap.compress(Bitmap.CompressFormat.PNG, 50, bytes)  // PNG 파일을 50 Quality로 지정
+                Log.d("mobileApp", bitmap.toString())
+
+                var byteArray = bytes.toByteArray()  // 이미지 정보를 담은 byteArray
+
+                // ReviewAdd액티비티로 이동하는 인텐트
+                var intentReview = Intent(this@SimWalkingActivity, SimWalkReviewAddActivity::class.java)
+                intentReview.putExtra("mapCapture", byteArray) // 이미지 정보를 담은 byteArray를 intent로 넘김
+                startActivity(intentReview)  // byteArray -> bitMap -> File 변환 처리는 이것을 전달받은 액티비티(ReviewAdd)에서 진행
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+        googleMap!!.snapshot(callback)
 
         binding.btnWalkingFinish.setOnClickListener {
             val intent = Intent(this, SimWalkReviewAddActivity::class.java)
@@ -148,7 +192,9 @@ class SimWalkingActivity : AppCompatActivity() , LocationListener {
         super.onPause()
         // 위치정보 가져오기 제거
         locationManager!!.removeUpdates(this)
+
     }
+
 
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(fl.id, fragment).commit()
@@ -215,6 +261,5 @@ class SimWalkingActivity : AppCompatActivity() , LocationListener {
         Toast.makeText(this, "산책을 취소하려면 한 번 더 누르세요", Toast.LENGTH_SHORT).show()
         backPressedTime = System.currentTimeMillis()
     }
-
 
 }
