@@ -58,8 +58,13 @@ class SimulationActivity : AppCompatActivity() {
         }
 
         // 시뮬레이션: 산책
-        binding.takeawalk.setOnClickListener {
+       /*테스트를 위한 임시 주석 binding.takeawalk.setOnClickListener {
             val intent = Intent(this, SimWalkMainActivity::class.java)
+            startActivity(intent)
+        }*/
+        // 시뮬레이션: 산책
+        binding.takeawalk.setOnClickListener {
+            val intent = Intent(this, SpeedActivity::class.java)
             startActivity(intent)
         }
 

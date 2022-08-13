@@ -20,12 +20,12 @@ class SimBeautyActivity : AppCompatActivity() {
             finish()
         }
 
-        binding.button2.setOnClickListener {
+        /*binding.button2.setOnClickListener {
             val intent_simul = Intent(this, SimBeutyShopActivity::class.java)
             startActivity(intent_simul)
             overridePendingTransition(0, 0)
             finish()
-        }
+        }*/
 
 
     }

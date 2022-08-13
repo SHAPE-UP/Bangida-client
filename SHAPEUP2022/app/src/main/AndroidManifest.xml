@@ -25,6 +25,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SHAPEUP2022"
         android:usesCleartextTraffic="true">
+        <activity android:name=".simulation.SpeedActivity"
+            android:exported="false"/>
         <activity
             android:name=".simulation.Hospitalquiz3Activity"
             android:exported="false" />
