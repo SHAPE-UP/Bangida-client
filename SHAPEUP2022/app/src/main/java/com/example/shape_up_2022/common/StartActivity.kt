@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.shape_up_2022.auth.RegisterActivity
 import com.example.shape_up_2022.auth.LoginActivity
+import com.example.shape_up_2022.auth.RegisterInputActivity
 import com.example.shape_up_2022.databinding.StartAppBinding
 
 
@@ -32,7 +32,7 @@ class StartActivity : AppCompatActivity() {
             // 2. 회원가입
             binding.btnJoin.setOnClickListener {
                 Log.d("app_test", "JoinActivity")
-                val intent = Intent(this, RegisterActivity::class.java)
+                val intent = Intent(this, RegisterInputActivity::class.java)
                 startActivity(intent)
                 this.finish()
             }
