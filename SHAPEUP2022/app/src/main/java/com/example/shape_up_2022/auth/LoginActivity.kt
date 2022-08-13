@@ -32,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         // 로그인 버튼을 눌렀을 때
-        binding.btnLogin.setOnClickListener{
+        binding.btnLogin.setOnClickListener {
             val inputID = binding.inputId.text.toString() // 아이디에 대한 String
             val inputPW = binding.inputPw.text.toString() // 비밀번호에 대한 String
 
@@ -47,6 +47,7 @@ class LoginActivity : AppCompatActivity() {
                         Log.d("mobileApp", "$response ${response.body()}")
                         // 프리퍼런스에 값 저장
                         SaveSharedPreference.setUserEmail(baseContext, inputID)
+                        SaveSharedPreference.setUserName(baseContext, response.body()!!.userName)
 
                         // 메인 페이지로 이동
                         val intent = Intent(baseContext, MainActivity::class.java)

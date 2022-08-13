@@ -27,6 +27,6 @@ data class RegisterRes(val success: String)
 
 data class LoginReq(val email: String, val password: String)
 
-data class LoginRes(val loginSuccess: String, val message: String)
+data class LoginRes(val loginSuccess: String, val userId: String, val userName: String, val message: String)
 
 data class LogoutRes(val success: String, val err: String)

@@ -61,6 +61,7 @@
                     app:layout_constraintTop_toTopOf="@+id/cardView">
 
                     <TextView
+                        android:id="@+id/mypage_username"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="닉네임"
@@ -75,6 +76,7 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/mypage_useremail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"

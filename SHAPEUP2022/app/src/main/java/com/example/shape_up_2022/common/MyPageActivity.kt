@@ -23,10 +23,14 @@ import java.lang.Exception
 class MyPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_my_page)
 
         val binding = ActivityMyPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        Log.d("mobileApp", "${SaveSharedPreference.getUserName(this)}")
+        binding.mypageUsername.text = SaveSharedPreference.getUserName(this)
+        binding.mypageUseremail.text = SaveSharedPreference.getUserEmail(this)
+
+        // 프로필 사진 변경
         val requestGalleryLauncher=registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()){
             try{
@@ -51,6 +55,13 @@ class MyPageActivity : AppCompatActivity() {
             }
         }
 
+        // 프로필 사진 변경
+        binding.changeprofile.setOnClickListener{
+            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            intent.type="image/*"
+            requestGalleryLauncher.launch(intent)
+        }
+
         // 로그아웃
         val email = SaveSharedPreference.getUserEmail(this)!!.toString()
         Log.d("mobileApp", "${email}")
@@ -65,6 +76,7 @@ class MyPageActivity : AppCompatActivity() {
 
                         // 저장했던 preference clear
                         SaveSharedPreference.clearUserEmail(baseContext)
+                        SaveSharedPreference.clearUserName(baseContext)
 
                         // StartActivity로 이동
                         val intent = Intent(baseContext, TempMainActivity::class.java)
@@ -80,13 +92,6 @@ class MyPageActivity : AppCompatActivity() {
             })
         }
 
-        // 프로필 사진 변경
-        binding.changeprofile.setOnClickListener{
-            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            intent.type="image/*"
-            requestGalleryLauncher.launch(intent)
-        }
-
         // 탭바 연결
         binding.navHome.setOnClickListener {
             val intent_home = Intent(this, MainActivity::class.java)
@@ -94,28 +99,24 @@ class MyPageActivity : AppCompatActivity() {
             overridePendingTransition(0, 0);
             finish()
         }
-
         binding.navTodo.setOnClickListener {
             val intent_todo = Intent(this, TodoActivity::class.java)
             startActivity(intent_todo)
             overridePendingTransition(0, 0);
             finish()
         }
-
         binding.navSimulation.setOnClickListener {
             val intent_simul = Intent(this, SimulationActivity::class.java)
             startActivity(intent_simul)
             overridePendingTransition(0, 0);
             finish()
         }
-
         binding.navAchievement.setOnClickListener {
             val intent_achieve = Intent(this, AchieveActivity::class.java)
             startActivity(intent_achieve)
             overridePendingTransition(0, 0)
             finish()
         }
-
         binding.navMypage.setOnClickListener {
             val intent_mypage = Intent(this, MyPageActivity::class.java)
             startActivity(intent_mypage)
@@ -153,4 +154,6 @@ class MyPageActivity : AppCompatActivity() {
         }
         return inSampleSize
     }
+
+
 }
