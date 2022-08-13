@@ -7,7 +7,7 @@
     android:id="@+id/layout_manage"
     android:orientation="vertical"
     android:layout_marginHorizontal="16dp"
-    tools:context=".SimManagePuppyActivity">
+    tools:context=".simulation.SimManagePuppyActivity">
 
     <View
         android:layout_width="match_parent"

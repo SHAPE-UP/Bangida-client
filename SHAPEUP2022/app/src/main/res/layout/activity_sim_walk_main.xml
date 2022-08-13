@@ -5,17 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".SimWalkMainActivity">
+    tools:context=".simulation.SimWalkMainActivity">
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="임시 툴바" />
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -41,6 +37,7 @@
             app:layout_constraintTop_toTopOf="@id/walk_main_fragment">
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_hospital"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -48,6 +45,7 @@
                 app:chipBackgroundColor="@color/base_color1" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_pharmacy"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -55,6 +53,7 @@
                 app:chipBackgroundColor="@color/sub_color1" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_park"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -62,6 +61,7 @@
                 app:chipBackgroundColor="@color/base_color1" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_cafe"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

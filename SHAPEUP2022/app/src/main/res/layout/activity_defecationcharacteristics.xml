@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".SimDefecationCharacteristicsActivity">
+    tools:context=".simulation.SimDefecationCharacteristicsActivity">
 
     <ImageView
         android:id="@+id/ballView1"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AchieveActivity"
+    tools:context=".achieve.AchieveActivity"
     android:background="@color/base_color1">
 
     <LinearLayout
