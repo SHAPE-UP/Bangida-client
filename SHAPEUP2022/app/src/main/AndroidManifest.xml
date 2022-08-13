@@ -26,6 +26,12 @@
         android:theme="@style/Theme.SHAPEUP2022"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".auth.RegisterShareActivity"
+            android:exported="false" />
+        <activity
+            android:name=".auth.RegisterInputActivity"
+            android:exported="false" />
+        <activity
             android:name=".simulation.Hospitalquiz3Activity"
             android:exported="false" />
         <activity

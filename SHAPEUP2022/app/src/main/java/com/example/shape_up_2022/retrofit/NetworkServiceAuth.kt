@@ -41,5 +41,5 @@ data class LogoutRes(val success: String, val err: String)
 data class AddFamilyReq(val userID: String)
 data class AddFamilyRes(val success: String)
 
-data class JoinFamilyReq(val familyCode: String, val userID: String)
-data class JoinFamilyRes(val success: String, val family: String, val message: String)
+data class JoinFamilyReq(val familyCode: String, val email: String)
+data class JoinFamilyRes(val success: String, val message: String)
