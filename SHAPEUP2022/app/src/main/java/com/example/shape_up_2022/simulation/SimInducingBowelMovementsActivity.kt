@@ -37,11 +37,11 @@ class SimInducingBowelMovementsActivity : FragmentActivity() {
          binding.progressBar.progress = status
          setContentView(binding.root)
 
-        /*화면을 full screenㅇ로 만듬*/window.setFlags(
+        /*화면을 full screen로 만듬*/window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
-         // 장난감 정보: Info Alert
+
          binding.toyInfo.setOnClickListener {
              AlertDialog.Builder(this).run {
                  setTitle("배변 훈련과 타이밍 안내")
