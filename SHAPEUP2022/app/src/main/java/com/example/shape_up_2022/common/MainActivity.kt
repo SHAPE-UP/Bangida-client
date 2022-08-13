@@ -67,7 +67,9 @@ class MainActivity : AppCompatActivity() {
         }
         // 하단 메뉴
         binding.menuBtn2.setOnClickListener {
-            videoGather()
+            val intent = Intent(this@MainActivity, YoutubeActivity::class.java)
+            intent.putExtra("search", "강아지 훈련")
+            startActivity(intent)
         }
         binding.menuBtn3.setOnClickListener {
             val intent = Intent(this, TestActivity::class.java)
@@ -81,14 +83,6 @@ class MainActivity : AppCompatActivity() {
             //finish()
         }
     }
-    private fun videoGather() = object : DialogInterface.OnClickListener{
-        override fun onClick(p0: DialogInterface?, p1: Int) {
-            val intent = Intent(this@MainActivity, YoutubeActivity::class.java)
-            intent.putExtra("search", "강아지 훈련")
-            startActivity(intent)
-        }
-    }
-
 
     // 프래그먼트 연결
     private fun viewFragment(fragment : Fragment, location:Int){
