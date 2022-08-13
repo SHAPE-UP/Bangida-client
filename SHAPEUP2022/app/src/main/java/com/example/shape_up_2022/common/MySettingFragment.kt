@@ -20,10 +20,6 @@ class MySettingFragment : PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.settings, rootKey)
 
-        val idPreference: EditTextPreference?=findPreference("id")
-        idPreference?.title="ID 변경"
-        idPreference?.summary="ID를 변경할 수 있습니다."
-
         //val emailPreference: Preference?=findPreference("askemail")
 
     }
