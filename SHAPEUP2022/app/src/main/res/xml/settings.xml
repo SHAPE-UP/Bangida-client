@@ -19,10 +19,6 @@
             app:key="noti_push"
             app:title="푸시 알림" />
 
-        <EditTextPreference
-            app:key="id"
-            app:title="ID 설정" />
-
     </PreferenceCategory>
 
     <!--
