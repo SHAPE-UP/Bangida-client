@@ -1,14 +1,18 @@
 package com.example.shape_up_2022.achieve
 
+import android.content.DialogInterface
 import android.content.Intent
 import com.example.shape_up_2022.adapter.AchieveAdapter
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.shape_up_2022.*
 import com.example.shape_up_2022.common.MainActivity
 import com.example.shape_up_2022.common.MyPageActivity
+import com.example.shape_up_2022.common.SaveSharedPreference
 import com.example.shape_up_2022.databinding.ActivityAchieveBinding
-import com.example.shape_up_2022.simulation.SimulationActivity
+import com.example.shape_up_2022.common.SimulationActivity
+import com.example.shape_up_2022.simulation.TestActivity
 import com.example.shape_up_2022.todo.TodoActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -90,6 +94,31 @@ class AchieveActivity : AppCompatActivity() {
             startActivity(intent_mypage)
             overridePendingTransition(0, 0)
             finish()
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+
+        val eventHandler = object : DialogInterface.OnClickListener {
+            override fun onClick(p0: DialogInterface?, p1: Int) {
+                if(p1 == DialogInterface.BUTTON_POSITIVE) {
+                    val intent = Intent(this@AchieveActivity, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+        }
+        var builder = AlertDialog.Builder(this)
+            .setTitle("가족 그룹에 가입되어 있지 않은 사용자")
+            .setIcon(R.drawable.maltese)
+            .setMessage("가족 그룹에 먼저 가입해주세요.")
+            .setPositiveButton("확인", eventHandler)
+            .setCancelable(false)
+
+        if(SaveSharedPreference.getFamliyID(this)!! == ""){
+            builder.show()
         }
     }
 }

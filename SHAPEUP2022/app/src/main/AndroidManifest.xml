@@ -128,7 +128,7 @@
             android:name=".common.YoutubeActivity"
             android:exported="false" />
         <activity
-            android:name=".simulation.SimulationActivity"
+            android:name=".common.SimulationActivity"
             android:exported="false" />
         <activity
             android:name=".common.StartActivity"

@@ -2,12 +2,14 @@ package com.example.shape_up_2022.common
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.shape_up_2022.R
 import com.example.shape_up_2022.adapter.BudgetAdapter
 import com.example.shape_up_2022.data.BudgetItem
 import com.example.shape_up_2022.databinding.BudgetAddBinding
@@ -198,5 +200,28 @@ class BudgetActivity : AppCompatActivity() {
         builder.show()
         Log.d("BudgetActivity", "수정 모달")
     }
+    override fun onStart() {
+        super.onStart()
 
+
+        val eventHandler = object : DialogInterface.OnClickListener {
+            override fun onClick(p0: DialogInterface?, p1: Int) {
+                if(p1 == DialogInterface.BUTTON_POSITIVE) {
+                    val intent = Intent(this@BudgetActivity, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+        }
+        var builder = androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle("가족 그룹에 가입되어 있지 않은 사용자")
+            .setIcon(R.drawable.maltese)
+            .setMessage("가족 그룹에 먼저 가입해주세요.")
+            .setPositiveButton("확인", eventHandler)
+            .setCancelable(false)
+
+        if(SaveSharedPreference.getFamliyID(this)!! == ""){
+            builder.show()
+        }
+    }
 }

@@ -10,6 +10,19 @@ public class SaveSharedPreference {
             return PreferenceManager.getDefaultSharedPreferences(ctx)
         }
 
+        // User의 tested
+        fun setUserTested(ctx: Context, tested: Boolean) {
+            val editor = getSharedPreferences(ctx)!!.edit()
+            editor.putBoolean("tested", tested)
+            editor.commit()
+        }
+        fun getUserTested(ctx: Context?): Boolean? { return getSharedPreferences(ctx!!)!!.getBoolean("tested", false) }
+        fun clearUserTested(ctx: Context?) {
+            val editor = getSharedPreferences(ctx!!)!!.edit()
+            editor.clear()
+            editor.commit()
+        }
+
         // User의 email
         fun setUserEmail(ctx: Context, email: String) {
             val editor = getSharedPreferences(ctx)!!.edit()

@@ -7,13 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.shape_up_2022.achieve.AchieveActivity
 import com.example.shape_up_2022.databinding.ActivityMyPageBinding
 import com.example.shape_up_2022.retrofit.LogoutRes
 import com.example.shape_up_2022.retrofit.MyApplication
-import com.example.shape_up_2022.simulation.SimulationActivity
 import com.example.shape_up_2022.todo.TodoActivity
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,10 +21,12 @@ import retrofit2.Response
 import java.lang.Exception
 
 class MyPageActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMyPageBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding = ActivityMyPageBinding.inflate(layoutInflater)
+        binding = ActivityMyPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
         Log.d("mobileApp", "${SaveSharedPreference.getUserName(this)}")
         binding.mypageUsername.text = SaveSharedPreference.getUserName(this)
@@ -65,18 +67,23 @@ class MyPageActivity : AppCompatActivity() {
         // 로그아웃
         val email = SaveSharedPreference.getUserEmail(this)!!.toString()
         Log.d("mobileApp", "${email}")
-        binding.logoutBtn.setOnClickListener {
+        binding.btnLogout.setOnClickListener {
             val call: Call<LogoutRes> = MyApplication.networkServiceAuth.logout(
             )
 
             call?.enqueue(object : Callback<LogoutRes> {
                 override fun onResponse(call: Call<LogoutRes>, response: Response<LogoutRes>) {
+                    if(!response.isSuccessful){
+                        Log.d("mobileApp", "${response}")
+                    }
                     if(response.isSuccessful){
                         Log.d("mobileApp", "$response ${response.body()}")
 
                         // 저장했던 preference clear
                         SaveSharedPreference.clearUserEmail(baseContext)
                         SaveSharedPreference.clearUserName(baseContext)
+                        SaveSharedPreference.clearUserTested(baseContext)
+                        SaveSharedPreference.clearUserID(baseContext)
 
                         // StartActivity로 이동
                         val intent = Intent(baseContext, TempMainActivity::class.java)
@@ -87,7 +94,7 @@ class MyPageActivity : AppCompatActivity() {
 
                 override fun onFailure(call: Call<LogoutRes>, t: Throwable) {
                     Log.d("mobileApp", "onFailure $t")
-                    Toast.makeText(baseContext, "토스트 메세지 띄우기 입니다.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, "로그아웃에 실패했습니다.", Toast.LENGTH_SHORT).show()
                 }
             })
         }
@@ -155,5 +162,15 @@ class MyPageActivity : AppCompatActivity() {
         return inSampleSize
     }
 
+    override fun onStart() {
+        super.onStart()
 
+        if(SaveSharedPreference.getFamliyID(this)!! == ""){ // familyID == ""
+            binding.noFamFamilyBtns.visibility = View.VISIBLE
+            binding.mypageFamilyList.visibility = View.GONE
+        } else{
+            binding.noFamFamilyBtns.visibility = View.GONE
+            binding.mypageFamilyList.visibility = View.VISIBLE
+        }
+    }
 }

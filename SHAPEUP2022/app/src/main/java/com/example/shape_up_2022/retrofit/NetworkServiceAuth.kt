@@ -28,6 +28,11 @@ interface NetworkServiceAuth {
         @Body body: JoinFamilyReq,
     ): Call<JoinFamilyRes>
 
+    @PUT("api/users/completeTest")
+    fun completeTest(
+        @Body body: CompleteTestReq,
+    ): Call<CompleteTestRes>
+
 }
 
 data class RegisterReq(val name: String, val email: String, val password: String)
@@ -43,3 +48,6 @@ data class AddFamilyRes(val success: String)
 
 data class JoinFamilyReq(val familyCode: String, val email: String)
 data class JoinFamilyRes(val success: String, val message: String)
+
+data class CompleteTestReq(val userID: String)
+data class CompleteTestRes(val success: String, val message: String)
