@@ -65,7 +65,7 @@ class SimulationActivity : AppCompatActivity() {
 
         // 시뮬레이션: 배변 관리
         binding.simPoop.setOnClickListener {
-            val intent = Intent(this, SimDefecationCharacteristicsActivity::class.java)
+            val intent = Intent(this, SimInducingBowelMovementsActivity::class.java)
             startActivity(intent)
         }
 
