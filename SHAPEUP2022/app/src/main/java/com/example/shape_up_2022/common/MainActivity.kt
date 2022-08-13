@@ -4,6 +4,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -13,7 +14,6 @@ import com.example.shape_up_2022.*
 import com.example.shape_up_2022.achieve.AchieveActivity
 import com.example.shape_up_2022.databinding.ActivityYoutubeBinding
 import com.example.shape_up_2022.databinding.MainPageBinding
-import com.example.shape_up_2022.simulation.SimulationActivity
 import com.example.shape_up_2022.simulation.TestActivity
 import com.example.shape_up_2022.todo.MainCalenderFragment
 import com.example.shape_up_2022.todo.TodoActivity
@@ -81,6 +81,45 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent_budget)
             overridePendingTransition(0, 0)
             //finish()
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        /* 테스트하지 않은 사용자를 돌려보내는 다이얼로그 */
+        // 취소(메인으로), 테스트(테스트 시작)
+        val eventhandler = object : DialogInterface.OnClickListener {
+            override fun onClick(p0: DialogInterface?, p1: Int) {
+                if(p1==DialogInterface.BUTTON_POSITIVE) {
+                    val intent = Intent(this@MainActivity, TestActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+//                else if (p1==DialogInterface.BUTTON_NEGATIVE) {
+//                    val intent = Intent(this@MainActivity, MainActivity::class.java)
+//                    startActivity(intent)
+//                    finish()
+//                }
+            }
+        }
+        var builder = AlertDialog.Builder(this)
+            .setTitle("테스트하지 않은 사용자")
+            .setMessage("반려견 케어 성향 점검을 먼저 진행하세요.")
+            .setPositiveButton("테스트", eventhandler)
+            .setCancelable(false)
+
+        if(!SaveSharedPreference.getUserTested(this)!!){ // tested == false
+            builder.show()
+
+        } else{
+            if(SaveSharedPreference.getFamliyID(this)!! == ""){ // familyID == ""
+                binding.noFamHomeInfoDog.visibility = View.VISIBLE
+                binding.homeInfoDog.visibility = View.GONE
+            } else{
+                binding.noFamHomeInfoDog.visibility = View.GONE
+                binding.homeInfoDog.visibility = View.VISIBLE
+            }
+
         }
     }
 
