@@ -39,15 +39,15 @@ data class RegisterReq(val name: String, val email: String, val password: String
 data class RegisterRes(val success: String)
 
 data class LoginReq(val email: String, val password: String)
-data class LoginRes(val loginSuccess: String, val userId: String, val userName: String, val message: String)
+data class LoginRes(val loginSuccess: String, val userID: String, val userName: String, val message: String)
 
 data class LogoutRes(val success: String, val err: String)
 
 data class AddFamilyReq(val userID: String)
-data class AddFamilyRes(val success: String)
+data class AddFamilyRes(val success: String, val message: String, val familyID: String)
 
 data class JoinFamilyReq(val familyCode: String, val email: String)
-data class JoinFamilyRes(val success: String, val message: String)
+data class JoinFamilyRes(val success: String, val message: String, val familyID: String)
 
 data class CompleteTestReq(val userID: String)
 data class CompleteTestRes(val success: String, val message: String)
