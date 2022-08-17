@@ -3,7 +3,17 @@
     android:orientation="horizontal"
     android:id="@+id/item_todo_root"
     android:layout_width="match_parent"
+    android:gravity="center_vertical"
     android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/todo_stamp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_icon_dog_gray"
+        android:padding="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginVertical="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -11,6 +21,7 @@
         android:text="할일"
         android:id="@+id/todowork"
         android:paddingHorizontal="10dp"
+        android:textSize="17dp"
         android:layout_weight="3"/>
     <TextView
         android:layout_width="wrap_content"
@@ -30,6 +41,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/main_color"
         android:text="관련 활동"
+        android:textSize="15dp"
         android:id="@+id/todoref"
         android:gravity="center"
         android:layout_marginHorizontal="10dp"
