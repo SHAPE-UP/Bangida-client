@@ -6,6 +6,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shape_up_2022.R
 import com.example.shape_up_2022.common.MyPageActivity
@@ -33,6 +36,9 @@ class TodoActivity : AppCompatActivity() {
         //setContentView(R.layout.activity_to_do)
         binding = ActivityToDoBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 프래그먼트 연결 - 캘린더 프래그먼트
+        viewFragment(CalendarFragment() , R.id.todo_calendar)
 
         todoAdd = TodoAddBinding.inflate(layoutInflater)
 
@@ -126,6 +132,15 @@ class TodoActivity : AppCompatActivity() {
         }
     }
 
+    // 프래그먼트 연결
+    private fun viewFragment(fragment : Fragment, location:Int){
+        Log.d("app_test", "viewFragment start")
+        val fragmentManager : FragmentManager = supportFragmentManager
+        val transaction : FragmentTransaction = fragmentManager.beginTransaction()
+
+        transaction.add(location, fragment)
+        transaction.commit()
+        
     override fun onStart() {
         super.onStart()
 
