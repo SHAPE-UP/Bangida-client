@@ -18,6 +18,7 @@
         <entry key="..\:/1_otcroz/Pet_start_app_update/Pet-Startup-App/SHAPEUP2022/app/src/main/res/drawable/ic_icon_todo.xml" value="0.129" />
         <entry key="..\:/1_otcroz/Pet_start_app_update/Pet-Startup-App/SHAPEUP2022/app/src/main/res/drawable/ic_iconi_flags.xml" value="0.173" />
         <entry key="..\:/1_otcroz/Pet_start_app_update/Pet-Startup-App/SHAPEUP2022/app/src/main/res/drawable/ic_image_14_1.xml" value="0.269" />
+        <entry key="..\:/1_otcroz/Pet_start_app_update/Pet-Startup-App/SHAPEUP2022/app/src/main/res/drawable/ic_launcher_background.xml" value="0.105" />
         <entry key="..\:/1_otcroz/Pet_start_app_update/Pet-Startup-App/SHAPEUP2022/app/src/main/res/layout/account_join.xml" value="0.24947916666666667" />
         <entry key="..\:/1_otcroz/Pet_start_app_update/Pet-Startup-App/SHAPEUP2022/app/src/main/res/layout/achieve_fragment_4.xml" value="0.24947916666666667" />
         <entry key="..\:/1_otcroz/Pet_start_app_update/Pet-Startup-App/SHAPEUP2022/app/src/main/res/layout/activity_achieve.xml" value="0.24947916666666667" />
@@ -41,6 +42,7 @@
         <entry key="..\:/1_otcroz/Pet_start_app_update/Pet-Startup-App/SHAPEUP2022/app/src/main/res/layout/activity_sim_walk_search.xml" value="0.136" />
         <entry key="..\:/1_otcroz/Pet_start_app_update/Pet-Startup-App/SHAPEUP2022/app/src/main/res/layout/activity_speed.xml" value="0.24895833333333334" />
         <entry key="..\:/1_otcroz/Pet_start_app_update/Pet-Startup-App/SHAPEUP2022/app/src/main/res/layout/activity_temp_main.xml" value="0.1" />
+        <entry key="..\:/1_otcroz/Pet_start_app_update/Pet-Startup-App/SHAPEUP2022/app/src/main/res/layout/activity_test.xml" value="0.115625" />
         <entry key="..\:/1_otcroz/Pet_start_app_update/Pet-Startup-App/SHAPEUP2022/app/src/main/res/layout/activity_to_do.xml" value="0.2" />
         <entry key="..\:/1_otcroz/Pet_start_app_update/Pet-Startup-App/SHAPEUP2022/app/src/main/res/layout/activity_todo_calendar.xml" value="0.15087719298245614" />
         <entry key="..\:/1_otcroz/Pet_start_app_update/Pet-Startup-App/SHAPEUP2022/app/src/main/res/layout/activity_toy_puppy.xml" value="0.19293478260869565" />
@@ -75,6 +77,7 @@
         <entry key="..\:/1_otcroz/Pet_start_app_update/Pet-Startup-App/SHAPEUP2022/app/src/main/res/layout/item_todo.xml" value="0.24895833333333334" />
         <entry key="..\:/1_otcroz/Pet_start_app_update/Pet-Startup-App/SHAPEUP2022/app/src/main/res/layout/main_page.xml" value="0.264" />
         <entry key="..\:/1_otcroz/Pet_start_app_update/Pet-Startup-App/SHAPEUP2022/app/src/main/res/layout/movie_video_item.xml" value="0.24583333333333332" />
+        <entry key="..\:/1_otcroz/Pet_start_app_update/Pet-Startup-App/SHAPEUP2022/app/src/main/res/layout/mypage_dialog_join_family.xml" value="0.18958333333333333" />
         <entry key="..\:/1_otcroz/Pet_start_app_update/Pet-Startup-App/SHAPEUP2022/app/src/main/res/layout/permission_consent.xml" value="0.24947916666666667" />
         <entry key="..\:/1_otcroz/Pet_start_app_update/Pet-Startup-App/SHAPEUP2022/app/src/main/res/layout/sign_in.xml" value="0.24947916666666667" />
         <entry key="..\:/1_otcroz/Pet_start_app_update/Pet-Startup-App/SHAPEUP2022/app/src/main/res/layout/simulation_main.xml" value="0.17708333333333334" />

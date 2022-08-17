@@ -12,10 +12,11 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shape_up_2022.R
 import com.example.shape_up_2022.common.MyPageActivity
-import com.example.shape_up_2022.simulation.SimulationActivity
+import com.example.shape_up_2022.common.SimulationActivity
 import com.example.shape_up_2022.achieve.AchieveActivity
 import com.example.shape_up_2022.adapter.TodoAdapter
 import com.example.shape_up_2022.common.MainActivity
+import com.example.shape_up_2022.common.SaveSharedPreference
 import com.example.shape_up_2022.data.TodoItem
 import com.example.shape_up_2022.databinding.ActivityToDoBinding
 import com.example.shape_up_2022.databinding.TodoAddBinding
@@ -139,5 +140,29 @@ class TodoActivity : AppCompatActivity() {
 
         transaction.add(location, fragment)
         transaction.commit()
+        
+    override fun onStart() {
+        super.onStart()
+
+
+        val eventHandler = object : DialogInterface.OnClickListener {
+            override fun onClick(p0: DialogInterface?, p1: Int) {
+                if(p1 == DialogInterface.BUTTON_POSITIVE) {
+                    val intent = Intent(this@TodoActivity, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+        }
+        var builder = androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle("가족 그룹에 가입되어 있지 않은 사용자")
+            .setIcon(R.drawable.maltese)
+            .setMessage("가족 그룹에 먼저 가입해주세요.")
+            .setPositiveButton("확인", eventHandler)
+            .setCancelable(false)
+
+        if(SaveSharedPreference.getFamliyID(this)!! == ""){
+            builder.show()
+        }
     }
 }

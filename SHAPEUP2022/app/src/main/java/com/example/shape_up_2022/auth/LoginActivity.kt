@@ -50,6 +50,7 @@ class LoginActivity : AppCompatActivity() {
                         // 프리퍼런스에 값 저장
                         SaveSharedPreference.setUserEmail(baseContext, inputID)
                         SaveSharedPreference.setUserName(baseContext, response.body()!!.userName)
+                        SaveSharedPreference.setUserID(baseContext, response.body()!!.userID)
 
                         // 메인 페이지로 이동
                         val intent = Intent(baseContext, MainActivity::class.java)
