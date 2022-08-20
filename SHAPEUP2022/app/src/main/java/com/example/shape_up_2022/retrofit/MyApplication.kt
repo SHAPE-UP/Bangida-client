@@ -19,18 +19,7 @@ class MyApplication: Application() {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
-        // 로그인
-        var networkServiceAuth: NetworkServiceAuth
-        val retrofitAuth: Retrofit
-            get() = Retrofit.Builder()
-                .baseUrl("http://192.168.219.104:5000/")
-                .client(client)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-        // "http://ec2-13-124-250-65.ap-northeast-2.compute.amazonaws.com:5000/"
-        var client = OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor()).build()
-        // data
-
+        // 공공데이터 요청
         val parser = TikXml.Builder().exceptionOnUnreadXml(false).build()
         var networkServicePlaceData: NetworkServicePlace
         val retrofitPlaceData: Retrofit
@@ -40,10 +29,37 @@ class MyApplication: Application() {
                 .addConverterFactory(TikXmlConverterFactory.create(parser))
                 .build()
 
+        // OkHttpClient
+        var client = OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor()).build()
+
+        /* 서버 요청용 */
+        val apiserver = "http://ec2-13-124-250-65.ap-northeast-2.compute.amazonaws.com:5000/"
+
+        var networkServiceUsers: NetworkServiceUsers
+        val retrofitUsers: Retrofit
+            get() = Retrofit.Builder()
+                .baseUrl(apiserver + "api/users/")
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
+        /*
+        var networkServiceTodo: NetworkServiceTodo
+        val retrofitTodo: Retrofit
+            get() = Retrofit.Builder()
+                .baseUrl(apiserver + "api/todo/")
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+         */
+
         init{
             networkServiceYoutube = retrofitYoutube.create(NetworkServiceYoutube::class.java)
-            networkServiceAuth = retrofitAuth.create(NetworkServiceAuth::class.java)
             networkServicePlaceData = retrofitPlaceData.create(NetworkServicePlace::class.java)
+
+            // 서버 요청용
+            networkServiceUsers = retrofitUsers.create(NetworkServiceUsers::class.java)  // api/users/
+            //networkServiceTodo = retrofitTodo.create(NetworkServiceTodo::class.java)  // api/todo/
         }
 
 

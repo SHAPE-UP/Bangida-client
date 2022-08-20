@@ -5,9 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.shape_up_2022.R
-import com.example.shape_up_2022.adapter.TodoCalendarAdapter
 import com.example.shape_up_2022.databinding.FragmentCalendarBinding
 import java.text.SimpleDateFormat
 import java.util.*

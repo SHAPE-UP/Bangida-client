@@ -4,6 +4,7 @@
     android:id="@+id/item_todo_root"
     android:layout_width="match_parent"
     android:gravity="center_vertical"
+    android:padding="10dp"
     android:layout_height="wrap_content">
 
     <ImageView
@@ -11,16 +12,14 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/ic_icon_dog_gray"
-        android:padding="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginVertical="5dp"/>
+        android:padding="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="할일"
         android:id="@+id/todowork"
-        android:paddingHorizontal="10dp"
+        android:layout_marginLeft="10dp"
         android:textSize="17dp"
         android:layout_weight="3"/>
     <TextView
@@ -29,11 +28,12 @@
         android:text="역할 설정"
         android:id="@+id/todorole"
         android:gravity="right"
-        android:paddingHorizontal="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_weight="1"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:id="@+id/todosetting"
         android:text="시간 설정" />
     <TextView
@@ -44,7 +44,7 @@
         android:textSize="15dp"
         android:id="@+id/todoref"
         android:gravity="center"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginLeft="10dp"
         />
 
 </LinearLayout>

@@ -39,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
             val inputPW = binding.inputPw.text.toString() // 비밀번호에 대한 String
 
             // DB에 저장된 아이디 값
-            val call: Call<LoginRes> = MyApplication.networkServiceAuth.login(
+            val call: Call<LoginRes> = MyApplication.networkServiceUsers.login(
                 LoginReq(inputID, inputPW)
             )
 
@@ -51,6 +51,7 @@ class LoginActivity : AppCompatActivity() {
                         SaveSharedPreference.setUserEmail(baseContext, inputID)
                         SaveSharedPreference.setUserName(baseContext, response.body()!!.userName)
                         SaveSharedPreference.setUserID(baseContext, response.body()!!.userID)
+                        SaveSharedPreference.setFamliyID(baseContext, response.body()!!.familyID?:null)
 
                         // 메인 페이지로 이동
                         val intent = Intent(baseContext, MainActivity::class.java)

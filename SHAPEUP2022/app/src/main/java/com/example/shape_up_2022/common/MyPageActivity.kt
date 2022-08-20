@@ -69,38 +69,16 @@ class MyPageActivity : AppCompatActivity() {
         }
 
         // 로그아웃
-        val email = SaveSharedPreference.getUserEmail(this)!!.toString()
-        Log.d("mobileApp", "${email}")
         binding.btnLogout.setOnClickListener {
-            val call: Call<LogoutRes> = MyApplication.networkServiceAuth.logout(
-            )
+            // 저장했던 preference clear
+            SaveSharedPreference.clearAll(baseContext)
 
-            call?.enqueue(object : Callback<LogoutRes> {
-                override fun onResponse(call: Call<LogoutRes>, response: Response<LogoutRes>) {
-                    if(!response.isSuccessful){
-                        Log.d("mobileApp", "${response}")
-                    }
-                    if(response.isSuccessful){
-                        Log.d("mobileApp", "$response ${response.body()}")
+            Toast.makeText(baseContext, "로그아웃 성공", Toast.LENGTH_SHORT)
 
-                        // 저장했던 preference clear
-                        SaveSharedPreference.clearUserEmail(baseContext)
-                        SaveSharedPreference.clearUserName(baseContext)
-                        SaveSharedPreference.clearUserTested(baseContext)
-                        SaveSharedPreference.clearUserID(baseContext)
-
-                        // StartActivity로 이동
-                        val intent = Intent(baseContext, TempMainActivity::class.java)
-                        startActivity(intent)
-                        finish()
-                    }
-                }
-
-                override fun onFailure(call: Call<LogoutRes>, t: Throwable) {
-                    Log.d("mobileApp", "onFailure $t")
-                    Toast.makeText(baseContext, "로그아웃에 실패했습니다.", Toast.LENGTH_SHORT).show()
-                }
-            })
+            // StartActivity로 이동
+            val intent = Intent(baseContext, TempMainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
         val eventhandler_save = object : DialogInterface.OnClickListener {
@@ -109,7 +87,7 @@ class MyPageActivity : AppCompatActivity() {
                     // retorfit 요청
                         Log.d("mobileApp", "${SaveSharedPreference.getUserID(baseContext)}")
                     val reqUserID = SaveSharedPreference.getUserID(baseContext)!!
-                    val call: Call<AddFamilyRes> = MyApplication.networkServiceAuth.addFamliy(
+                    val call: Call<AddFamilyRes> = MyApplication.networkServiceUsers.addFamliy(
                         AddFamilyReq(reqUserID)
                     )
 
@@ -143,7 +121,7 @@ class MyPageActivity : AppCompatActivity() {
             override fun onClick(p0: DialogInterface?, p1: Int) {
                 if(p1== DialogInterface.BUTTON_POSITIVE) {
                     // retorfit 요청
-                    val call: Call<JoinFamilyRes> = MyApplication.networkServiceAuth.joinFamliy(
+                    val call: Call<JoinFamilyRes> = MyApplication.networkServiceUsers.joinFamliy(
                         JoinFamilyReq(dialogBinding.dialogInputFamilycode.text.toString(), SaveSharedPreference.getUserEmail(baseContext)!!)
                     )
                     // retrofit 요청

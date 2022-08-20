@@ -35,7 +35,7 @@ class TestActivity : AppCompatActivity() {
     }
 
     private fun callCompleteTest(){
-        val call: Call<CompleteTestRes> = MyApplication.networkServiceAuth.completeTest(
+        val call: Call<CompleteTestRes> = MyApplication.networkServiceUsers.completeTest(
             CompleteTestReq(SaveSharedPreference.getUserID(this)!!)
         )
 

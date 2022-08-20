@@ -47,9 +47,6 @@
             android:name=".simulation.SimTrainingActivity"
             android:exported="false" />
         <activity
-            android:name=".todo.TodoCalendarActivity"
-            android:exported="false" />
-        <activity
             android:name=".simulation.SimStartNamingActivity"
             android:exported="false" />
         <activity

@@ -10,16 +10,29 @@
         android:id="@+id/todo_calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+        />
 
-    <TextView
-        android:id="@+id/todo_today"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_marginLeft="5dp"
-        android:text="현재 날짜"
-        android:textSize="20dp" />
+        android:orientation="horizontal"
+        android:paddingVertical="16dp"
+        android:paddingHorizontal="30dp"
+        android:background="@color/base_color1">
+        <TextView
+            android:id="@+id/todo_today"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="@color/point_color"
+            android:text="현재 날짜"
+            android:textSize="20sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="할 일 목록" />
+    </LinearLayout>
+
 
 </LinearLayout>
