@@ -7,12 +7,11 @@
     android:padding="10dp"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/todo_stamp"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/ic_icon_dog_gray"
-        android:padding="5dp"/>
+    <CheckBox
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:button="@color/transparent"
+        android:background="@drawable/todo_checkbox" />
 
     <TextView
         android:layout_width="wrap_content"

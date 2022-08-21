@@ -75,7 +75,7 @@ class SimHealthGraphFragment : Fragment() {
 
         val entries=mutableListOf<Entry>()
         for(item in chartData){
-            entries.add(Entry(item.labelData.replace(("[^\\d.]").toRegex(),"").toFloat(),item.lineData.toFloat()))
+            entries.add(Entry(item.labelData.replace(("[^\\d.]").toRegex(),"").toFloat(), item.lineData.toFloat()))
         }
 
         val linedataSet = LineDataSet(entries, "라인차트 예시")

@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.shape_up_2022.R
+import com.example.shape_up_2022.databinding.AchieveFragment2Binding
+import com.example.shape_up_2022.databinding.AchieveFragment4Binding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,8 +36,13 @@ class AchieveFragment2 : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.achieve_fragment_2, container, false)
+        val binding = AchieveFragment2Binding.inflate(inflater, container, false)
+
+        binding.pbAchieve1.progress = 40
+        binding.pbAchieve2.progress = 35
+        binding.pbAchieve3.progress = 20
+
+        return binding.root
     }
 
     companion object {
