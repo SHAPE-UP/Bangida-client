@@ -26,6 +26,9 @@
         android:theme="@style/Theme.SHAPEUP2022"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".common.TipActivity"
+            android:exported="false" />
+        <activity
             android:name=".auth.RegisterShareActivity"
             android:exported="false" />
         <activity
@@ -153,9 +156,6 @@
             android:exported="false" />
         <activity
             android:name=".common.BudgetActivity"
-            android:exported="false" />
-        <activity
-            android:name=".auth.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".auth.LoginActivity"

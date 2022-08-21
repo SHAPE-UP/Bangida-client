@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".simulation.SimInducingBowelMovementsActivity">
 
+
+
     <ImageButton
         android:id="@+id/toy_info"
         android:layout_width="wrap_content"

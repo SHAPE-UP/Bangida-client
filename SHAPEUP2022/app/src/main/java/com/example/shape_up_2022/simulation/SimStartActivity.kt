@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import com.example.shape_up_2022.R
 import com.example.shape_up_2022.common.MainActivity
 import com.example.shape_up_2022.databinding.ActivitySimStartBinding
 
@@ -42,9 +43,9 @@ class SimStartActivity : AppCompatActivity() {
             .setNeutralButton("넘어가기", eventhandler)
             .setCancelable(false)
         // if 성향점검테스트를 하지 않은 유저라면 모달창 표시
-        if (true) {
-            builder.show()
-        }
+       // if (true) {
+        //    builder.show()
+        //}
 
 
 
@@ -60,4 +61,6 @@ class SimStartActivity : AppCompatActivity() {
         }
 
     }
+
+
 }

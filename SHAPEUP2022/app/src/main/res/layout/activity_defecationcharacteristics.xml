@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
     tools:context=".simulation.SimDefecationCharacteristicsActivity">
 
     <ImageView
@@ -110,6 +111,7 @@
                 android:text="정상" />
         </TableRow>
     </TableLayout>
+
     <Button
         android:id="@+id/btA"
         android:layout_width="wrap_content"
