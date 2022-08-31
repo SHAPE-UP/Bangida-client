@@ -8,21 +8,8 @@
     tools:context=".achieve.AchieveActivity"
     android:background="@color/base_color1">
 
-    <!--Tab bar-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="16dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
         android:layout_height="wrap_content"
         android:padding="24dp"
         android:orientation="vertical">
@@ -31,7 +18,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical">
-            
             <ImageView
                 android:layout_width="32dp"
                 android:layout_height="32dp"
@@ -39,37 +25,6 @@
             <!--반려견 이름 id 추가-->
             <TextView
                 android:layout_marginLeft="6dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_icon_dog_orange" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:orientation="horizontal">
-                <!--반려견 이름 id 추가-->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="코코"
-                    android:textColor="@color/main_color"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="의 가족이 되기까지"
-                    android:textSize="16dp" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="60일 남았어요!" />
-            
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
@@ -113,8 +68,8 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:gravity="center_vertical"
+
             android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
@@ -135,49 +90,46 @@
 
     </LinearLayout>
 
-                <!--ViewPager-->
-        <LinearLayout
+    <!--ViewPager-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:background="@color/white">
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@color/white"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="종합" />
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="진행도" />
 
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="종합" />
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="성실도" />
 
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="진행도" />
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="호감도" />
+        </com.google.android.material.tabs.TabLayout>
 
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="성실도" />
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/achieve_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp" />
+    </LinearLayout>
 
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="호감도" />
-            </com.google.android.material.tabs.TabLayout>
-
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/achieve_pager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="16dp" />
-
-        </LinearLayout>
-
-        <!--button-->
+    <!--button-->
     <!--
         <LinearLayout
             android:layout_width="match_parent"
@@ -204,12 +156,12 @@
         </LinearLayout>
     -->
 
+    <!--Tab bar-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffff"
         android:orientation="horizontal">
-
         <ImageButton
             android:id="@+id/nav_home"
             android:layout_width="0dp"
@@ -217,7 +169,6 @@
             android:layout_height="60dp"
             android:backgroundTint="#ffffffff"
             android:src="@drawable/ic_icon_home"/>
-
         <ImageButton
             android:id="@+id/nav_todo"
             android:layout_width="0dp"
@@ -225,7 +176,6 @@
             android:layout_height="60dp"
             android:backgroundTint="#ffffffff"
             android:src="@drawable/ic_icon_todo"/>
-
         <ImageButton
             android:id="@+id/nav_simulation"
             android:layout_width="0dp"
@@ -233,7 +183,6 @@
             android:layout_height="60dp"
             android:backgroundTint="#ffffffff"
             android:src="@drawable/ic_icon_simulation"/>
-
         <ImageButton
             android:id="@+id/nav_achievement"
             android:layout_width="0dp"
@@ -241,7 +190,6 @@
             android:layout_height="60dp"
             android:backgroundTint="#ffffffff"
             android:src="@drawable/ic_icon_flags_sel"/>
-
         <ImageButton
             android:id="@+id/nav_mypage"
             android:layout_width="0dp"
@@ -250,7 +198,4 @@
             android:backgroundTint="#ffffffff"
             android:src="@drawable/ic_icon_mypage"/>
     </LinearLayout>
-
-
 </LinearLayout>
-
