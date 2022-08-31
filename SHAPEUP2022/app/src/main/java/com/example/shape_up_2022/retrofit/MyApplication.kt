@@ -19,7 +19,21 @@ class MyApplication: Application() {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
+
+        // 로그인
+        var networkServiceAuth: NetworkServiceAuth
+        val retrofitAuth: Retrofit
+            get() = Retrofit.Builder()
+                .baseUrl("http://172.30.1.1:5000/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+        // "http://ec2-13-124-250-65.ap-northeast-2.compute.amazonaws.com:5000/"
+        var client = OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor()).build()
+        // data
+
+
         // 공공데이터 요청
+
         val parser = TikXml.Builder().exceptionOnUnreadXml(false).build()
         var networkServicePlaceData: NetworkServicePlace
         val retrofitPlaceData: Retrofit

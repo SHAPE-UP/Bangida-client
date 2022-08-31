@@ -1,10 +1,10 @@
 package com.example.shape_up_2022.achieve
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.shape_up_2022.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -28,6 +28,7 @@ class AchieveFragment1 : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
     }
 
     override fun onCreateView(

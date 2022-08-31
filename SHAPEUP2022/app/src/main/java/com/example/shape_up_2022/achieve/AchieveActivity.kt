@@ -120,8 +120,8 @@ class AchieveActivity : AppCompatActivity() {
             .setPositiveButton("확인", eventHandler)
             .setCancelable(false)
 
-        if(SaveSharedPreference.getFamliyID(this)!! == ""){
+       /* if(SaveSharedPreference.getFamliyID(this)!! == ""){
             builder.show()
-        }
+        }*/
     }
 }
