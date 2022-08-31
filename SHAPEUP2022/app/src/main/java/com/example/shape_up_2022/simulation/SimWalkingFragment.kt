@@ -131,8 +131,8 @@ class SimWalkingFragment : Fragment(), OnMapReadyCallback, GoogleApiClient.Conne
             registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
                 if (it.all { permission -> permission.value == true }) {
                     apiClient.connect() // 정보 가져옴, onConnected와 연결
-                } else {
-                    Toast.makeText(activity as SimWalkingActivity, "권한 거부..", Toast.LENGTH_SHORT).show()
+                } else {Toast.makeText(activity as SimWalkingActivity, "권한 거부..", Toast.LENGTH_SHORT).show()
+
                 }
             }
         if (ContextCompat.checkSelfPermission(
