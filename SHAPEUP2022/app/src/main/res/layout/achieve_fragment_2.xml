@@ -9,6 +9,74 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:gravity="center_horizontal"
+        android:text="가족별 진행도"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="엄마"
+        android:layout_marginTop="15dp"
+        android:textSize="30dp"
+        android:textStyle="bold"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:progress="25"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginLeft="370dp"
+        android:text="50%"
+        android:textSize="20dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="110dp"
+        android:text="아빠"
+        android:textSize="30dp"
+        android:textStyle="bold"/>
+
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="130dp"
+        android:progress="50" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="230dp"
+        android:layout_marginLeft="370dp"
+        android:text="40%"
+        android:textSize="20dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="230dp"
+        android:text="영주"
+        android:textSize="30dp"
+        android:textStyle="bold"/>
+
+
+
+    <ProgressBar
+        android:id="@+id/progressBar3"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="240dp"
+        android:progress="40" />
         android:orientation="vertical">
         <TextView
             android:gravity="center"
@@ -124,6 +192,6 @@
 
 
 
-    </LinearLayout>
+
 
 </FrameLayout>

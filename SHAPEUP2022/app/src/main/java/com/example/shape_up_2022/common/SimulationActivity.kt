@@ -160,8 +160,8 @@ class SimulationActivity : AppCompatActivity() {
             .setPositiveButton("확인", eventHandler)
             .setCancelable(false)
 
-        if(SaveSharedPreference.getFamliyID(this)!! == ""){
-            builder.show()
-        }
+        //if(SaveSharedPreference.getFamliyID(this)!! == ""){
+        //    builder.show()
+        //}
     }
 }
