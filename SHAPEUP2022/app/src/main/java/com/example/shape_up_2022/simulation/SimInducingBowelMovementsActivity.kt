@@ -45,6 +45,11 @@ class SimInducingBowelMovementsActivity : FragmentActivity() {
         binding.progressBar.progress = status
         setContentView(binding.root)
 
+        binding.tuto.setOnClickListener {
+            binding.real.visibility = View.VISIBLE
+            binding.tuto.visibility = View.GONE
+        }
+
         /*화면을 full screen로 만듬*/window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
@@ -188,6 +193,7 @@ class SimInducingBowelMovementsActivity : FragmentActivity() {
     override fun onStart() {
         super.onStart()
 
+        /*
         var listener = object: DialogInterface.OnClickListener{
             override fun onClick(dialog: DialogInterface?, which: Int) {
 
@@ -201,6 +207,8 @@ class SimInducingBowelMovementsActivity : FragmentActivity() {
             setCancelable(false)
             show()
         }.setCanceledOnTouchOutside(false) // 메시지 값 출력
+        */
+
         true
     }
 
