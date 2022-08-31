@@ -11,13 +11,13 @@
             app:key="note_message"
             app:title="메시지 알림" />
 
-        <SwitchPreferenceCompat
-            app:key="noti_sound"
-            app:title="소리 알림" />
+<!--        <SwitchPreferenceCompat-->
+<!--            app:key="noti_sound"-->
+<!--            app:title="소리 알림" />-->
 
-        <SwitchPreferenceCompat
-            app:key="noti_push"
-            app:title="푸시 알림" />
+<!--        <SwitchPreferenceCompat-->
+<!--            app:key="noti_push"-->
+<!--            app:title="푸시 알림" />-->
 
     </PreferenceCategory>
 

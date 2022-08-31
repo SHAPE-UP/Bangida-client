@@ -11,13 +11,14 @@
         >
 
     <!--지도-->
-
-
         <FrameLayout
             android:id="@+id/walking_fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="9"></FrameLayout>
+            android:layout_weight="9">
+
+        </FrameLayout>
+
 
         <GridLayout
             android:layout_width="wrap_content"
@@ -117,10 +118,6 @@
 
         </GridLayout>
 
-
-
-
-
         <Button
             android:id="@+id/btn_walking_start"
             android:layout_width="match_parent"
@@ -150,7 +147,21 @@
             android:visibility="gone"
             android:textSize="20sp" />
 
-
+        <Button
+            android:id="@+id/btn_walking_next"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginBottom="60dp"
+            android:backgroundTint="@color/point_color"
+            android:fontFamily="@font/custom_font_family"
+            android:text="캡쳐하기/다음"
+            android:visibility="gone"
+            android:textSize="20sp" />
+>>>>>>> Distance_time_speed
 
     </RelativeLayout>
 

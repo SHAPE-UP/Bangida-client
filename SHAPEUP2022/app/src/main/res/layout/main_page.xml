@@ -102,22 +102,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <Button
-                        android:id="@+id/menu_btn_1"
-                        android:text="오늘의 TIP"
-                        android:textSize="20dp"
-                        android:layout_width="150dp"
-                        android:layout_height="200dp"
-                        android:backgroundTint="@color/main_color"
-                        android:layout_marginRight="10dp"/>
-                    <Button
-                        android:id="@+id/menu_btn_2"
-                        android:textSize="20dp"
-                        android:text="훈련 영상 모아보기"
-                        android:layout_width="150dp"
-                        android:layout_height="match_parent"
-                        android:backgroundTint="@color/main_color"
-                        android:layout_marginRight="10dp"/>
-                    <Button
                         android:id="@+id/menu_btn_3"
                         android:textSize="20dp"
                         android:text="반려견 케어성향 점검"
@@ -129,6 +113,22 @@
                         android:id="@+id/menu_btn_4"
                         android:textSize="20dp"
                         android:text="강아지 지갑"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/main_color"
+                        android:layout_marginRight="10dp"/>
+                    <Button
+                        android:id="@+id/menu_btn_1"
+                        android:text="자주하는 \n질문"
+                        android:textSize="20dp"
+                        android:layout_width="150dp"
+                        android:layout_height="200dp"
+                        android:backgroundTint="@color/main_color"
+                        android:layout_marginRight="10dp"/>
+                    <Button
+                        android:id="@+id/menu_btn_2"
+                        android:textSize="20dp"
+                        android:text="훈련 영상 \n모아보기"
                         android:layout_width="150dp"
                         android:layout_height="match_parent"
                         android:backgroundTint="@color/main_color"

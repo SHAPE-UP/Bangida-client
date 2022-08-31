@@ -16,8 +16,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.example.shape_up_2022.R
+import com.example.shape_up_2022.databinding.ActivitySimWalkingBinding
 import com.example.shape_up_2022.databinding.ActivitySpeedBinding
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.youtube.player.internal.i
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -35,7 +37,6 @@ class SpeedActivity : AppCompatActivity(), LocationListener {
     var distance=0.0f
     var fullspeed =0.0f
     var fulltime=0
-
 
     private val fl: FrameLayout by lazy {
         findViewById(R.id.walking_fragment)
@@ -61,6 +62,8 @@ class SpeedActivity : AppCompatActivity(), LocationListener {
         binding = ActivitySpeedBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setContentView(R.layout.activity_speed)
+
+        //replaceFragment(mapfragment)  // 지도 프래그먼트 부착
 
         tvGetSpeed = findViewById<View>(R.id.tvGetSpeed) as TextView
         tvCalSpeed = findViewById<View>(R.id.tvCalSpeed) as TextView
@@ -95,7 +98,6 @@ class SpeedActivity : AppCompatActivity(), LocationListener {
         locationManager!!.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0f, this)
 
 
-
         binding.btnWalkingStart.setOnClickListener {
             binding.walkingTime
             binding.walkingTime.base=SystemClock.elapsedRealtime()
@@ -110,10 +112,11 @@ class SpeedActivity : AppCompatActivity(), LocationListener {
 
 
         }
+
+
         binding.btnWalkingFinish.setOnClickListener {
-            binding.walkingTime.toInt()
-            // val intent = Intent(this, SimWalkReviewAddActivity::class.java)
-            //startActivity(intent)
+            val intent = Intent(this, SimWalkReviewAddActivity::class.java)
+            startActivity(intent)
         }
 
 
@@ -129,13 +132,18 @@ class SpeedActivity : AppCompatActivity(), LocationListener {
 
         //  getSpeed() 함수를 이용하여 속도를 계산
         val getSpeed = String.format("%.3f", location.speed).toDouble()
+
+        //속도 배열 담기
+
         tvGetSpeed!!.text = ": $getSpeed" //Get Speed
+
         val formatDate = sdf.format(Date(location.time))
         tvTime!!.text = ": $formatDate" //Time
 
         // 위치 변경이 두번째로 변경된 경우 계산에 의해 속도 계산
         if (mLastlocation != null) {
             //시간 간격
+
             deltaTime = (location.time - mLastlocation!!.time) / 1000.0
             tvTimeDif!!.text = ": $deltaTime sec" // Time Difference
             tvDistDif!!.text = ": " + mLastlocation!!.distanceTo(location) + " m" // Time Difference
@@ -144,10 +152,11 @@ class SpeedActivity : AppCompatActivity(), LocationListener {
             Dist_list.add(mLastlocation!!.distanceTo(location))
 
             //로그 거리
-           /*Log.d("mobileD","${Dist_list.size}")
+           Log.d("mobileD","${Dist_list.size}")
             for(i in 0..Dist_list.size - 1) {
                Log.d("mobileD", "{$i : ${Dist_list[i]}")
-            }*/
+            }
+
             //거리 합
             for(i in 0..Dist_list.size -1){
                 distance= (Dist_list[i]+distance)
@@ -160,25 +169,16 @@ class SpeedActivity : AppCompatActivity(), LocationListener {
             tvLastTime!!.text = ": $formatLastDate" //Last Time
             val calSpeed = String.format("%.2f", speed).toDouble()
             tvCalSpeed!!.text = ": $calSpeed" //Cal Speed
-            //시간 간격
 
-
-
-            //속도 배열 담기
             speed_list.add(calSpeed.toFloat())
 
-            //로그 속도
-           /* for(i in 0..speed_list.size - 1) {
-                Log.d("mobileApp", "{$i : ${speed_list[i]}")
-            }*/
-            //속도 합
             for(i in 0..speed_list.size - 1) {
-                fullspeed= (speed_list[i]+fullspeed)
+                Log.d("mobileApp", "{$i : ${speed_list[i]}")
             }
         }
+
         mLastlocation = location
         //Log.d("mobileApp", "$location")
-
 
     }
 
@@ -263,9 +263,5 @@ class SpeedActivity : AppCompatActivity(), LocationListener {
     }
 
 }
-
-private fun Chronometer.toInt() {}
-
-
 
 

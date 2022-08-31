@@ -22,42 +22,43 @@
         android:background="#00ffffff"
         android:src="@android:drawable/ic_menu_info_details" />
 
+
+    <ImageView
+        android:id="@+id/poop"
+        android:layout_width="170dp"
+        android:layout_height="104dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="47dp"
+        android:layout_marginBottom="40dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/boad" />
+
     <ImageView
         android:id="@+id/smile"
-        android:layout_width="107dp"
-        android:layout_height="99dp"
+        android:layout_width="170dp"
+        android:layout_height="176dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="12dp"
         android:layout_marginTop="6dp"
-        android:layout_marginEnd="292dp"
+        android:layout_marginEnd="229dp"
         android:scaleType="fitStart"
         android:src="@drawable/maltese_0" />
-
-    <ImageView
-        android:id="@+id/poop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginBottom="33dp"
-        android:scaleType="fitStart"
-        android:src="@drawable/boad" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="200dp"
-        android:layout_height="20dp"
+        android:layout_width="184dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
-        android:layout_marginStart="22dp"
+        android:layout_marginStart="38dp"
         android:layout_marginTop="704dp"
-        android:layout_marginBottom="7dp"
+        android:layout_marginBottom="6dp"
         android:max="10" />
 
 
