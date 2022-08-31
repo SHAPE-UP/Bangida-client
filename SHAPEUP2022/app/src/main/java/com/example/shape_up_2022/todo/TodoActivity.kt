@@ -6,6 +6,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shape_up_2022.R
 import com.example.shape_up_2022.common.MyPageActivity
@@ -34,6 +37,9 @@ class TodoActivity : AppCompatActivity() {
         binding = ActivityToDoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // 프래그먼트 연결 - 캘린더 프래그먼트
+        viewFragment(CalendarFragment(), R.id.todo_calendar)
+
         todoAdd = TodoAddBinding.inflate(layoutInflater)
 
         // 리사이클러뷰 설정
@@ -45,16 +51,17 @@ class TodoActivity : AppCompatActivity() {
         // 모달창에서 저장/취소 버튼 눌렀을 때 발생하는 이벤트
         val save = object : DialogInterface.OnClickListener {
             override fun onClick(p0: DialogInterface?, p1: Int) {
-                if (p1== DialogInterface.BUTTON_POSITIVE) { // [저장] 버튼을 눌렀을 경우
+                if (p1 == DialogInterface.BUTTON_POSITIVE) { // [저장] 버튼을 눌렀을 경우
 
                     // 입력값을 id로 하나하나 찾아와서 [데이터]에 저장해야 함
                     Log.d("budgetApp", "행 추가 저장하기")
                     datas?.add(
-                        TodoItem(todoAdd.todowork.text.toString(),
-                        todoAdd.todorole.text.toString(),
-                        //categoryString[todoAdd.category.selectedItemId.toInt()],
-                        todoAdd.todosetting.text.toString()
-                    )
+                        TodoItem(
+                            todoAdd.todowork.text.toString(),
+                            todoAdd.todorole.text.toString(),
+                            //categoryString[todoAdd.category.selectedItemId.toInt()],
+                            todoAdd.todosetting.text.toString()
+                        )
                     )
 
                     // 간격+단위 어떻게 가져오지
@@ -70,8 +77,7 @@ class TodoActivity : AppCompatActivity() {
 
                     // 합계 칸 업데이트
                     //binding.sumResult.setText(getSum().toString())
-                }
-                else if (p1== DialogInterface.BUTTON_NEGATIVE) {
+                } else if (p1 == DialogInterface.BUTTON_NEGATIVE) {
                     Log.d("budgetApp", "행 추가 취소")
                 }
             }
@@ -126,9 +132,19 @@ class TodoActivity : AppCompatActivity() {
         }
     }
 
+    // 프래그먼트 연결
+    private fun viewFragment(fragment: Fragment, location: Int) {
+        Log.d("app_test", "viewFragment start")
+        val fragmentManager: FragmentManager = supportFragmentManager
+        val transaction: FragmentTransaction = fragmentManager.beginTransaction()
+
+        transaction.add(location, fragment)
+        transaction.commit()
+
+    }
+
     override fun onStart() {
         super.onStart()
-
 
         val eventHandler = object : DialogInterface.OnClickListener {
             override fun onClick(p0: DialogInterface?, p1: Int) {

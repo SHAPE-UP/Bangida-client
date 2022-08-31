@@ -1,13 +1,13 @@
-package com.example.shape_up_2022.achieve
+package com.example.shape_up_2022.todo
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.shape_up_2022.R
-import com.example.shape_up_2022.databinding.AchieveFragment2Binding
-import com.example.shape_up_2022.databinding.AchieveFragment4Binding
+import com.example.shape_up_2022.databinding.FragmentCalendarBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -16,13 +16,14 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [Fragment2.newInstance] factory method to
+ * Use the [CalendarFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class AchieveFragment2 : Fragment() {
+class CalendarFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var binding : FragmentCalendarBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,18 +31,28 @@ class AchieveFragment2 : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = AchieveFragment2Binding.inflate(inflater, container, false)
+        binding = FragmentCalendarBinding.inflate(inflater, container, false)
 
-        binding.pbAchieve1.progress = 40
-        binding.pbAchieve2.progress = 35
-        binding.pbAchieve3.progress = 20
+        val dayText = binding.todoToday
+        val calendarView = binding.todoCalendarView
+        val date = Date(calendarView.date)
+
+        // 현재 날짜 초기화, 오늘 todo
+        dayText.text = SimpleDateFormat("yyyy년 M월 d일").format(date)
+
+        // 캘린더 클릭 이벤트
+        calendarView.setOnDateChangeListener{ calendarView, year, month, dayOfMonth ->
+            // 해당 날짜 변수에 담기
+            var day = "${year}년 ${month+1}월 ${dayOfMonth}일"
+            // 날짜에 해당하는 To-do 불러오기
+            dayText.text = day
+        }
 
         return binding.root
     }
@@ -53,12 +64,12 @@ class AchieveFragment2 : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment Fragment2.
+         * @return A new instance of fragment CalendarFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            AchieveFragment2().apply {
+            CalendarFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

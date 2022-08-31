@@ -12,7 +12,6 @@ import com.example.shape_up_2022.achieve.AchieveActivity
 import com.example.shape_up_2022.databinding.ActivityTempMainBinding
 import com.example.shape_up_2022.simulation.*
 import com.example.shape_up_2022.todo.TodoActivity
-import com.example.shape_up_2022.todo.TodoCalendarActivity
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
@@ -74,11 +73,6 @@ class TempMainActivity : AppCompatActivity() {
 
         binding.hospitalbtn.setOnClickListener{
             intent1 = Intent(this, HospitalinfoActivity::class.java)
-            startActivity(intent1)
-        }
-
-        binding.calendar.setOnClickListener{
-            intent1 = Intent(this, TodoCalendarActivity::class.java)
             startActivity(intent1)
         }
 

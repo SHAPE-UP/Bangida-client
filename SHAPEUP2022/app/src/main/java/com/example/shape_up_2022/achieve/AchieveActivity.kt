@@ -25,18 +25,21 @@ class AchieveActivity : AppCompatActivity() {
         binding = ActivityAchieveBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.pbAchieveTodo.progress = 30
 
+        /*
         binding.btn.setOnClickListener { view ->
-            binding.pb4.incrementProgressBy(5)
+            binding.pbAchieveTodo.incrementProgressBy(5)
         }
 
         binding.btn2.setOnClickListener { view ->
-            binding.pb4.incrementProgressBy(-5)
+            binding.pbAchieveTodo.incrementProgressBy(-5)
         }
 
         binding.btn3.setOnClickListener { view ->
-            binding.pb4.progress = 50
+            binding.pbAchieveTodo.progress = 50
         }
+         */
 
         binding.tabs.addOnTabSelectedListener(object :TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
@@ -57,10 +60,10 @@ class AchieveActivity : AppCompatActivity() {
         TabLayoutMediator(binding.tabs, binding.achievePager) {
                 tab,position->
             when(position){
-                0->tab.text = R.string.achieve_tab1.toString()
-                1->tab.text = R.string.achieve_tab2.toString()
-                2->tab.text = R.string.achieve_tab3.toString()
-                3->tab.text = R.string.achieve_tab4.toString()
+                0->tab.text = "종합"
+                1->tab.text = "진행도"
+                2->tab.text = "성실도"
+                3->tab.text = "호감도"
             }
         }.attach()
 

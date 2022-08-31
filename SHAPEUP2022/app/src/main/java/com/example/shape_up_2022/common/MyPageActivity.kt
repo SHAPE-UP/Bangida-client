@@ -1,24 +1,28 @@
 package com.example.shape_up_2022.common
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.example.shape_up_2022.achieve.AchieveActivity
 import com.example.shape_up_2022.databinding.ActivityMyPageBinding
-import com.example.shape_up_2022.retrofit.LogoutRes
-import com.example.shape_up_2022.retrofit.MyApplication
+import com.example.shape_up_2022.databinding.MypageDialogJoinFamilyBinding
+import com.example.shape_up_2022.retrofit.*
 import com.example.shape_up_2022.todo.TodoActivity
+import com.google.android.material.datepicker.MaterialDatePicker.Builder.datePicker
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.Exception
+
 
 class MyPageActivity : AppCompatActivity() {
 
@@ -65,38 +69,114 @@ class MyPageActivity : AppCompatActivity() {
         }
 
         // 로그아웃
-        val email = SaveSharedPreference.getUserEmail(this)!!.toString()
-        Log.d("mobileApp", "${email}")
         binding.btnLogout.setOnClickListener {
-            val call: Call<LogoutRes> = MyApplication.networkServiceAuth.logout(
+            // 저장했던 preference clear
+            SaveSharedPreference.clearAll(baseContext)
+
+            Toast.makeText(baseContext, "로그아웃 성공", Toast.LENGTH_SHORT)
+
+            // StartActivity로 이동
+            val intent = Intent(baseContext, TempMainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        val eventhandler_save = object : DialogInterface.OnClickListener {
+            override fun onClick(p0: DialogInterface?, p1: Int) {
+                if(p1== DialogInterface.BUTTON_POSITIVE) {
+                    // retorfit 요청
+                        Log.d("mobileApp", "${SaveSharedPreference.getUserID(baseContext)}")
+                    val reqUserID = SaveSharedPreference.getUserID(baseContext)!!
+                    val call: Call<AddFamilyRes> = MyApplication.networkServiceUsers.addFamliy(
+                        AddFamilyReq(reqUserID)
+                    )
+
+                    call?.enqueue(object : Callback<AddFamilyRes> {
+                        override fun onResponse(call: Call<AddFamilyRes>, response: Response<AddFamilyRes>) {
+                            if(response.isSuccessful){
+                                Log.d("mobileApp", "$response ${response.body()}")
+                                // 프리퍼런스에 값 저장
+                                SaveSharedPreference.setFamliyID(baseContext, response.body()!!.familyID)
+
+                                // UI 변경하기
+                                binding.noFamFamilyBtns.visibility = View.GONE
+                                binding.mypageFamilyList.visibility = View.VISIBLE
+
+                                // 토스트 출력하기
+                                Toast.makeText(baseContext, "그룹 생성에 성공하셨습니다!", Toast.LENGTH_SHORT).show()
+
+                            }
+                       }
+
+                        override fun onFailure(call: Call<AddFamilyRes>, t: Throwable) {
+                            Log.d("mobileApp", "onFailure $t")
+                            Toast.makeText(baseContext, "그룹 생성에 실패했습니다.", Toast.LENGTH_SHORT).show()
+                        }
+                    })
+                }
+            }
+        }
+        val dialogBinding = MypageDialogJoinFamilyBinding.inflate(layoutInflater)
+        val eventhandler_join = object : DialogInterface.OnClickListener {
+            override fun onClick(p0: DialogInterface?, p1: Int) {
+                if(p1== DialogInterface.BUTTON_POSITIVE) {
+                    // retorfit 요청
+                    val call: Call<JoinFamilyRes> = MyApplication.networkServiceUsers.joinFamliy(
+                        JoinFamilyReq(dialogBinding.dialogInputFamilycode.text.toString(), SaveSharedPreference.getUserEmail(baseContext)!!)
+                    )
+                    // retrofit 요청
+                    call?.enqueue(object : Callback<JoinFamilyRes> {
+                        override fun onResponse(call: Call<JoinFamilyRes>, response: Response<JoinFamilyRes>) {
+                            if(response.isSuccessful){
+                                Log.d("mobileApp", "$response ${response.body()}")
+                                // 프리퍼런스에 값 저장
+                                SaveSharedPreference.setFamliyID(baseContext, response.body()!!.familyID)
+
+                                // UI 변경하기
+                                binding.noFamFamilyBtns.visibility = View.GONE
+                                binding.mypageFamilyList.visibility = View.VISIBLE
+
+                                // 토스트 출력하기
+                                Toast.makeText(baseContext, "그룹 참여에 성공하셨습니다!", Toast.LENGTH_SHORT).show()
+
+                            }
+                        }
+
+                        override fun onFailure(call: Call<JoinFamilyRes>, t: Throwable) {
+                            Log.d("mobileApp", "onFailure $t")
+                            Toast.makeText(baseContext, "그룹 참여에 실패했습니다.", Toast.LENGTH_SHORT).show()
+                        }
+                    })
+                }
+            }
+        }
+
+
+        var builder_save = AlertDialog.Builder(this)
+            .setTitle("가족 그룹 생성")
+            .setMessage("가족 그룹을 생성하시겠습니까?")
+            .setPositiveButton("네!", eventhandler_save)
+            .setNegativeButton("아니오", null)
+            .setCancelable(true)
+
+        var builder_join = AlertDialog.Builder(this)
+            .setTitle("가족 그룹 가입")
+            .setView(dialogBinding.root)
+            .setPositiveButton("가입하기", eventhandler_join)
+            .setCancelable(true)
+
+        // 가족 그룹 생성
+        binding.mypageSavefam.setOnClickListener {
+            builder_save.show()
+        }
+
+        // 가족 그룹 참여
+        binding.mypageJoinfam.setOnClickListener {
+            if (dialogBinding.root.parent != null) (dialogBinding.root.parent as ViewGroup).removeView(
+                dialogBinding.root
             )
-
-            call?.enqueue(object : Callback<LogoutRes> {
-                override fun onResponse(call: Call<LogoutRes>, response: Response<LogoutRes>) {
-                    if(!response.isSuccessful){
-                        Log.d("mobileApp", "${response}")
-                    }
-                    if(response.isSuccessful){
-                        Log.d("mobileApp", "$response ${response.body()}")
-
-                        // 저장했던 preference clear
-                        SaveSharedPreference.clearUserEmail(baseContext)
-                        SaveSharedPreference.clearUserName(baseContext)
-                        SaveSharedPreference.clearUserTested(baseContext)
-                        SaveSharedPreference.clearUserID(baseContext)
-
-                        // StartActivity로 이동
-                        val intent = Intent(baseContext, TempMainActivity::class.java)
-                        startActivity(intent)
-                        finish()
-                    }
-                }
-
-                override fun onFailure(call: Call<LogoutRes>, t: Throwable) {
-                    Log.d("mobileApp", "onFailure $t")
-                    Toast.makeText(baseContext, "로그아웃에 실패했습니다.", Toast.LENGTH_SHORT).show()
-                }
-            })
+            builder_join.setView(dialogBinding.root)
+            builder_join.show()
         }
 
         // 탭바 연결

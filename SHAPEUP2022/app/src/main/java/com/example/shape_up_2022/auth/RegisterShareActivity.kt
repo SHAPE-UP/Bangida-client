@@ -37,7 +37,7 @@ class RegisterShareActivity : AppCompatActivity() {
             }
 
             else {
-                val call: Call<JoinFamilyRes> = MyApplication.networkServiceAuth.joinFamliy(
+                val call: Call<JoinFamilyRes> = MyApplication.networkServiceUsers.joinFamliy(
                     JoinFamilyReq(familyCode = familyCode, email = email!!)
                 )
 

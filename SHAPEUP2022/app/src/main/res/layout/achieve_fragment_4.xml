@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment4">
+    tools:context=".achieve.AchieveFragment4">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!--차트-->
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/love_linechart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="사용자" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>

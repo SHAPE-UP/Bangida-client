@@ -74,7 +74,7 @@ class RegisterInputActivity : AppCompatActivity() {
     }
 
     private fun registerUser(userName: String, email: String, password: String){
-        val call: Call<RegisterRes> = MyApplication.networkServiceAuth.register(
+        val call: Call<RegisterRes> = MyApplication.networkServiceUsers.register(
             RegisterReq(userName,email, password)
         )
 
