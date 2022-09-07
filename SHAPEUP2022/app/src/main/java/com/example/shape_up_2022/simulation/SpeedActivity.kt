@@ -19,7 +19,6 @@ import com.example.shape_up_2022.R
 import com.example.shape_up_2022.databinding.ActivitySimWalkingBinding
 import com.example.shape_up_2022.databinding.ActivitySpeedBinding
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.youtube.player.internal.i
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -33,8 +32,12 @@ class SpeedActivity : AppCompatActivity(), LocationListener {
     var Dist_list = mutableListOf<Float>()
     var speed_list = ArrayList<Float>()
 
+    // for문 종료 변수
+    var for_end =0
+
     //전달할 변수 선언
     var distance=0.0f
+    var avespeed=0.0f
     var fullspeed =0.0f
     var fulltime=0
 
@@ -61,7 +64,7 @@ class SpeedActivity : AppCompatActivity(), LocationListener {
         super.onCreate(savedInstanceState)
         binding = ActivitySpeedBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setContentView(R.layout.activity_speed)
+       // setContentView(R.layout.activity_speed)
 
         //replaceFragment(mapfragment)  // 지도 프래그먼트 부착
 
@@ -90,7 +93,7 @@ class SpeedActivity : AppCompatActivity(), LocationListener {
             val formatDate = sdf.format(Date(lastKnownLocation.time))
             tvTime!!.text = ": $formatDate" //Time
         }
-        Log.d("mobileApp", "로그100")
+
 
         // GPS 사용 가능 여부 확인
         val isEnable = locationManager!!.isProviderEnabled(LocationManager.GPS_PROVIDER)
@@ -98,10 +101,7 @@ class SpeedActivity : AppCompatActivity(), LocationListener {
         locationManager!!.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0f, this)
 
 
-        binding.btnWalkingStart.setOnClickListener {
-            binding.walkingTime
-            binding.walkingTime.base=SystemClock.elapsedRealtime()
-            binding.walkingTime.start()
+        /*binding.btnWalkingStart.setOnClickListener {
             //binding.btnWalkingStart.isEnabled=false
             //binding.btnWalkingFinish.isEnabled=true
             binding.btnWalkingStart.setEnabled(false)
@@ -109,13 +109,30 @@ class SpeedActivity : AppCompatActivity(), LocationListener {
             binding.btnWalkingFinish.setEnabled(true)
             binding.btnWalkingFinish.setVisibility(View.VISIBLE)
 
+            val intent = Intent(this, SimWalkingActivity::class.java)
+            intent.putExtra("answer", distance)
+            startActivity(intent)
 
-
-        }
+        }*/
 
 
         binding.btnWalkingFinish.setOnClickListener {
+
+            for_end=100
+            //속도 계산배열의 마지막 index값, 배열의 갯수
+            for(i in 0..speed_list.size -1){
+                avespeed= (speed_list[i]+avespeed)
+
+            }
+            var avespeed_intent= avespeed/speed_list.size
+            Log.d("mobileD", "${avespeed_intent}")
+
+            //값 넘기기 getXExtra,putExtra
+            var distance_intent=distance.toString()
+
             val intent = Intent(this, SimWalkReviewAddActivity::class.java)
+            intent.putExtra("Key", distance_intent)
+            intent.putExtra("Key1", avespeed_intent)
             startActivity(intent)
         }
 
@@ -124,6 +141,7 @@ class SpeedActivity : AppCompatActivity(), LocationListener {
     //private fun replaceFragment(fragment: Fragment) {
     //    supportFragmentManager.beginTransaction().replace(fl.id, fragment).commit()
     //}
+
 
 
     override fun onLocationChanged(location: Location) {
@@ -152,16 +170,20 @@ class SpeedActivity : AppCompatActivity(), LocationListener {
             Dist_list.add(mLastlocation!!.distanceTo(location))
 
             //로그 거리
-           Log.d("mobileD","${Dist_list.size}")
+           /*Log.d("mobileD","${Dist_list.size}")
             for(i in 0..Dist_list.size - 1) {
                Log.d("mobileD", "{$i : ${Dist_list[i]}")
-            }
+            }*/
 
             //거리 합
+
             for(i in 0..Dist_list.size -1){
                 distance= (Dist_list[i]+distance)
+
+                if(for_end==100)
+                    break
             }
-            Log.d("mobileD","${distance}")
+            Log.d("mobilekey","${distance}")
 
             // 속도 계산 distanceTo좌표로 거리 구하기
             speed = mLastlocation!!.distanceTo(location) / deltaTime
@@ -170,7 +192,9 @@ class SpeedActivity : AppCompatActivity(), LocationListener {
             val calSpeed = String.format("%.2f", speed).toDouble()
             tvCalSpeed!!.text = ": $calSpeed" //Cal Speed
 
-            speed_list.add(calSpeed.toFloat())
+            if(for_end!=100) {
+                speed_list.add(calSpeed.toFloat())
+            }
 
             for(i in 0..speed_list.size - 1) {
                 Log.d("mobileApp", "{$i : ${speed_list[i]}")

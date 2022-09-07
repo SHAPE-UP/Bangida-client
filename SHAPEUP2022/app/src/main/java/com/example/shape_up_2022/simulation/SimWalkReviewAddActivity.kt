@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import com.example.shape_up_2022.databinding.ActivitySimWalkReviewAddBinding
 import java.io.File
@@ -20,12 +21,18 @@ import java.io.IOException
 import java.lang.Exception
 
 class SimWalkReviewAddActivity : AppCompatActivity() {
+    private var addreview_distance: TextView? = null
 
     lateinit var binding : ActivitySimWalkReviewAddBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivitySimWalkReviewAddBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        var data:String?
+        data = intent.getStringExtra("Key")
+        addreview_distance?.text= data
+
 
         /* 이전 액티비티에서 전달받은 이미지 처리 */
         val byteArray: ByteArray? = intent.getByteArrayExtra("mapCapture")
