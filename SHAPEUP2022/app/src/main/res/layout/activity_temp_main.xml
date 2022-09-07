@@ -99,6 +99,12 @@
             android:text="음성 훈련"
             android:layout_gravity="center"
             android:id="@+id/petplace_training" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FAQ"
+            android:layout_gravity="center"
+            android:id="@+id/faq" />
     </LinearLayout>
 
 </LinearLayout>

@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Base64
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.shape_up_2022.FaqActivity
 import com.example.shape_up_2022.achieve.AchieveActivity
 import com.example.shape_up_2022.databinding.ActivityTempMainBinding
 import com.example.shape_up_2022.simulation.*
@@ -83,6 +84,10 @@ class TempMainActivity : AppCompatActivity() {
 
         binding.petplaceTraining.setOnClickListener {
             intent1 = Intent(this, SimTrainingActivity::class.java)
+            startActivity(intent1)
+        }
+        binding.faq.setOnClickListener {
+            intent1 = Intent(this, FaqActivity::class.java)
             startActivity(intent1)
         }
 

@@ -25,8 +25,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SHAPEUP2022"
         android:usesCleartextTraffic="true">
-        <activity android:name=".simulation.SpeedActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".FaqActivity"
+            android:exported="false" />
+        <activity
+            android:name=".simulation.SpeedActivity"
+            android:exported="false" />
         <activity
             android:name=".common.TipActivity"
             android:exported="false" />
