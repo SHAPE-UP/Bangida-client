@@ -11,14 +11,6 @@
         >
 
     <!--지도-->
-        <FrameLayout
-            android:id="@+id/walking_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="9">
-
-        </FrameLayout>
-
 
         <GridLayout
             android:layout_width="wrap_content"

@@ -38,8 +38,7 @@ class SpeedActivity : AppCompatActivity(), LocationListener {
     //전달할 변수 선언
     var distance=0.0f
     var avespeed=0.0f
-    var fullspeed =0.0f
-    var fulltime=0
+
 
     private val fl: FrameLayout by lazy {
         findViewById(R.id.walking_fragment)
@@ -57,8 +56,8 @@ class SpeedActivity : AppCompatActivity(), LocationListener {
     private var speed = 0.0
 
     // 배열
-    var calSpeedArray = mutableListOf<Float>(0.0F)
-    var tvDistArray = mutableListOf<Float>(0.0F)
+    //var calSpeedArray = mutableListOf<Float>(0.0F)
+    //var tvDistArray = mutableListOf<Float>(0.0F)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -129,10 +128,14 @@ class SpeedActivity : AppCompatActivity(), LocationListener {
 
             //값 넘기기 getXExtra,putExtra
             var distance_intent=distance.toString()
+            var time =Dist_list.size.toString()
+
+            Log.d("mobileD", "${time}")
 
             val intent = Intent(this, SimWalkReviewAddActivity::class.java)
-            intent.putExtra("Key", distance_intent)
-            intent.putExtra("Key1", avespeed_intent)
+            intent.putExtra("Key1", distance_intent)
+            intent.putExtra("Key2", avespeed_intent)
+            intent.putExtra("Key3", time)
             startActivity(intent)
         }
 

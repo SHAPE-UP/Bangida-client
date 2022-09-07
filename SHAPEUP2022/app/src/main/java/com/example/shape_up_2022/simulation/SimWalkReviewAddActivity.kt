@@ -22,6 +22,9 @@ import java.lang.Exception
 
 class SimWalkReviewAddActivity : AppCompatActivity() {
     private var addreview_distance: TextView? = null
+    private var  addreview_speed: TextView? = null
+    private var  addreview_time: TextView? = null
+
 
     lateinit var binding : ActivitySimWalkReviewAddBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,10 +32,20 @@ class SimWalkReviewAddActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        var data:String?
-        data = intent.getStringExtra("Key")
-        addreview_distance?.text= data
+        // 산책 측정 액티비티에서 전달
+        var data1:String?
+        data1 = intent.getStringExtra("Key1")
+        addreview_distance?.text= data1
 
+
+        var data2:String?
+        data2 = intent.getStringExtra("Key2")
+        addreview_speed?.text= data2
+
+        var data3:String?
+        data3 = intent.getStringExtra("Key3")
+        addreview_time?.text= data3
+        Log.d("mobile","${addreview_time}")
 
         /* 이전 액티비티에서 전달받은 이미지 처리 */
         val byteArray: ByteArray? = intent.getByteArrayExtra("mapCapture")
