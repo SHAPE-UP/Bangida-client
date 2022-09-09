@@ -3,6 +3,7 @@ package com.example.shape_up_2022.simulation
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.example.shape_up_2022.databinding.ActivitySimBeautyBinding
 
 class SimBeautyActivity : AppCompatActivity() {
@@ -11,6 +12,11 @@ class SimBeautyActivity : AppCompatActivity() {
 
         val binding = ActivitySimBeautyBinding.inflate(layoutInflater) // 바인딩
         setContentView(binding.root) // 액티비티 화면 출력
+
+        // 튜토리얼
+        binding.tutoBeauty.setOnClickListener {
+            binding.tutoBeauty.visibility = View.GONE
+        }
 
 
         binding.button1.setOnClickListener {

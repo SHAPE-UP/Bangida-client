@@ -11,6 +11,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
 import com.example.shape_up_2022.R
+import com.example.shape_up_2022.databinding.ActivityFeedsimulationBinding
 import java.util.*
 import kotlin.concurrent.timer
 
@@ -30,10 +31,18 @@ lateinit var intent9 : Intent
 class FeedsimulationActivity : AppCompatActivity() {
 
     lateinit private var Gv: GameView
+    lateinit var binding : ActivityFeedsimulationBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_feedsimulation)
+//        binding = ActivityFeedsimulationBinding.inflate(layoutInflater)
+//        setContentView(binding.root)
+
+        // 튜토리얼
+//        binding.tutoFeedStart.setOnClickListener {
+//            binding.tutoFeedStart.visibility = View.GONE
+//        }
 
         SetTimerm()
 

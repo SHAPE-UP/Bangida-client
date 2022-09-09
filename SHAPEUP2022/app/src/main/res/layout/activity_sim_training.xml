@@ -1,44 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_marginHorizontal="16dp"
     tools:context=".simulation.SimTrainingActivity">
-
-    <ImageView
-        android:layout_marginTop="20dp"
-        android:id="@+id/training_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_menu_info_details" />
-
-    <ImageView
-        android:id="@+id/maltese"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:src="@drawable/maltese" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginBottom="50dp">
-        <Button
-            android:id="@+id/training_feed"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:id="@+id/training_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="50dp"
-            android:text="간식 주기" />
-        <Button
-            android:id="@+id/training_voice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="음성"/>
+            android:src="@android:drawable/ic_menu_info_details" />
+
+        <ImageView
+            android:id="@+id/maltese"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/maltese" />
+
+            <Button
+                android:id="@+id/training_voice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="50dp"
+                android:text="말 가르치기"/>
+
     </LinearLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tuto_train"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/tutorial">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="버튼을 눌러 강아지에게 가르칠 말을 \n선택할 수 있습니다."
+            android:textColor="@color/base_color1"
+            android:textSize="20sp"
+            android:layout_marginTop="450dp"
 
-
-</LinearLayout>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

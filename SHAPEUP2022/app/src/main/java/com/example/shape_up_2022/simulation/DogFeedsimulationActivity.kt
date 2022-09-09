@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import com.example.shape_up_2022.WatersimulationActivity
 import com.example.shape_up_2022.databinding.ActivityDogFeedsimulationBinding
 
@@ -14,9 +15,15 @@ class DogFeedsimulationActivity : AppCompatActivity() {
     private lateinit var intent1 : Intent
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_dog_feedsimulation)
+
+
         binding = ActivityDogFeedsimulationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 튜토리얼
+        binding.tutoFeed.setOnClickListener {
+            binding.tutoFeed.visibility = View.GONE
+        }
 
         binding.fsim.setOnClickListener{
             intent1 = Intent(this, FeedsimulationActivity::class.java)

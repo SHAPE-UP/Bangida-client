@@ -1,18 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".simulation.FeedsimulationActivity">
-
-    <TextView
+    tools:context=".simulation.FeedsimulationActivity" >
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="반려견의 식사를 챙겨주세요"
-        android:textAlignment="center"
-        android:textSize="30dp"
-        android:layout_marginTop="30dp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="반려견의 식사를 챙겨주세요"
+                android:textAlignment="center"
+                android:textSize="30dp"
+                android:layout_marginTop="30dp" />
+
+        </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tuto_feed_start"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/tutorial">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="움직이는 먹이를 터치해 \n 반려견의 먹이를 챙겨줍니다."
+            android:textColor="@color/base_color1"
+            android:textSize="20sp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
