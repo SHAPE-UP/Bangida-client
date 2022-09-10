@@ -3,35 +3,43 @@ package com.example.shape_up_2022.todo
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shape_up_2022.R
-import com.example.shape_up_2022.common.MyPageActivity
-import com.example.shape_up_2022.common.SimulationActivity
 import com.example.shape_up_2022.achieve.AchieveActivity
 import com.example.shape_up_2022.adapter.TodoAdapter
-import com.example.shape_up_2022.adapter.TodoViewHolder
 import com.example.shape_up_2022.common.MainActivity
+import com.example.shape_up_2022.common.MyPageActivity
 import com.example.shape_up_2022.common.SaveSharedPreference
+import com.example.shape_up_2022.common.SimulationActivity
 import com.example.shape_up_2022.data.TodoItem
 import com.example.shape_up_2022.data.Todorole
 import com.example.shape_up_2022.databinding.ActivityToDoBinding
 import com.example.shape_up_2022.databinding.TodoAddBinding
+import com.example.shape_up_2022.retrofit.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.*
 
 class TodoActivity : AppCompatActivity() {
     companion object {
         var datas: MutableList<TodoItem>? = mutableListOf<TodoItem>(
-            TodoItem("목욕하기", Todorole("성민언니"), "22시", "목욕하기"),
-            TodoItem("간식 주기", Todorole("영주"), "17시", "간식 주기")
+            TodoItem("목욕하기", Todorole("성민언니"), 22, 3),
+            TodoItem("간식 주기", Todorole("영주"), 17, 2)
         )  // 샘플데이터 목록(1)
         lateinit var adapter: TodoAdapter  // (2)리사이클러뷰.어댑터
         lateinit var todoRecyclerView: RecyclerView  // (3)리사이클러뷰
+
+        lateinit var dateString: String  // "yyyy-MM-dd"
 
         fun updateTodoList(array: MutableList<TodoItem>?) {
             datas = array  // 단순 데이터 배열 저장(1)
@@ -43,6 +51,7 @@ class TodoActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityToDoBinding
     lateinit var todoAdd: TodoAddBinding
+    lateinit var calendar: CalendarFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +62,8 @@ class TodoActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // 프래그먼트 연결 - 캘린더 프래그먼트
-        viewFragment(CalendarFragment(), R.id.todo_calendar)
+        calendar = CalendarFragment()
+        viewFragment(calendar, R.id.todo_calendar)
 
         // 리사이클러뷰 설정 및 초기화
         val layoutManager = LinearLayoutManager(this)
@@ -66,20 +76,46 @@ class TodoActivity : AppCompatActivity() {
             override fun onClick(p0: DialogInterface?, p1: Int) {
                 if (p1 == DialogInterface.BUTTON_POSITIVE) { // [저장] 버튼을 눌렀을 경우
 
+                    /* 화면 업데이트 */
                     // 새 입력값을 datas(리사이클러뷰 데이터 배열)(1)에 추가
                     datas?.add(
                         TodoItem(
-                            todoAdd.todowork.text.toString(),
-                            Todorole(todoAdd.todorole.text.toString()),
-                            todoAdd.todotime.text.toString()
+                            todowork = todoAdd.todowork.text.toString(),
+                            todorole = Todorole(todoAdd.todorole.text.toString()),
+                            todotime = todoAdd.todotime.text.toString().toInt()
                         )
                     )
 
                     // 리사이클러뷰 업데이트
                     adapter.notifyItemInserted(adapter.itemCount)
 
-                    // DB에 추가
+                    // todorole 유저의 ID 가져오기
+
+
+                    /* DB에 추가 */
                     // 서버 요청 registerTodo
+                    val call: Call<RegisterTodoRes> = MyApplication.networkServiceTodo.registerTodo(
+                        RegisterTodoReq(
+                            familyID = SaveSharedPreference.getFamliyID(this@TodoActivity)!!,
+                            date = dateString,
+                            todowork = todoAdd.todowork.text.toString(),
+                            todorole = "",
+                            todotime = todoAdd.todotime.text.toString().toInt(),
+                            todoref = 0
+                        )
+                    )
+                    call?.enqueue(object : Callback<RegisterTodoRes> {
+                        override fun onResponse(call: Call<RegisterTodoRes>, response: Response<RegisterTodoRes>) {
+                            if(response.isSuccessful){
+                                Log.d("mobileApp", "registerTodo $response ${response.body()}")
+                            }
+                        }
+
+                        override fun onFailure(call: Call<RegisterTodoRes>, t: Throwable) {
+                            Log.d("mobileApp", "registerTodo onFailure $t")
+                            Toast.makeText(this@TodoActivity, "등록 실패", Toast.LENGTH_SHORT).show()
+                        }
+                    })
 
 
                     // 입력 폼(다이얼로그) 초기화 - null이 제출되면 오류남, 처리 필요

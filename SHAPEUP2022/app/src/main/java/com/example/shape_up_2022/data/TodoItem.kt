@@ -4,8 +4,8 @@ package com.example.shape_up_2022.data
 class TodoItem (
                 val todowork:String="할일",
                 val todorole:Todorole?=null,
-                val todotime:String="시간 설정",
-                val todoref:String="관련 활동",
+                val todotime:Int=17,
+                val todoref:Int=0,
                 val date:String="2022-09-01",
                 val done:Boolean=false
 )

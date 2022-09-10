@@ -25,9 +25,25 @@ class TodoAdapter (val datas: MutableList<TodoItem>?): RecyclerView.Adapter<Recy
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val binding = (holder as TodoViewHolder).binding
+
         binding.todowork.text = datas!![position].todowork
         binding.todorole.text = datas!![position].todorole?.name ?: ""
-        binding.todotime.text = datas!![position].todotime
-        binding.todoref.text = datas!![position].todoref
+        binding.todotime.text = datas!![position].todotime.toString() + "시"
+
+        // 시뮬레이션 텍스트로 치환
+        var todoreftext = when (datas!![position].todoref) {
+            0 -> ""
+            1 -> "강아지 관리"
+            2 -> "먹이 챙겨주기"
+            3 -> "위생 관리/목욕"
+            4 -> "배변 관리"
+            5 -> "건강 관리"
+            6 -> "훈련하기"
+            7 -> "산책"
+            8 -> "병원"
+            9 -> "미용"
+            else -> ""
+        }
+        binding.todoref.text = todoreftext
     }
 }
