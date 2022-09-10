@@ -19,6 +19,11 @@ class SimManagePuppyActivity : AppCompatActivity() {
         binding.progressBar.progress = status
         setContentView(binding.root)
 
+        // 튜토리얼
+        binding.simManageTuto.setOnClickListener {
+            binding.simManageTuto.visibility = View.GONE
+        }
+
         // 액티비티 이동: 강아지 청소
         binding.cleanBedBtn.setOnClickListener{
             val intent = Intent(this, SimCleaningbedActivity::class.java)

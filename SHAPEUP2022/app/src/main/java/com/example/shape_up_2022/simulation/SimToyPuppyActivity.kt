@@ -3,6 +3,7 @@ package com.example.shape_up_2022.simulation
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.shape_up_2022.R
@@ -20,6 +21,12 @@ class SimToyPuppyActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val bindingYouTube = ActivityYoutubeBinding.inflate(layoutInflater)
+
+        // 튜토리얼
+        binding.simToyTuto.setOnClickListener {
+            binding.simToyTuto.visibility = View.GONE
+
+        }
 
         // 다른 레이아웃의 뷰 사용
 

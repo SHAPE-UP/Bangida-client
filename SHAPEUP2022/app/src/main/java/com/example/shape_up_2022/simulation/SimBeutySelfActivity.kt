@@ -25,6 +25,11 @@ class SimBeutySelfActivity : YouTubeBaseActivity() {
         setContentView(binding.root)
         //setContentView(R.layout.activity_sim_beuty_self)
 
+        // 튜토리얼
+        binding.tutoSimBeauty.setOnClickListener {
+            binding.tutoSimBeauty.visibility = View.GONE
+        }
+
         binding.simEx.setOnClickListener{
             AlertDialog.Builder(this).run {
                 setTitle("위생 미용 설명서")

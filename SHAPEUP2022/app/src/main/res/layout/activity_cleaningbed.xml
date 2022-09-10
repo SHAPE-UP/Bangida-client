@@ -1,30 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/layout_clean"
     android:orientation="vertical"
     tools:context=".simulation.SimCleaningbedActivity">
-
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:textSize="20dp"
-        android:text="먼지를 클릭하면서 \n 강아지 침대를 청소해볼까요?"
-        android:gravity="center"/>
+        android:layout_height="match_parent"
+        android:id="@+id/layout_clean">
 
-    <ImageView
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:textSize="20dp"
+            android:text="먼지를 클릭하면서 \n 강아지 침대를 청소해볼까요?"
+            android:gravity="center"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="160dp"
+            android:gravity="center"
+            android:src="@drawable/bed"
+            android:text="침대"
+            android:textSize="40dp" />
+
+    </RelativeLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tuto_bed"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="160dp"
-        android:gravity="center"
-        android:src="@drawable/bed"
-        android:text="침대"
-        android:textSize="40dp" />
+        android:layout_height="match_parent"
+        android:background="@color/tutorial">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="침대 주변에 있는 먼지를 누르면 \n 먼지가 사라져요! \n 먼지들을 클릭해서 침대를 청소해볼까요?"
+            android:textColor="@color/base_color1"
+            android:textSize="20sp"
 
-</RelativeLayout>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

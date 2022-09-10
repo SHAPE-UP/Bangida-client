@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ball_sim_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".simulation.SimBallActivity">
+    tools:context=".simulation.SimBallActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,6 +59,27 @@
         android:layout_marginVertical="20dp"
         android:text="공을 던질 위치를 클릭해주세요."
         android:textSize="16dp" />
-
-
 </LinearLayout>
+
+    <!--튜토리얼-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tuto_ball"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/tutorial">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="공을 아무 위치에 터치하면 \n 강아지가 따라 움직입니다. \n 공을 갖고 반려견과 함께 놀아보아요~"
+            android:textColor="@color/base_color1"
+            android:textSize="20sp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>

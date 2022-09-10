@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.MotionEvent
+import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import com.example.shape_up_2022.R
@@ -24,6 +25,11 @@ class SimBallActivity : AppCompatActivity() {
         binding = ActivityBallSimBinding.inflate(layoutInflater)
         setContentView(binding.root)
         var score: Int = 0
+
+        // 튜토리얼
+        binding.tutoBall.setOnClickListener{
+            binding.tutoBall.visibility = View.GONE
+        }
 
         // 액티비티 이동 리스너
         val activiy = object : DialogInterface.OnClickListener {

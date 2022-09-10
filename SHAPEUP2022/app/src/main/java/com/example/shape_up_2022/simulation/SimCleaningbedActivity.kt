@@ -3,6 +3,7 @@ package com.example.shape_up_2022.simulation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AlertDialog
@@ -19,6 +20,12 @@ class SimCleaningbedActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCleaningbedBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 튜토리얼
+        binding.tutoBed.setOnClickListener {
+            binding.tutoBed.visibility = View.GONE
+        }
+
         val layout : RelativeLayout = findViewById(R.id.layout_clean)
         val random = Random
 

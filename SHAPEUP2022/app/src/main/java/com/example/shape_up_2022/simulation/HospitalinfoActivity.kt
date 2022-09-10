@@ -3,6 +3,7 @@ package com.example.shape_up_2022.simulation
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.example.shape_up_2022.databinding.ActivityHospitalinfoBinding
 
@@ -11,6 +12,11 @@ class HospitalinfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityHospitalinfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 튜토리얼
+        binding.tutoHospital.setOnClickListener {
+            binding.tutoHospital.visibility = View.GONE
+        }
 
         binding.injection68.setOnClickListener{
             AlertDialog.Builder(this).run {

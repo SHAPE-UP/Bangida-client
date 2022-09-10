@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,85 +7,111 @@
     android:background="#FAECC5"
     tools:context=".simulation.DogFeedsimulationActivity">
 
-    <TextView
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginHorizontal="16dp"
+            android:text="반려견에게 먹이를 주세요"
+            android:gravity="center"
+            android:textSize="30dp" />
+
+
+
+        <ImageView
+            android:id="@+id/fsim"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="253dp"
+            android:src="@drawable/dogfood" />
+
+        <ImageView
+            android:id="@+id/wsim"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="149dp"
+            android:src="@drawable/waterinsim" />
+
+        <ImageView
+            android:id="@+id/ssim"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="253dp"
+            android:layout_marginEnd="11dp"
+            android:src="@drawable/snackinsim" />
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="125dp"
+            android:src="@drawable/maltese_stand_front" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="16dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/foodtip"
+                android:layout_marginRight="10dp"
+                android:text="먹이Tip" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:id="@+id/watertip"
+                android:text="물Tip" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/snacktip"
+                android:text="간식Tip" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!--튜토리얼-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tuto_feed"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginHorizontal="16dp"
-        android:text="반려견에게 먹이를 주세요"
-        android:gravity="center"
-        android:textSize="30dp" />
-
-
-
-    <ImageView
-        android:id="@+id/fsim"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="253dp"
-        android:src="@drawable/dogfood" />
-
-    <ImageView
-        android:id="@+id/wsim"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="149dp"
-        android:src="@drawable/waterinsim" />
-
-    <ImageView
-        android:id="@+id/ssim"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="253dp"
-        android:layout_marginEnd="11dp"
-        android:src="@drawable/snackinsim" />
-
-    <ImageView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="125dp"
-        android:src="@drawable/maltese_stand_front" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="16dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@color/tutorial">
+        <TextView
+            android:layout_marginTop="500dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/foodtip"
-            android:layout_marginRight="10dp"
-            android:text="먹이Tip" />
+            android:text="사료, 물, 간식 중 선택하여 \n 반려견에게 먹이를 줍니다."
+            android:textColor="@color/base_color1"
+            android:textSize="20sp"
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginRight="10dp"
-            android:id="@+id/watertip"
-            android:text="물Tip" />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/snacktip"
-            android:text="간식Tip" />
-
-    </LinearLayout>
-
-</RelativeLayout>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
