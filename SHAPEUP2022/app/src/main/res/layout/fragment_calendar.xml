@@ -25,7 +25,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:textColor="@color/point_color"
-            android:text="현재 날짜"
+            android:text="XXXX년 XX월 XX일"
             android:textSize="20sp" />
         <TextView
             android:layout_width="wrap_content"

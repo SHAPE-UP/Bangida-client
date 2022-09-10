@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="12:00"
-            android:id="@+id/todosetting"
+            android:id="@+id/todotime"
             android:inputType="numberDecimal"
             android:layout_marginHorizontal="1dp"
             />

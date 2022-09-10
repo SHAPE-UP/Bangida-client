@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:id="@+id/todosetting"
+        android:id="@+id/todotime"
         android:text="시간 설정" />
     <TextView
         android:layout_width="60dp"

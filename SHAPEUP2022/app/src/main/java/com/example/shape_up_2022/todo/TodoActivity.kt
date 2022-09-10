@@ -10,75 +10,85 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.shape_up_2022.R
 import com.example.shape_up_2022.common.MyPageActivity
 import com.example.shape_up_2022.common.SimulationActivity
 import com.example.shape_up_2022.achieve.AchieveActivity
 import com.example.shape_up_2022.adapter.TodoAdapter
+import com.example.shape_up_2022.adapter.TodoViewHolder
 import com.example.shape_up_2022.common.MainActivity
 import com.example.shape_up_2022.common.SaveSharedPreference
 import com.example.shape_up_2022.data.TodoItem
+import com.example.shape_up_2022.data.Todorole
 import com.example.shape_up_2022.databinding.ActivityToDoBinding
 import com.example.shape_up_2022.databinding.TodoAddBinding
 
 class TodoActivity : AppCompatActivity() {
+    companion object {
+        var datas: MutableList<TodoItem>? = mutableListOf<TodoItem>(
+            TodoItem("목욕하기", Todorole("성민언니"), "22시", "목욕하기"),
+            TodoItem("간식 주기", Todorole("영주"), "17시", "간식 주기")
+        )  // 샘플데이터 목록(1)
+        lateinit var adapter: TodoAdapter  // (2)리사이클러뷰.어댑터
+        lateinit var todoRecyclerView: RecyclerView  // (3)리사이클러뷰
+
+        fun updateTodoList(array: MutableList<TodoItem>?) {
+            datas = array  // 단순 데이터 배열 저장(1)
+            adapter = TodoAdapter(datas)  // 리사이클러뷰 어댑터 형태로 변환해 저장(2)
+            todoRecyclerView.adapter = adapter  // 리사이클러뷰에 반영
+            adapter.notifyDataSetChanged()  // 리사이클러뷰 업데이트
+        }
+    }
+
     lateinit var binding: ActivityToDoBinding
     lateinit var todoAdd: TodoAddBinding
 
-    var datas: MutableList<TodoItem>? = mutableListOf<TodoItem>(
-        TodoItem("목욕하기", "성민언니", "22시", "목욕하기"),
-        TodoItem("간식 주기", "영주", "17시", "간식 주기")
-    )
-    lateinit var adapter: TodoAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_to_do)
-        binding = ActivityToDoBinding.inflate(layoutInflater)
+        // 뷰바인딩 초기화
+        binding = ActivityToDoBinding.inflate(layoutInflater)  // 액티비티 레이아웃
+        todoRecyclerView = binding.todoRecyclerView  // 리사이클러뷰 companion object에 저장(3)
+        todoAdd = TodoAddBinding.inflate(layoutInflater)  // 투두 추가 모달
         setContentView(binding.root)
 
         // 프래그먼트 연결 - 캘린더 프래그먼트
         viewFragment(CalendarFragment(), R.id.todo_calendar)
 
-        todoAdd = TodoAddBinding.inflate(layoutInflater)
-
-        // 리사이클러뷰 설정
+        // 리사이클러뷰 설정 및 초기화
         val layoutManager = LinearLayoutManager(this)
-        binding.todoRecyclerView.layoutManager = layoutManager
-        adapter = TodoAdapter(datas)
-        binding.todoRecyclerView.adapter = adapter
+        todoRecyclerView.layoutManager = layoutManager
+        adapter = TodoAdapter(datas)  // 초기값 데이터 저장(2)
+        todoRecyclerView.adapter = adapter  // 초기값 설정(3)
 
         // 모달창에서 저장/취소 버튼 눌렀을 때 발생하는 이벤트
         val save = object : DialogInterface.OnClickListener {
             override fun onClick(p0: DialogInterface?, p1: Int) {
                 if (p1 == DialogInterface.BUTTON_POSITIVE) { // [저장] 버튼을 눌렀을 경우
 
-                    // 입력값을 id로 하나하나 찾아와서 [데이터]에 저장해야 함
-                    Log.d("budgetApp", "행 추가 저장하기")
+                    // 새 입력값을 datas(리사이클러뷰 데이터 배열)(1)에 추가
                     datas?.add(
                         TodoItem(
                             todoAdd.todowork.text.toString(),
-                            todoAdd.todorole.text.toString(),
-                            //categoryString[todoAdd.category.selectedItemId.toInt()],
-                            todoAdd.todosetting.text.toString()
+                            Todorole(todoAdd.todorole.text.toString()),
+                            todoAdd.todotime.text.toString()
                         )
                     )
-
-                    // 간격+단위 어떻게 가져오지
 
                     // 리사이클러뷰 업데이트
                     adapter.notifyItemInserted(adapter.itemCount)
 
-                    // 초기화 - null이 입력되면 오류남, 처리 필요
+                    // DB에 추가
+                    // 서버 요청 registerTodo
+
+
+                    // 입력 폼(다이얼로그) 초기화 - null이 제출되면 오류남, 처리 필요
                     todoAdd.todowork.setText("")
                     todoAdd.todorole.setText("")
-                    //todoAdd.category.setSelection(0)
-                    todoAdd.todosetting.setText("7")
+                    todoAdd.todotime.setText("")
 
-                    // 합계 칸 업데이트
-                    //binding.sumResult.setText(getSum().toString())
                 } else if (p1 == DialogInterface.BUTTON_NEGATIVE) {
-                    Log.d("budgetApp", "행 추가 취소")
+
                 }
             }
         }
@@ -146,6 +156,7 @@ class TodoActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
+        /* 가족 그룹 없는 사용자의 접근을 제한 */
         val eventHandler = object : DialogInterface.OnClickListener {
             override fun onClick(p0: DialogInterface?, p1: Int) {
                 if(p1 == DialogInterface.BUTTON_POSITIVE) {
@@ -166,4 +177,5 @@ class TodoActivity : AppCompatActivity() {
             builder.show()
         }
     }
+
 }
