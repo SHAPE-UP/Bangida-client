@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/base_color1"
+    tools:context=".simulation.SimFinishActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="50dp"
+        android:textAlignment="center"
+        android:layout_marginTop="70dp"
+        android:textColor="@color/point_color"
+        android:text="반려견을"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="맞이할 준비를"
+        android:textAlignment="center"
+        android:textSize="50dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="완료했습니다."
+        android:textAlignment="center"
+        android:textColor="@color/point_color"
+        android:textSize="50dp"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="431dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/maltese_default" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:textAlignment="center"
+        android:textSize="27dp"
+        android:text="반려견의 소중한 가족이 되어주세요" />
+
+</LinearLayout>
