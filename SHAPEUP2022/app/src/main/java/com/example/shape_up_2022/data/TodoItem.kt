@@ -2,6 +2,7 @@ package com.example.shape_up_2022.data
 
 // DB의 모델 중 Todo에 해당
 data class TodoItem (
+                val _id: String?="",
                 val todowork:String="할일",
                 val todorole:Todorole?=null,
                 val todotime:Int=17,

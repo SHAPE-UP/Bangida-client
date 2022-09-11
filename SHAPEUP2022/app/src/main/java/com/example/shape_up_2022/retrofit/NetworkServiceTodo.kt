@@ -20,6 +20,12 @@ interface NetworkServiceTodo {
         @Body user: RegisterTodoReq,
     ): Call<RegisterTodoRes>
 
+    @POST("doneTodo")
+    fun doneTodo(
+        @Body body: DoneTodoReq,
+    ): Call<DoneTodoRes>
+
+    /*
     @PUT("editTodo")
     fun editTodo(
         @Body body: EditTodoReq,
@@ -29,7 +35,7 @@ interface NetworkServiceTodo {
     fun deleteTodo(
         @Body body: DeleteTodoReq,
     ): Call<DeleteTodoRes>
-
+    */
 }
 
 
@@ -44,9 +50,12 @@ data class RegisterTodoReq(val familyID: String, val date: String,
                            )
 data class RegisterTodoRes(val success: String)
 
-data class EditTodoReq(val name: String, val email: String, val password: String)
-data class EditTodoRes(val success: String)
+data class DoneTodoReq(val _id: String, val done: Boolean)
+data class DoneTodoRes(val success: String)
 
-data class DeleteTodoReq(val name: String, val email: String, val password: String)
-data class DeleteTodoRes(val success: String)
+//data class EditTodoReq()
+//data class EditTodoRes(val success: String)
+
+//data class DeleteTodoReq()
+//data class DeleteTodoRes(val success: String)
 
