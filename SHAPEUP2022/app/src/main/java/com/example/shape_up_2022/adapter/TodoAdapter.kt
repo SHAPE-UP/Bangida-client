@@ -30,7 +30,7 @@ class TodoAdapter (val datas: MutableList<TodoItem>?): RecyclerView.Adapter<Recy
         binding.todorole.text = datas!![position].todorole?.name ?: ""
         binding.todotime.text = datas!![position].todotime.toString() + "시"
 
-        // 시뮬레이션 텍스트로 치환
+        // todoref: 시뮬레이션 텍스트로 치환
         var todoreftext = when (datas!![position].todoref) {
             0 -> ""
             1 -> "강아지 관리"
@@ -45,5 +45,9 @@ class TodoAdapter (val datas: MutableList<TodoItem>?): RecyclerView.Adapter<Recy
             else -> ""
         }
         binding.todoref.text = todoreftext
+
+        // done: 체크 여부 다르게 표시
+        binding.tododone.isChecked = datas!![position].done == true
+
     }
 }

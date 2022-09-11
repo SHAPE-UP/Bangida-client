@@ -21,14 +21,14 @@ import com.example.shape_up_2022.common.SaveSharedPreference
 import com.example.shape_up_2022.common.SimulationActivity
 import com.example.shape_up_2022.data.TodoItem
 import com.example.shape_up_2022.data.Todorole
+import com.example.shape_up_2022.data.User
 import com.example.shape_up_2022.databinding.ActivityToDoBinding
 import com.example.shape_up_2022.databinding.TodoAddBinding
 import com.example.shape_up_2022.retrofit.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.SimpleDateFormat
-import java.util.*
+
 
 class TodoActivity : AppCompatActivity() {
     companion object {
@@ -52,8 +52,10 @@ class TodoActivity : AppCompatActivity() {
     lateinit var binding: ActivityToDoBinding
     lateinit var todoAdd: TodoAddBinding
     lateinit var calendar: CalendarFragment
+    lateinit var family: MutableList<User>  // 가족
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         // 뷰바인딩 초기화
         binding = ActivityToDoBinding.inflate(layoutInflater)  // 액티비티 레이아웃
@@ -70,6 +72,10 @@ class TodoActivity : AppCompatActivity() {
         todoRecyclerView.layoutManager = layoutManager
         adapter = TodoAdapter(datas)  // 초기값 데이터 저장(2)
         todoRecyclerView.adapter = adapter  // 초기값 설정(3)
+
+        /* 가족 설정 */
+
+
 
         // 모달창에서 저장/취소 버튼 눌렀을 때 발생하는 이벤트
         val save = object : DialogInterface.OnClickListener {
