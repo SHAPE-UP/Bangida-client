@@ -67,13 +67,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="50dp"
+                    android:layout_marginEnd="45dp"
                     android:text="활동" />
             </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/todo_recyclerView"
                 android:layout_width="match_parent"
-                android:paddingHorizontal="20dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="16dp"
                 android:paddingVertical="6dp"
                 android:layout_height="wrap_content" />
             <View

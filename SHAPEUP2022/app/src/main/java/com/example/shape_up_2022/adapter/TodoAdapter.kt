@@ -27,7 +27,7 @@ class TodoAdapter (val datas: MutableList<TodoItem>?): RecyclerView.Adapter<Recy
         val binding = (holder as TodoViewHolder).binding
 
         binding.todowork.text = datas!![position].todowork
-        binding.todorole.text = datas!![position].todorole?.name ?: ""
+        binding.todorole.text = datas!![position].todorole!!.name ?: ""
         binding.todotime.text = datas!![position].todotime.toString() + "시"
 
         // todoref: 시뮬레이션 텍스트로 치환

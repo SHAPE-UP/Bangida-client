@@ -37,7 +37,7 @@
         android:id="@+id/todotime"
         android:text="시간 설정" />
     <TextView
-        android:layout_width="90dp"
+        android:layout_width="86dp"
         android:layout_height="wrap_content"
         android:textColor="@color/main_color"
         android:text="관련 활동"
