@@ -16,14 +16,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <fragment
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="6dp"
                 android:id="@+id/fragment_family_todo"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                class="com.example.shape_up_2022.common.FamilyFragment" />
+                />
 
             <LinearLayout
                 android:id="@+id/todo_calendar"

@@ -18,7 +18,6 @@ import com.example.shape_up_2022.data.TodoItem
 import com.example.shape_up_2022.data.User
 import com.example.shape_up_2022.databinding.FragmentFamilyBinding
 import com.example.shape_up_2022.databinding.ItemFamilyBinding
-import com.example.shape_up_2022.databinding.TodoitemBinding
 import com.example.shape_up_2022.retrofit.GetFamilyReq
 import com.example.shape_up_2022.retrofit.GetFamilyRes
 import com.example.shape_up_2022.retrofit.MyApplication

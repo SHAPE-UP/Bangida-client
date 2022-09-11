@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -15,16 +16,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.shape_up_2022.R
 import com.example.shape_up_2022.achieve.AchieveActivity
 import com.example.shape_up_2022.adapter.TodoAdapter
-import com.example.shape_up_2022.common.MainActivity
-import com.example.shape_up_2022.common.MyPageActivity
-import com.example.shape_up_2022.common.SaveSharedPreference
-import com.example.shape_up_2022.common.SimulationActivity
+import com.example.shape_up_2022.common.*
 import com.example.shape_up_2022.data.TodoItem
 import com.example.shape_up_2022.data.Todorole
 import com.example.shape_up_2022.data.User
 import com.example.shape_up_2022.databinding.ActivityToDoBinding
 import com.example.shape_up_2022.databinding.TodoAddBinding
 import com.example.shape_up_2022.retrofit.*
+import com.google.android.youtube.player.internal.i
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -50,9 +49,12 @@ class TodoActivity : AppCompatActivity() {
     }
 
     lateinit var binding: ActivityToDoBinding
-    lateinit var todoAdd: TodoAddBinding
+    lateinit var todoDialog: TodoAddBinding
     lateinit var calendar: CalendarFragment
-    lateinit var family: MutableList<User>  // 가족
+    lateinit var familyFragment: FamilyFragment
+    lateinit var family: MutableList<User>  // 가족 데이터 배열
+    lateinit var nameArray : List<String>
+    lateinit var userIdArray : List<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -60,12 +62,16 @@ class TodoActivity : AppCompatActivity() {
         // 뷰바인딩 초기화
         binding = ActivityToDoBinding.inflate(layoutInflater)  // 액티비티 레이아웃
         todoRecyclerView = binding.todoRecyclerView  // 리사이클러뷰 companion object에 저장(3)
-        todoAdd = TodoAddBinding.inflate(layoutInflater)  // 투두 추가 모달
+        todoDialog = TodoAddBinding.inflate(layoutInflater)  // 투두 추가 모달
         setContentView(binding.root)
 
         // 프래그먼트 연결 - 캘린더 프래그먼트
         calendar = CalendarFragment()
         viewFragment(calendar, R.id.todo_calendar)
+
+        // 프래그먼트 연결 - 가족 프래그먼트
+        familyFragment = FamilyFragment()
+        viewFragment(familyFragment, R.id.fragment_family_todo)
 
         // 리사이클러뷰 설정 및 초기화
         val layoutManager = LinearLayoutManager(this)
@@ -73,22 +79,19 @@ class TodoActivity : AppCompatActivity() {
         adapter = TodoAdapter(datas)  // 초기값 데이터 저장(2)
         todoRecyclerView.adapter = adapter  // 초기값 설정(3)
 
-        /* 가족 설정 */
-
-
-
         // 모달창에서 저장/취소 버튼 눌렀을 때 발생하는 이벤트
         val save = object : DialogInterface.OnClickListener {
             override fun onClick(p0: DialogInterface?, p1: Int) {
                 if (p1 == DialogInterface.BUTTON_POSITIVE) { // [저장] 버튼을 눌렀을 경우
 
+                    val todoroleindex = todoDialog.todorole.selectedItemPosition
                     /* 화면 업데이트 */
                     // 새 입력값을 datas(리사이클러뷰 데이터 배열)(1)에 추가
                     datas?.add(
                         TodoItem(
-                            todowork = todoAdd.todowork.text.toString(),
-                            todorole = Todorole(todoAdd.todorole.text.toString()),
-                            todotime = todoAdd.todotime.text.toString().toInt()
+                            todowork = todoDialog.todowork.text.toString(),
+                            todorole = Todorole(nameArray[todoroleindex]),
+                            todotime = todoDialog.todotime.text.toString().toInt()
                         )
                     )
 
@@ -104,9 +107,9 @@ class TodoActivity : AppCompatActivity() {
                         RegisterTodoReq(
                             familyID = SaveSharedPreference.getFamliyID(this@TodoActivity)!!,
                             date = dateString,
-                            todowork = todoAdd.todowork.text.toString(),
-                            todorole = "",
-                            todotime = todoAdd.todotime.text.toString().toInt(),
+                            todowork = todoDialog.todowork.text.toString(),
+                            todorole = userIdArray[todoroleindex],
+                            todotime = todoDialog.todotime.text.toString().toInt(),
                             todoref = 0
                         )
                     )
@@ -125,9 +128,9 @@ class TodoActivity : AppCompatActivity() {
 
 
                     // 입력 폼(다이얼로그) 초기화 - null이 제출되면 오류남, 처리 필요
-                    todoAdd.todowork.setText("")
-                    todoAdd.todorole.setText("")
-                    todoAdd.todotime.setText("")
+                    todoDialog.todowork.setText("")
+                    todoDialog.todorole.setSelection(0)
+                    todoDialog.todotime.setText("")
 
                 } else if (p1 == DialogInterface.BUTTON_NEGATIVE) {
 
@@ -137,13 +140,23 @@ class TodoActivity : AppCompatActivity() {
 
         // 새 항목 추가 버튼 - 대화상자 열림
         val alert = AlertDialog.Builder(this)
-            .setTitle("ToDoList 추가")
-            .setView(todoAdd.root)
+            .setTitle("TODO 추가")
+            .setView(todoDialog.root)
             .setPositiveButton("저장", save)
             .setNegativeButton("취소", save)
             .create()
 
         binding.todoAdd.setOnClickListener {
+            // 가족 목록을 드롭다운 spinner와 연결
+            family = familyFragment.familyArray
+            Log.d("mobileApp", "family $family")
+            nameArray = family.map { it.name }
+            userIdArray = family.map { it._id }
+            val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, nameArray)
+            spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            todoDialog.todorole.adapter = spinnerAdapter
+
+            // 다이얼로그 창 표시
             alert.show()
         }
 

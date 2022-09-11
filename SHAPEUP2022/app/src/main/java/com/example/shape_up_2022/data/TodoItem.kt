@@ -10,7 +10,7 @@ data class TodoItem (
                 val done:Boolean=false
 )
 
-data class Todorole (val name: String)
+data class Todorole (val userId: String?="", val name: String?="")
 
 // todorole을 왜 굳이 한겹 싸인 형태로 더럽게 만든 건지가 의아할 수 있지만...
 // 먼 미래에 배열로 바뀔 수도 있는 필드니까 괜찮지 않을까요
