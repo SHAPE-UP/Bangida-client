@@ -35,8 +35,7 @@ class MyApplication: Application() {
         var client = OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor()).build()
 
         /* 서버 요청용 */
-        //val apiserver = "http://ec2-13-124-250-65.ap-northeast-2.compute.amazonaws.com:5000/"
-        val apiserver = "http://192.168.35.19:5000/"
+        val apiserver = "http://ec2-13-124-250-65.ap-northeast-2.compute.amazonaws.com:5000/"
 
         var networkServiceUsers: NetworkServiceUsers
         val retrofitUsers: Retrofit
@@ -54,6 +53,14 @@ class MyApplication: Application() {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
+        var networkServiceFamily: NetworkServiceFamily
+        val retrofitFamily: Retrofit
+            get() = Retrofit.Builder()
+                .baseUrl(apiserver + "api/family/")
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
 
         init{
             networkServiceYoutube = retrofitYoutube.create(NetworkServiceYoutube::class.java)
@@ -62,6 +69,7 @@ class MyApplication: Application() {
             // 서버 요청용
             networkServiceUsers = retrofitUsers.create(NetworkServiceUsers::class.java)  // api/users/
             networkServiceTodo = retrofitTodo.create(NetworkServiceTodo::class.java)  // api/todo/
+            networkServiceFamily = retrofitFamily.create(NetworkServiceFamily::class.java)  // api/family/
         }
 
 
