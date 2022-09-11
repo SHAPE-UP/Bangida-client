@@ -38,9 +38,9 @@ data class GetTodoRes(val success: String, val todoInfo: Array<TodoItem>)
 
 data class RegisterTodoReq(val familyID: String, val date: String,
                            val todowork: String,
-                           val todorole: String,  // userID
-                           val todotime: Int,
-                           val todoref: Int
+                           val todorole: String = "",  // userID
+                           val todotime: Int?,
+                           val todoref: Int = 0
                            )
 data class RegisterTodoRes(val success: String)
 

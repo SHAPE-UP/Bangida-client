@@ -30,6 +30,22 @@
     </LinearLayout>
     <LinearLayout
         android:layout_marginTop="10dp"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="관련 활동" />
+        <Spinner
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/todoref"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:orientation="vertical">
