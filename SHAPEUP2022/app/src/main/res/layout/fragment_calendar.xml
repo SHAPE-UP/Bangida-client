@@ -16,8 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingVertical="16dp"
-        android:paddingHorizontal="30dp"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="22dp"
         android:background="@color/base_color1">
         <TextView
             android:id="@+id/todo_today"
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:text="할 일 목록" />
+            android:text="" />
     </LinearLayout>
 
 

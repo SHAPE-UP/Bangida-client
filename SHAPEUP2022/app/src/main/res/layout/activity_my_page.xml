@@ -156,7 +156,7 @@
                     <fragment
                         android:id="@+id/fragment_family_my"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="60dp"
                         class="com.example.shape_up_2022.common.FamilyFragment" />
 
                 </LinearLayout>

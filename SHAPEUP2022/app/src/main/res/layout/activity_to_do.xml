@@ -17,9 +17,12 @@
             android:orientation="vertical">
 
             <fragment
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="6dp"
                 android:id="@+id/fragment_family_todo"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 class="com.example.shape_up_2022.common.FamilyFragment" />
 
             <LinearLayout
@@ -27,18 +30,55 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="200dp"
+                android:background="@color/white"
                 android:orientation="vertical" />
 
+            <LinearLayout
+                android:background="@color/sub_color1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="3dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="22dp"
+                    android:text="완료" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="할 일" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:text="담당자" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="45dp"
+                    android:text="시간" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="50dp"
+                    android:text="활동" />
+            </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/todo_recyclerView"
                 android:layout_width="match_parent"
-                android:paddingHorizontal="16dp"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="6dp"
                 android:layout_height="wrap_content" />
-            <TextView
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:layout_marginVertical="10dp"
                 android:layout_weight="1"/>
 
             <Button
@@ -46,8 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginHorizontal="20dp"
-                android:paddingHorizontal="10dp"
+                android:layout_marginHorizontal="16dp"
                 android:text="Todo 추가하기"/>
 
         </LinearLayout>
