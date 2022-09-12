@@ -47,22 +47,29 @@ class LoginActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<LoginRes>, response: Response<LoginRes>) {
                     if(response.isSuccessful){
                         Log.d("mobileApp", "$response ${response.body()}")
-                        // 프리퍼런스에 값 저장
-                        SaveSharedPreference.setUserEmail(baseContext, inputID)
-                        SaveSharedPreference.setUserName(baseContext, response.body()!!.userName)
-                        SaveSharedPreference.setUserID(baseContext, response.body()!!.userID)
-                        SaveSharedPreference.setFamliyID(baseContext, response.body()!!.familyID?:null)
+                        if(response.body()?.loginSuccess == "true"){ // 로그인 성공
 
-                        // 메인 페이지로 이동
-                        val intent = Intent(baseContext, MainActivity::class.java)
-                        startActivity(intent)
-                        finish()
+                            // 프리퍼런스에 값 저장
+                            SaveSharedPreference.setUserEmail(baseContext, inputID)
+                            SaveSharedPreference.setUserName(baseContext, response.body()!!.userName)
+                            SaveSharedPreference.setUserID(baseContext, response.body()!!.userID)
+                            SaveSharedPreference.setFamliyID(baseContext, response.body()!!.familyID?:null)
+
+                            // 메인 페이지로 이동
+                            val intent = Intent(baseContext, MainActivity::class.java)
+                            startActivity(intent)
+                            finish()
+
+                        } else { // 로그인 실패 or null
+                            Toast.makeText(baseContext, "아이디 또는 비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show()
+                        }
+
                     }
                 }
 
                 override fun onFailure(call: Call<LoginRes>, t: Throwable) {
                     Log.d("mobileApp", "onFailure $t")
-                    Toast.makeText(baseContext, "아이디 또는 비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, "네트워크 오류 발생", Toast.LENGTH_SHORT).show()
                 }
             })
 
