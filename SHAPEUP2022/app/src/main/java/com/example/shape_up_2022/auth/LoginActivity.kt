@@ -13,6 +13,7 @@ import com.example.shape_up_2022.retrofit.LoginRes
 import com.example.shape_up_2022.retrofit.MyApplication
 import com.example.shape_up_2022.common.SaveSharedPreference
 import com.example.shape_up_2022.databinding.SignInBinding
+import com.example.shape_up_2022.retrofit.GetPetIDRes
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -56,6 +57,11 @@ class LoginActivity : AppCompatActivity() {
                             SaveSharedPreference.setFamliyID(baseContext, response.body()!!.familyID?:null)
                             SaveSharedPreference.setUserTested(baseContext, response.body()!!.tested)
 
+                            // petID 프리퍼런스에 저장
+                            if(response.body()!!.familyID!! != null){
+                                callGetPetID(response.body()!!.familyID!!)
+                            }
+
                             // 메인 페이지로 이동
                             val intent = Intent(baseContext, MainActivity::class.java)
                             startActivity(intent)
@@ -75,7 +81,30 @@ class LoginActivity : AppCompatActivity() {
             })
 
         }
-            //간편 로그인 연동 => api
+    }
+
+    private fun callGetPetID(familyID: String){
+        // DB에 저장된 아이디 값
+        val call: Call<GetPetIDRes> = MyApplication.networkServiceFamily.getPetID(
+            familyID = familyID
+        )
+
+        call?.enqueue(object : Callback<GetPetIDRes> {
+            override fun onResponse(call: Call<GetPetIDRes>, response: Response<GetPetIDRes>) {
+                if(response.isSuccessful){
+                    Log.d("mobileApp", "$response ${response.body()}")
+                        if(response.body()!!.success){
+                            SaveSharedPreference.setPetID(baseContext, response.body()!!.petID)
+                        }
+
+                }
+            }
+
+            override fun onFailure(call: Call<GetPetIDRes>, t: Throwable) {
+                Log.d("mobileApp", "onFailure $t")
+                Toast.makeText(baseContext, "네트워크 오류 발생", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
 
