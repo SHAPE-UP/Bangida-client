@@ -35,7 +35,7 @@ data class RegisterReq(val name: String, val email: String, val password: String
 data class RegisterRes(val success: String)
 
 data class LoginReq(val email: String, val password: String)
-data class LoginRes(val loginSuccess: String, val userID: String, val userName: String, val familyID: String?)
+data class LoginRes(val loginSuccess: String, val userID: String, val userName: String, val familyID: String?, val tested: Boolean)
 
 data class AddFamilyReq(val userID: String)
 data class AddFamilyRes(val success: String, val message: String, val familyID: String)

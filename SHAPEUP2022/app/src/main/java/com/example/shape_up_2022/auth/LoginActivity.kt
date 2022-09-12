@@ -54,6 +54,7 @@ class LoginActivity : AppCompatActivity() {
                             SaveSharedPreference.setUserName(baseContext, response.body()!!.userName)
                             SaveSharedPreference.setUserID(baseContext, response.body()!!.userID)
                             SaveSharedPreference.setFamliyID(baseContext, response.body()!!.familyID?:null)
+                            SaveSharedPreference.setUserTested(baseContext, response.body()!!.tested)
 
                             // 메인 페이지로 이동
                             val intent = Intent(baseContext, MainActivity::class.java)

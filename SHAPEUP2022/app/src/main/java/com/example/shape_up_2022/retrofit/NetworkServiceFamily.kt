@@ -13,12 +13,12 @@ interface NetworkServiceFamily {
         @Body user: GetFamilyReq,
     ): Call<GetFamilyRes>
 
-    /*
+
     @PUT("additionPetId")
     fun additionPetId(
         @Body user: AdditionPetIdReq,
     ): Call<AdditionPetIdRes>
-    */
+
 
 }
 
@@ -27,5 +27,5 @@ data class GetFamilyReq(val familyID: String)
 data class GetFamilyRes(val success: String, val family: FamilyBody, val familyCode: String)
 data class FamilyBody(val familyCode: String, val userGroup: Array<User>)
 
-//data class AdditionPetIdReq()
-//data class AdditionPetIdRes()
+data class AdditionPetIdReq(val familyID: String)
+data class AdditionPetIdRes(val success: String)
