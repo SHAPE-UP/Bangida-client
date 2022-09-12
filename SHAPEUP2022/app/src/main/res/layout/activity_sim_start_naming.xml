@@ -131,6 +131,7 @@
                 >
 
                 <EditText
+                    android:id="@+id/input_pet_name"
                     android:hint="이름을 지어주세요."
                     android:layout_marginTop="10dp"
                     android:gravity="center"
@@ -208,7 +209,7 @@
     <ImageView
         android:layout_gravity="center"
         android:layout_marginBottom="40dp"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
         android:src="@drawable/maltese_sit" />
 </LinearLayout>
