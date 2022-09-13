@@ -51,15 +51,16 @@ class LoginActivity : AppCompatActivity() {
                         if(response.body()?.loginSuccess == "true"){ // 로그인 성공
 
                             // 프리퍼런스에 값 저장
-                            SaveSharedPreference.setUserEmail(baseContext, inputID)
-                            SaveSharedPreference.setUserName(baseContext, response.body()!!.userName)
-                            SaveSharedPreference.setUserID(baseContext, response.body()!!.userID)
-                            SaveSharedPreference.setFamliyID(baseContext, response.body()!!.familyID?:null)
-                            SaveSharedPreference.setUserTested(baseContext, response.body()!!.tested)
+                            SaveSharedPreference.setUserEmail(baseContext, inputID) // 이메일
+                            SaveSharedPreference.setUserName(baseContext, response.body()!!.user.name) // 이름
+                            SaveSharedPreference.setUserID(baseContext, response.body()!!.user._id) // userID
+                            SaveSharedPreference.setFamliyID(baseContext, response.body()!!.user.familyID?:null) // familyID
+                            SaveSharedPreference.setUserTested(baseContext, response.body()!!.user.tested) // 성향점검 여부
+                            SaveSharedPreference.setAchieve(baseContext, response.body()!!.user.achieve) // 업적 달성 여부
 
                             // petID 프리퍼런스에 저장
-                            if(response.body()!!.familyID!! != null){
-                                callGetPetID(response.body()!!.familyID!!)
+                            if(response.body()!!.user.familyID!! != null){
+                                callGetPetID(response.body()!!.user.familyID!!)
                             }
 
                         } else { // 로그인 실패 or null

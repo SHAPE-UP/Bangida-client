@@ -4,6 +4,8 @@ import android.content.DialogInterface
 import android.content.Intent
 import com.example.shape_up_2022.adapter.AchieveAdapter
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.shape_up_2022.*
@@ -12,10 +14,15 @@ import com.example.shape_up_2022.common.MyPageActivity
 import com.example.shape_up_2022.common.SaveSharedPreference
 import com.example.shape_up_2022.databinding.ActivityAchieveBinding
 import com.example.shape_up_2022.common.SimulationActivity
+import com.example.shape_up_2022.retrofit.GetPetInfoRes
+import com.example.shape_up_2022.retrofit.MyApplication
 import com.example.shape_up_2022.simulation.TestActivity
 import com.example.shape_up_2022.todo.TodoActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class AchieveActivity : AppCompatActivity() {
 
@@ -40,7 +47,10 @@ class AchieveActivity : AppCompatActivity() {
             binding.pbAchieveTodo.progress = 50
         }
          */
-
+        
+        /* 반려견 이름 업데이트 */
+        getPetInfo()
+        
         binding.tabs.addOnTabSelectedListener(object :TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
 
@@ -60,10 +70,9 @@ class AchieveActivity : AppCompatActivity() {
         TabLayoutMediator(binding.tabs, binding.achievePager) {
                 tab,position->
             when(position){
-                0->tab.text = "종합"
-                1->tab.text = "진행도"
-                2->tab.text = "성실도"
-                3->tab.text = "호감도"
+                0->tab.text = "진행도"
+                1->tab.text = "성실도"
+                2->tab.text = "호감도"
             }
         }.attach()
 
@@ -103,7 +112,7 @@ class AchieveActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-
+        /* 가족 그룹에 가입되어 있지 않은 상태일 때 */
         val eventHandler = object : DialogInterface.OnClickListener {
             override fun onClick(p0: DialogInterface?, p1: Int) {
                 if(p1 == DialogInterface.BUTTON_POSITIVE) {
@@ -120,8 +129,36 @@ class AchieveActivity : AppCompatActivity() {
             .setPositiveButton("확인", eventHandler)
             .setCancelable(false)
 
-       /* if(SaveSharedPreference.getFamliyID(this)!! == ""){
+
+        if(SaveSharedPreference.getFamliyID(this)!! == ""){
             builder.show()
-        }*/
+        }
+    }
+
+    /* 강아지 정보 업데이트 */
+    private fun getPetInfo(){
+        val petID = SaveSharedPreference.getPetID(this)!!
+        Log.d("mobileApp", "$petID")
+
+        val call: Call<GetPetInfoRes> = MyApplication.networkServicePet.getPetInfo(
+            petID = petID
+        )
+
+        call?.enqueue(object : Callback<GetPetInfoRes> {
+            override fun onResponse(call: Call<GetPetInfoRes>, response: Response<GetPetInfoRes>) {
+                if(response.isSuccessful){
+                    Log.d("mobileApp", "$response ${response.body()}")
+                    if(response.body()!!.success){
+                        // 강아지 이름 업데이트
+                        binding.achievePetName.text = response.body()?.petInfo?.name
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<GetPetInfoRes>, t: Throwable) {
+                Log.d("mobileApp", "onFailure $t")
+                Toast.makeText(baseContext, "네트워크 오류 발생", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }

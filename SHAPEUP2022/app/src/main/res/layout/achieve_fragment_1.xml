@@ -16,6 +16,11 @@
 
 
         <!--아래 항목들은 추후 item_achieve.xml로 대체할 예정-->
+        <!--리사이클러 뷰-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/walk_search_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
         <LinearLayout
             android:layout_width="match_parent"
