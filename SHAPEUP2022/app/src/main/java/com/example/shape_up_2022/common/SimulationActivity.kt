@@ -4,13 +4,20 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.shape_up_2022.R
 import com.example.shape_up_2022.achieve.AchieveActivity
 import com.example.shape_up_2022.databinding.SimulationMainBinding
+import com.example.shape_up_2022.retrofit.GetPetInfoRes
+import com.example.shape_up_2022.retrofit.MyApplication
 import com.example.shape_up_2022.simulation.*
 import com.example.shape_up_2022.todo.TodoActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SimulationActivity : AppCompatActivity() {
     lateinit var binding: SimulationMainBinding
@@ -31,8 +38,10 @@ class SimulationActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        // 실내/외출 모드 전환
+        // 강아지 정보
+        getPetInfo()
 
+        // 실내/외출 모드 전환
         binding.btnout.setOnClickListener {
             binding.btnout.visibility = View.INVISIBLE
             binding.indoor.visibility = View.INVISIBLE
@@ -191,5 +200,32 @@ class SimulationActivity : AppCompatActivity() {
                 builder_pet.show()
             }
         }
+    }
+
+    /* 강아지 정보 업데이트 */
+    private fun getPetInfo(){
+        val petID = SaveSharedPreference.getPetID(this)!!
+        Log.d("mobileApp", "$petID")
+
+        val call: Call<GetPetInfoRes> = MyApplication.networkServicePet.getPetInfo(
+            petID = petID
+        )
+
+        call?.enqueue(object : Callback<GetPetInfoRes> {
+            override fun onResponse(call: Call<GetPetInfoRes>, response: Response<GetPetInfoRes>) {
+                if(response.isSuccessful){
+                    Log.d("mobileApp", "$response ${response.body()}")
+                    if(response.body()!!.success){
+                        // 강아지 이름 업데이트
+                        binding.simMainPetName.text = response.body()?.petInfo?.name
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<GetPetInfoRes>, t: Throwable) {
+                Log.d("mobileApp", "onFailure $t")
+                Toast.makeText(baseContext, "네트워크 오류 발생", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }

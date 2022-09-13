@@ -62,11 +62,6 @@ class LoginActivity : AppCompatActivity() {
                                 callGetPetID(response.body()!!.familyID!!)
                             }
 
-                            // 메인 페이지로 이동
-                            val intent = Intent(baseContext, MainActivity::class.java)
-                            startActivity(intent)
-                            finish()
-
                         } else { // 로그인 실패 or null
                             Toast.makeText(baseContext, "아이디 또는 비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show()
                         }
@@ -95,6 +90,11 @@ class LoginActivity : AppCompatActivity() {
                     Log.d("mobileApp", "$response ${response.body()}")
                         if(response.body()!!.success){
                             SaveSharedPreference.setPetID(baseContext, response.body()!!.petID)
+
+                            // 메인 페이지로 이동
+                            val intent = Intent(baseContext, MainActivity::class.java)
+                            startActivity(intent)
+                            finish()
                         }
 
                 }
