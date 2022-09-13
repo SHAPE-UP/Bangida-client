@@ -48,4 +48,4 @@ data class CompleteTestReq(val userID: String)
 data class CompleteTestRes(val success: String, val message: String)
 
 // data class
-data class UserInfo(val _id: String, val name: String, val email: String, val tested: Boolean, val familyID: String, val achieve: ArrayList<Boolean>)
+data class UserInfo(val _id: String, val name: String, val email: String, val tested: Boolean, val familyID: String?, val achieve: ArrayList<Boolean>)

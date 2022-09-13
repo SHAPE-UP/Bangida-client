@@ -59,8 +59,13 @@ class LoginActivity : AppCompatActivity() {
                             SaveSharedPreference.setAchieve(baseContext, response.body()!!.user.achieve) // 업적 달성 여부
 
                             // petID 프리퍼런스에 저장
-                            if(response.body()!!.user.familyID!! != null){
+                            if(response.body()!!.user.familyID != null){
                                 callGetPetID(response.body()!!.user.familyID!!)
+                            } else{
+                                // 메인 페이지로 이동
+                                val intent = Intent(baseContext, MainActivity::class.java)
+                                startActivity(intent)
+                                finish()
                             }
 
                         } else { // 로그인 실패 or null

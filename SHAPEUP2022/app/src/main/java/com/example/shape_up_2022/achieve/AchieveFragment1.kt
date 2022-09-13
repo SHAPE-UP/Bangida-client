@@ -1,6 +1,7 @@
 package com.example.shape_up_2022.achieve
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -74,8 +75,8 @@ class AchieveFragment1 : Fragment() {
     /* 업적 리사이클러 뷰 */
     private fun achieveList(){
         val achieveAdapter =  AchieveProgressAdapter(requireContext(), addAchieveList())
-        binding.walkSearchRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.walkSearchRecyclerView.adapter = achieveAdapter // data array
+        binding.achieveProgressRecyclerview.layoutManager = LinearLayoutManager(requireContext())
+        binding.achieveProgressRecyclerview.adapter = achieveAdapter // data array
     }
 
     /* 업적 목록 추가 */
@@ -88,7 +89,8 @@ class AchieveFragment1 : Fragment() {
         val achieveChecked : ArrayList<Boolean> = SaveSharedPreference.getAchieve(requireContext())!! // 달성 여부
 
         // 목록 추가
-        for(i in achieveArray.indices) AchieveProgress(achieveArray[i], achieveChecked[i])
+        for(i in achieveArray.indices) data.add(AchieveProgress(achieveArray[i], achieveChecked[i]))
+        Log.d("mobileApp", "$data")
 
         return data
     }
