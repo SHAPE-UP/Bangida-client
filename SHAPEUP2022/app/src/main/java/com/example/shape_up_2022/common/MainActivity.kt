@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -14,9 +15,15 @@ import com.example.shape_up_2022.*
 import com.example.shape_up_2022.achieve.AchieveActivity
 import com.example.shape_up_2022.databinding.ActivityYoutubeBinding
 import com.example.shape_up_2022.databinding.MainPageBinding
+import com.example.shape_up_2022.retrofit.GetPetIDRes
+import com.example.shape_up_2022.retrofit.GetPetInfoRes
+import com.example.shape_up_2022.retrofit.MyApplication
 import com.example.shape_up_2022.simulation.TestActivity
 import com.example.shape_up_2022.todo.MainCalenderFragment
 import com.example.shape_up_2022.todo.TodoActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class MainActivity : AppCompatActivity() {
@@ -28,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         val bindingYouTube = ActivityYoutubeBinding.inflate(layoutInflater)
 
         // 강아지 현재 상태, 정보
-
+        getPetInfo()
 
         // 프래그먼트 연결 - 캘린더 프래그먼트
         viewFragment(MainCalenderFragment() , R.id.fragment_calender)
@@ -132,4 +139,32 @@ class MainActivity : AppCompatActivity() {
         transaction.add(location, fragment)
         transaction.commit()
     }
+
+    /* 강아지 정보 업데이트 */
+    private fun getPetInfo(){
+        val petID = SaveSharedPreference.getPetID(this)!!
+        Log.d("mobileApp", "$petID")
+
+        val call: Call<GetPetInfoRes> = MyApplication.networkServicePet.getPetInfo(
+            petID = petID
+        )
+
+        call?.enqueue(object : Callback<GetPetInfoRes> {
+            override fun onResponse(call: Call<GetPetInfoRes>, response: Response<GetPetInfoRes>) {
+                if(response.isSuccessful){
+                    Log.d("mobileApp", "$response ${response.body()}")
+                    if(response.body()!!.success){
+                        // 강아지 이름 업데이트
+                        binding.puppyProfileName.text = response.body()?.petInfo?.name
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<GetPetInfoRes>, t: Throwable) {
+                Log.d("mobileApp", "onFailure $t")
+                Toast.makeText(baseContext, "네트워크 오류 발생", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
 }

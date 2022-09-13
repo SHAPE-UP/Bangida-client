@@ -16,12 +16,6 @@ class SimStartBreedActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySimStartBreedBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.breedSkip.setOnClickListener {
-            val intent = Intent(this, SimStartNamingActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
 
         fragment1 = BreedFragment1()
         fragment2 = BreedFragment2()

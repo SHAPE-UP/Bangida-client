@@ -58,6 +58,15 @@ class SaveSharedPreference {
         }
         fun getFamliyID(ctx: Context?): String? { return getSharedPreferences(ctx!!)!!.getString("familyID", "") }
 
+        // Pet의 _id
+        fun setPetID(ctx: Context, petID: String?) {
+            if (petID==null) return
+            val editor = getSharedPreferences(ctx)!!.edit()
+            editor.putString("petID", petID)
+            editor.commit()
+        }
+        fun getPetID(ctx: Context?): String? { return getSharedPreferences(ctx!!)!!.getString("petID", "") }
+
 
         // 저장된 SharedPreference 값 전체 삭제
         fun clearAll(ctx: Context?) {

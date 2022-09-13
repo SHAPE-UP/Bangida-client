@@ -36,6 +36,7 @@ class MyApplication: Application() {
 
         /* 서버 요청용 */
         val apiserver = "http://ec2-13-124-250-65.ap-northeast-2.compute.amazonaws.com:5000/"
+        // http://192.168.219.113:5000/
 
         var networkServiceUsers: NetworkServiceUsers
         val retrofitUsers: Retrofit
@@ -61,6 +62,14 @@ class MyApplication: Application() {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
+        var networkServicePet: NetworkServicePet
+        val retrofitPet: Retrofit
+            get() = Retrofit.Builder()
+                .baseUrl(apiserver + "api/pet/")
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
 
         init{
             networkServiceYoutube = retrofitYoutube.create(NetworkServiceYoutube::class.java)
@@ -70,6 +79,7 @@ class MyApplication: Application() {
             networkServiceUsers = retrofitUsers.create(NetworkServiceUsers::class.java)  // api/users/
             networkServiceTodo = retrofitTodo.create(NetworkServiceTodo::class.java)  // api/todo/
             networkServiceFamily = retrofitFamily.create(NetworkServiceFamily::class.java)  // api/family/
+            networkServicePet = retrofitPet.create(NetworkServicePet::class.java) // api/pet
         }
 
 
