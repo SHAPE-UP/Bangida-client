@@ -17,6 +17,7 @@ import com.example.shape_up_2022.databinding.MainPageBinding
 import com.example.shape_up_2022.simulation.TestActivity
 import com.example.shape_up_2022.todo.MainCalenderFragment
 import com.example.shape_up_2022.todo.TodoActivity
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +27,34 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         val bindingYouTube = ActivityYoutubeBinding.inflate(layoutInflater)
+
+        //매주 같은 요일 모달창으로 호감도 검사 하라고 알림
+        //day==1이면 일요일임
+        val instance = Calendar.getInstance()
+        val day = instance.get(Calendar.DATE)
+
+        // eventHandler
+        val alertEvent = object : DialogInterface.OnClickListener{
+            override fun onClick(p0: DialogInterface?, p1: Int) {
+                if(p1 == DialogInterface.BUTTON_NEUTRAL) {
+                    val intent = Intent(this@MainActivity, PreferenceActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+
+            }
+        }
+
+        if(day==1){
+            AlertDialog.Builder(this).run {
+                setTitle("호감도 알림")
+                setIcon(R.drawable.maltese)
+                setMessage("이번주 호감도 검사는 진행하셨나요? \n아직 진행하지 못하셨다면 지금 바로 보호자님의 호감도를 검사해보세요~")
+                setNeutralButton("호감도 검사", null)
+                setPositiveButton("확인", alertEvent)
+                show()
+            }.setCanceledOnTouchOutside(false)
+        }
 
         // 강아지 현재 상태, 정보
 
