@@ -32,7 +32,18 @@ class AchieveActivity : AppCompatActivity() {
         binding = ActivityAchieveBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.pbAchieveTodo.progress = 30
+        /* 준비도: progressBar */
+        var clearCount = 0
+        val checkedArray = SaveSharedPreference.getAchieve(this)!!
+        for(i in 0 until checkedArray.size){
+            if(checkedArray[i]) clearCount++
+            if(i == checkedArray.size - 1){ // 마지막 인덱스일 때
+                // 준비도 반영하기
+                val ratio = (clearCount.toFloat() / 14)
+                Log.d("mobileApp", "$ratio")
+                binding.pbAchieveTodo.progress = (ratio * 100).toInt()
+            }
+        }
 
         /*
         binding.btn.setOnClickListener { view ->
