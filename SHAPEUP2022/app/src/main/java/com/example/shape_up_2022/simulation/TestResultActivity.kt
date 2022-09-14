@@ -3,10 +3,12 @@ package com.example.shape_up_2022.simulation
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.example.shape_up_2022.R
 import com.example.shape_up_2022.common.MainActivity
 import com.example.shape_up_2022.common.SaveSharedPreference
 import com.example.shape_up_2022.databinding.ActivityTestResultBinding
+import kotlin.concurrent.thread
 
 class TestResultActivity : AppCompatActivity() {
     lateinit var binding :ActivityTestResultBinding
@@ -15,6 +17,8 @@ class TestResultActivity : AppCompatActivity() {
         //setContentView(R.layout.activity_test_result)
         binding = ActivityTestResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
 
         val answer = intent.getIntExtra("ANSWER",0)
         if(answer<50){
@@ -41,7 +45,31 @@ class TestResultActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
     }
 
+    private fun init(){
+        showProgress(false)
+    }
+    fun showProgress(isShow:Boolean){
+        if(isShow)binding.progress.visibility = View.VISIBLE
+        else binding.progress.visibility = View.GONE
+    }
+
+    override fun onStart() {
+        super.onStart()
+        init()
+        showProgress(true)
+
+        thread (start = true){
+            Thread.sleep(5000)
+
+            runOnUiThread{
+                showProgress(false)
+            }
+        }
+
+    }
 
 }
+
