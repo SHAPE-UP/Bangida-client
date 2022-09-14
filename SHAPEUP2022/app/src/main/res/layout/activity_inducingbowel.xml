@@ -71,7 +71,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="화면을 터치해\n강아지를 [배변 판] 쪽으로 유도"
+            android:text="2. 화면을 터치해\n강아지를 [배변 판] 쪽으로 유도하세요.
+            배변판이 다 차면 종료됩니다."
             android:gravity="center"
             android:textColor="@color/base_color1"
             android:textSize="20sp"
@@ -82,7 +83,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="느낌표를 눌러 설명을 확인 ▶"
+            android:text="1.느낌표를 눌러 설명을 확인 ▶"
             android:textColor="@color/base_color1"
             android:textSize="20sp"
             android:layout_marginTop="15dp"
@@ -93,7 +94,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="     강아지가 배변 판 위로 올라오면\n▼ [배변 판]을 터치해 배변 처리"
+            android:text="     3.강아지가 배변 판 위로 올라오면\n▼ [배변 판]을 터치해 배변 처리"
             android:textColor="@color/base_color1"
             android:textSize="20sp"
             android:layout_marginStart="40dp"
