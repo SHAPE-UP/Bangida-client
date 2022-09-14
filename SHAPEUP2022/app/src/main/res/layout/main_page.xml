@@ -76,7 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="15dp"
-                    android:text="가족 그룹에 가입하면 반려견을 입양할 수 있어요!"
+                    android:text="아직 강아지를 입양하지 않았어요!"
                     android:textAlignment="center"/>
             </LinearLayout>
 
