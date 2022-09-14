@@ -1,5 +1,6 @@
 package com.example.shape_up_2022.achieve
 
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import com.example.shape_up_2022.adapter.AchieveAdapter
@@ -183,15 +184,15 @@ class AchieveActivity : AppCompatActivity() {
             }
         }
 
-        fun clearAchieve(position: Int){
+        fun clearAchieve(context: Context, position: Int){
             // 프리퍼런스 값 바꾸기
-            val temp = SaveSharedPreference.getAchieve(this)!!
+            val temp = SaveSharedPreference.getAchieve(context)!!
             temp[position] = true
-            SaveSharedPreference.setAchieve(this, temp)
+            SaveSharedPreference.setAchieve(context, temp)
 
             // 라우터 연결, 업데이트
             val call: Call<CompleteAchieveRes> = MyApplication.networkServiceUsers.setCheckedTrue(
-                userID = SaveSharedPreference.getUserID(this)!!, position = position
+                userID = SaveSharedPreference.getUserID(context)!!, position = position
              )
 
             call?.enqueue(object : Callback<CompleteAchieveRes> {

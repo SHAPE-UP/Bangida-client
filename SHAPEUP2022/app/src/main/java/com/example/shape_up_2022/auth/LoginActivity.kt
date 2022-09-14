@@ -55,10 +55,11 @@ class LoginActivity : AppCompatActivity() {
                             SaveSharedPreference.setFamliyID(baseContext, response.body()!!.user.familyID?:null) // familyID
                             SaveSharedPreference.setUserTested(baseContext, response.body()!!.user.tested) // 성향점검 여부
                             SaveSharedPreference.setAchieve(baseContext, response.body()!!.user.achieve) // 업적 달성 여부
+                            Log.d("mobileApp", "${response.body()!!.user.achieve}")
 
                             // petID 프리퍼런스에 저장
                             if(response.body()!!.user.familyID != null){
-                                //Log.d("")
+                                Log.d("mobileApp", " familyID: ${response.body()!!.user.familyID!!}")
                                 callGetPetID(response.body()!!.user.familyID!!)
                             } else{
                                 // 메인 페이지로 이동

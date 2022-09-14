@@ -68,10 +68,18 @@ class SimStartNamingActivity : AppCompatActivity() {
                     // 강아지 입양 및 이름 등록
                     postRegisterPet(petName)
 
+                    // 강아지 업적 달성 position: 0
+                    val check = SaveSharedPreference.getAchieve(baseContext)!![0] // 업적 달성 여부 확인
+
+                    if(!check){ // 업적을 1번도 달성하지 않았었다면
+                        AchieveActivity().clearAchieve(this@SimStartNamingActivity, 0) // 업적 달성 업데이트 실행
+                    }
+
                     binding.nameStep1.visibility = View.GONE
                     binding.nameStep2.visibility = View.GONE
                     binding.nameStep3.visibility = View.GONE
                     binding.nameStep4.visibility = View.VISIBLE
+
                 }
             }
         }
@@ -89,13 +97,6 @@ class SimStartNamingActivity : AppCompatActivity() {
                 .setCancelable(false)
 
             builder.show()
-
-            // 강아지 업적 달성 position: 0
-            val check = SaveSharedPreference.getAchieve(this)!![0] // 업적 달성 여부 확인
-            if(!check){ // 업적을 1번도 달성하지 않았었다면
-                AchieveActivity().clearAchieve(0) // 업적 달성 업데이트 실행
-            }
-            
         }
     }
 

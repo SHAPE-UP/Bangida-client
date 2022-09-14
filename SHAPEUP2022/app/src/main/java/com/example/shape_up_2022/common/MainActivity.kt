@@ -155,7 +155,11 @@ class MainActivity : AppCompatActivity() {
                     Log.d("mobileApp", "$response ${response.body()}")
                     if(response.body()!!.success){
                         // 강아지 이름 업데이트
+                        binding.homeInfoDog.visibility = View.VISIBLE
                         binding.puppyProfileName.text = response.body()?.petInfo?.name
+                    } else{
+                        binding.homeInfoDog.visibility = View.GONE
+                        binding.noFamHomeInfoDog.visibility = View.VISIBLE
                     }
                 }
             }
