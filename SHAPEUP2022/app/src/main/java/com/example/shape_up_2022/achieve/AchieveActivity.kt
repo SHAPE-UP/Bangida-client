@@ -14,9 +14,9 @@ import com.example.shape_up_2022.common.MyPageActivity
 import com.example.shape_up_2022.common.SaveSharedPreference
 import com.example.shape_up_2022.databinding.ActivityAchieveBinding
 import com.example.shape_up_2022.common.SimulationActivity
+import com.example.shape_up_2022.retrofit.CompleteAchieveRes
 import com.example.shape_up_2022.retrofit.GetPetInfoRes
 import com.example.shape_up_2022.retrofit.MyApplication
-import com.example.shape_up_2022.simulation.TestActivity
 import com.example.shape_up_2022.todo.TodoActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -33,17 +33,7 @@ class AchieveActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         /* 준비도: progressBar */
-        var clearCount = 0
-        val checkedArray = SaveSharedPreference.getAchieve(this)!!
-        for(i in 0 until checkedArray.size){
-            if(checkedArray[i]) clearCount++
-            if(i == checkedArray.size - 1){ // 마지막 인덱스일 때
-                // 준비도 반영하기
-                val ratio = (clearCount.toFloat() / 14)
-                Log.d("mobileApp", "$ratio")
-                binding.pbAchieveTodo.progress = (ratio * 100).toInt()
-            }
-        }
+        DisplayProgress()
 
         /*
         binding.btn.setOnClickListener { view ->
@@ -172,4 +162,53 @@ class AchieveActivity : AppCompatActivity() {
             }
         })
     }
+
+    /* 업적을 달성했을 때 */
+        /* 준비도: progressBar */
+        private fun DisplayProgress(){
+            var clearCount = 0
+            val checkedArray = SaveSharedPreference.getAchieve(this)!!
+            for(i in 0 until checkedArray.size){
+                if(checkedArray[i]) clearCount++
+                if(i == checkedArray.size - 1){ // 마지막 인덱스일 때
+                    // 준비도 반영하기
+                    val ratio = (clearCount.toFloat() / 14)
+                    Log.d("mobileApp", "$ratio")
+                    binding.pbAchieveTodo.progress = (ratio * 100).toInt()
+                }
+            }
+        }
+
+        fun clearAchieve(position: Int){
+            // 프리퍼런스 값 바꾸기
+            val temp = SaveSharedPreference.getAchieve(this)!!
+            temp[position] = true
+            SaveSharedPreference.setAchieve(this, temp)
+
+            // 라우터 연결, 업데이트
+            val call: Call<CompleteAchieveRes> = MyApplication.networkServiceUsers.setCheckedTrue(
+                userID = SaveSharedPreference.getUserID(this)!!, position = position
+            )
+
+            call?.enqueue(object : Callback<CompleteAchieveRes> {
+                override fun onResponse(call: Call<CompleteAchieveRes>, response: Response<CompleteAchieveRes>) {
+                    if(response.isSuccessful){
+                        Log.d("mobileApp", "$response ${response.body()}")
+                        if(response.body()!!.success){
+                            Log.d("mobileApp", "업데이트 완료!")
+
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<CompleteAchieveRes>, t: Throwable) {
+                    Log.d("mobileApp", "onFailure $t")
+                    //Toast.makeText(baseContext, "네트워크 오류 발생", Toast.LENGTH_SHORT).show()
+                }
+            })
+
+            // 진행도 업데이트
+            DisplayProgress()
+        }
+
 }

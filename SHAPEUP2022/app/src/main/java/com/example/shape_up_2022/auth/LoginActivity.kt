@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import com.example.shape_up_2022.R
 import com.example.shape_up_2022.common.MainActivity
 import com.example.shape_up_2022.retrofit.LoginReq
 import com.example.shape_up_2022.retrofit.LoginRes

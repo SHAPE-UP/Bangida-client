@@ -6,13 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shape_up_2022.R
 import com.example.shape_up_2022.adapter.AchieveProgressAdapter
 import com.example.shape_up_2022.common.SaveSharedPreference
 import com.example.shape_up_2022.databinding.AchieveFragment1Binding
-import com.example.shape_up_2022.simulation.SimWalkSearchAdapter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
