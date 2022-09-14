@@ -9,8 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.example.shape_up_2022.achieve.AchieveActivity.Companion.clearAchieve
-import com.example.shape_up_2022.common.MainActivity
+import com.example.shape_up_2022.achieve.AchieveActivity
 import com.example.shape_up_2022.common.SaveSharedPreference
 import com.example.shape_up_2022.databinding.ActivitySimStartNamingBinding
 import com.example.shape_up_2022.retrofit.*
@@ -94,7 +93,7 @@ class SimStartNamingActivity : AppCompatActivity() {
             // 강아지 업적 달성 position: 0
             val check = SaveSharedPreference.getAchieve(this)!![0] // 업적 달성 여부 확인
             if(!check){ // 업적을 1번도 달성하지 않았었다면
-                clearAchieve(0) // 업적 달성 업데이트 실행
+                AchieveActivity().clearAchieve(0) // 업적 달성 업데이트 실행
             }
             
         }

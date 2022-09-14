@@ -58,6 +58,7 @@ class LoginActivity : AppCompatActivity() {
 
                             // petID 프리퍼런스에 저장
                             if(response.body()!!.user.familyID != null){
+                                //Log.d("")
                                 callGetPetID(response.body()!!.user.familyID!!)
                             } else{
                                 // 메인 페이지로 이동
@@ -94,6 +95,7 @@ class LoginActivity : AppCompatActivity() {
                     Log.d("mobileApp", "$response ${response.body()}")
                         if(response.body()!!.success){
                             SaveSharedPreference.setPetID(baseContext, response.body()!!.petID)
+                            Log.d("mobileApp", "${response.body()!!.petID}" )
 
                             // 메인 페이지로 이동
                             val intent = Intent(baseContext, MainActivity::class.java)

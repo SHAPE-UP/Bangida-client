@@ -167,14 +167,18 @@ class AchieveActivity : AppCompatActivity() {
         /* 준비도: progressBar */
         private fun DisplayProgress(){
             var clearCount = 0
-            val checkedArray = SaveSharedPreference.getAchieve(this)!!
-            for(i in 0 until checkedArray.size){
-                if(checkedArray[i]) clearCount++
-                if(i == checkedArray.size - 1){ // 마지막 인덱스일 때
-                    // 준비도 반영하기
-                    val ratio = (clearCount.toFloat() / 14)
-                    Log.d("mobileApp", "$ratio")
-                    binding.pbAchieveTodo.progress = (ratio * 100).toInt()
+            if(SaveSharedPreference.getAchieve(this)!! == null){
+                binding.pbAchieveTodo.progress = 0
+            } else{
+                val checkedArray = SaveSharedPreference.getAchieve(this)!!
+                for(i in 0 until checkedArray.size){
+                    if(checkedArray[i]) clearCount++
+                    if(i == checkedArray.size - 1){ // 마지막 인덱스일 때
+                        // 준비도 반영하기
+                        val ratio = (clearCount.toFloat() / 14)
+                        Log.d("mobileApp", "$ratio")
+                        binding.pbAchieveTodo.progress = (ratio * 100).toInt()
+                    }
                 }
             }
         }
@@ -188,7 +192,7 @@ class AchieveActivity : AppCompatActivity() {
             // 라우터 연결, 업데이트
             val call: Call<CompleteAchieveRes> = MyApplication.networkServiceUsers.setCheckedTrue(
                 userID = SaveSharedPreference.getUserID(this)!!, position = position
-            )
+             )
 
             call?.enqueue(object : Callback<CompleteAchieveRes> {
                 override fun onResponse(call: Call<CompleteAchieveRes>, response: Response<CompleteAchieveRes>) {
