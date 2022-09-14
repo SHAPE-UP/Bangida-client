@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         //매주 같은 요일 모달창으로 호감도 검사 하라고 알림
         //day==1이면 일요일임
         val instance = Calendar.getInstance()
-        val day = instance.get(Calendar.DATE)
+        val day = instance.get(Calendar.DAY_OF_WEEK)
 
         // eventHandler
         val alertEvent = object : DialogInterface.OnClickListener{
