@@ -18,9 +18,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.FragmentActivity
 import com.example.shape_up_2022.R
 import com.example.shape_up_2022.databinding.ActivityInducingbowelBinding
-import com.google.android.youtube.player.internal.t
-import com.google.android.youtube.player.internal.x
-import com.google.android.youtube.player.internal.y
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -152,7 +149,7 @@ class SimInducingBowelMovementsActivity : FragmentActivity() {
     private fun alertDialog(){
         fun toast_p() {
             Toast.makeText(this, "배변 점검으로 이동합니다.", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this,SimDefecationCharacteristicsActivity::class.java)
+            val intent = Intent(this,SimDefecationCActivity::class.java)
             startActivity(intent)
         }
         var dialog_listener = object: DialogInterface.OnClickListener{
