@@ -27,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@color/main_color" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -41,25 +42,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="16dp"
-                android:textSize="18sp"
-                android:text="1. 반려견을 길러본 적이 있나요?" />
+                android:text="1. 반려견을 길러본 적이 있나요?"
+                android:textSize="18sp" />
+
             <RadioGroup
+                android:id="@+id/radio_groupA"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <RadioButton
+                    android:id="@+id/radio_button_a1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/selector_radio_button"
                     android:fontFamily="@font/custom_font_family"
                     android:text="있다" />
+
                 <RadioButton
+                    android:id="@+id/radio_button_a2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/selector_radio_button"
                     android:fontFamily="@font/custom_font_family"
                     android:text="직접 기른 것은 아니지만 집에서 함께한 경험이 있다" />
+
                 <RadioButton
+                    android:id="@+id/radio_button_a3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/selector_radio_button"
                     android:fontFamily="@font/custom_font_family"
                     android:text="없다" />
             </RadioGroup>
@@ -68,35 +80,51 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:textSize="18sp"
-                android:text="2. 살고 있는 집의 형태는 어떠한가요?" />
+                android:text="2. 살고 있는 집의 형태는 어떠한가요?"
+                android:textSize="18sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="6dp"
                 android:text="     공간적 여유는 중요한 요소입니다." />
+
             <RadioGroup
+                android:id="@+id/radio_groupB"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
                 <RadioButton
+
+                    android:id="@+id/radio_button_b1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/selector_radio_button"
                     android:fontFamily="@font/custom_font_family"
                     android:text="단독주택" />
+
                 <RadioButton
+                    android:id="@+id/radio_button_b2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/selector_radio_button"
                     android:fontFamily="@font/custom_font_family"
                     android:text="아파트" />
+
                 <RadioButton
+                    android:id="@+id/radio_button_b3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/selector_radio_button"
                     android:fontFamily="@font/custom_font_family"
                     android:text="오피스텔" />
+
                 <RadioButton
+                    android:id="@+id/radio_button_b4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/selector_radio_button"
                     android:fontFamily="@font/custom_font_family"
                     android:text="기타" />
             </RadioGroup>
@@ -105,35 +133,45 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:textSize="18sp"
-                android:text="3. 현재 경제력 상태는 어느정도인가요?" />
+                android:text="3. 현재 경제력 상태는 어느정도인가요?"
+                android:textSize="18sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="6dp"
                 android:text="hint)  '강아지 지갑' 메뉴의 예산서를 작성하며 가늠해보세요." />
+
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/selector_radio_button"
                     android:fontFamily="@font/custom_font_family"
                     android:text="넉넉하다" />
+
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/selector_radio_button"
                     android:fontFamily="@font/custom_font_family"
                     android:text="생활비를 빼고 나면 빠듯하다" />
+
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/selector_radio_button"
                     android:fontFamily="@font/custom_font_family"
                     android:text="여유자금으로 충당하기 부족하다" />
+
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/selector_radio_button"
                     android:fontFamily="@font/custom_font_family"
                     android:text="잘 모르겠다" />
             </RadioGroup>
@@ -141,65 +179,42 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:textSize="18sp"
-                android:text="#. 전문가가 진행하는 반려견 교육에 참여하면?" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="6dp"
-                android:text="tip) ㅇㅇ교육, ㅁㅁ교육, ㅂㅂ교육이 있습니다." />
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/custom_font_family"
-                    android:text="잘 배워서 활용할 수 있다" />
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/custom_font_family"
-                    android:text="자신은 없지만 할 수 있을 것 같다" />
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/custom_font_family"
-                    android:text="할 수 없다" />
-            </RadioGroup>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginVertical="16dp"
-                android:textSize="18sp"
                 android:lineSpacingMultiplier="1.2"
-                android:text="#. 입양 전 상담에서 전문가가 본래 입양하고자 했던 견종과 다른 견종을 추천한다면?" />
+                android:text="4. 입양 전 상담에서 전문가가 본래 입양하고자 했던 견종과 다른 견종을 추천한다면?"
+                android:textSize="18sp" />
+
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/custom_font_family"
+                    android:background="@drawable/selector_radio_button"
                     android:text="전문가의 의견을 따른다" />
+
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/custom_font_family"
+                    android:background="@drawable/selector_radio_button"
                     android:text="고민해본다" />
+
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/custom_font_family"
+                    android:background="@drawable/selector_radio_button"
                     android:text="내 마음에 드는 견종으로 입양한다" />
+
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/custom_font_family"
+                    android:background="@drawable/selector_radio_button"
                     android:text="어떻게 할지 모르겠다" />
             </RadioGroup>
 
@@ -208,36 +223,46 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:textSize="18sp"
-                android:text="#. 집 근처에 반려견을 산책시킬 공간이 있나요?" />
+                android:text="5. 집 근처에 반려견을 산책시킬 공간이 있나요?"
+                android:textSize="18sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:text="  공원이나 운동장, 산책로로 적당한 공간이 적다면 보호자와 반려견 모두 산책으로 스트레스를 받을 수 있습니다." />
+
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/custom_font_family"
+                    android:background="@drawable/selector_radio_button"
                     android:text="충분하다" />
+
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/custom_font_family"
+                    android:background="@drawable/selector_radio_button"
                     android:text="협소하지만 산책로나 공원이 있다" />
+
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/custom_font_family"
+                    android:background="@drawable/selector_radio_button"
                     android:text="산책로가 있지만 거리가 좀 있다" />
+
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/custom_font_family"
+                    android:background="@drawable/selector_radio_button"
                     android:text="있는지 모르겠다" />
             </RadioGroup>
 
@@ -245,26 +270,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:textSize="18sp"
-                android:text="#. (소형견 기준) 하루에 최소 30분 반려동물 산책을" />
+                android:text="6. (소형견 기준) 하루에 최소 30분 반려동물 산책을"
+                android:textSize="18sp" />
+
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/custom_font_family"
+                    android:background="@drawable/selector_radio_button"
                     android:text="매일 할 수 있다" />
+
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/custom_font_family"
+                    android:background="@drawable/selector_radio_button"
                     android:text="매일은 아니더라도 할 수 있다" />
+
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/custom_font_family"
+                    android:background="@drawable/selector_radio_button"
                     android:text="하기는 현실적으로 어렵다" />
             </RadioGroup>
 
@@ -272,60 +304,150 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:textSize="18sp"
-                android:text="#. 입양한 반려동물이 짖음이나 공격성, 문제행동 등을 보일 경우" />
+                android:text="7. 입양한 반려동물이 짖음이나 공격성, 문제행동 등을 보일 경우"
+                android:textSize="18sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:text="  시시때때로 반려동물의 행동양상을 주의 깊게 관찰해야 합니다." />
+
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/custom_font_family"
+                    android:background="@drawable/selector_radio_button"
                     android:text="문제의 원인을 찾아내고 해결하기 위해 끝까지 책임을 지겠다" />
+
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/custom_font_family"
+                    android:background="@drawable/selector_radio_button"
                     android:text="전문가 상담을 받겠다" />
+
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/custom_font_family"
+                    android:background="@drawable/selector_radio_button"
                     android:text="반려동물 양육에 소홀해질 것 같다" />
+
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/custom_font_family"
+                    android:background="@drawable/selector_radio_button"
                     android:text="어떻게 할지 모르겠다" />
             </RadioGroup>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="보호자의 건강상태" />
-            <TextView
-                android:layout_width="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="8.작고 귀여운 것을 보면 기분이 좋아진다."
+                android:textSize="18sp" />
+            <RadioGroup
+                android:id="@+id/radio_groupG"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="동물 털 알레르기가 있나요?" />
+                android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radio_button_g1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_radio_button"
+                android:fontFamily="@font/custom_font_family"
+                android:text="그렇다" />
+
+            <RadioButton
+                android:id="@+id/radio_button_g2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_radio_button"
+                android:fontFamily="@font/custom_font_family"
+                android:text="아니다" />
+            </RadioGroup>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/main_color"
-                android:text="가장 중요한 것은 동물을 진심으로 사랑하는 마음입니다." />
+                android:layout_marginTop="16dp"
+                android:text="9.내 자식을 최고로 키우고 싶다."
+                android:textSize="18sp" />
+            <RadioGroup
+                android:id="@+id/radio_groupH"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
+                <RadioButton
+                    android:id="@+id/radio_button_h1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selector_radio_button"
+                    android:fontFamily="@font/custom_font_family"
+                    android:text="그렇다" />
 
-            <Button
-                android:id="@+id/btn_test_skip"
+                <RadioButton
+                    android:id="@+id/radio_button_h2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selector_radio_button"
+                    android:fontFamily="@font/custom_font_family"
+                    android:text="아니다" />
+            </RadioGroup>
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="넘어가기" />
+                android:text="10.동물 털 알레르기가 있나요?"
+                android:textSize="18sp"/>
+            <RadioGroup
+                android:id="@+id/radio_groupI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radio_button_i1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_radio_button"
+                android:fontFamily="@font/custom_font_family"
+                android:text="그렇다" />
+
+            <RadioButton
+                android:id="@+id/radio_button_i2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_radio_button"
+                android:fontFamily="@font/custom_font_family"
+                android:text="아니다" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="가장 중요한 것은 동물을 진심으로 사랑하는 마음입니다."
+                android:textColor="@color/main_color" />
+
+
+                <Button
+                    android:id="@+id/btn_test_next"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="종료하기" />
+
+
         </LinearLayout>
     </ScrollView>
 

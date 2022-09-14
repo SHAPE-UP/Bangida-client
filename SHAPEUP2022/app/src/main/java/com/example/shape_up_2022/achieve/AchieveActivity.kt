@@ -6,6 +6,8 @@ import android.content.Intent
 import com.example.shape_up_2022.adapter.AchieveAdapter
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -170,15 +172,22 @@ class AchieveActivity : AppCompatActivity() {
         /* 준비도: progressBar */
         private fun DisplayProgress(){
             var clearCount = 0
+            //binding = ActivityAchieveBinding.inflate(layoutInflater)
+            val progress = binding.pbAchieveTodo
 
-            val checkedArray = SaveSharedPreference.getAchieve(this)!!
-            for(i in 0 until checkedArray.size){
-                if(checkedArray[i]) clearCount++
-                if(i == checkedArray.size - 1){ // 마지막 인덱스일 때
-                    // 준비도 반영하기
-                    val ratio = (clearCount.toFloat() / 14)
-                    Log.d("mobileApp", "$ratio")
-                    binding.pbAchieveTodo.progress = (ratio * 100).toInt()
+            if(SaveSharedPreference.getAchieve(this)!! == null){
+                // 준비도 = 0
+                progress.progress = 0
+            } else{
+                val checkedArray = SaveSharedPreference.getAchieve(this)!!
+                for(i in 0 until checkedArray.size){
+                    if(checkedArray[i]) clearCount++
+                    if(i == checkedArray.size - 1){ // 마지막 인덱스일 때
+                        // 준비도 반영하기
+                        val ratio = (clearCount.toFloat() / 14)
+                        Log.d("mobileApp", "$ratio")
+                        progress.progress = (ratio * 100).toInt()
+                    }
                 }
             }
 
@@ -215,6 +224,7 @@ class AchieveActivity : AppCompatActivity() {
 
             // 진행도 업데이트
             //DisplayProgress()
+
         }
 
 }

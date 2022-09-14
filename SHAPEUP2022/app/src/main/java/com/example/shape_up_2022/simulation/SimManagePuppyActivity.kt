@@ -51,6 +51,7 @@ class SimManagePuppyActivity : AppCompatActivity() {
                 alertDialog()
                 binding.progressBar.visibility = View.INVISIBLE
 
+
                 // 강아지를 쓰다듬었을 때 실행
                 // position: 2
                 val check = SaveSharedPreference.getAchieve(this)!!

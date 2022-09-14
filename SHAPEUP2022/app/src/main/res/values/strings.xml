@@ -2,7 +2,6 @@
     <string name="app_name">SHAPE-UP-2022</string>
     <string name="change_time">시간 재설정</string>
     <string name="on_alarm">알람 켜기</string>
-
     <string name="preference">당신의 선호도가 궁금합니다</string>
     <string name="q1">당신은 반려견과 함께할 준비가 얼마나 되어있나요?</string>
     <string name="q2">반려견과 함께하고 싶은 마음이 어느정도인가요?(1~100)</string>
@@ -10,5 +9,43 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="exp">
+        <item>강아지들은 장난감을 입에 물고 다니기 때문에 침이 젖은 상태로 바이하면 세균이 생길 수 있어 자주 세척하는 것이 중요합니다.</item>
+        <item>공, 원반 등의 장난감을 사용하여 강아지와 같이 놀아요! 반려견은 주인을 믿고 자신의 물건을 맡기고, 그걸 받은 보호자는 반려견에게 장난감을 던지는 과정을 반복하며 신뢰와 유대감을 쌓을 수 있습니다.</item>
+        <item>일반적으로 주 1회에 장난감을 세척하는 것이 위생에 좋습니다. 하지만 여러분의 반려견이 장난감을 사용하는 빈도 수와 침이 많은지 등을 고려하여 장난감을 관리해줍시다.</item>
+        <item>여러분의 반려견이 입에 직접 닿는 장난감을 세척할 때, 일반 세제 또는 강아지용 샴푸 등 합성 세제로 세척하는 것이 부담스러울 수 있습니다. 그래서 천연 성분인 베이킹소다와 식초를 활용하여 장난감을 세척하는 방법이 있습니다.
+            1. 강아지 강난감이 담길 만큼 따뜻한 물을 담은 후 베이킹소다를 뿌려줍니다.
+            2. 손으로 조물조물하며 세탁을 한 후. 30분 이상 담궈둡니다.
+            3. 미지근한 물로 여러 번 헹궈 베이킹소다 성분을 없애줍니다.
+            4. 식초를 넣은 후(식초 1: 물 2) 손으로 조물조물하며 세탁 후, 15분 이상 방치합니다.
+            5. 미지근한 물로 여러 번 헹궈 식초 성분을 없애줍니다.
+            6. 잔여 세제를 말끔하게 씻어내기 위해 세탁기로 헹궈줍니다.
+            7. 햇볕이 드는 곳에 바짝 말려줍니다.</item>
+        <item>강아지의 털을 기른 상태로 두면 건강 약화로 이어질 수 있어 위생미용이 필요합니다. 위생미용이란 청결이 필요한 부분만 미용하는 것으로 눈과 입 주위, 항문,발바닥,생식기와 배 주변을 미용하는 것을 말합니다. 미용 빈도는 견종과 계절에 따라 다르지만, 건강 유지를 목적으로 한 미용의 경우 3주~1달 기준으로 합니다.</item>
+        <item>실내에서 생활하는 경우 배변훈련을 통해 한정된 구역에서 배변을 보도록 배변 구역을 인식하는 훈련입니다.  배변 훈련 준비물로는 배변판, 배변패드, 울타리, 탈취제가 필요합니다. 강아지가 배변 패드가 아닌 다른 곳에서 배설을 하려고 한다면 배변 패드 위로 옮겨주세요. 배변판에 대소변을 보았다면 칭찬과 보상을 주세요. 반복된 훈련을 통한 학습으로 배변훈련은 진행됩니다.</item>
+        <item>강아지의 대소변 타이밍은 아침에 일어난 후, 음식물이나 물을 섭취한 후, 낮잠을 잔 후, 운동이나 놀이 후, 저녁 취짐 전입니다.  체중 X 50ml의 양 이상을 배뇨하지 않은 경우 다뇨 현상이 아닙니다.  운동 시간인 강아지 산책 중에 대소변을 보는 것은 자연스러운 현상입니다.</item>
+
+    </string-array>
+
+    <string-array name="people">
+        <item>Q. 1 반려견의 장난감 관리가 중요한가요?</item>
+        <item>Q. 2 반려견과의 유대감 형성을 하기위한 방법이 있을까요?</item>
+        <item>Q. 3 강아지 장난감 세척 주기는 어느 정도가 적당할까요?</item>
+        <item>Q. 4 반려견의 장난감 세척 방법은? - 베이킹소다와 식초 편</item>
+        <item>Q. 5 강아지 미용, 꼭 필요한 건가요?</item>
+        <item>Q. 6 강아지 배변훈련은 어떻게 진행되나요?</item>
+        <item>Q. 7 강아지 산책 중 소변을 자주 보는데 괜찮은가요?</item>
+    </string-array>
+
+    <integer-array name="images">
+        <item>@drawable/arroworange</item>
+        <item>@drawable/arroworange</item>
+        <item>@drawable/arroworange</item>
+        <item>@drawable/arroworange</item>
+        <item>@drawable/arroworange</item>
+        <item>@drawable/arroworange</item>
+        <item>@drawable/arroworange</item>
+    </integer-array>
 
 </resources>
