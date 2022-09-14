@@ -2,19 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:layout_marginHorizontal="16dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ToDoList" />
-    </LinearLayout>
+    android:layout_height="wrap_content"
+    android:padding="24dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,7 +13,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginHorizontal="16dp"
             android:layout_weight="2">
             <TextView
                 android:layout_width="wrap_content"
@@ -39,43 +27,60 @@
                 />
         </LinearLayout>
 
-        <LinearLayout
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginHorizontal="16dp"
-            android:layout_weight="1">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="담당자" />
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="엄마"
-                android:id="@+id/todorole"
-                />
-        </LinearLayout>
-
+            android:text="관련 활동" />
+        <Spinner
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/todoref"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="담당자" />
+        <Spinner
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/todorole"
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginHorizontal="10dp">
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
             android:text="시간 설정" />
         <EditText
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="12:00"
-            android:id="@+id/todosetting"
+            android:text="12"
+            android:id="@+id/todotime"
             android:inputType="numberDecimal"
-            android:layout_marginHorizontal="1dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시"
             />
 
     </LinearLayout>

@@ -4,13 +4,20 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.shape_up_2022.R
 import com.example.shape_up_2022.achieve.AchieveActivity
 import com.example.shape_up_2022.databinding.SimulationMainBinding
+import com.example.shape_up_2022.retrofit.GetPetInfoRes
+import com.example.shape_up_2022.retrofit.MyApplication
 import com.example.shape_up_2022.simulation.*
 import com.example.shape_up_2022.todo.TodoActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SimulationActivity : AppCompatActivity() {
     lateinit var binding: SimulationMainBinding
@@ -31,8 +38,10 @@ class SimulationActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        // 실내/외출 모드 전환
+        // 강아지 정보
+        getPetInfo()
 
+        // 실내/외출 모드 전환
         binding.btnout.setOnClickListener {
             binding.btnout.visibility = View.INVISIBLE
             binding.indoor.visibility = View.INVISIBLE
@@ -149,7 +158,7 @@ class SimulationActivity : AppCompatActivity() {
         super.onStart()
 
 
-        val eventHandler = object : DialogInterface.OnClickListener {
+        val familyEventHandler = object : DialogInterface.OnClickListener {
             override fun onClick(p0: DialogInterface?, p1: Int) {
                 if(p1 == DialogInterface.BUTTON_POSITIVE) {
                     val intent = Intent(this@SimulationActivity, MainActivity::class.java)
@@ -158,15 +167,65 @@ class SimulationActivity : AppCompatActivity() {
                 }
             }
         }
+
+        val petEventHandler = object : DialogInterface.OnClickListener {
+            override fun onClick(p0: DialogInterface?, p1: Int) {
+                if(p1 == DialogInterface.BUTTON_POSITIVE) {
+                    val intent = Intent(this@SimulationActivity, SimStartActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+        }
+
         var builder = AlertDialog.Builder(this)
             .setTitle("가족 그룹에 가입되어 있지 않은 사용자")
             .setIcon(R.drawable.maltese)
             .setMessage("가족 그룹에 먼저 가입해주세요.")
-            .setPositiveButton("확인", eventHandler)
+            .setPositiveButton("확인", familyEventHandler)
             .setCancelable(false)
 
-        //if(SaveSharedPreference.getFamliyID(this)!! == ""){
-        //    builder.show()
-        //}
+        var builder_pet = AlertDialog.Builder(this)
+            .setTitle("아직 강아지 입양을 진행하지 않았어요!")
+            .setIcon(R.drawable.maltese)
+            .setMessage("시뮬레이션과 todo 기능을 사용하고 싶으면 먼저 강아지 입양을 진행해주세요.")
+            .setPositiveButton("확인", petEventHandler)
+            .setCancelable(false)
+
+        if(SaveSharedPreference.getFamliyID(this)!! == ""){
+            builder.show()
+        } else{
+            // 가족 그룹에 가입되어 있지만 강아지 입양을 하지 않은 경우
+            if(SaveSharedPreference.getPetID(this)!! == ""){
+                builder_pet.show()
+            }
+        }
+    }
+
+    /* 강아지 정보 업데이트 */
+    private fun getPetInfo(){
+        val petID = SaveSharedPreference.getPetID(this)!!
+        Log.d("mobileApp", "$petID")
+
+        val call: Call<GetPetInfoRes> = MyApplication.networkServicePet.getPetInfo(
+            petID = petID
+        )
+
+        call?.enqueue(object : Callback<GetPetInfoRes> {
+            override fun onResponse(call: Call<GetPetInfoRes>, response: Response<GetPetInfoRes>) {
+                if(response.isSuccessful){
+                    Log.d("mobileApp", "$response ${response.body()}")
+                    if(response.body()!!.success){
+                        // 강아지 이름 업데이트
+                        binding.simMainPetName.text = response.body()?.petInfo?.name
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<GetPetInfoRes>, t: Throwable) {
+                Log.d("mobileApp", "onFailure $t")
+                Toast.makeText(baseContext, "네트워크 오류 발생", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }

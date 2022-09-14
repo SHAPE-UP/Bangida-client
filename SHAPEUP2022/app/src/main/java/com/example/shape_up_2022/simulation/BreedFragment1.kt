@@ -1,6 +1,7 @@
 package com.example.shape_up_2022
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shape_up_2022.databinding.FragmentBreed1Binding
 import com.example.shape_up_2022.databinding.ItemBreedBinding
+import com.example.shape_up_2022.simulation.SimStartNamingActivity
+import com.example.shape_up_2022.simulation.SimWalkSearchAdapter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -42,7 +45,23 @@ class MyBreedAdapter(val datas: MutableList<DogInfo>) : RecyclerView.Adapter<Rec
         binding.breedSize.text = datas[position].size
         binding.breedGroup.text = datas[position].group
         binding.breedCharacter.text = datas[position].character
+
+        // (1) 리스트 내 항목 클릭 시 onClick() 호출
+        holder.itemView.setOnClickListener {
+            itemClickListener.onClick(it, position)
+        }
     }
+
+    // (2) 리스너 인터페이스
+    interface OnItemClickListener {
+        fun onClick(v: View, position: Int)
+    }
+    // (3) 외부에서 클릭 시 이벤트 설정
+    fun setItemClickListener(onItemClickListener: OnItemClickListener) {
+        this.itemClickListener = onItemClickListener
+    }
+    // (4) setItemClickListener로 설정한 함수 실행
+    private lateinit var itemClickListener : OnItemClickListener
 
 }
 
@@ -81,6 +100,18 @@ class BreedFragment1 : Fragment() {
         var adapter = MyBreedAdapter(sampledatas)
         binding.breedRecyclerview1.adapter = adapter // 어댑터 설정
 
+        // 리사이클러뷰 이벤트
+        adapter.setItemClickListener(object: MyBreedAdapter.OnItemClickListener {
+            override fun onClick(v: View, position: Int) {
+                // 클릭했을 때 액티비티 이동
+                // 현재는 말티즈 입양 과정만 있음, 추후에 정보를 추가할 때 position을 사용한 관리 필요
+                if(position == 0) {
+                    val intent = Intent(context, SimStartNamingActivity::class.java)
+                    startActivity(intent)
+                    // 프래그먼트 떼어내기
+                }
+            }
+        })
 
         return binding.root
     }

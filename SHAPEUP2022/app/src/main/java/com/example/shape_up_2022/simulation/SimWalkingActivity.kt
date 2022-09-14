@@ -25,10 +25,6 @@ import androidx.fragment.app.Fragment
 import com.example.shape_up_2022.R
 import com.example.shape_up_2022.databinding.ActivitySimWalkingBinding
 import com.google.android.gms.maps.GoogleMap
-
-
-import com.google.android.youtube.player.internal.e
-import com.google.android.youtube.player.internal.m
 import java.io.*
 import java.lang.Exception
 

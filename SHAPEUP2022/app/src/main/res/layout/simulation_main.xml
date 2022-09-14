@@ -62,7 +62,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:background="#ffeecc">
+                android:background="@color/lightyellow">
 
                 <ImageView
                     android:layout_width="240dp"
@@ -74,6 +74,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/sim_main_pet_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintLeft_toLeftOf="parent"

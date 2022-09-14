@@ -3,6 +3,8 @@ package com.example.shape_up_2022.common
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class SaveSharedPreference {
     companion object{
@@ -57,6 +59,33 @@ class SaveSharedPreference {
             editor.commit()
         }
         fun getFamliyID(ctx: Context?): String? { return getSharedPreferences(ctx!!)!!.getString("familyID", "") }
+
+        // Pet의 _id
+        fun setPetID(ctx: Context, petID: String?) {
+            if (petID==null) return
+            val editor = getSharedPreferences(ctx)!!.edit()
+            editor.putString("petID", petID)
+            editor.commit()
+        }
+        fun getPetID(ctx: Context?): String? { return getSharedPreferences(ctx!!)!!.getString("petID", "") }
+
+        // User의 achieve
+        fun setAchieve(ctx: Context, achieve: ArrayList<Boolean>?) {
+            if (achieve==null) return
+            val gson = Gson()
+            val json = gson.toJson(achieve)
+            val editor = getSharedPreferences(ctx)!!.edit()
+            editor.putString("achieve", json)
+            editor.commit()
+        }
+        fun getAchieve(ctx: Context?): ArrayList<Boolean>? {
+            val json = getSharedPreferences(ctx!!)!!.getString("achieve", "")
+            val gson = Gson()
+            return gson.fromJson(
+                json,
+                object : TypeToken<ArrayList<Boolean?>>() {}.type
+            )
+        }
 
 
         // 저장된 SharedPreference 값 전체 삭제
