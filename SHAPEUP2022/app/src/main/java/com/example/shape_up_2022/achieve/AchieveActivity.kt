@@ -36,7 +36,7 @@ class AchieveActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         /* 준비도: progressBar */
-        DisplayProgress(this)
+        DisplayProgress()
 
         /*
         binding.btn.setOnClickListener { view ->
@@ -168,16 +168,16 @@ class AchieveActivity : AppCompatActivity() {
 
     /* 업적을 달성했을 때 */
         /* 준비도: progressBar */
-        private fun DisplayProgress(context: Context){
+        private fun DisplayProgress(){
             var clearCount = 0
-            binding = ActivityAchieveBinding.inflate(layoutInflater)
+            //binding = ActivityAchieveBinding.inflate(layoutInflater)
             val progress = binding.pbAchieveTodo
 
-            if(SaveSharedPreference.getAchieve(context)!! == null){
+            if(SaveSharedPreference.getAchieve(this)!! == null){
                 // 준비도 = 0
                 progress.progress = 0
             } else{
-                val checkedArray = SaveSharedPreference.getAchieve(context)!!
+                val checkedArray = SaveSharedPreference.getAchieve(this)!!
                 for(i in 0 until checkedArray.size){
                     if(checkedArray[i]) clearCount++
                     if(i == checkedArray.size - 1){ // 마지막 인덱스일 때
