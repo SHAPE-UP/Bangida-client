@@ -1,9 +1,12 @@
 package com.example.shape_up_2022.achieve
 
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import com.example.shape_up_2022.adapter.AchieveAdapter
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.shape_up_2022.*
@@ -12,10 +15,15 @@ import com.example.shape_up_2022.common.MyPageActivity
 import com.example.shape_up_2022.common.SaveSharedPreference
 import com.example.shape_up_2022.databinding.ActivityAchieveBinding
 import com.example.shape_up_2022.common.SimulationActivity
-import com.example.shape_up_2022.simulation.TestActivity
+import com.example.shape_up_2022.retrofit.CompleteAchieveRes
+import com.example.shape_up_2022.retrofit.GetPetInfoRes
+import com.example.shape_up_2022.retrofit.MyApplication
 import com.example.shape_up_2022.todo.TodoActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class AchieveActivity : AppCompatActivity() {
 
@@ -25,7 +33,8 @@ class AchieveActivity : AppCompatActivity() {
         binding = ActivityAchieveBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.pbAchieveTodo.progress = 30
+        /* 준비도: progressBar */
+        DisplayProgress()
 
         /*
         binding.btn.setOnClickListener { view ->
@@ -40,7 +49,10 @@ class AchieveActivity : AppCompatActivity() {
             binding.pbAchieveTodo.progress = 50
         }
          */
-
+        
+        /* 반려견 이름 업데이트 */
+        getPetInfo()
+        
         binding.tabs.addOnTabSelectedListener(object :TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
 
@@ -60,10 +72,9 @@ class AchieveActivity : AppCompatActivity() {
         TabLayoutMediator(binding.tabs, binding.achievePager) {
                 tab,position->
             when(position){
-                0->tab.text = "종합"
-                1->tab.text = "진행도"
-                2->tab.text = "성실도"
-                3->tab.text = "호감도"
+                0->tab.text = "진행도"
+                1->tab.text = "성실도"
+                2->tab.text = "호감도"
             }
         }.attach()
 
@@ -103,7 +114,7 @@ class AchieveActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-
+        /* 가족 그룹에 가입되어 있지 않은 상태일 때 */
         val eventHandler = object : DialogInterface.OnClickListener {
             override fun onClick(p0: DialogInterface?, p1: Int) {
                 if(p1 == DialogInterface.BUTTON_POSITIVE) {
@@ -120,8 +131,89 @@ class AchieveActivity : AppCompatActivity() {
             .setPositiveButton("확인", eventHandler)
             .setCancelable(false)
 
-       /* if(SaveSharedPreference.getFamliyID(this)!! == ""){
+
+        if(SaveSharedPreference.getFamliyID(this)!! == ""){
             builder.show()
-        }*/
+        }
     }
+
+    /* 강아지 정보 업데이트 */
+    private fun getPetInfo(){
+        val petID = SaveSharedPreference.getPetID(this)!!
+        Log.d("mobileApp", "$petID")
+
+        val call: Call<GetPetInfoRes> = MyApplication.networkServicePet.getPetInfo(
+            petID = petID
+        )
+
+        call?.enqueue(object : Callback<GetPetInfoRes> {
+            override fun onResponse(call: Call<GetPetInfoRes>, response: Response<GetPetInfoRes>) {
+                if(response.isSuccessful){
+                    Log.d("mobileApp", "$response ${response.body()}")
+                    if(response.body()!!.success){
+                        // 강아지 이름 업데이트
+                        binding.achievePetName.text = response.body()?.petInfo?.name
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<GetPetInfoRes>, t: Throwable) {
+                Log.d("mobileApp", "onFailure $t")
+                Toast.makeText(baseContext, "네트워크 오류 발생", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    /* 업적을 달성했을 때 */
+        /* 준비도: progressBar */
+        private fun DisplayProgress(){
+            var clearCount = 0
+            if(SaveSharedPreference.getAchieve(this)!! == null){
+                binding.pbAchieveTodo.progress = 0
+            } else{
+                val checkedArray = SaveSharedPreference.getAchieve(this)!!
+                for(i in 0 until checkedArray.size){
+                    if(checkedArray[i]) clearCount++
+                    if(i == checkedArray.size - 1){ // 마지막 인덱스일 때
+                        // 준비도 반영하기
+                        val ratio = (clearCount.toFloat() / 14)
+                        Log.d("mobileApp", "$ratio")
+                        binding.pbAchieveTodo.progress = (ratio * 100).toInt()
+                    }
+                }
+            }
+        }
+
+        fun clearAchieve(context: Context, position: Int){
+            // 프리퍼런스 값 바꾸기
+            val temp = SaveSharedPreference.getAchieve(context)!!
+            temp[position] = true
+            SaveSharedPreference.setAchieve(context, temp)
+
+            // 라우터 연결, 업데이트
+            val call: Call<CompleteAchieveRes> = MyApplication.networkServiceUsers.setCheckedTrue(
+                userID = SaveSharedPreference.getUserID(context)!!, position = position
+             )
+
+            call?.enqueue(object : Callback<CompleteAchieveRes> {
+                override fun onResponse(call: Call<CompleteAchieveRes>, response: Response<CompleteAchieveRes>) {
+                    if(response.isSuccessful){
+                        Log.d("mobileApp", "$response ${response.body()}")
+                        if(response.body()!!.success){
+                            Log.d("mobileApp", "업데이트 완료!")
+
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<CompleteAchieveRes>, t: Throwable) {
+                    Log.d("mobileApp", "onFailure $t")
+                    //Toast.makeText(baseContext, "네트워크 오류 발생", Toast.LENGTH_SHORT).show()
+                }
+            })
+
+            // 진행도 업데이트
+            DisplayProgress()
+        }
+
 }

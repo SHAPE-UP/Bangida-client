@@ -36,7 +36,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/family1"
+                    android:id="@+id/family11"
                     android:src="@drawable/user_basic"
                     android:scaleType="centerCrop" />
             </androidx.cardview.widget.CardView>
@@ -69,7 +69,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/family2"
+                    android:id="@+id/family12"
                     android:src="@drawable/user_basic"
                     android:scaleType="centerCrop" />
             </androidx.cardview.widget.CardView>
@@ -102,7 +102,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/family3"
+                    android:id="@+id/family13"
                     android:src="@drawable/user_basic"
                     android:scaleType="centerCrop" />
             </androidx.cardview.widget.CardView>

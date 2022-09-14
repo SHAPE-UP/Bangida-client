@@ -31,4 +31,20 @@
         <item>의료비</item>
     </string-array>
 
+    <string-array name="achieve_progress">
+        <item>반려견을 입양했어요</item>
+        <item>우리가족의 반려견 호감도를 점검했어요</item>
+        <item>반려견을 쓰다듬었어요</item>
+        <item>투두리스트 100% 3일 달성</item>
+        <item>예산서에서 지출 항목을 추가했어요</item>
+        <item>강아지에게 사료를 줬어요</item>
+        <item>산책을 하고 산책 리뷰를 작성했어요</item>
+        <item>강아지의 장난감을 세척했어요</item>
+        <item>강아지의 건강 상태를 확인했어요</item>
+        <item>강아지에게 이름을 가르쳤어요</item>
+        <item>강아지 산책을 위한 산책길을 3번 탐색했어요</item>
+        <item>강아지가 짖는 소리를 들었어요</item>
+        <item>가족들의 성실도가 50% 넘었어요</item>
+        <item>반려견 선호도 점검을 진행했어요</item>
+    </string-array>
 </resources>

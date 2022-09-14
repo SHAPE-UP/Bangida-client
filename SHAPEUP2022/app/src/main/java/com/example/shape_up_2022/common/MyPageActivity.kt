@@ -18,7 +18,6 @@ import com.example.shape_up_2022.databinding.ActivityMyPageBinding
 import com.example.shape_up_2022.databinding.MypageDialogJoinFamilyBinding
 import com.example.shape_up_2022.retrofit.*
 import com.example.shape_up_2022.todo.TodoActivity
-import com.google.android.material.datepicker.MaterialDatePicker.Builder.datePicker
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -29,6 +29,9 @@
             android:name=".simulation.SimFinishActivity"
             android:exported="false" />
         <activity
+            android:name=".simulation.TestResultActivity"
+            android:exported="false" />
+        <activity
             android:name=".simulation.SpeedActivity"
             android:exported="false" />
         <activity

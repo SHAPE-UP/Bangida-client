@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import com.example.shape_up_2022.databinding.ActivitySimWalkReviewAddBinding
 import java.io.File
@@ -20,12 +21,31 @@ import java.io.IOException
 import java.lang.Exception
 
 class SimWalkReviewAddActivity : AppCompatActivity() {
+    private var addreview_distance: TextView? = null
+    private var  addreview_speed: TextView? = null
+    private var  addreview_time: TextView? = null
+
 
     lateinit var binding : ActivitySimWalkReviewAddBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivitySimWalkReviewAddBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        // 산책 측정 액티비티에서 전달
+        var data1:String?
+        data1 = intent.getStringExtra("Key1")
+        addreview_distance?.text= data1
+
+
+        var data2:String?
+        data2 = intent.getStringExtra("Key2")
+        addreview_speed?.text= data2
+
+        var data3:String?
+        data3 = intent.getStringExtra("Key3")
+        addreview_time?.text= data3
+        Log.d("mobile","${addreview_time}")
 
         /* 이전 액티비티에서 전달받은 이미지 처리 */
         val byteArray: ByteArray? = intent.getByteArrayExtra("mapCapture")

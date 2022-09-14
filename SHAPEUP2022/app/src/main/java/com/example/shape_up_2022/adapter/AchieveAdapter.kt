@@ -10,13 +10,12 @@ import com.example.shape_up_2022.achieve.AchieveFragment4
 
 
 class AchieveAdapter(fragment: FragmentActivity): FragmentStateAdapter(fragment) {
-    override fun getItemCount(): Int =4
+    override fun getItemCount(): Int =3
 
     override fun createFragment(position: Int): Fragment {
         return when (position){
             0-> AchieveFragment1()
             1-> AchieveFragment2()
-            2-> AchieveFragment3()
             else -> AchieveFragment4()
 
         }

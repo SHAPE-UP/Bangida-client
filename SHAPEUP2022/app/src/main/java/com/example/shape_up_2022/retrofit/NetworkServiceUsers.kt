@@ -29,13 +29,19 @@ interface NetworkServiceUsers {
         @Body body: CompleteTestReq,
     ): Call<CompleteTestRes>
 
+    @GET("achieveCheck/{userID}/{position}")
+    fun setCheckedTrue(
+        @Path("userID") userID: String,
+        @Path("position") position: Int
+    ): Call<CompleteAchieveRes>
 }
 
+// req, res
 data class RegisterReq(val name: String, val email: String, val password: String)
 data class RegisterRes(val success: String)
 
 data class LoginReq(val email: String, val password: String)
-data class LoginRes(val loginSuccess: String, val userID: String, val userName: String, val familyID: String?)
+data class LoginRes(val loginSuccess: String, val user: UserInfo)
 
 data class AddFamilyReq(val userID: String)
 data class AddFamilyRes(val success: String, val message: String, val familyID: String)
@@ -45,3 +51,9 @@ data class JoinFamilyRes(val success: String, val message: String, val familyID:
 
 data class CompleteTestReq(val userID: String)
 data class CompleteTestRes(val success: String, val message: String)
+
+data class CompleteAchieveRes(val success: Boolean, val message: String)
+
+
+// data class
+data class UserInfo(val _id: String, val name: String, val email: String, val tested: Boolean, val familyID: String?, val achieve: ArrayList<Boolean>)

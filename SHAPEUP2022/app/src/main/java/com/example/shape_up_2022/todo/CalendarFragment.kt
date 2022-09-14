@@ -1,13 +1,25 @@
 package com.example.shape_up_2022.todo
 
+import android.R
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CalendarView
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import com.example.shape_up_2022.common.SaveSharedPreference
 import com.example.shape_up_2022.databinding.FragmentCalendarBinding
+import com.example.shape_up_2022.retrofit.GetTodoReq
+import com.example.shape_up_2022.retrofit.GetTodoRes
+import com.example.shape_up_2022.retrofit.MyApplication
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,6 +36,7 @@ class CalendarFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     lateinit var binding : FragmentCalendarBinding
+    lateinit var calendarView: CalendarView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,18 +53,37 @@ class CalendarFragment : Fragment() {
         binding = FragmentCalendarBinding.inflate(inflater, container, false)
 
         val dayText = binding.todoToday
-        val calendarView = binding.todoCalendarView
+        calendarView = binding.todoCalendarView
         val date = Date(calendarView.date)
 
-        // 현재 날짜 초기화, 오늘 todo
-        dayText.text = SimpleDateFormat("yyyy년 M월 d일").format(date)
+        // 현재 날짜 초기화
+        TodoActivity.dateString = SimpleDateFormat("yyyy-MM-dd").format(date)  // 액티비티에 저장
+        dayText.text = SimpleDateFormat("yyyy년 M월 d일").format(date)  // 화면에 표시
 
         // 캘린더 클릭 이벤트
         calendarView.setOnDateChangeListener{ calendarView, year, month, dayOfMonth ->
-            // 해당 날짜 변수에 담기
+            // 액티비티에 저장
+            TodoActivity.dateString = String.format("%d-%02d-%02d", year, month+1, dayOfMonth)
+            // 화면에 표시되는 날짜 업데이트
             var day = "${year}년 ${month+1}월 ${dayOfMonth}일"
-            // 날짜에 해당하는 To-do 불러오기
             dayText.text = day
+
+            // 날짜에 해당하는 To-do 불러오기 (DB 요청)
+            val call: Call<GetTodoRes> = MyApplication.networkServiceTodo.getTodo(
+                GetTodoReq(SaveSharedPreference.getFamliyID(context)!!, TodoActivity.dateString)  // familyID, yyyy-mm-dd
+            )
+            call?.enqueue(object : Callback<GetTodoRes> {
+                override fun onResponse(call: Call<GetTodoRes>, response: Response<GetTodoRes>) {
+                    if(response.isSuccessful){
+                        //Log.d("mobileApp", "getTodo ${response.body()}")
+                        // 리사이클러뷰에 할 일 목록 표시
+                        TodoActivity.updateTodoList((response.body()!!.todoInfo).toMutableList())  // Array<TodoItem>
+                    }
+                }
+                override fun onFailure(call: Call<GetTodoRes>, t: Throwable) {
+                    Log.d("mobileApp", "onFailure $t")
+                }
+            })
         }
 
         return binding.root
