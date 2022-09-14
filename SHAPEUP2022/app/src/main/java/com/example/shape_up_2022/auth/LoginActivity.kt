@@ -25,6 +25,13 @@ class LoginActivity : AppCompatActivity() {
         val binding = SignInBinding.inflate(layoutInflater) // 바인딩
         setContentView(binding.root) // 액티비티 화면 출력: 로그인
 
+        // 회원가입 -> 로그인 페이지 이동
+        //val registerNotice = intent.getStringExtra("register")
+//        Log.d("mobileApp", "$registerNotice")
+//        if(registerNotice == null){
+//            Toast.makeText(baseContext, "회원가입이 완료되었습니다. 로그인을 진행해주세요.", Toast.LENGTH_LONG)
+//        }
+
         // 회원가입 페이지 이동
         binding.gotoSignUp.setOnClickListener{
             val intent = Intent(this, RegisterInputActivity::class.java)

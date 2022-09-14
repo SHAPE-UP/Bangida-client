@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginStart="40dp"
-        android:textSize="30sp"
+        android:textSize="40sp"
         android:text="준비가\n되었나요?" />
 
     <TextView
@@ -32,7 +32,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="450dp"
         android:padding="20dp">
 
         <LinearLayout
@@ -93,7 +93,7 @@
                 android:id="@+id/start_check5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="시물레이션 종료 " />
+                android:text="시뮬레이션 종료 " />
 
             <TextView
                 android:layout_width="match_parent"

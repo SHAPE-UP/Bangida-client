@@ -54,7 +54,7 @@ class RegisterInputActivity : AppCompatActivity() {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if (input_name.length() > 0 && input_email.length() > 0 && new_password.length() > 0 && check_password.length() > 0){
                     binding.nextCreate.isEnabled = true
-                    binding.nextCreate.setBackgroundColor(Color.parseColor("#FF9966"));
+                    binding.nextCreate.setBackgroundColor(Color.parseColor("#FFE4A07F"));
                 } else {
                     binding.nextCreate.isEnabled = false
                     binding.nextCreate.setBackgroundColor(Color.parseColor("#d3d3d3"));

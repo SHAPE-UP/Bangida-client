@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.CompoundButton
 import androidx.appcompat.app.AlertDialog
 import com.example.shape_up_2022.R
@@ -61,17 +62,19 @@ class SimStartActivity : AppCompatActivity() {
         val check2 = binding.startCheck2
         val check3 = binding.startCheck3
         val check4 = binding.startCheck4
+        val check5 = binding.startCheck5
 
         // checkBox event
         val checkListener = CompoundButton.OnCheckedChangeListener{ button, isChecked ->
-            if(isChecked){ // checked event가 발생했을 때
-                // 4개의 체크박스가 모두 checked == true
-                if(check1.isChecked && check2.isChecked && check3.isChecked && check4.isChecked){
-                    binding.btnSimulationStartStart.isEnabled = true
-                    binding.btnSimulationStartStart.setBackgroundColor(Color.parseColor("#FFE4A07F"));
-                }
+            Log.d("mobileApp", "check! ${check1.isChecked } + ${check2.isChecked } + ${check3.isChecked } + ${check4.isChecked } + ${check5.isChecked }")
+            // 5개의 체크박스가 모두 checked == true
+            if(check1.isChecked && check2.isChecked && check3.isChecked && check4.isChecked && check5.isChecked){
+                binding.btnSimulationStartStart.isEnabled = true
+                binding.btnSimulationStartStart.setBackgroundColor(Color.parseColor("#FFE4A07F"));
+            } else {
+                binding.btnSimulationStartStart.isEnabled = false
+                binding.btnSimulationStartStart.setBackgroundColor(Color.parseColor("#d3d3d3"));
             }
-
         }
 
         // CheckBox에 event 달기
@@ -79,7 +82,7 @@ class SimStartActivity : AppCompatActivity() {
         check2.setOnCheckedChangeListener(checkListener)
         check3.setOnCheckedChangeListener(checkListener)
         check4.setOnCheckedChangeListener(checkListener)
-
+        check5.setOnCheckedChangeListener(checkListener)
 
         // 입양하기 버튼 -> 화면 이동
         binding.btnSimulationStartStart.setOnClickListener {

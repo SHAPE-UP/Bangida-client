@@ -10,6 +10,7 @@ import com.example.shape_up_2022.databinding.ActivityRegisterShareBinding
 import com.example.shape_up_2022.retrofit.JoinFamilyReq
 import com.example.shape_up_2022.retrofit.JoinFamilyRes
 import com.example.shape_up_2022.retrofit.MyApplication
+import com.google.android.youtube.player.internal.t
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,7 +33,7 @@ class RegisterShareActivity : AppCompatActivity() {
             Log.d("mobileApp", "receiveData: $email")
 
             if(familyCode == "") {  // 입력한 코드가 없으면
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
             }
 
@@ -49,6 +50,7 @@ class RegisterShareActivity : AppCompatActivity() {
                             if(response.body()?.success == "true"){
                                 // 로그인 액티비티로 이동
                                 val intent = Intent(baseContext, LoginActivity::class.java)
+                                //intent.putExtra("register", "회원가입이 완료되었습니다. 로그인을 진행해주세요.")
                                 startActivity(intent)
                             } else{
                                 Toast.makeText(baseContext, "올바르지 않은 코드입니다.", Toast.LENGTH_LONG)
