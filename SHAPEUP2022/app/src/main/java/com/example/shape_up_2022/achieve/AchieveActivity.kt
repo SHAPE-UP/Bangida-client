@@ -36,7 +36,9 @@ class AchieveActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         /* 준비도: progressBar */
-        DisplayProgress()
+        if(SaveSharedPreference.getAchieve(this) == null)
+            binding.pbAchieveTodo.progress = 0
+        else DisplayProgress()
 
         /*
         binding.btn.setOnClickListener { view ->
@@ -50,7 +52,7 @@ class AchieveActivity : AppCompatActivity() {
         binding.btn3.setOnClickListener { view ->
             binding.pbAchieveTodo.progress = 50
         }
-         */
+        */
         
         /* 반려견 이름 업데이트 */
         getPetInfo()
@@ -151,7 +153,7 @@ class AchieveActivity : AppCompatActivity() {
         call?.enqueue(object : Callback<GetPetInfoRes> {
             override fun onResponse(call: Call<GetPetInfoRes>, response: Response<GetPetInfoRes>) {
                 if(response.isSuccessful){
-                    Log.d("mobileApp", "$response ${response.body()}")
+                    //Log.d("mobileApp", "$response ${response.body()}")
                     if(response.body()!!.success){
                         // 강아지 이름 업데이트
                         binding.achievePetName.text = response.body()?.petInfo?.name
@@ -188,10 +190,12 @@ class AchieveActivity : AppCompatActivity() {
                     }
                 }
             }
+
         }
 
         fun clearAchieve(context: Context, position: Int){
             // 프리퍼런스 값 바꾸기
+            Log.d("mobileApp", "clearAchieve!")
             val temp = SaveSharedPreference.getAchieve(context)!!
             temp[position] = true
             SaveSharedPreference.setAchieve(context, temp)
@@ -219,7 +223,8 @@ class AchieveActivity : AppCompatActivity() {
             })
 
             // 진행도 업데이트
-            //DisplayProgress(context)
+            //DisplayProgress()
+
         }
 
 }
