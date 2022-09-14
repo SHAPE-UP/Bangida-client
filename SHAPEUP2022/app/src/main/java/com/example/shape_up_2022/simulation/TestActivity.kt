@@ -26,7 +26,7 @@ class TestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityTestBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+/*
         binding.btnTestSkip.setOnClickListener {
             // save Preference
             SaveSharedPreference.setUserTested(baseContext, true)
@@ -38,9 +38,14 @@ class TestActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
+*/
 
         binding.btnTestNext.setOnClickListener {
+            // save Preference
+            SaveSharedPreference.setUserTested(baseContext, true)
+            // tested router
+            callCompleteTest()
+
             when (binding.radioGroupA.checkedRadioButtonId){
                     R.id.radio_button_a1->answer_list.add(1)
                     R.id.radio_button_a2->answer_list.add(10)

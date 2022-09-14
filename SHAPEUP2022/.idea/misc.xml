@@ -99,6 +99,7 @@
         <entry key="..\:/2.Hwater00/kotlin_SHAPE-UP/SHAPEUP/Pet-Starter-App/SHAPEUP2022/app/src/main/res/drawable/rectangle_base2.xml" value="0.1" />
         <entry key="..\:/2.Hwater00/kotlin_SHAPE-UP/SHAPEUP/Pet-Starter-App/SHAPEUP2022/app/src/main/res/drawable/rectangle_base_border.xml" value="0.2" />
         <entry key="..\:/2.Hwater00/kotlin_SHAPE-UP/SHAPEUP/Pet-Starter-App/SHAPEUP2022/app/src/main/res/drawable/roundbutton.xml" value="0.1" />
+        <entry key="..\:/2.Hwater00/kotlin_SHAPE-UP/SHAPEUP/Pet-Starter-App/SHAPEUP2022/app/src/main/res/drawable/selector_radio_button.xml" value="0.1" />
         <entry key="..\:/2.Hwater00/kotlin_SHAPE-UP/SHAPEUP/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/achieve_fragment_1.xml" value="0.13903985507246377" />
         <entry key="..\:/2.Hwater00/kotlin_SHAPE-UP/SHAPEUP/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/achieve_fragment_4.xml" value="0.24947916666666667" />
         <entry key="..\:/2.Hwater00/kotlin_SHAPE-UP/SHAPEUP/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_achieve.xml" value="0.13903985507246377" />
@@ -121,6 +122,7 @@
         <entry key="..\:/2.Hwater00/kotlin_SHAPE-UP/SHAPEUP/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_sim_start_breed.xml" value="0.24947916666666667" />
         <entry key="..\:/2.Hwater00/kotlin_SHAPE-UP/SHAPEUP/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_sim_take_awalk.xml" value="0.24947916666666667" />
         <entry key="..\:/2.Hwater00/kotlin_SHAPE-UP/SHAPEUP/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_sim_walk_main.xml" value="0.12447916666666667" />
+        <entry key="..\:/2.Hwater00/kotlin_SHAPE-UP/SHAPEUP/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_sim_walk_place.xml" value="0.2484375" />
         <entry key="..\:/2.Hwater00/kotlin_SHAPE-UP/SHAPEUP/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_sim_walk_review_add.xml" value="0.2" />
         <entry key="..\:/2.Hwater00/kotlin_SHAPE-UP/SHAPEUP/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_sim_walk_search.xml" value="0.24947916666666667" />
         <entry key="..\:/2.Hwater00/kotlin_SHAPE-UP/SHAPEUP/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_sim_walking.xml" value="0.264" />
@@ -128,7 +130,7 @@
         <entry key="..\:/2.Hwater00/kotlin_SHAPE-UP/SHAPEUP/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_speed.xml" value="0.11930091185410334" />
         <entry key="..\:/2.Hwater00/kotlin_SHAPE-UP/SHAPEUP/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_temp_main.xml" value="0.15208333333333332" />
         <entry key="..\:/2.Hwater00/kotlin_SHAPE-UP/SHAPEUP/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_test.xml" value="0.2" />
-        <entry key="..\:/2.Hwater00/kotlin_SHAPE-UP/SHAPEUP/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_test_result.xml" value="0.136" />
+        <entry key="..\:/2.Hwater00/kotlin_SHAPE-UP/SHAPEUP/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_test_result.xml" value="0.2" />
         <entry key="..\:/2.Hwater00/kotlin_SHAPE-UP/SHAPEUP/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_transform.xml" value="0.24947916666666667" />
         <entry key="..\:/2.Hwater00/kotlin_SHAPE-UP/SHAPEUP/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_tugsim.xml" value="0.24947916666666667" />
         <entry key="..\:/2.Hwater00/kotlin_SHAPE-UP/SHAPEUP/Pet-Starter-App/SHAPEUP2022/app/src/main/res/layout/activity_watersimulation.xml" value="0.24947916666666667" />
