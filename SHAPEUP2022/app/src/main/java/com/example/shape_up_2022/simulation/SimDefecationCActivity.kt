@@ -1,12 +1,16 @@
 package com.example.shape_up_2022.simulation
 
+import android.content.DialogInterface
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.example.shape_up_2022.FaqActivity
 import com.example.shape_up_2022.R
 import com.example.shape_up_2022.databinding.ActivityDefecationcharacteristicsBinding
 import java.util.*
@@ -32,7 +36,6 @@ class SimDefecationCActivity : AppCompatActivity() {
 
         }
         // 랜덤 이미지 1개
-
             var set: TreeSet<Int> = TreeSet()
 
             while (set.size < 1) {
@@ -50,22 +53,24 @@ class SimDefecationCActivity : AppCompatActivity() {
                 nCount++
             }
 
-            AlertDialog.Builder(this).run {
-                setTitle("반려견 배변 TIP")
-                setIcon(R.drawable.puppy)
-                setMessage("반려견 배변에 따른 건강 상태를 파악해야 합니다.")
-                setPositiveButton("확인", null)
-                setCancelable(false)
-                show()
-            }.setCanceledOnTouchOutside(false) // 메시지 값 출력
-            true
+            val map2 = mutableMapOf(1 to " ", 2 to " ", 3 to "")
         */
+
+        var dialog_listener = object: DialogInterface.OnClickListener{
+            override fun onClick(dialog: DialogInterface?, which: Int) {
+                when(which){
+                    DialogInterface.BUTTON_POSITIVE ->{val intent = Intent(baseContext,
+                        FaqActivity::class.java)
+                        startActivity(intent)}
+                }
+            }
+        }
 
         binding.btnO.setOnClickListener{
             AlertDialog.Builder(this).run {
                 setTitle("정답")
                 setMessage("자세한 설명이 필요하다면 자주하는 질문을 확인해주세요.")
-                setPositiveButton("확인", null)
+                setPositiveButton("확인", dialog_listener)
                 setCancelable(false)
                 show()
             }.setCanceledOnTouchOutside(true)
@@ -76,7 +81,7 @@ class SimDefecationCActivity : AppCompatActivity() {
             AlertDialog.Builder(this).run {
                 setTitle("오답")
                 setMessage("오답을 공부하고 싶다면 자주하는 질문을 확인해주세요.")
-                setPositiveButton("확인", null)
+                setPositiveButton("확인", dialog_listener)
                 setCancelable(false)
                 show()
             }.setCanceledOnTouchOutside(true)
@@ -84,6 +89,7 @@ class SimDefecationCActivity : AppCompatActivity() {
         }
 
     }
+
 
 
 

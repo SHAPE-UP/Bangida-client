@@ -172,7 +172,7 @@ class AchieveActivity : AppCompatActivity() {
             var clearCount = 0
             binding = ActivityAchieveBinding.inflate(layoutInflater)
             val progress = binding.pbAchieveTodo
-            Log.d("mobileApp", "achieve: ${SaveSharedPreference.getAchieve(context)!!}")
+
             if(SaveSharedPreference.getAchieve(context)!! == null){
                 // 준비도 = 0
                 progress.progress = 0
