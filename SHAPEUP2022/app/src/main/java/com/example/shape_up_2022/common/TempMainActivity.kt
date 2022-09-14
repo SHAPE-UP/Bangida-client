@@ -48,7 +48,7 @@ class TempMainActivity : AppCompatActivity() {
         }
 
         binding.btnStart.setOnClickListener {
-            intent1 = Intent(this, StartActivity::class.java)
+            intent1 = Intent(this, SplashActivity::class.java)
             startActivity(intent1)
         }
 

@@ -6,105 +6,109 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="bottom">
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="임시 시작페이지!!!!!!!" />
-        <Button
-            android:id="@+id/btn_simulation_main"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="시뮬레이션" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="임시 시작페이지!!!!!!!" />
+            <Button
+                android:id="@+id/btn_simulation_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="시뮬레이션" />
 
-        <Button
-            android:id="@+id/btn_dog_alarm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="반려견 짖는 소리 알람" />
+            <Button
+                android:id="@+id/btn_dog_alarm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="반려견 짖는 소리 알람" />
 
-        <Button
-            android:id="@+id/btn_calender_todolist"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="캘린더+투두리스트" />
+            <Button
+                android:id="@+id/btn_calender_todolist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="캘린더+투두리스트" />
 
-        <Button
-            android:id="@+id/btn_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="시작 화면(회원가입/로그인)" />
+            <Button
+                android:id="@+id/btn_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/point_color"
+                android:text="스플래시 화면(회원가입/로그인)" />
 
-        <Button
-            android:id="@+id/budget_main"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="예산서" />
+            <Button
+                android:id="@+id/budget_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="예산서" />
 
-        <Button
-            android:id="@+id/mypage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="마이페이지" />
+            <Button
+                android:id="@+id/mypage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="마이페이지" />
 
-        <Button
-            android:id="@+id/achieve_main"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="업적 화면" />
+            <Button
+                android:id="@+id/achieve_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="업적 화면" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/youtubebtn"
-            android:layout_gravity="center"
-            android:text="유튜브" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/youtubebtn"
+                android:layout_gravity="center"
+                android:text="유튜브" />
 
-        <Button
-            android:id="@+id/btn_simulation_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="시뮬레이션 시작"
-            />
+            <Button
+                android:id="@+id/btn_simulation_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="시뮬레이션 시작"
+                />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="병원"
-            android:layout_gravity="center"
-            android:id="@+id/hospitalbtn" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="병원"
+                android:layout_gravity="center"
+                android:id="@+id/hospitalbtn" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="장소 검색"
-            android:layout_gravity="center"
-            android:id="@+id/petplace_search" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="장소 검색"
+                android:layout_gravity="center"
+                android:id="@+id/petplace_search" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="음성 훈련"
-            android:layout_gravity="center"
-            android:id="@+id/petplace_training" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="FAQ"
-            android:layout_gravity="center"
-            android:id="@+id/faq" />
-    </LinearLayout>
-
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="음성 훈련"
+                android:layout_gravity="center"
+                android:id="@+id/petplace_training" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FAQ"
+                android:layout_gravity="center"
+                android:id="@+id/faq" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
