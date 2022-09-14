@@ -31,6 +31,10 @@
         <activity
             android:name=".simulation.TestResultActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".FaqActivity"
+            android:exported="false" />
         <activity
             android:name=".simulation.SpeedActivity"
             android:exported="false" />
@@ -69,9 +73,6 @@
             android:exported="false" />
         <activity
             android:name=".simulation.SimStartActivity"
-            android:exported="false" />
-        <activity
-            android:name=".simulation.SimBeutyShopActivity"
             android:exported="false" />
         <activity
             android:name=".simulation.SimBeutySelfActivity"
