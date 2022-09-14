@@ -29,7 +29,7 @@ interface NetworkServiceUsers {
         @Body body: CompleteTestReq,
     ): Call<CompleteTestRes>
 
-    @GET("achieveCheck/{userID}/{position}")
+    @PUT("achieveCheck/{userID}/{position}")
     fun setCheckedTrue(
         @Path("userID") userID: String,
         @Path("position") position: Int

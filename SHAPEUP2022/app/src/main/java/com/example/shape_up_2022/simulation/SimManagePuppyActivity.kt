@@ -7,7 +7,10 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.example.shape_up_2022.R
+import com.example.shape_up_2022.achieve.AchieveActivity
+import com.example.shape_up_2022.common.SaveSharedPreference
 import com.example.shape_up_2022.databinding.ActivityManagePuppyBinding
+import com.google.android.youtube.player.internal.f
 
 class SimManagePuppyActivity : AppCompatActivity() {
     lateinit var binding : ActivityManagePuppyBinding
@@ -47,6 +50,11 @@ class SimManagePuppyActivity : AppCompatActivity() {
             if (status == 500){
                 alertDialog()
                 binding.progressBar.visibility = View.INVISIBLE
+
+                // 강아지를 쓰다듬었을 때 실행
+                // position: 2
+                val check = SaveSharedPreference.getAchieve(this)!!
+                if(!check[2]) AchieveActivity().clearAchieve(this@SimManagePuppyActivity, 2)
             }
             true
         }
