@@ -7,6 +7,8 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.example.shape_up_2022.R
+import com.example.shape_up_2022.achieve.AchieveActivity
+import com.example.shape_up_2022.common.SaveSharedPreference
 import com.example.shape_up_2022.databinding.ActivityManagePuppyBinding
 
 class SimManagePuppyActivity : AppCompatActivity() {
@@ -47,6 +49,13 @@ class SimManagePuppyActivity : AppCompatActivity() {
             if (status == 500){
                 alertDialog()
                 binding.progressBar.visibility = View.INVISIBLE
+
+                // 강아지 업적 달성 position: 2
+                val check = SaveSharedPreference.getAchieve(baseContext)!![2] // 업적 달성 여부 확인
+
+                if(!check){ // 업적을 1번도 달성하지 않았었다면
+                    AchieveActivity().clearAchieve(this@SimManagePuppyActivity, 2) // 업적 달성 업데이트 실행
+                }
             }
             true
         }

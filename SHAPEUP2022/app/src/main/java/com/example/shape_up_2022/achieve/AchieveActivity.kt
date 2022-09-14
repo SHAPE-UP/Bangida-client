@@ -6,6 +6,8 @@ import android.content.Intent
 import com.example.shape_up_2022.adapter.AchieveAdapter
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -34,7 +36,7 @@ class AchieveActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         /* 준비도: progressBar */
-        DisplayProgress()
+        DisplayProgress(this)
 
         /*
         binding.btn.setOnClickListener { view ->
@@ -166,19 +168,22 @@ class AchieveActivity : AppCompatActivity() {
 
     /* 업적을 달성했을 때 */
         /* 준비도: progressBar */
-        private fun DisplayProgress(){
+        private fun DisplayProgress(context: Context){
             var clearCount = 0
-            if(SaveSharedPreference.getAchieve(this)!! == null){
-                binding.pbAchieveTodo.progress = 0
+            val progress = findViewById<View>(R.id.pb_achieve_todo) as ProgressBar
+            Log.d("mobileApp", "achieve: ${SaveSharedPreference.getAchieve(context)!!}")
+            if(SaveSharedPreference.getAchieve(context)!! == null){
+                // 준비도 = 0
+                progress.progress = 0
             } else{
-                val checkedArray = SaveSharedPreference.getAchieve(this)!!
+                val checkedArray = SaveSharedPreference.getAchieve(context)!!
                 for(i in 0 until checkedArray.size){
                     if(checkedArray[i]) clearCount++
                     if(i == checkedArray.size - 1){ // 마지막 인덱스일 때
                         // 준비도 반영하기
                         val ratio = (clearCount.toFloat() / 14)
                         Log.d("mobileApp", "$ratio")
-                        binding.pbAchieveTodo.progress = (ratio * 100).toInt()
+                        progress.progress = (ratio * 100).toInt()
                     }
                 }
             }
@@ -213,7 +218,7 @@ class AchieveActivity : AppCompatActivity() {
             })
 
             // 진행도 업데이트
-            DisplayProgress()
+            DisplayProgress(context)
         }
 
 }
