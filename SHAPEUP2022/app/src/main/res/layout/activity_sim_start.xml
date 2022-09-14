@@ -89,6 +89,19 @@
                 android:layout_marginStart="20dp"
                 android:text="  생명을 소중히, 반려견의 일생을 책임질 각오로 임해야 합니다." />
 
+            <CheckBox
+                android:id="@+id/start_check5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="시물레이션 종료 " />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="  “TODO와 시뮬레이션을 통해 업적에 준비도가 차면 입양 가능합니다”" />
+
+
         </LinearLayout>
 
     </ScrollView>
