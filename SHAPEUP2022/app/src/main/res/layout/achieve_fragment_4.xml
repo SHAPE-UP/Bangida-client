@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".achieve.AchieveFragment4">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="반려견과 함께할 \n보호자님의 마음은"
+        android:textAlignment="center"
+        android:textSize="36dp"/>
+    <TextView
+        android:textColor="@color/point_color"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="64%"
+        android:textSize="70dp"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/maltese_default"/>
+
+    <Button
+        android:id="@+id/goto_preference_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="호감도 조사 바로가기" />
+
     <!--차트-->
+    <!--
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/love_linechart"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-</FrameLayout>
+-->
+</LinearLayout>
