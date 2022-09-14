@@ -190,22 +190,6 @@ class SimInducingBowelMovementsActivity : FragmentActivity() {
     override fun onStart() {
         super.onStart()
 
-        /*
-        var listener = object: DialogInterface.OnClickListener{
-            override fun onClick(dialog: DialogInterface?, which: Int) {
-
-            }
-        }
-        AlertDialog.Builder(this).run {
-            setTitle("배변 훈련 체험활동")
-            setIcon(R.drawable.puppy)
-            setMessage("느낌표를 눌러 배변훈련 순서를 안내받고 시작하세요.")
-            setPositiveButton("확인", listener)
-            setCancelable(false)
-            show()
-        }.setCanceledOnTouchOutside(false) // 메시지 값 출력
-        */
-
         true
     }
 
