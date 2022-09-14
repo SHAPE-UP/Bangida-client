@@ -102,6 +102,12 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
         // 하단 메뉴
+        binding.menuBtn1.setOnClickListener {
+            val intent = Intent(this, FaqActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+
         binding.menuBtn2.setOnClickListener {
             val intent = Intent(this@MainActivity, YoutubeActivity::class.java)
             intent.putExtra("search", "강아지 훈련")

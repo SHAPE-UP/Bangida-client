@@ -16,13 +16,14 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
 
-
         <TextView
             android:id="@+id/txt_name"
             android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="James Bond"
+            android:text="질문"
+
             android:textColor="#37474F"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintTop_toTopOf="parent"
@@ -30,16 +31,19 @@
             app:layout_constraintBottom_toBottomOf="parent"
             />
 
+
         <ImageButton
             android:id="@+id/img_more"
-            android:src="@drawable/ic_dog"
-            android:background="?attr/selectableItemBackgroundBorderless"
             android:layout_width="?attr/actionBarSize"
             android:layout_height="?attr/actionBarSize"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="15dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_footprint"
             app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -60,8 +64,8 @@
             android:id="@+id/txt_explain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:text="@string/lorem"/>
+            android:layout_margin="16dp"
+            android:text="설명"/>
 
     </LinearLayout>
 
