@@ -26,6 +26,9 @@
         android:theme="@style/Theme.SHAPEUP2022"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".simulation.SimFinishActivity"
+            android:exported="false" />
+        <activity
             android:name=".simulation.TestResultActivity"
             android:exported="false" />
         <activity
