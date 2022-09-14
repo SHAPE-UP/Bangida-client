@@ -170,7 +170,8 @@ class AchieveActivity : AppCompatActivity() {
         /* 준비도: progressBar */
         private fun DisplayProgress(context: Context){
             var clearCount = 0
-            val progress = findViewById<View>(R.id.pb_achieve_todo) as ProgressBar
+            binding = ActivityAchieveBinding.inflate(layoutInflater)
+            val progress = binding.pbAchieveTodo
             Log.d("mobileApp", "achieve: ${SaveSharedPreference.getAchieve(context)!!}")
             if(SaveSharedPreference.getAchieve(context)!! == null){
                 // 준비도 = 0
@@ -218,7 +219,7 @@ class AchieveActivity : AppCompatActivity() {
             })
 
             // 진행도 업데이트
-            DisplayProgress(context)
+            //DisplayProgress(context)
         }
 
 }

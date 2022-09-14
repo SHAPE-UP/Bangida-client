@@ -8,15 +8,19 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import com.example.shape_up_2022.R
+import com.example.shape_up_2022.databinding.ActivityDefecationcharacteristicsBinding
 import java.util.*
 import kotlin.collections.ArrayList
 
-class SimDefecationCharacteristicsActivity : AppCompatActivity() {
-    val BallList = ArrayList<Bitmap>()
+class SimDefecationCActivity : AppCompatActivity() {
+    lateinit var binding :ActivityDefecationcharacteristicsBinding
+    //val BallList = ArrayList<Bitmap>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_defecationcharacteristics)
+        binding = ActivityDefecationcharacteristicsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+        /*
         //이미지 비트맵
         for(i in 0..6)
         {
@@ -28,9 +32,6 @@ class SimDefecationCharacteristicsActivity : AppCompatActivity() {
 
         }
         // 랜덤 이미지 1개
-        val btnA : Button = findViewById<Button>(R.id.btA)
-
-        btnA.setOnClickListener {
 
             var set: TreeSet<Int> = TreeSet()
 
@@ -58,15 +59,33 @@ class SimDefecationCharacteristicsActivity : AppCompatActivity() {
                 show()
             }.setCanceledOnTouchOutside(false) // 메시지 값 출력
             true
-        }
-//체크박스 값 가져오기
-        //1.체크박스를 하나하나 가져옴
+        */
 
-//사진이랑 체크박스 일치 여부..
+        binding.btnO.setOnClickListener{
+            AlertDialog.Builder(this).run {
+                setTitle("정답")
+                setMessage("자세한 설명이 필요하다면 자주하는 질문을 확인해주세요.")
+                setPositiveButton("확인", null)
+                setCancelable(false)
+                show()
+            }.setCanceledOnTouchOutside(true)
+            true
+        }
+
+        binding.btnx.setOnClickListener{
+            AlertDialog.Builder(this).run {
+                setTitle("오답")
+                setMessage("오답을 공부하고 싶다면 자주하는 질문을 확인해주세요.")
+                setPositiveButton("확인", null)
+                setCancelable(false)
+                show()
+            }.setCanceledOnTouchOutside(true)
+            true
+        }
+
     }
 
-// 다이얼로그로 정답 표시? 다르게..
-    //private fun alertDialog(){
 
-    //}
+
+
 }
