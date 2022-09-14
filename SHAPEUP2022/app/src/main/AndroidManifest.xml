@@ -179,7 +179,7 @@
             android:name=".simulation.SimBallActivity"
             android:exported="false" />
         <activity
-            android:name=".simulation.SimDefecationCharacteristicsActivity"
+            android:name=".simulation.SimDefecationCActivity"
             android:exported="false" />
         <activity
             android:name=".simulation.SimInducingBowelMovementsActivity"
