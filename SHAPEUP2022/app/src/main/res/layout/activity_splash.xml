@@ -18,7 +18,7 @@
         app:layout_constraintVertical_bias="0.45"/>
 
     <Button
-
+        android:visibility="gone"
         android:id="@+id/btn_login"
         android:layout_width="250dp"
         android:layout_height="60dp"
@@ -31,6 +31,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        android:visibility="gone"
         android:id="@+id/btn_signup"
         android:layout_width="250dp"
         android:layout_height="60dp"
