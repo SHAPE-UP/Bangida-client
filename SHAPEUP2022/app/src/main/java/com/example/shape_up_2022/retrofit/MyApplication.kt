@@ -36,7 +36,8 @@ class MyApplication: Application() {
 
         /* 서버 요청용 */
         val apiserver = "http://ec2-13-124-250-65.ap-northeast-2.compute.amazonaws.com:5000/"
-
+        //
+        // ec2-13-124-250-65.ap-northeast-2.compute.amazonaws.com
 
         var networkServiceUsers: NetworkServiceUsers
         val retrofitUsers: Retrofit

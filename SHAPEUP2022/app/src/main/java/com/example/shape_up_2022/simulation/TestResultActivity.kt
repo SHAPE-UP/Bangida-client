@@ -21,7 +21,7 @@ class TestResultActivity : AppCompatActivity() {
 
 
         val answer = intent.getIntExtra("ANSWER",0)
-        if(answer<50){
+        if(true){
             binding.ImgPet.setImageResource(R.drawable.maltese)
             binding.text1.text="말티즈"
             binding.text2.text="<일반외모>\n" +

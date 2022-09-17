@@ -26,14 +26,8 @@ class SimulationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = SimulationMainBinding.inflate(layoutInflater)
-        if (false) { // 시뮬레이션을 시작하지 않은 유저라면(반려견이 없는지 검사)
-            binding.simNotStarted.visibility= View.VISIBLE
-            binding.simStarted.visibility= View.INVISIBLE
-            binding.simStartBtn.setOnClickListener {
-                //버튼 클릭하면 시뮬레이션 시작 액티비티로 전환
-                //val intent = Intent(this, 시작액티비티::class.java)
-                //startActivity(intent)
-            }
+        if (false) { 
+
         }
 
         setContentView(binding.root)
@@ -195,9 +189,16 @@ class SimulationActivity : AppCompatActivity() {
         if(SaveSharedPreference.getFamliyID(this)!! == ""){
             builder.show()
         } else{
-            // 가족 그룹에 가입되어 있지만 강아지 입양을 하지 않은 경우
+            // 가족 그룹에 가입되어 있지만 강아지 입양을 하지 않은 경우(시뮬레이션을 시작하지 않은 경우)
             if(SaveSharedPreference.getPetID(this)!! == ""){
-                builder_pet.show()
+                //builder_pet.show()
+                binding.simNotStarted.visibility= View.VISIBLE
+                binding.simStarted.visibility= View.INVISIBLE
+                binding.simStartBtn.setOnClickListener {
+                    //버튼 클릭하면 시뮬레이션 시작 액티비티로 전환
+                    val intent = Intent(this@SimulationActivity, SimStartActivity::class.java)
+                    startActivity(intent)
+                }
             }
         }
     }
