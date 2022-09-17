@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SHAPE-UP-2022</string>
+    <string name="app_name">반려견을 기다리며 하는 다짐</string>
     <string name="change_time">시간 재설정</string>
     <string name="on_alarm">알람 켜기</string>
     <string name="preference">당신의 선호도가 궁금합니다</string>
