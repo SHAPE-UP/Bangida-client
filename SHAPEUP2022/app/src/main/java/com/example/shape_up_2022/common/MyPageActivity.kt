@@ -136,11 +136,9 @@ class MyPageActivity : AppCompatActivity() {
                                 binding.mypageFamilyList.visibility = View.VISIBLE
 
                                 // 토스트 출력하기
-                                Toast.makeText(baseContext, "그룹 참여에 성공하셨습니다!", Toast.LENGTH_SHORT).show()
-
+                                Toast.makeText(baseContext, "가족 그룹에 참여했어요!", Toast.LENGTH_SHORT).show()
                             }
                         }
-
                         override fun onFailure(call: Call<JoinFamilyRes>, t: Throwable) {
                             Log.d("mobileApp", "onFailure $t")
                             Toast.makeText(baseContext, "그룹 참여에 실패했습니다.", Toast.LENGTH_SHORT).show()
@@ -152,10 +150,10 @@ class MyPageActivity : AppCompatActivity() {
 
 
         var builder_save = AlertDialog.Builder(this)
-            .setTitle("가족 그룹 생성")
+            .setTitle("가족 그룹 만들기")
             .setMessage("가족 그룹을 생성하시겠습니까?")
             .setPositiveButton("네!", eventhandler_save)
-            .setNegativeButton("아니오", null)
+            .setNeutralButton("아니오", null)
             .setCancelable(true)
 
         var builder_join = AlertDialog.Builder(this)
@@ -179,36 +177,7 @@ class MyPageActivity : AppCompatActivity() {
         }
 
         // 탭바 연결
-        binding.navHome.setOnClickListener {
-            val intent_home = Intent(this, MainActivity::class.java)
-            startActivity(intent_home)
-            overridePendingTransition(0, 0);
-            finish()
-        }
-        binding.navTodo.setOnClickListener {
-            val intent_todo = Intent(this, TodoActivity::class.java)
-            startActivity(intent_todo)
-            overridePendingTransition(0, 0);
-            finish()
-        }
-        binding.navSimulation.setOnClickListener {
-            val intent_simul = Intent(this, SimulationActivity::class.java)
-            startActivity(intent_simul)
-            overridePendingTransition(0, 0);
-            finish()
-        }
-        binding.navAchievement.setOnClickListener {
-            val intent_achieve = Intent(this, AchieveActivity::class.java)
-            startActivity(intent_achieve)
-            overridePendingTransition(0, 0)
-            finish()
-        }
-        binding.navMypage.setOnClickListener {
-            val intent_mypage = Intent(this, MyPageActivity::class.java)
-            startActivity(intent_mypage)
-            overridePendingTransition(0, 0);
-            finish()
-        }
+        setTabBar()
     }
 
     private fun calculateInSampleSize(fileUri: Uri, reqWidth: Int, reqHeight: Int): Int {
@@ -239,6 +208,40 @@ class MyPageActivity : AppCompatActivity() {
             }
         }
         return inSampleSize
+    }
+
+    // 탭바 연결
+    private fun setTabBar() {
+        binding.navHome.setOnClickListener {
+            val intent_home = Intent(this, MainActivity::class.java)
+            startActivity(intent_home)
+            overridePendingTransition(0, 0);
+            finish()
+        }
+        binding.navTodo.setOnClickListener {
+            val intent_todo = Intent(this, TodoActivity::class.java)
+            startActivity(intent_todo)
+            overridePendingTransition(0, 0);
+            finish()
+        }
+        binding.navSimulation.setOnClickListener {
+            val intent_simul = Intent(this, SimulationActivity::class.java)
+            startActivity(intent_simul)
+            overridePendingTransition(0, 0);
+            finish()
+        }
+        binding.navAchievement.setOnClickListener {
+            val intent_achieve = Intent(this, AchieveActivity::class.java)
+            startActivity(intent_achieve)
+            overridePendingTransition(0, 0)
+            finish()
+        }
+        binding.navMypage.setOnClickListener {
+            val intent_mypage = Intent(this, MyPageActivity::class.java)
+            startActivity(intent_mypage)
+            overridePendingTransition(0, 0);
+            finish()
+        }
     }
 
     override fun onStart() {

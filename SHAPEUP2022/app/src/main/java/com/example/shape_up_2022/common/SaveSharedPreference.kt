@@ -87,7 +87,6 @@ class SaveSharedPreference {
             )
         }
 
-
         // 저장된 SharedPreference 값 전체 삭제
         fun clearAll(ctx: Context?) {
             val editor = getSharedPreferences(ctx!!)!!.edit()

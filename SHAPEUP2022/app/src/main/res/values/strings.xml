@@ -38,14 +38,4 @@
         <item>Q. 7 강아지 산책 중 소변을 자주 보는데 괜찮은가요?</item>
     </string-array>
 
-    <integer-array name="images">
-        <item>@drawable/arroworange</item>
-        <item>@drawable/arroworange</item>
-        <item>@drawable/arroworange</item>
-        <item>@drawable/arroworange</item>
-        <item>@drawable/arroworange</item>
-        <item>@drawable/arroworange</item>
-        <item>@drawable/arroworange</item>
-    </integer-array>
-
 </resources>

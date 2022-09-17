@@ -57,23 +57,17 @@ class AchieveActivity : AppCompatActivity() {
         /* 반려견 이름 업데이트 */
         getPetInfo()
         
-        binding.tabs.addOnTabSelectedListener(object :TabLayout.OnTabSelectedListener{
+        binding.achieveTabs.addOnTabSelectedListener(object :TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
-
             }
             override fun onTabUnselected(tab: TabLayout.Tab?) {
-
             }
-
             override fun onTabReselected(tab: TabLayout.Tab?) {
-
             }
-
         })
         binding.achievePager.adapter = AchieveAdapter(this)
 
-
-        TabLayoutMediator(binding.tabs, binding.achievePager) {
+        TabLayoutMediator(binding.achieveTabs, binding.achievePager) {
                 tab,position->
             when(position){
                 0->tab.text = "진행도"
@@ -83,6 +77,65 @@ class AchieveActivity : AppCompatActivity() {
         }.attach()
 
         // 탭바 연결
+        setTabBar()
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        /* 가족 그룹에 가입되어 있지 않은 상태일 때 */
+        val eventHandler = object : DialogInterface.OnClickListener {
+            override fun onClick(p0: DialogInterface?, p1: Int) {
+                if(p1 == DialogInterface.BUTTON_POSITIVE) {
+                    val intent = Intent(this@AchieveActivity, MyPageActivity::class.java)
+                    startActivity(intent)
+                    overridePendingTransition(0, 0);  // 액티비티 화면 전환 애니메이션 제거
+                    finish()
+                }
+            }
+        }
+        var builder = AlertDialog.Builder(this)
+            .setTitle("가족 그룹에 가입되어 있지 않은 사용자")
+            .setIcon(R.drawable.ic_main)
+            .setMessage("가족 그룹에 먼저 가입해주세요.")
+            .setPositiveButton("확인", eventHandler)
+            .setCancelable(false)
+
+        if(SaveSharedPreference.getFamliyID(this)!! == "") {
+            builder.show()
+        } else { // 가족 그룹 o, 강아지 입양 x
+
+        }
+    }
+
+    /* 강아지 정보 업데이트 */
+    private fun getPetInfo(){
+        val petID = SaveSharedPreference.getPetID(this)!!
+        Log.d("mobileApp", "$petID")
+
+        val call: Call<GetPetInfoRes> = MyApplication.networkServicePet.getPetInfo(
+            petID = petID
+        )
+
+        call?.enqueue(object : Callback<GetPetInfoRes> {
+            override fun onResponse(call: Call<GetPetInfoRes>, response: Response<GetPetInfoRes>) {
+                if(response.isSuccessful){
+                    //Log.d("mobileApp", "$response ${response.body()}")
+                    if(response.body()!!.success){
+                        // 강아지 이름 업데이트
+                        binding.achievePetName.text = response.body()?.petInfo?.name
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<GetPetInfoRes>, t: Throwable) {
+                Log.d("mobileApp", "onFailure $t")
+                Toast.makeText(baseContext, "네트워크 오류 발생", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun setTabBar() {
         binding.navHome.setOnClickListener {
             val intent_home = Intent(this, MainActivity::class.java)
             startActivity(intent_home)
@@ -113,59 +166,6 @@ class AchieveActivity : AppCompatActivity() {
             overridePendingTransition(0, 0)
             finish()
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-
-        /* 가족 그룹에 가입되어 있지 않은 상태일 때 */
-        val eventHandler = object : DialogInterface.OnClickListener {
-            override fun onClick(p0: DialogInterface?, p1: Int) {
-                if(p1 == DialogInterface.BUTTON_POSITIVE) {
-                    val intent = Intent(this@AchieveActivity, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-            }
-        }
-        var builder = AlertDialog.Builder(this)
-            .setTitle("가족 그룹에 가입되어 있지 않은 사용자")
-            .setIcon(R.drawable.maltese)
-            .setMessage("가족 그룹에 먼저 가입해주세요.")
-            .setPositiveButton("확인", eventHandler)
-            .setCancelable(false)
-
-
-        if(SaveSharedPreference.getFamliyID(this)!! == ""){
-            builder.show()
-        }
-    }
-
-    /* 강아지 정보 업데이트 */
-    private fun getPetInfo(){
-        val petID = SaveSharedPreference.getPetID(this)!!
-        Log.d("mobileApp", "$petID")
-
-        val call: Call<GetPetInfoRes> = MyApplication.networkServicePet.getPetInfo(
-            petID = petID
-        )
-
-        call?.enqueue(object : Callback<GetPetInfoRes> {
-            override fun onResponse(call: Call<GetPetInfoRes>, response: Response<GetPetInfoRes>) {
-                if(response.isSuccessful){
-                    //Log.d("mobileApp", "$response ${response.body()}")
-                    if(response.body()!!.success){
-                        // 강아지 이름 업데이트
-                        binding.achievePetName.text = response.body()?.petInfo?.name
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<GetPetInfoRes>, t: Throwable) {
-                Log.d("mobileApp", "onFailure $t")
-                Toast.makeText(baseContext, "네트워크 오류 발생", Toast.LENGTH_SHORT).show()
-            }
-        })
     }
 
     /* 업적을 달성했을 때 */

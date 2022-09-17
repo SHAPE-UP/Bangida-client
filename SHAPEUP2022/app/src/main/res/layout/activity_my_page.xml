@@ -28,8 +28,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:backgroundTint="@color/base_color2"
-                    android:text="프로필 사진 변경"
-                    android:textSize="10dp"
+                    android:fontFamily="@font/custom_font_family"
+                    android:text="아이콘 변경"
+                    android:textSize="11dp"
                     app:layout_constraintEnd_toEndOf="@+id/cardView"
                     app:layout_constraintStart_toStartOf="@+id/cardView"
                     app:layout_constraintTop_toBottomOf="@+id/cardView" />
@@ -55,7 +56,7 @@
                     android:id="@+id/linearLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="24dp"
+                    android:layout_margin="30dp"
                     android:orientation="horizontal"
                     app:layout_constraintStart_toEndOf="@+id/cardView"
                     app:layout_constraintTop_toTopOf="@+id/cardView">
@@ -87,10 +88,13 @@
                 <Button
                     android:id="@+id/btn_logout"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:backgroundTint="@color/white"
+                    android:textSize="12dp"
+                    android:fontFamily="@font/custom_font_family"
                     android:text="로그아웃"
                     android:textColor="#bb0000"
+                    android:layout_marginEnd="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -111,7 +115,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginBottom="20dp"
-                        android:text="가족 그룹 생성 또는 참여해주세요."/>
+                        android:text="이곳에서 가족 그룹을 만들거나 참여할 수 있어요."/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -121,14 +125,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="5dp"
-                            android:textSize="12dp"
+                            android:fontFamily="@font/custom_font_family"
+                            android:textSize="12sp"
                             android:text="가족 그룹 생성" />
                         <Button
                             android:id="@+id/mypage_joinfam"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="5dp"
-                            android:textSize="12dp"
+                            android:fontFamily="@font/custom_font_family"
+                            android:textSize="12sp"
                             android:text="가족 그룹 참여" />
                     </LinearLayout>
                 </LinearLayout>
@@ -142,10 +148,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/ic_user"
+                            app:tint="@color/main_color" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="우리 가족"
+                            android:layout_marginStart="8dp"
                             android:textSize="24sp" />
                         <View
                             android:layout_width="0dp"
@@ -170,15 +182,25 @@
                 android:layout_height="1dp"
                 android:background="@color/base_color2" />
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="앱 설정"
                 android:layout_marginTop="32dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginBottom="16dp"
-                android:textSize="24sp" />
-
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/ic_settings"
+                    app:tint="@color/main_color" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="앱 설정"
+                    android:layout_marginStart="8dp"
+                    android:textSize="24sp" />
+            </LinearLayout>
             <fragment
                 android:id="@+id/fragment_setting"
                 android:layout_width="match_parent"

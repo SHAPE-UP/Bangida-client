@@ -68,17 +68,15 @@ class LoginActivity : AppCompatActivity() {
                             if(response.body()!!.user.familyID != null){
                                 Log.d("mobileApp", " familyID: ${response.body()!!.user.familyID!!}")
                                 callGetPetID(response.body()!!.user.familyID!!)
-                            } else{
+                            } else {
                                 // 메인 페이지로 이동
                                 val intent = Intent(baseContext, MainActivity::class.java)
                                 startActivity(intent)
                                 finish()
                             }
-
                         } else { // 로그인 실패 or null
                             Toast.makeText(baseContext, "아이디 또는 비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show()
                         }
-
                     }
                 }
 

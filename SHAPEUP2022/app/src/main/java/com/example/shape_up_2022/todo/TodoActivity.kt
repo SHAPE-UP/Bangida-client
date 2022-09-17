@@ -263,8 +263,9 @@ class TodoActivity : AppCompatActivity() {
         val eventHandler = object : DialogInterface.OnClickListener {
             override fun onClick(p0: DialogInterface?, p1: Int) {
                 if(p1 == DialogInterface.BUTTON_POSITIVE) {
-                    val intent = Intent(this@TodoActivity, MainActivity::class.java)
+                    val intent = Intent(this@TodoActivity, MyPageActivity::class.java)
                     startActivity(intent)
+                    overridePendingTransition(0, 0);  // 액티비티 화면 전환 애니메이션 제거
                     finish()
                 }
             }
@@ -273,8 +274,9 @@ class TodoActivity : AppCompatActivity() {
         val petEventHandler = object : DialogInterface.OnClickListener {
             override fun onClick(p0: DialogInterface?, p1: Int) {
                 if(p1 == DialogInterface.BUTTON_POSITIVE) {
-                    val intent = Intent(this@TodoActivity, SimStartActivity::class.java)
+                    val intent = Intent(this@TodoActivity, SimulationActivity::class.java)
                     startActivity(intent)
+                    overridePendingTransition(0, 0);  // 액티비티 화면 전환 애니메이션 제거
                     finish()
                 }
             }
@@ -282,27 +284,24 @@ class TodoActivity : AppCompatActivity() {
 
         var builder = androidx.appcompat.app.AlertDialog.Builder(this)
             .setTitle("가족 그룹에 가입되어 있지 않은 사용자")
-            .setIcon(R.drawable.maltese)
+            .setIcon(R.drawable.ic_main)
             .setMessage("가족 그룹에 먼저 가입해주세요.")
             .setPositiveButton("확인", eventHandler)
             .setCancelable(false)
 
         var builder_pet = androidx.appcompat.app.AlertDialog.Builder(this)
-            .setTitle("아직 강아지 입양을 진행하지 않았어요!")
-            .setIcon(R.drawable.maltese)
-            .setMessage("시뮬레이션과 todo 기능을 사용하고 싶으면 먼저 강아지 입양을 진행해주세요.")
+            .setTitle("아직 강아지를 데려오지 않았어요!")
+            .setIcon(R.drawable.ic_main)
+            .setMessage("시뮬레이션과 todo 리스트를 사용하려면 먼저 강아지를 입양해주세요.")
             .setPositiveButton("확인", petEventHandler)
             .setCancelable(false)
 
         if(SaveSharedPreference.getFamliyID(this)!! == ""){
             builder.show()
-
-        } else{
-            // 가족 그룹에 가입되어 있지만 강아지 입양을 하지 않은 경우
+        } else { // 가족 그룹 o, 강아지 입양 x
             if(SaveSharedPreference.getPetID(this)!! == ""){
                 builder_pet.show()
             }
         }
     }
-
 }

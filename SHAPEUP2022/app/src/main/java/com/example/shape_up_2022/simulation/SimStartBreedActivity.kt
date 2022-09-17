@@ -40,45 +40,5 @@ class SimStartBreedActivity : AppCompatActivity() {
             override fun onTabReselected(tab: TabLayout.Tab?) { }
             override fun onTabUnselected(tab: TabLayout.Tab?) { }
         })
-
-
-
-
-        /*
-
-        val eventhandler = object : DialogInterface.OnClickListener {
-            override fun onClick(p0: DialogInterface?, p1: Int) {
-                if(p1== DialogInterface.BUTTON_POSITIVE) {
-                    //
-                }
-                else if (p1== DialogInterface.BUTTON_NEGATIVE) {
-                    //
-                }
-            }
-        }
-
-        // 리사이클러뷰 아이템 클릭 이벤트
-        fragment1.adapter.setOnItemClickListener(object : MyBreedAdapter.OnItemClickListener {
-            override fun onItemClick(v: View?, position: Int) {
-
-                /*
-                var builder = AlertDialog.Builder(this@SimStartBreedActivity)
-                    .setTitle("테스트하지 않은 사용자")
-                    .setMessage("반려견 케어 성향 점검을 먼저 진행하세요.")
-                    .setPositiveButton("테스트", eventhandler)
-                    .setNegativeButton("취소", eventhandler)
-                    .setCancelable(false)
-                // if 성향점검테스트를 하지 않은 유저라면 모달창 표시
-                if (true) {
-                    builder.show()
-                }
-                 */
-
-                Log.d("mobileApp","{fragment1.sampledatas[position]}") // 해당 아이템의 정보를 담아 모달창 띄우기
-            }
-        })
-
-
-         */
     }
 }

@@ -71,37 +71,86 @@ class MainActivity : AppCompatActivity() {
         
         
         // 탭바 연결
+        setTabBar()
+
+        // 하단 메뉴 연결
+        setMenu()
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        val eventhandler = object : DialogInterface.OnClickListener {
+            override fun onClick(p0: DialogInterface?, p1: Int) {
+                if(p1==DialogInterface.BUTTON_POSITIVE) {
+                    val intent = Intent(this@MainActivity, MyPageActivity::class.java)
+                    startActivity(intent)
+                    overridePendingTransition(0, 0);  // 액티비티 화면 전환 애니메이션 제거
+                    finish()
+                }
+            }
+        }
+        var builder = AlertDialog.Builder(this)
+            .setTitle("환영합니다!")
+            .setIcon(R.drawable.ic_main)
+            .setMessage("'반기다:반려견을 기다리며 하는 다짐'을 가족과 함께 사용해보세요. 먼저 가족 그룹을 만들어볼까요?")
+            .setPositiveButton("설정하기", eventhandler)
+            .setCancelable(false)
+
+        if(SaveSharedPreference.getPetID(this)!! == ""){ // 반려견 입양 x
+            binding.noFamHomeInfoDog.visibility = View.VISIBLE
+            binding.homeInfoDog.visibility = View.GONE
+            binding.btnSimulationMain.setOnClickListener {
+                val intent = Intent(this@MainActivity, SimulationActivity::class.java)
+                startActivity(intent)
+                overridePendingTransition(0, 0);  // 액티비티 화면 전환 애니메이션 제거
+                finish()
+            }
+            if(SaveSharedPreference.getFamliyID(this)!! == ""){ // 가족 그룹 가입 x
+                builder.show()
+            }
+        }
+    }
+
+    // 탭바 연결
+    private fun setTabBar() {
         binding.navHome.setOnClickListener {
             val intent_home = Intent(this, MainActivity::class.java)
             startActivity(intent_home)
-            overridePendingTransition(0, 0)
+            overridePendingTransition(0, 0);
             finish()
         }
+
         binding.navTodo.setOnClickListener {
             val intent_todo = Intent(this, TodoActivity::class.java)
             startActivity(intent_todo)
-            overridePendingTransition(0, 0)
+            overridePendingTransition(0, 0);
             finish()
         }
+
         binding.navSimulation.setOnClickListener {
             val intent_simul = Intent(this, SimulationActivity::class.java)
             startActivity(intent_simul)
-            overridePendingTransition(0, 0)
+            overridePendingTransition(0, 0);
             finish()
         }
+
         binding.navAchievement.setOnClickListener {
             val intent_achieve = Intent(this, AchieveActivity::class.java)
             startActivity(intent_achieve)
             overridePendingTransition(0, 0)
             finish()
         }
+
         binding.navMypage.setOnClickListener {
             val intent_mypage = Intent(this, MyPageActivity::class.java)
             startActivity(intent_mypage)
-            overridePendingTransition(0, 0)
+            overridePendingTransition(0, 0);
             finish()
         }
-        // 하단 메뉴
+    }
+
+    private fun setMenu() {
         binding.menuBtn1.setOnClickListener {
             val intent = Intent(this, FaqActivity::class.java)
             startActivity(intent)
@@ -122,52 +171,12 @@ class MainActivity : AppCompatActivity() {
             val intent_budget = Intent(this, BudgetActivity::class.java)
             startActivity(intent_budget)
             overridePendingTransition(0, 0)
-            //finish()
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        /* 테스트하지 않은 사용자를 돌려보내는 다이얼로그 */
-        // 취소(메인으로), 테스트(테스트 시작)
-        val eventhandler = object : DialogInterface.OnClickListener {
-            override fun onClick(p0: DialogInterface?, p1: Int) {
-                if(p1==DialogInterface.BUTTON_POSITIVE) {
-                    val intent = Intent(this@MainActivity, TestActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-//                else if (p1==DialogInterface.BUTTON_NEGATIVE) {
-//                    val intent = Intent(this@MainActivity, MainActivity::class.java)
-//                    startActivity(intent)
-//                    finish()
-//                }
-            }
-        }
-        var builder = AlertDialog.Builder(this)
-            .setTitle("테스트하지 않은 사용자")
-            .setMessage("반려견 케어 성향 점검을 먼저 진행하세요.")
-            .setPositiveButton("테스트", eventhandler)
-            .setCancelable(false)
-
-        if(!SaveSharedPreference.getUserTested(this)!!){ // tested == false
-            builder.show()
-
-        } else{
-            if(SaveSharedPreference.getFamliyID(this)!! == ""){ // familyID == ""
-                binding.noFamHomeInfoDog.visibility = View.VISIBLE
-                binding.homeInfoDog.visibility = View.GONE
-            } else{
-                binding.noFamHomeInfoDog.visibility = View.GONE
-                binding.homeInfoDog.visibility = View.VISIBLE
-            }
-
         }
     }
 
     // 프래그먼트 연결
     private fun viewFragment(fragment : Fragment, location:Int){
-        Log.d("app_test", "viewFragment start")
+        //Log.d("app_test", "viewFragment start")
         val fragmentManager : FragmentManager = supportFragmentManager
         val transaction : FragmentTransaction = fragmentManager.beginTransaction()
 
@@ -178,7 +187,7 @@ class MainActivity : AppCompatActivity() {
     /* 강아지 정보 업데이트 */
     private fun getPetInfo(){
         val petID = SaveSharedPreference.getPetID(this)!!
-        Log.d("mobileApp", "$petID")
+        //Log.d("mobileApp", "$petID")
 
         val call: Call<GetPetInfoRes> = MyApplication.networkServicePet.getPetInfo(
             petID = petID
@@ -187,7 +196,7 @@ class MainActivity : AppCompatActivity() {
         call?.enqueue(object : Callback<GetPetInfoRes> {
             override fun onResponse(call: Call<GetPetInfoRes>, response: Response<GetPetInfoRes>) {
                 if(response.isSuccessful){
-                    Log.d("mobileApp", "$response ${response.body()}")
+                    //Log.d("mobileApp", "$response ${response.body()}")
                     if(response.body()!!.success){
                         // 강아지 이름 업데이트
                         binding.homeInfoDog.visibility = View.VISIBLE

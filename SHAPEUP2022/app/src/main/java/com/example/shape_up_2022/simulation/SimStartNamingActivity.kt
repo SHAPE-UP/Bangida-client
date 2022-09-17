@@ -91,7 +91,7 @@ class SimStartNamingActivity : AppCompatActivity() {
 
             var builder = AlertDialog.Builder(this)
                 .setTitle("강아지 이름 결정")
-                .setMessage("반려견의 이름을 ${petName}(으)로 지을건가요? 강아지의 이름은 변경할 수 없으니 신중하게 생각해주세요.")
+                .setMessage("반려견의 이름을 ${petName}(으)로 지을까요?\n※ 강아지의 이름은 변경할 수 없으니 신중히 결정해주세요.")
                 .setPositiveButton("네!", eventHandler)
                 .setNegativeButton("아니요", null)
                 .setCancelable(false)
@@ -114,13 +114,13 @@ class SimStartNamingActivity : AppCompatActivity() {
                 if(response.isSuccessful){
                     Log.d("mobileApp", "$response ${response.body()}")
                     if(response.body()!!.success){
-                        Toast.makeText(baseContext, "강아지 이름 짓기 성공!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(baseContext, "반가워, ${petName}!", Toast.LENGTH_SHORT).show()
                         
                         // Preference에 petID 저장
                         Log.d("mobileApp", "${SaveSharedPreference.getFamliyID(baseContext)!!}")
                         callGetPetID(SaveSharedPreference.getFamliyID(baseContext)!!)
                     }
-                    else Toast.makeText(baseContext, "강아지 이름 짓기를 실패했습니다.", Toast.LENGTH_SHORT).show()
+                    else Toast.makeText(baseContext, "강아지 이름 정보 저장 오류", Toast.LENGTH_SHORT).show()
                 }
             }
 

@@ -5,7 +5,6 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.shape_up_2022.achieve.AchieveFragment1
 import com.example.shape_up_2022.achieve.AchieveFragment2
-import com.example.shape_up_2022.achieve.AchieveFragment3
 import com.example.shape_up_2022.achieve.AchieveFragment4
 
 

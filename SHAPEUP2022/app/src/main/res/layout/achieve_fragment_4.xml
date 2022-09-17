@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="반려견과 함께할 \n보호자님의 마음은"
+        android:text="반려견과 함께할\n보호자님의 마음은"
         android:textAlignment="center"
         android:textSize="36dp"/>
     <TextView
@@ -22,8 +22,8 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:src="@drawable/maltese_default"/>
+        android:layout_height="200dp"
+        android:src="@drawable/maltese_happy"/>
 
     <Button
         android:id="@+id/goto_preference_activity"

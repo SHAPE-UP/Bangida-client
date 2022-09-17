@@ -8,7 +8,8 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1" >
 
         <!--시뮬레이션 시작-->
         <LinearLayout
@@ -16,39 +17,73 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:gravity="center"
+
             android:background="@color/white"
             >
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="반려견 돌봄 성향 점검"
+                    android:textSize="28dp"
+                    android:gravity="center"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="4dp"
+                    android:gravity="center"
+                    android:layout_marginVertical="12dp"
+                    android:text="내가 반려견을 길러도 되는 상황일까?\n나는 어떤 강아지를 기르는 게 좋을까?\n\n예비 보호자님의 선호, 습관, 생활환경에 어울리는\n견종과 특성을 추천해드려요." />
+                <Button
+                    android:id="@+id/test_start_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="테스트하기"
+                    android:fontFamily="@font/custom_font_family"
+                    android:textSize="18sp"
+                    />
+            </LinearLayout>
+
+            <View style="@style/Divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="성향 점검 테스트"
-                android:textSize="30dp"
+                android:text="가상 반려견 시뮬레이션"
+                android:textSize="28dp"
                 android:gravity="center"
                 />
-            <Button
-                android:id="@+id/test_start_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="시작하기"
-                android:textSize="30dp"
-                />
-            <View style="@style/Divider"
-                android:layout_marginVertical="50dp" />
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="시뮬레이션"
-                android:textSize="30dp"
+                android:lineSpacingExtra="4dp"
                 android:gravity="center"
-                />
+                android:layout_marginVertical="12dp"
+                android:text="반려견 돌봄 성향 점검까지 마쳤다면,\n가족과 함께 기를 가상 반려견을 입양해보세요!" />
             <Button
                 android:id="@+id/sim_start_btn"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="시작하기"
-                android:textSize="30dp"
+                android:text="반려견 입양하기"
+                android:fontFamily="@font/custom_font_family"
+                android:textSize="18sp"
                 />
+            </LinearLayout>
+
         </LinearLayout>
 
         <!--시뮬레이션-->
@@ -229,56 +264,56 @@
                 </ScrollView>
 
             </FrameLayout>
-            <!--Tab bar-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ImageButton
-                    android:id="@+id/nav_home"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="60dp"
-                    android:backgroundTint="#ffffffff"
-                    android:src="@drawable/ic_icon_home"/>
-
-                <ImageButton
-                    android:id="@+id/nav_todo"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="60dp"
-                    android:backgroundTint="#ffffffff"
-                    android:src="@drawable/ic_icon_todo"/>
-
-                <ImageButton
-                    android:id="@+id/nav_simulation"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="60dp"
-                    android:backgroundTint="#ffffffff"
-                    android:src="@drawable/ic_icon_simulation_sel"/>
-
-                <ImageButton
-                    android:id="@+id/nav_achievement"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="60dp"
-                    android:backgroundTint="#ffffffff"
-                    android:src="@drawable/ic_icon_flags"/>
-
-                <ImageButton
-                    android:id="@+id/nav_mypage"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="60dp"
-                    android:backgroundTint="#ffffffff"
-                    android:src="@drawable/ic_icon_mypage"/>
-            </LinearLayout>
         </LinearLayout>
 
 
     </FrameLayout>
 
+    <!--Tab bar-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/nav_home"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:backgroundTint="#ffffffff"
+            android:src="@drawable/ic_icon_home"/>
+
+        <ImageButton
+            android:id="@+id/nav_todo"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:backgroundTint="#ffffffff"
+            android:src="@drawable/ic_icon_todo"/>
+
+        <ImageButton
+            android:id="@+id/nav_simulation"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:backgroundTint="#ffffffff"
+            android:src="@drawable/ic_icon_simulation_sel"/>
+
+        <ImageButton
+            android:id="@+id/nav_achievement"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:backgroundTint="#ffffffff"
+            android:src="@drawable/ic_icon_flags"/>
+
+        <ImageButton
+            android:id="@+id/nav_mypage"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:backgroundTint="#ffffffff"
+            android:src="@drawable/ic_icon_mypage"/>
+    </LinearLayout>
 
 </LinearLayout>

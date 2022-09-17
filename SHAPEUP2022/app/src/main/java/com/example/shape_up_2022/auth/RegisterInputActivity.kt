@@ -41,6 +41,7 @@ class RegisterInputActivity : AppCompatActivity() {
             val intent = Intent(this, RegisterShareActivity::class.java)
             intent.putExtra("email", input_email.text.toString())
             startActivity(intent)
+            finish()
         }
 
         binding.nextCreate.isEnabled = false

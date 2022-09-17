@@ -26,19 +26,6 @@ class TestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityTestBinding.inflate(layoutInflater)
         setContentView(binding.root)
-/*
-        binding.btnTestSkip.setOnClickListener {
-            // save Preference
-            SaveSharedPreference.setUserTested(baseContext, true)
-
-            // tested router
-            callCompleteTest()
-
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-*/
 
         binding.btnTestNext.setOnClickListener {
             // save Preference
@@ -58,46 +45,31 @@ class TestActivity : AppCompatActivity() {
                     R.id.radio_button_b4->answer_list.add(11)
             }
 
-            //
             for(i in 0..answer_list.size -1) {
                 anserQ = (answer_list[i] + anserQ)
             }
             Log.d("mobileA","${anserQ}")
 
-                /*
-                // save Preference
-                SaveSharedPreference.setUserTested(baseContext, true)
-
-                // tested router
-                callCompleteTest()
-*/
-
-                val intent = Intent(this, TestResultActivity::class.java)
-                intent.putExtra("ANSWER",anserQ)
-                startActivity(intent)
-
+            val intent = Intent(this, TestResultActivity::class.java)
+            intent.putExtra("ANSWER",anserQ)
+            startActivity(intent)
         }
-
-
-
     }
 
     private fun callCompleteTest(){
         val call: Call<CompleteTestRes> = MyApplication.networkServiceUsers.completeTest(
             CompleteTestReq(SaveSharedPreference.getUserID(this)!!)
         )
-
         call?.enqueue(object : Callback<CompleteTestRes> {
             override fun onResponse(call: Call<CompleteTestRes>, response: Response<CompleteTestRes>) {
                 if(response.isSuccessful){
                     Log.d("mobileApp", "$response ${response.body()}")
-                    Toast.makeText(baseContext, "성향 점검 테스트 성공!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, "성향 점검 테스트 완료!", Toast.LENGTH_SHORT).show()
                 }
             }
-
             override fun onFailure(call: Call<CompleteTestRes>, t: Throwable) {
                 Log.d("mobileApp", "onFailure $t")
-                Toast.makeText(baseContext, "성향 점검 테스트 실패!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(baseContext, "성향 점검 데이터 전송 오류", Toast.LENGTH_SHORT).show()
             }
         })
     }

@@ -70,14 +70,23 @@
                 android:id="@+id/no_fam_home_info_dog"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
+                android:orientation="vertical"
                 android:gravity="center"
-                android:visibility="gone">
+                android:visibility="gone"
+                >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15dp"
-                    android:text="아직 강아지를 입양하지 않았어요!"
+                    android:textSize="15sp"
+                    android:layout_marginTop="20dp"
+                    android:text="아직 강아지를 데려오지 않았어요"
                     android:textAlignment="center"/>
+                <Button
+                    android:id="@+id/btn_simulation_main"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="입양하러 가기" />
             </LinearLayout>
 
             <!--캘린더 프래그먼트-->
@@ -105,7 +114,7 @@
                     <Button
                         android:id="@+id/menu_btn_1"
                         android:layout_width="150dp"
-                        android:layout_height="200dp"
+                        android:layout_height="180dp"
                         android:layout_marginRight="10dp"
                         android:backgroundTint="@color/main_color"
                         android:text="자주하는 \n질문"

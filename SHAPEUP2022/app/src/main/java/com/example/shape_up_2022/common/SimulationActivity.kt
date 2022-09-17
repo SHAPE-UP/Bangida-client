@@ -24,19 +24,10 @@ class SimulationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = SimulationMainBinding.inflate(layoutInflater)
-        if (false) { // 시뮬레이션을 시작하지 않은 유저라면(반려견이 없는지 검사)
-            binding.simNotStarted.visibility= View.VISIBLE
-            binding.simStarted.visibility= View.INVISIBLE
-            binding.simStartBtn.setOnClickListener {
-                //버튼 클릭하면 시뮬레이션 시작 액티비티로 전환
-                //val intent = Intent(this, 시작액티비티::class.java)
-                //startActivity(intent)
-            }
-        }
-
         setContentView(binding.root)
+        setTabBar() // 탭바 연결
+        setSimBtn() // 각 시뮬레이션으로 이동하는 버튼 연결
 
         // 강아지 정보
         getPetInfo()
@@ -48,7 +39,6 @@ class SimulationActivity : AppCompatActivity() {
             binding.btnin.visibility = View.VISIBLE
             binding.outdoor.visibility = View.VISIBLE
         }
-
         binding.btnin.setOnClickListener {
             binding.btnin.visibility = View.INVISIBLE
             binding.outdoor.visibility = View.INVISIBLE
@@ -56,6 +46,84 @@ class SimulationActivity : AppCompatActivity() {
             binding.indoor.visibility = View.VISIBLE
         }
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        val familyEventHandler = object : DialogInterface.OnClickListener {
+            override fun onClick(p0: DialogInterface?, p1: Int) {
+                if(p1 == DialogInterface.BUTTON_POSITIVE) {
+                    val intent = Intent(this@SimulationActivity, MyPageActivity::class.java)
+                    startActivity(intent)
+                    overridePendingTransition(0, 0);  // 액티비티 화면 전환 애니메이션 제거
+                    finish()
+                }
+            }
+        }
+
+        var builder = AlertDialog.Builder(this)
+            .setTitle("가족 그룹에 가입되어 있지 않은 사용자")
+            .setIcon(R.drawable.ic_main)
+            .setMessage("가족 그룹에 먼저 가입해주세요.")
+            .setPositiveButton("확인", familyEventHandler)
+            .setCancelable(false)
+
+        // 유저의 앱 사용 단계 처리 (가족 가입->성향 점검->입양->반려견ID 보유 시 기본 화면)
+        if (SaveSharedPreference.getPetID(this)!! == "" ) {  // 가상 반려견 입양 x
+            binding.simNotStarted.visibility= View.VISIBLE
+            binding.simStarted.visibility= View.INVISIBLE
+            binding.testStartBtn.setOnClickListener {
+                val intent = Intent(this, TestActivity::class.java)
+                startActivity(intent)
+            }
+
+            // 가족 그룹 가입 여부
+            if(SaveSharedPreference.getFamliyID(this)!! == "") { // x -> 마이페이지 이동 모달
+                builder.show()
+            }
+
+            // 성향 점검 테스트 여부
+            if (SaveSharedPreference.getUserTested(this)!! == true) {  // o -> 입양 가능: 시뮬레이션 시작
+                binding.simStartBtn.isEnabled = true
+                binding.simStartBtn.setOnClickListener {
+                    val intent = Intent(this, SimStartActivity::class.java)
+                    startActivity(intent)
+                }
+            } else {
+                binding.simStartBtn.isEnabled = false  // x -> 입양 불가능
+            }
+        }
+    }
+
+    /* 강아지 정보 업데이트 */
+    private fun getPetInfo(){
+        val petID = SaveSharedPreference.getPetID(this)!!
+        Log.d("mobileApp", "$petID")
+
+        val call: Call<GetPetInfoRes> = MyApplication.networkServicePet.getPetInfo(
+            petID = petID
+        )
+
+        call?.enqueue(object : Callback<GetPetInfoRes> {
+            override fun onResponse(call: Call<GetPetInfoRes>, response: Response<GetPetInfoRes>) {
+                if(response.isSuccessful){
+                    Log.d("mobileApp", "$response ${response.body()}")
+                    if(response.body()!!.success){
+                        // 강아지 이름 업데이트
+                        binding.simMainPetName.text = response.body()?.petInfo?.name
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<GetPetInfoRes>, t: Throwable) {
+                Log.d("mobileApp", "onFailure $t")
+                Toast.makeText(baseContext, "네트워크 오류 발생", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun setSimBtn() {
         // 시뮬레이션: 강아지 관리
         binding.btnManagement.setOnClickListener {
             val intent = Intent(this, SimManagePuppyActivity::class.java)
@@ -69,10 +137,11 @@ class SimulationActivity : AppCompatActivity() {
         }
 
         // 시뮬레이션: 산책
-       /*테스트를 위한 임시 주석 binding.takeawalk.setOnClickListener {
-            val intent = Intent(this, SimWalkMainActivity::class.java)
-            startActivity(intent)
-        }*/
+        /*테스트를 위한 임시 주석 binding.takeawalk.setOnClickListener {
+             val intent = Intent(this, SimWalkMainActivity::class.java)
+             startActivity(intent)
+         }*/
+
         // 시뮬레이션: 산책
         binding.takeawalk.setOnClickListener {
             val intent = Intent(this, SpeedActivity::class.java)
@@ -114,8 +183,10 @@ class SimulationActivity : AppCompatActivity() {
             val intent = Intent(this, SimBeautyActivity::class.java)
             startActivity(intent)
         }
+    }
 
-        // 탭바 연결
+    // 탭바 연결
+    private fun setTabBar() {
         binding.navHome.setOnClickListener {
             val intent_home = Intent(this, MainActivity::class.java)
             startActivity(intent_home)
@@ -151,81 +222,5 @@ class SimulationActivity : AppCompatActivity() {
             overridePendingTransition(0, 0);
             finish()
         }
-
-    }
-
-    override fun onStart() {
-        super.onStart()
-
-
-        val familyEventHandler = object : DialogInterface.OnClickListener {
-            override fun onClick(p0: DialogInterface?, p1: Int) {
-                if(p1 == DialogInterface.BUTTON_POSITIVE) {
-                    val intent = Intent(this@SimulationActivity, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-            }
-        }
-
-        val petEventHandler = object : DialogInterface.OnClickListener {
-            override fun onClick(p0: DialogInterface?, p1: Int) {
-                if(p1 == DialogInterface.BUTTON_POSITIVE) {
-                    val intent = Intent(this@SimulationActivity, SimStartActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-            }
-        }
-
-        var builder = AlertDialog.Builder(this)
-            .setTitle("가족 그룹에 가입되어 있지 않은 사용자")
-            .setIcon(R.drawable.maltese)
-            .setMessage("가족 그룹에 먼저 가입해주세요.")
-            .setPositiveButton("확인", familyEventHandler)
-            .setCancelable(false)
-
-        var builder_pet = AlertDialog.Builder(this)
-            .setTitle("아직 강아지 입양을 진행하지 않았어요!")
-            .setIcon(R.drawable.maltese)
-            .setMessage("시뮬레이션과 todo 기능을 사용하고 싶으면 먼저 강아지 입양을 진행해주세요.")
-            .setPositiveButton("확인", petEventHandler)
-            .setCancelable(false)
-
-        if(SaveSharedPreference.getFamliyID(this)!! == ""){
-            builder.show()
-        } else{
-            // 가족 그룹에 가입되어 있지만 강아지 입양을 하지 않은 경우
-            if(SaveSharedPreference.getPetID(this)!! == ""){
-                builder_pet.show()
-            }
-        }
-    }
-
-    /* 강아지 정보 업데이트 */
-    private fun getPetInfo(){
-        val petID = SaveSharedPreference.getPetID(this)!!
-        Log.d("mobileApp", "$petID")
-
-        val call: Call<GetPetInfoRes> = MyApplication.networkServicePet.getPetInfo(
-            petID = petID
-        )
-
-        call?.enqueue(object : Callback<GetPetInfoRes> {
-            override fun onResponse(call: Call<GetPetInfoRes>, response: Response<GetPetInfoRes>) {
-                if(response.isSuccessful){
-                    Log.d("mobileApp", "$response ${response.body()}")
-                    if(response.body()!!.success){
-                        // 강아지 이름 업데이트
-                        binding.simMainPetName.text = response.body()?.petInfo?.name
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<GetPetInfoRes>, t: Throwable) {
-                Log.d("mobileApp", "onFailure $t")
-                Toast.makeText(baseContext, "네트워크 오류 발생", Toast.LENGTH_SHORT).show()
-            }
-        })
     }
 }

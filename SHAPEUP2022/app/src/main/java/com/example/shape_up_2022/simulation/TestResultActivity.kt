@@ -14,14 +14,11 @@ class TestResultActivity : AppCompatActivity() {
     lateinit var binding :ActivityTestResultBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_test_result)
         binding = ActivityTestResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
         val answer = intent.getIntExtra("ANSWER",0)
-        if(answer<50){
+        if(true){
             binding.ImgPet.setImageResource(R.drawable.maltese)
             binding.text1.text="말티즈"
             binding.text2.text="<일반외모>\n" +
@@ -45,7 +42,6 @@ class TestResultActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
     }
 
     private fun init(){

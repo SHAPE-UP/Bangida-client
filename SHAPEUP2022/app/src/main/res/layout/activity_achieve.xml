@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
                 android:textColor="@color/main_color"
-                android:text="코코"/>
+                android:text=""/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
         android:orientation="vertical"
         android:background="@color/white">
         <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabs"
+            android:id="@+id/achieve_tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabGravity="fill">

@@ -30,13 +30,11 @@ class FaqActivity : AppCompatActivity() {
         val people = ArrayList<Person>()
 
         val persons = resources.getStringArray(R.array.people)
-        val images = resources.obtainTypedArray(R.array.images)
         val exps = resources.getStringArray(R.array.exp)
 
         for (i in persons.indices) {
             val person = Person().apply {
                 name = persons[i]
-                image = images.getResourceId(i, -1)
                 exp = exps[i]
             }
             people.add(person)
