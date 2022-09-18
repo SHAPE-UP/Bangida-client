@@ -98,11 +98,9 @@ class LoginActivity : AppCompatActivity() {
         call?.enqueue(object : Callback<GetPetIDRes> {
             override fun onResponse(call: Call<GetPetIDRes>, response: Response<GetPetIDRes>) {
                 if(response.isSuccessful){
-                    Log.d("mobileApp", "$response ${response.body()}")
                         if(response.body()!!.success){
                             SaveSharedPreference.setPetID(baseContext, response.body()!!.petID)
-                            Log.d("mobileApp", "${response.body()!!.petID}" )
-
+                            Log.d("mobileApp", "LoginActivity petID ${response.body()!!.petID}" )
                             // 메인 페이지로 이동
                             val intent = Intent(baseContext, MainActivity::class.java)
                             startActivity(intent)

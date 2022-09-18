@@ -39,9 +39,9 @@ class AchieveFragment2 : Fragment() {
     ): View? {
         val binding = AchieveFragment2Binding.inflate(inflater, container, false)
 
-        binding.pbAchieve1.progress = 40
-        binding.pbAchieve2.progress = 35
-        binding.pbAchieve3.progress = 20
+        binding.pbAchieve1.progress = 20
+        binding.pbAchieve2.progress = 0
+        binding.pbAchieve3.progress = 10
 
         return binding.root
     }

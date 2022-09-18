@@ -99,7 +99,7 @@ class SimulationActivity : AppCompatActivity() {
     /* 강아지 정보 업데이트 */
     private fun getPetInfo(){
         val petID = SaveSharedPreference.getPetID(this)!!
-        Log.d("mobileApp", "$petID")
+        Log.d("mobileApp", "SimulationActivity $petID")
 
         val call: Call<GetPetInfoRes> = MyApplication.networkServicePet.getPetInfo(
             petID = petID
@@ -108,7 +108,7 @@ class SimulationActivity : AppCompatActivity() {
         call?.enqueue(object : Callback<GetPetInfoRes> {
             override fun onResponse(call: Call<GetPetInfoRes>, response: Response<GetPetInfoRes>) {
                 if(response.isSuccessful){
-                    Log.d("mobileApp", "$response ${response.body()}")
+                    Log.d("mobileApp", "SimulationActivity getPetInfo $response ${response.body()}")
                     if(response.body()!!.success){
                         // 강아지 이름 업데이트
                         binding.simMainPetName.text = response.body()?.petInfo?.name

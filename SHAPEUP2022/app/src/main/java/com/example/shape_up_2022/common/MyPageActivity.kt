@@ -74,10 +74,10 @@ class MyPageActivity : AppCompatActivity() {
 
             Toast.makeText(baseContext, "로그아웃 성공", Toast.LENGTH_SHORT)
 
-            // StartActivity로 이동
-            val intent = Intent(baseContext, TempMainActivity::class.java)
+            // SplashActivity로 이동
+            val intent = Intent(baseContext, SplashActivity::class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK) // 스택에 쌓인 액티비티를 모두 지우기
             startActivity(intent)
-            finish()
         }
 
         val eventhandler_save = object : DialogInterface.OnClickListener {

@@ -140,8 +140,8 @@ class SimStartNamingActivity : AppCompatActivity() {
         call?.enqueue(object : Callback<GetPetIDRes> {
             override fun onResponse(call: Call<GetPetIDRes>, response: Response<GetPetIDRes>) {
                 if(response.isSuccessful){
-                    Log.d("mobileApp", "$response ${response.body()}")
-                    Log.d("mobileApp", "$response ${response.body()!!.petID}")
+                    Log.d("mobileApp", "getPetID $response ${response.body()}")
+                    Log.d("mobileApp", "petID ${response.body()!!.petID}")
                     // Preference에 PetID 저장
                     SaveSharedPreference.setPetID(baseContext, response.body()!!.petID)
                 }
