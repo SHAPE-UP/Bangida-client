@@ -1,5 +1,6 @@
 package com.example.shape_up_2022.simulation
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -17,6 +18,11 @@ class SimTrainingActivity : AppCompatActivity() {
 
         binding.tutoTrain.setOnClickListener {
             binding.tutoTrain.visibility = View.GONE
+        }
+
+        binding.trainingVoice.setOnClickListener {
+            val intent = Intent(this, SimVoiveActivity::class.java)
+            startActivity(intent)
         }
 
         binding.trainingInfo.setOnClickListener{

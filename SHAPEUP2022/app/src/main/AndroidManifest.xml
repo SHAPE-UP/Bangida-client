@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.shape_up_2022">
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -25,6 +27,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SHAPEUP2022"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".simulation.SimVoiveActivity"
+            android:exported="false" />
+
         <activity
             android:name=".common.SplashActivity"
             android:exported="true">
@@ -82,9 +88,7 @@
         <activity
             android:name=".simulation.SimStartActivity"
             android:exported="false" />
-        <activity
-            android:name=".simulation.SimBeutySelfActivity"
-            android:exported="false" />
+
         <activity
             android:name=".simulation.SimHealthActivity"
             android:exported="false" />
