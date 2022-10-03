@@ -36,7 +36,10 @@ class SimVoiveActivity : AppCompatActivity() {
         Manifest.permission.READ_EXTERNAL_STORAGE
     )
     private val recordingFilePath: String by lazy {
-        "${externalCacheDir?.absolutePath}/recording.3gp"
+        val fileName: String = Date().getTime().toString() + ".wav"
+        Environment.getExternalStorageDirectory().absolutePath + "/Download/" + fileName //내장메모리 밑에 위치
+
+        //"${externalCacheDir?.absolutePath}/recording.3gp"
     }
     private var state = State.BEFORE_RECORDING
         set(value) { // setter 설정
@@ -125,9 +128,6 @@ class SimVoiveActivity : AppCompatActivity() {
         // 녹음 시작 시 초기화
         recorder = MediaRecorder()
             .apply {
-                //val fileName: String = Date().getTime().toString() + ".wav"
-                // output = Environment.getExternalStorageDirectory().absolutePath + "/Download/" + fileName //내장메모리 밑에 위치
-
                 setAudioSource(MediaRecorder.AudioSource.MIC)
                 setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP) // 포멧
                 setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB) // 엔코더
