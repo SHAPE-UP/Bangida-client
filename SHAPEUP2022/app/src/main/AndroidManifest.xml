@@ -18,6 +18,8 @@
         </intent>
     </queries>
 
+
+
     <application
         android:name=".retrofit.MyApplication"
         android:allowBackup="true"
@@ -205,6 +207,9 @@
         <activity
             android:name=".simulation.SimBeautyActivity"
             android:exported="false" />
+        <service android:name="com.amazonaws.mobileconnectors.s3.transferutility.TransferService"
+            android:enabled="true" />
     </application>
+
 
 </manifest>

@@ -1,19 +1,30 @@
 package com.example.shape_up_2022.simulation
 
 import android.Manifest
+import android.content.ContentValues.TAG
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import com.example.shape_up_2022.R
-import java.util.*
 import android.os.Environment
+import android.util.Log
+import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import com.amazonaws.auth.AWSCredentials
+import com.amazonaws.auth.BasicAWSCredentials
+import com.amazonaws.mobileconnectors.s3.transferutility.*
+import com.amazonaws.regions.Region
+import com.amazonaws.regions.Regions
+import com.amazonaws.services.s3.AmazonS3Client
+import com.example.shape_up_2022.R
+import java.io.File
+import java.util.*
+
 
 class SimVoiveActivity : AppCompatActivity() {
     private var output: String? = null
+    val fileName: String = Date().getTime().toString() + ".wav"
 
     private val soundVisualizerView: SoundVisualizerView by lazy {
         findViewById(R.id.soundVisualizerView)
@@ -36,7 +47,6 @@ class SimVoiveActivity : AppCompatActivity() {
         Manifest.permission.READ_EXTERNAL_STORAGE
     )
     private val recordingFilePath: String by lazy {
-        val fileName: String = Date().getTime().toString() + ".wav"
         Environment.getExternalStorageDirectory().absolutePath + "/Download/" + fileName //내장메모리 밑에 위치
 
         //"${externalCacheDir?.absolutePath}/recording.3gp"
@@ -150,6 +160,33 @@ class SimVoiveActivity : AppCompatActivity() {
         soundVisualizerView.stopVisualizing()
         recordTimeTextView.stopCountup()
         state = State.AFTER_RECORDING
+//성민도전기
+        val awsCredentials: AWSCredentials = BasicAWSCredentials("AKIA5I65CRPYCRUSRPN5", "2+cmrVIbeUs6YOWpYswopIiEXts8Z+14vmCKbVl8")
+        val s3Client = AmazonS3Client(awsCredentials, Region.getRegion(Regions.AP_NORTHEAST_2))
+
+        val transferUtility = TransferUtility.builder().s3Client(s3Client).context(this).build()
+        TransferNetworkLossHandler.getInstance(this)
+
+        val uploadObserver: TransferObserver =
+            transferUtility.upload("shapeupbucket", recordingFilePath, File(recordingFilePath))
+        uploadObserver.setTransferListener(object : TransferListener {
+            override fun onStateChanged(id: Int, state: TransferState) {
+                Log.d(TAG, "onStateChanged: " + id + ", " + state.toString())
+            }
+
+            override fun onProgressChanged(id: Int, bytesCurrent: Long, bytesTotal: Long) {
+                val percentDonef = bytesCurrent.toFloat() / bytesTotal.toFloat() * 100
+                val percentDone = percentDonef.toInt()
+                Log.d(
+                    TAG,
+                    "ID:$id bytesCurrent: $bytesCurrent bytesTotal: $bytesTotal $percentDone%"
+                )
+            }
+
+            override fun onError(id: Int, ex: Exception) {
+                Log.e(TAG, ex.message!!)
+            }
+        })
     }
 
 

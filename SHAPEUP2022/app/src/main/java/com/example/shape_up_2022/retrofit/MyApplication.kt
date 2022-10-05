@@ -71,6 +71,14 @@ class MyApplication: Application() {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
+        var networkServiceInsert: NetworkServiceInsert
+        val retrofitInsert: Retrofit
+            get() = Retrofit.Builder()
+                .baseUrl(apiserver + "api/insert/")
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
 
         init{
             networkServiceYoutube = retrofitYoutube.create(NetworkServiceYoutube::class.java)
@@ -81,6 +89,7 @@ class MyApplication: Application() {
             networkServiceTodo = retrofitTodo.create(NetworkServiceTodo::class.java)  // api/todo/
             networkServiceFamily = retrofitFamily.create(NetworkServiceFamily::class.java)  // api/family/
             networkServicePet = retrofitPet.create(NetworkServicePet::class.java) // api/pet
+            networkServiceInsert = retrofitInsert.create(NetworkServiceInsert::class.java) // api/insert
         }
 
 
