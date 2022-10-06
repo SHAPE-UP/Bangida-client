@@ -161,7 +161,7 @@ class SimVoiveActivity : AppCompatActivity() {
         recordTimeTextView.stopCountup()
         state = State.AFTER_RECORDING
 //성민도전기
-        val awsCredentials: AWSCredentials = BasicAWSCredentials("AKIA5I65CRPYCRUSRPN5", "2+cmrVIbeUs6YOWpYswopIiEXts8Z+14vmCKbVl8")
+        val awsCredentials: AWSCredentials = BasicAWSCredentials("", "")
         val s3Client = AmazonS3Client(awsCredentials, Region.getRegion(Regions.AP_NORTHEAST_2))
 
         val transferUtility = TransferUtility.builder().s3Client(s3Client).context(this).build()

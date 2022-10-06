@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.shape_up_2022">
 
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
@@ -18,8 +19,6 @@
         </intent>
     </queries>
 
-
-
     <application
         android:name=".retrofit.MyApplication"
         android:allowBackup="true"
@@ -29,8 +28,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SHAPEUP2022"
         android:usesCleartextTraffic="true">
+
         <activity
-            android:name=".simulation.SimVoiveActivity"
+            android:name=".common.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,10 +40,8 @@
         </activity>
 
         <activity
-            android:name=".common.SplashActivity"
-            android:exported="true">
-
-        </activity>
+            android:name=".simulation.SimVoiveActivity"
+            android:exported="false" />
         <activity
             android:name=".simulation.SimFinishActivity"
             android:exported="false" />
@@ -208,7 +206,9 @@
             android:name=".simulation.SimBeautyActivity"
             android:exported="false" />
         <service android:name="com.amazonaws.mobileconnectors.s3.transferutility.TransferService"
-            android:enabled="true" />
+            android:enabled="true"
+            android:exported="false"
+            tools:ignore="MissingClass" />
     </application>
 
 
