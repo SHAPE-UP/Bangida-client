@@ -22,7 +22,7 @@
 ### Team. SHAPE-UP
 <img src="https://github.com/SHAPE-UP/.github/assets/79989242/a8982dd8-ff65-4a76-a438-3e66c8bb664d" width="200px" alt="team logo"> <br />
 
-| <img src="https://avatars.githubusercontent.com/u/88462774?v=4" width=110px alt="류영주"/> | <img src="https://avatars.githubusercontent.com/u/79989242?v=4" width=110px alt="유수연"/> | <img src="https://avatars.githubusercontent.com/u/84445176?v=4" width=110px alt="김혜수"/> | <img src="https://avatars.githubusercontent.com/u/89893533?v=4" width=110px alt="황성민"/> |
+| <img src="https://avatars.githubusercontent.com/u/88462774?v=4" width=110px alt="류영주"/> | <img src="https://avatars.githubusercontent.com/u/84445176?v=4" width=110px alt="김혜수"/> | <img src="https://avatars.githubusercontent.com/u/79989242?v=4" width=110px alt="유수연"/> | <img src="https://avatars.githubusercontent.com/u/89893533?v=4" width=110px alt="황성민"/> |
 | :-----: | :-----: | :-----: | :-----: |
 | 류영주 | 김혜수 | 유수연 | 황성민 |
 | [@yellow-jam](https://github.com/yellow-jam) |[@Hwater00](https://github.com/Hwater00)| [@otcroz](https://github.com/otcroz) | [@hwangsungmin-00](https://github.com/hwangsungmin-00)  |
